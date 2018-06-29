@@ -1,0 +1,89 @@
+/*
+USEAGE:
+
+aside.primary {
+  @include breakpoint(md) {
+    float: right;
+    width: 350px;
+  }
+  @include breakpoint(480px) {
+    display: none;
+  }
+  @include breakpoint($min: 640px, $max: 767px) {
+    text-align: center;
+    font-style: italic;
+  }
+}
+
+sizes: xs,sm,md,lg
+
+*/
+
+
+@mixin breakpoint($min: 0, $max: 0) {
+  $type: type-of($min);
+ 
+  @if $type == string {
+      @if $min == xs {
+        @media (max-width: 767px) { @content; }
+      }
+     
+      @else if $min == sm {
+        @media (min-width: 768px) { @content; }
+      }
+     
+      @else if $min == md {
+        @media (min-width: 992px) { @content; }
+      }
+     
+      @else if $min == lg {
+        @media (min-width: 1200px) { @content; }
+      }
+     
+      @else {
+        @warn "Breakpoint mixin supports: xs, sm, md, lg";
+      }
+
+  }
+ 
+  @else if $type == number {
+     $query: "all" !default;
+    @if $min != 0 and $max != 0 { 
+      $query: "(min-width: #{$min}) and (max-width: #{$max})"; 
+    }
+    @else if $min != 0 and $max == 0 { 
+      $query: "(min-width: #{$min})"; 
+    }
+    @else if $min == 0 and $max != 0 { 
+      $query: "(max-width: #{$max})"; 
+    }
+    @media #{$query} { 
+      @content;
+    }
+  }
+ 
+}
+  
+
+
+
+
+
+
+@mixin breakpoint_v($min: 0, $max: 0) {
+  $query: "all" !default;
+    @if $min != 0 and $max != 0 { 
+      $query: "(min-height: #{$min}) and (max-height: #{$max})"; 
+    }
+    @else if $min != 0 and $max == 0 { 
+      $query: "(min-height: #{$min})"; 
+    }
+    @else if $min == 0 and $max != 0 { 
+      $query: "(max-height: #{$max})"; 
+    }
+    @media #{$query} { 
+      @content;
+    }
+
+
+}

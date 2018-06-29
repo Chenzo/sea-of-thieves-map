@@ -1,0 +1,48 @@
+error_log
+error_log/
+node_modules
+node_modules/
+.sass-cache/
+*.log
+maps
+maps/
+.vscode/
+
+#merge files
+*.orig
+
+
+#dreamweaver files#
+_notes
+_notes/
+
+
+#IntelliJ files#
+.idea
+.idea/
+ROOT.iml
+
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+
+
+# Sublime Files #
+*.sublime-project
+*.sublime-workspace
+
+
+#wordpress:
+wp-content/plugins/*
+wp-admin/
+wp-includes/*
+wp-content/themes/twentyeleven/*
+wp-content/themes/twentyfourteen/*
+wp-content/themes/twentytwelve/*
+wp-content/themes/twentyfifteen/*
+wp-content/themes/twentythirteen/*
+
+nbproject/

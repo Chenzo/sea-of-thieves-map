@@ -1,0 +1,243 @@
+
+
+@mixin baseFont {
+    font-family: $base_font_family;
+    font-weight: $base_font_weight_thin;
+    font-style: normal;
+}
+
+
+
+@mixin highResSprite($sprite_url, $sprite_size) {
+    /*2x*/
+    @media (min--moz-device-pixel-ratio: 1.3),
+        (-o-min-device-pixel-ratio: 2.6/2),
+        (-webkit-min-device-pixel-ratio: 1.3),
+        (min-device-pixel-ratio: 1.3),
+        (min-resolution: 1.3dppx) {
+        /* on retina, use image that's scaled by 2 */
+        background-image: $sprite_url;
+        background-size: $sprite_size;
+    }
+    
+    /*3x ?*/
+}
+
+
+
+@mixin iconSprite($posX, $posY, $color:false){
+    @if $color { background:$color $icon_sprite no-repeat $posX $posY;}
+    @else{ background: $icon_sprite no-repeat $posX $posY;}
+
+    @include highResSprite($icon_sprite_2x, $icon_sprite_size);
+}
+
+
+/*
+@mixin logoSprite($posX, $posY) {
+    background: $logo_sprite no-repeat $posX $posY;
+
+    @include highResSprite($logo_sprite_2x, $logo_sprite_size);
+}
+*/
+
+
+@mixin column($count, $gap:0) {
+    -webkit-column-count: $count;
+    -moz-column-count: $count;
+    -ms-column-count: $count;
+    -o-column-count: $count;
+    column-count: $count;
+
+    -webkit-column-gap: $gap;
+    -moz-column-gap: $gap;
+    -ms-column-gap : $gap;
+    -o-column-gap: $gap;
+    column-gap: $gap;
+}
+
+@mixin flexbox {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex-flow($values: (row nowrap)) {
+    -webkit-flex-flow: $values;
+    -moz-flex-flow: $values;
+    -ms-flex-flow: $values;
+    flex-flow: $values;
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+    $fg-boxflex: $fg;
+
+    @if type-of($fg) == 'list' {
+            $fg-boxflex: nth($fg, 1);
+    }
+
+    -webkit-box-flex: $fg-boxflex;
+    -webkit-flex: $fg $fs $fb;
+    -moz-box-flex: $fg-boxflex;
+    -moz-flex: $fg $fs $fb;
+    -ms-flex: $fg $fs $fb;
+    flex: $fg $fs $fb;
+}
+
+
+
+@mixin noSelection {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-touch-action: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+
+@mixin border-radius($values){
+    -o-border-radius: $values;
+    -webkit-border-radius: $values;
+    -moz-border-radius: $values;
+    -khtml-border-radius:$values;
+    border-radius: $values;
+}
+
+
+
+@mixin box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+    $params: $shadow1;
+    @if $shadow2
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+    { $params: $shadow1, $shadow2, $shadow3; }
+    @if $shadow4 != false
+    { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+    @if $shadow5 != false
+    { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+    -webkit-box-shadow:$params;
+    -moz-box-shadow:   $params;
+    -o-box-shadow:     $params;
+    -khtml-box-shadow: $params;
+    box-shadow:        $params;
+}
+
+
+
+
+@mixin gradient($start, $end){
+    background:$start;
+    filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, startColorstr='#{$start}', endColorstr='#{$end}');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start}', endColorstr='#{$end}')";
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,$start), color-stop(100%,$end)); 
+    background: -webkit-linear-gradient($start, $end);
+    background: -moz-linear-gradient(top, $start 1%, $end); 
+    background: -ms-linear-gradient($start, $end);
+    background: -o-linear-gradient($start, $end);
+    background: linear-gradient($start,$end);
+    zoom: 1; 
+}
+
+
+@mixin diagonalGradient($start, $end, $deg){
+    $alt_deg: 90deg - $deg;
+
+    background: -webkit-linear-gradient($alt_deg, $start 0%, $end 22%);
+    background: -moz-linear-gradient($alt_deg, $start 0%, $end 22%); 
+    background: linear-gradient($deg, $start 0%, $end 22%);
+}
+
+
+@mixin linear-gradient($direction, $color-stops...) {
+  @if is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+  
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+
+
+@mixin transparentBackground($color, $alpha) {
+    $rgba: rgba($color, $alpha);
+    $ie-hex-str: ie-hex-str($rgba);
+    background-color: transparent;
+    background-color: $rgba;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-hex-str},endColorstr=#{$ie-hex-str});
+    zoom: 1;
+}
+
+
+@mixin animation($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+    $params: $shadow1;
+    @if $shadow2
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+    { $params: $shadow1, $shadow2, $shadow3; }
+    @if $shadow4 != false
+    { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+    @if $shadow5 != false
+    { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+    -webkit-animation:$params;
+    -moz-animation:   $params;
+    -o-animation:     $params;
+    -khtml-animation: $params;
+    animation:        $params;
+}
+
+
+@mixin transition($property:all, $duration:.5s, $timing-function:ease){
+    -webkit-transition-property: $property;
+    -moz-transition-property:    $property;
+    -o-transition-property:      $property;
+    -ms-transition-property:     $property;
+    transition-property:         $property;
+
+    -webkit-transition-duration: $duration;
+    -moz-transition-duration:    $duration;
+    -o-transition-duration:      $duration;
+    -ms-transition-duration:     $duration;
+    transition-duration:         $duration;
+
+    -webkit-transition-timing-function:  $timing-function;
+    -moz-transition-timing-function:     $timing-function;
+    -o-transition-timing-function:       $timing-function;
+    -ms-transition-timing-function:      $timing-function;
+    transition-timing-function:          $timing-function;
+
+    /*Safari bug where transform needs to be prefixed*/
+    @if $property == "transform" {
+        -webkit-transition-property: -webkit-transform;
+    }
+}
+
+
+
+@mixin transform($transform) {
+    -webkit-transform: $transform;
+    -moz-transform:    $transform;
+    -o-transform:      $transform;
+    -ms-transform:     $transform;
+    transform:         $transform;
+}
+
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
