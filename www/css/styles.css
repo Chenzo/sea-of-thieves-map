@@ -950,7 +950,7 @@ body {
   color: #25211e; }
 
 body {
-  background: #ccc; }
+  background: #f00; }
 
 .home #mapid {
   height: 100vh; }
@@ -961,7 +961,8 @@ body {
   background-color: blue; }
 
 .customclass:hover {
-  opacity: 0; }
+  fill-opacity: 0.2;
+  stroke-opacity: 0.7; }
 
 /* go ahead use this file. No one will care... it's all good */
 /* this is for specificity fixes... */

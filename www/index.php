@@ -16,9 +16,9 @@
          <div id="mapid"></div>
 
       
-        <script src="js/vendor/leaflet.js"></script>
-       <!--  <script src="js/vendor/leaflet.label.js"></script> -->
-        <script src="js/vendor/leaflet.search.min.js"></script>
+       <script src="js/vendor/leaflet.js"></script>
+       <script src="js/vendor/leaflet-search.min.js"></script>
+
         <script src="js/sotm.js"></script>
         
     </body>

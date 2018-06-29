@@ -12,6 +12,8 @@
 
 .customclass {
     &:hover {
-        opacity: 0;
+        //opacity: 0.5;
+        fill-opacity: 0.2;
+        stroke-opacity: 0.7;
     }
 }
