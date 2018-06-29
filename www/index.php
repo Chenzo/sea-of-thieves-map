@@ -5,29 +5,21 @@
 <html>
     <head>
         <title>Sea Of Thieves Map</title>
+        <link rel="stylesheet" href="/css/vendor/leaflet.css" />
+        <!-- <link rel="stylesheet" href="/css/vendor/leaflet.label.css" /> -->
+        <link rel="stylesheet" href="/css/vendor/leaflet.search.css" />
         <link rel="stylesheet" href="/css/styles.css" />
+
     </head>
     <body class="home">
 
-        <section>
-                <h1>Load test.js</h1>
-                <a href="page2.php">page 2</a>
+         <div id="mapid"></div>
 
-
-                <div>
-                    <input placeholder="This Placeholder can be styled">
-                </div>
-
-
-                <div class="thing">
-                    <div>ONE</div>
-                    <div>TWO</div>
-                    <div>THREE</div>
-                    <div>FOUR</div>
-                </div>
-        </section>
-
-        <script type="text/javascript" src="js/test.js"></script>
+      
+        <script src="js/vendor/leaflet.js"></script>
+       <!--  <script src="js/vendor/leaflet.label.js"></script> -->
+        <script src="js/vendor/leaflet.search.min.js"></script>
+        <script src="js/sotm.js"></script>
         
     </body>
 </html>

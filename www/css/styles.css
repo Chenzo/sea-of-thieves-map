@@ -952,43 +952,16 @@ body {
 body {
   background: #ccc; }
 
-.home section {
-  padding: 50px; }
+.home #mapid {
+  height: 100vh; }
 
-.home .thing {
-  -webkit-transition: all 4s ease;
-  transition: all 4s ease;
-  border-radius: 10px 5px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-  .home .thing div {
-    display: block;
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    margin: 20px;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
+.my-div-icon {
+  width: 40px;
+  height: 40px;
+  background-color: blue; }
 
-.home input {
-  background: white;
-  padding: 10px;
-  margin: 10px 0;
-  width: 400px; }
-
-.home ::-webkit-input-placeholder {
-  color: blue; }
-
-.home :-ms-input-placeholder {
-  color: blue; }
-
-.home ::-ms-input-placeholder {
-  color: blue; }
-
-.home ::placeholder {
-  color: blue; }
+.customclass:hover {
+  opacity: 0; }
 
 /* go ahead use this file. No one will care... it's all good */
 /* this is for specificity fixes... */
