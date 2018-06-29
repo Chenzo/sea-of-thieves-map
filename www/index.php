@@ -5,10 +5,10 @@
 <html>
     <head>
         <title>Sea Of Thieves Map</title>
-        <link rel="stylesheet" href="/css/vendor/leaflet.css" />
+        <link rel="stylesheet" href="css/vendor/leaflet.css" />
         <!-- <link rel="stylesheet" href="/css/vendor/leaflet.label.css" /> -->
-        <link rel="stylesheet" href="/css/vendor/leaflet.search.css" />
-        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
+        <link rel="stylesheet" href="css/styles.css" />
 
     </head>
     <body class="home">
