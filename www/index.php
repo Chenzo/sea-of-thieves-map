@@ -13,12 +13,23 @@
     </head>
     <body class="home">
 
-         <div id="mapid"></div>
+        <section>
 
-      
-       <script src="js/vendor/leaflet.js"></script>
-       <script src="js/vendor/leaflet-search.min.js"></script>
+            <aside class="sidebar">
+                sidebar
+            </aside>
 
+            <article>
+                <div class="corner"></div>
+                <div class="topbar">topbar</div>
+                <div class="leftbar">l</div>
+                <div id="mapid"></div>
+            </article>
+
+        </section>
+
+        <script src="js/vendor/leaflet.js"></script>
+        <script src="js/vendor/leaflet-search.min.js"></script>
         <script src="js/sotm.js"></script>
         
     </body>

@@ -1,5 +1,30 @@
 .home {
-    #mapid { height: 100vh; }
+    #mapid { height: calc(100vh - 20px); }
+
+    section {
+        display: flex;
+        background-color: #222;
+        color: #ccc;
+
+        aside {
+            width: 200px;
+            border-right: 1px solid #000;
+        }
+        article {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 20px auto;
+            grid-template-rows: 20px auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+
+
+            .corner {
+                background-color: #000;
+            }
+        }
+    }
+
 }
 
 
@@ -23,3 +48,6 @@
 .alphanum_grid {
     z-index: 30;
 }
+
+
+

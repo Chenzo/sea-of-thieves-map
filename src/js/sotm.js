@@ -21,16 +21,9 @@ function onMapClick(e) {
 map.on('click', onMapClick);
 
 
-
+/*
 var gridOverlay = new L.LayerGroup();
 map.addLayer(gridOverlay);
-
-/* var polygon = L.polygon([
-    [637, 210],
-    [637, 234],
-    [615, 234],
-    [615, 210]
-]); */
 
 var startTop = 637;
 var width = 23.4;
@@ -51,14 +44,14 @@ for(downCount = 0; downCount < 26; downCount++){
             zindex: 30,
             className: 'alphanum_grid',
             title: 'VINCE'
-        });
+        })
         
         startLeft+= width;
         gridOverlay.addLayer(polygon);
     }
     startTop-= height;
 }
-
+*/
 
 
 
@@ -98,10 +91,7 @@ for(i in islands) {
         fillOpacity: 0,
         radius: islands[i].radius,
         className: 'customclass',
-        title: title,
-        add: function() {
-            console.log("here?");
-        }
+        title: title
         //draggable: true
     }).bindPopup(title);
 

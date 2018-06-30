@@ -953,7 +953,28 @@ body {
   background: #ccc; }
 
 .home #mapid {
-  height: 100vh; }
+  height: calc(100vh - 20px); }
+
+.home section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #222;
+  color: #ccc; }
+  .home section aside {
+    width: 200px;
+    border-right: 1px solid #000; }
+  .home section article {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    display: grid;
+    grid-template-columns: 20px auto;
+    grid-template-rows: 20px auto;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px; }
+    .home section article .corner {
+      background-color: #000; }
 
 .my-div-icon {
   width: 40px;
