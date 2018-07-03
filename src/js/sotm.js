@@ -12,6 +12,7 @@ var map_settings = {
     center: window.map_center,
     zoom: 4,
     attributionControl: false,
+    //crs: L.CRS.Simple
     //zoomControl: false,
     //layers: allLayers
 };
@@ -82,6 +83,20 @@ for(i in islands) {
 
     markersLayer.addLayer(circle);
 }
+
+
+var options = {interval: 26,
+    showOriginLabel: false,
+    redraw: 'move',
+    zoomIntervals: [
+     {start: 2, end: 6, interval: 26}
+ ]};
+
+L.simpleGraticule(options).addTo(map);
+
+
+
+
 
 map.on('zoomend', function() {
     console.log("haHA!!!");
