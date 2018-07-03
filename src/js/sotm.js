@@ -2,7 +2,7 @@ console.log("sea of thieves map");
 
 
 window.map_sWest  = L.latLng(-90, -179);
-window.map_nEast  = L.latLng(15, 35);
+window.map_nEast  = L.latLng(15, 8000);
 window.map_center = [-63, -73];
 window.map_mZoom  = 6;
 
@@ -12,7 +12,7 @@ var map_settings = {
     center: window.map_center,
     zoom: 4,
     attributionControl: false,
-    //crs: L.CRS.Simple
+    crs: L.CRS.Simple
     //zoomControl: false,
     //layers: allLayers
 };
@@ -20,17 +20,18 @@ var map_settings = {
 var map = L.map('mapid', map_settings);
 
 
-
-var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
+var e = new L.LatLngBounds(map.unproject([0, 500], 6), map.unproject([400, 0], 6));
+map.fitBounds(e);
+//var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
 
 var layer_settings = {
-    tms: true,
-    bounds: bounds,
-    noWrap: true
+    //tms: true,
+    //bounds: e,
+    //noWrap: true
 };
 
 L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
-map.setMaxBounds(bounds);
+//map.setMaxBounds(bounds);
 
 
 function onMapClick(e) {
@@ -85,14 +86,14 @@ for(i in islands) {
 }
 
 
-var options = {interval: 26,
+/* var options = {interval: 26,
     showOriginLabel: false,
     redraw: 'move',
     zoomIntervals: [
      {start: 2, end: 6, interval: 26}
  ]};
 
-L.simpleGraticule(options).addTo(map);
+L.simpleGraticule(options).addTo(map); */
 
 
 
