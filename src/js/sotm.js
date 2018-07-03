@@ -17,17 +17,20 @@ var map_settings = {
     //layers: allLayers
 };
 
+
 var map = L.map('mapid', map_settings);
 
-
-var e = new L.LatLngBounds(map.unproject([0, 500], 6), map.unproject([400, 0], 6));
-map.fitBounds(e);
+var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
+map.setMaxBounds(bounds);
+//var e = new L.LatLngBounds(map.unproject([0, 9708], 6), map.unproject([8923, 0], 6));
+//map.fitBounds(e);
 //var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
 
 var layer_settings = {
-    //tms: true,
-    //bounds: e,
-    //noWrap: true
+    tms: true,
+    bounds: bounds,
+    noWrap: true,
+    crs: L.CRS.Simple
 };
 
 L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
