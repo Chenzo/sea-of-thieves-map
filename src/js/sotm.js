@@ -1,17 +1,35 @@
 console.log("sea of thieves map");
 
 
+window.map_sWest  = L.latLng(-90, -179);
+window.map_nEast  = L.latLng(15, 35);
+window.map_center = [-63, -73];
+window.map_mZoom  = 6;
 
-var map = L.map('mapid', {
-    crs: L.CRS.Simple
-});
+var map_settings = {
+    minZoom: 2,
+    maxZoom: window.map_mZoom,
+    center: window.map_center,
+    zoom: 4,
+    attributionControl: false,
+    //zoomControl: false,
+    //layers: allLayers
+};
 
-//map is 8000, 5610
-var bounds = [[0,0], [700,1000]];
-var image = L.imageOverlay('images/sotm.jpg', bounds).addTo(map);
+var map = L.map('mapid', map_settings);
 
-map.fitBounds(bounds);
 
+
+var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
+
+var layer_settings = {
+    tms: true,
+    bounds: bounds,
+    noWrap: true
+};
+
+L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
+map.setMaxBounds(bounds);
 
 
 function onMapClick(e) {
@@ -19,39 +37,6 @@ function onMapClick(e) {
 }
 
 map.on('click', onMapClick);
-
-
-/*
-var gridOverlay = new L.LayerGroup();
-map.addLayer(gridOverlay);
-
-var startTop = 637;
-var width = 23.4;
-var height = 23.3;
-for(downCount = 0; downCount < 26; downCount++){
-    var startLeft = 210;
-    down = startTop - height;
-    for(count = 0; count < 26; count++){
-        over = startLeft + width;
-        var polygon = L.polygon([
-            [startTop, startLeft],
-            [startTop, over],
-            [down, over],
-            [down, startLeft]
-        ], {
-            fillColor: '#fff',
-            stroke: 0,
-            zindex: 30,
-            className: 'alphanum_grid',
-            title: 'VINCE'
-        })
-        
-        startLeft+= width;
-        gridOverlay.addLayer(polygon);
-    }
-    startTop-= height;
-}
-*/
 
 
 
@@ -100,24 +85,17 @@ for(i in islands) {
 
 map.on('zoomend', function() {
     console.log("haHA!!!");
+    adjustAlphaNum();
 });
 
-/* var grid = L.gridLayer({
-    attribution: 'Grid Layer',
-    tileSize: 200,
-    zIndex: 6000
+map.on('move', function() {
+    adjustAlphaNum();
 });
-grid.createTile = function (coords) {
-    var tile = document.createElement('div');
-    tile.innerHTML = [coords.x, coords.y, coords.z].join(', ');
-    tile.style.outline = '1px solid red';
-    //tile.style.background = 'white';
-    return tile;
-};
 
-grid.on('loading', function() { console.log('loading'); });
-		//grid.on('load', function() { console.log('load'); });
-		//grid.on('tileunload', function(tile) { console.log('tileunload ' + tile.coords.x + ',' + tile.coords.y + ',' + tile.coords.z); });
+function adjustAlphaNum() {
+    console.log(map.getZoom(), map.getCenter());
+    console.log(map.getBounds());
+}
 
-map.addLayer(grid); */
+
 

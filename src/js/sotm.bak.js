@@ -82,3 +82,114 @@ for(i in islands) {
 
     markersLayer.addLayer(circle);
 }
+
+
+
+
+
+
+
+
+
+
+
+//Tile work and fail:
+
+//var southWest = map.unproject([0, 9776], map.getMaxZoom());
+//var northEast = map.unproject([8990, 0], map.getMaxZoom());
+//map.setMaxBounds(new L.LatLngBounds(southWest, northEast));
+
+
+/* var bounds = [[0,0], [919,1000]];
+L.tileLayer('http://localhost:3000/images/tiles/sotm_v1_1-3.jpg', {  
+    minZoom: 0,
+    maxZoom: 18
+}).addTo(map);
+map.fitBounds(bounds);  */
+
+/* var bounds = [[0,0], [919,1000]];
+L.TileLayer.Kitten = L.TileLayer.extend({
+    getTileUrl: function(coords) {
+        var i = Math.ceil( Math.random() * 4 );
+        return "http://localhost:3000/images/tiles/sotm_v1_{x}-2.jpg"
+    },
+    getAttribution: function() {
+        return "<a href='https://placekitten.com/attribution.html'>PlaceKitten</a>"
+    }
+});
+
+L.tileLayer.kitten = function() {
+    return new L.TileLayer.Kitten();
+}
+
+
+L.tileLayer.kitten().addTo(map);
+map.fitBounds(bounds); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+var gridOverlay = new L.LayerGroup();
+map.addLayer(gridOverlay);
+
+var startTop = 637;
+var width = 23.4;
+var height = 23.3;
+for(downCount = 0; downCount < 26; downCount++){
+    var startLeft = 210;
+    down = startTop - height;
+    for(count = 0; count < 26; count++){
+        over = startLeft + width;
+        var polygon = L.polygon([
+            [startTop, startLeft],
+            [startTop, over],
+            [down, over],
+            [down, startLeft]
+        ], {
+            fillColor: '#fff',
+            stroke: 0,
+            zindex: 30,
+            className: 'alphanum_grid',
+            title: 'VINCE'
+        })
+        
+        startLeft+= width;
+        gridOverlay.addLayer(polygon);
+    }
+    startTop-= height;
+}
+*/
+
+
+
+
+
+/* var grid = L.gridLayer({
+    attribution: 'Grid Layer',
+    tileSize: 200,
+    zIndex: 6000
+});
+grid.createTile = function (coords) {
+    var tile = document.createElement('div');
+    tile.innerHTML = [coords.x, coords.y, coords.z].join(', ');
+    tile.style.outline = '1px solid red';
+    //tile.style.background = 'white';
+    return tile;
+};
+
+grid.on('loading', function() { console.log('loading'); });
+		//grid.on('load', function() { console.log('load'); });
+		//grid.on('tileunload', function(tile) { console.log('tileunload ' + tile.coords.x + ',' + tile.coords.y + ',' + tile.coords.z); });
+
+map.addLayer(grid); */
