@@ -1,9 +1,8 @@
 console.log("sea of thieves map");
 
 
-window.map_sWest  = L.latLng(-90, -179);
-window.map_nEast  = L.latLng(15, 8000);
-window.map_center = [-63, -73];
+
+window.map_center = [4900, 4900];
 window.map_mZoom  = 6;
 
 var map_settings = {
@@ -17,25 +16,33 @@ var map_settings = {
     //layers: allLayers
 };
 
+var map = L.map('mapid', map_settings).setView([0, 0], 4);
 
-var map = L.map('mapid', map_settings);
+var bounds = new L.LatLngBounds(
+    map.unproject([0, 9000], 6),
+    map.unproject([8900, 0], 6));
 
-var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
+
 map.setMaxBounds(bounds);
-//var e = new L.LatLngBounds(map.unproject([0, 9708], 6), map.unproject([8923, 0], 6));
-//map.fitBounds(e);
-//var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
 
 var layer_settings = {
-    tms: true,
+    //tms: true,
     bounds: bounds,
     noWrap: true,
     crs: L.CRS.Simple
 };
 
-L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
-//map.setMaxBounds(bounds);
+//L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
 
+var tiles = L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings);
+
+tiles.getTileUrl = function(coords) {
+ // coords.y = -coords.y;
+    console.log(coords);
+  return L.TileLayer.prototype.getTileUrl.bind(tiles)(coords);
+}
+
+tiles.addTo(map);
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
@@ -51,7 +58,7 @@ var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
 
-var controlSearch = new L.Control.Search({
+/* var controlSearch = new L.Control.Search({
     position:'topright',		
     layer: markersLayer,
     initial: false,
@@ -61,7 +68,7 @@ var controlSearch = new L.Control.Search({
 
 map.addControl( controlSearch );
 
-
+ */
 var islands = [
     {"loc":[494.035156, 433.823242], "title":"Lone Cove", radius: 10},
     {"loc":[376, 391], "title":"Cannon Cove", radius: 12},
@@ -89,15 +96,14 @@ for(i in islands) {
 }
 
 
-/* var options = {interval: 26,
+var options = {interval: 26,
     showOriginLabel: false,
     redraw: 'move',
     zoomIntervals: [
      {start: 2, end: 6, interval: 26}
  ]};
 
-L.simpleGraticule(options).addTo(map); */
-
+L.simpleGraticule(options).addTo(map);
 
 
 
@@ -115,6 +121,5 @@ function adjustAlphaNum() {
     console.log(map.getZoom(), map.getCenter());
     console.log(map.getBounds());
 }
-
 
 
