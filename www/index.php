@@ -28,9 +28,9 @@
 
         </section>
 
-        <script src="js/vendor/leaflet.js"></script>
-        <script src="js/vendor/leaflet-search.min.js"></script>
-        <script src="js/vendor/L.SimpleGraticule.js"></script>
+        <script src="js/vendor/leaflet-src.js"></script>
+        <!-- <script src="js/vendor/leaflet-search.min.js"></script>-->
+        <script src="js/vendor/L.SimpleGraticule.js"></script> 
         <script src="js/sotm.js"></script>
         
     </body>
