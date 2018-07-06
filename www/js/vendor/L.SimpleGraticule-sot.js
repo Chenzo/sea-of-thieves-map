@@ -15,11 +15,13 @@ L.SimpleGraticule = L.LayerGroup.extend({
     lineStyle: {
         stroke: true,
         color: '#111',
-        opacity: 0.6,
+        opacity: 0,
         weight: 1,
         interactive: false,
         clickable: false //legacy support
     },
+    currentLetterCount: 1,
+    currentNumberCount: 1,
 
     initialize: function(options) {
         L.LayerGroup.prototype.initialize.call(this);
@@ -98,6 +100,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
         var lines = new Array(counts.x + counts.y);
         var labels = new Array(counts.x + counts.y);
 
+        this.currentLetterCount = 1;
         //for horizontal lines
         for (var i = 0; i <= counts.x; i++) {
             var x = mins.x + i * this.options.interval;
@@ -133,9 +136,14 @@ L.SimpleGraticule = L.LayerGroup.extend({
     buildLabel: function(axis, val) {
         var bounds = this._map.getBounds().pad(-0.003);
         var latLng;
+        var newVal = Math.floor(val);
+        
         if (axis == 'gridlabel-horiz') {
+            var niceLabel = getLetter(newVal);
+            val = val + 8.0;
             latLng = new L.LatLng(bounds.getNorth(), val);
         } else {
+            niceLabel = getNumber(newVal);
             latLng = new L.LatLng(val, bounds.getWest());
         }
 
@@ -145,7 +153,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
             icon: L.divIcon({
                 iconSize: [0, 0],
                 className: 'leaflet-grid-label',
-                html: '<div class="' + axis + '">' + val + '</div>'
+                html: '<div class="' + axis + '">' + niceLabel + '</div>'
             })
         });
     },
@@ -166,3 +174,79 @@ L.SimpleGraticule = L.LayerGroup.extend({
 L.simpleGraticule = function(options) {
     return new L.SimpleGraticule(options);
 };
+
+
+
+var letters = [];
+letters[0] = "A";
+letters[5] = "B";
+letters[11] = "C";
+letters[17] = "D";
+letters[23] = "E";
+letters[29] = "F";
+letters[35] = "G";
+letters[40] = "H";
+letters[46] = "I";
+letters[52] = "J";
+letters[58] = "K";
+letters[64] = "L";
+letters[70] = "M";
+letters[76] = "N";
+letters[81] = "O";
+letters[87] = "P";
+letters[93] = "Q";
+letters[99] = "R";
+letters[105] = "S";
+letters[111] = "T";
+letters[116] = "U";
+letters[117] = "U";
+letters[122] = "V";
+letters[128] = "W";
+letters[134] = "X";
+letters[140] = "Y";
+letters[146] = "Z";
+function getLetter(val) {
+    
+
+    if (letters[val]) {
+        return letters[val];
+    }
+    return ""; //val
+}
+
+
+
+var numbers = [];
+numbers[-6] = "1";
+numbers[-12] = "2";
+numbers[-18] = "3";
+numbers[-24] = "4";
+numbers[-30] = "5";
+numbers[-36] = "6";
+numbers[-41] = "7";
+numbers[-47] = "8";
+numbers[-53] = "9";
+numbers[-59] = "10";
+numbers[-65] = "11";
+numbers[-71] = "12";
+numbers[-77] = "13";
+numbers[-82] = "14";
+numbers[-88] = "15";
+numbers[-94] = "16";
+numbers[-100] = "17";
+numbers[-106] = "18";
+numbers[-112] = "19";
+numbers[-117] = "20";
+numbers[-123] = "21";
+numbers[-129] = "22";
+numbers[-135] = "23";
+numbers[-2345] = "24";
+numbers[-2345] = "25";
+numbers[-234234] = "26";
+function getNumber(val) {
+
+    if (numbers[val]) {
+        return numbers[val];
+    }
+    return ""; //val;
+}

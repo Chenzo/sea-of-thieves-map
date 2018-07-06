@@ -1,37 +1,25 @@
-console.log("sea of thieves map");
 
 
-window.map_sWest  = L.latLng(-90, -179);
-window.map_nEast  = L.latLng(15, 35);
-window.map_center = [-63, -73];
-window.map_mZoom  = 6;
-
-var map_settings = {
+var map = L.map("mapid", {
+    maxZoom: 6,
     minZoom: 2,
-    maxZoom: window.map_mZoom,
-    center: window.map_center,
-    zoom: 4,
+    crs: L.CRS.Simple,
     attributionControl: false,
-    //crs: L.CRS.Simple
-    //zoomControl: false,
-    //layers: allLayers
-};
+    preferCanvas: false
+}).setView([70, 70], 4);
 
-var map = L.map('mapid', map_settings);
+var bounds = new L.LatLngBounds(map.unproject([0, 9676], 6), map.unproject([10462, 0], 6));
 
+map.fitBounds(bounds);
 
-
-var bounds = new L.LatLngBounds(window.map_sWest, window.map_nEast);
-
-var layer_settings = {
-    tms: true,
+layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
+    minZoom: 2,
+    maxZoom: 6,
     bounds: bounds,
-    noWrap: true
-};
-
-L.tileLayer('./images/sot_map_tiles/{z}/{x}/{y}.png', layer_settings).addTo(map);
+    noWrap: !0,
+    tms: !1
+}).addTo(map);
 map.setMaxBounds(bounds);
-
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
@@ -59,9 +47,9 @@ map.addControl( controlSearch );
 
 
 var islands = [
-    {"loc":[494.035156, 433.823242], "title":"Lone Cove", radius: 10},
-    {"loc":[376, 391], "title":"Cannon Cove", radius: 12},
-    {"loc":[412.825195, 441.530273], "title":"Rum Runner Isle", radius: 4},
+    {"loc":[-39.625, 60.1], "title":"Lone Cove", radius: 4},
+    {"loc":[-67.53125, 48.125], "title":"Cannon Cove", radius: 4},
+    {"loc":[-65.09375, 62.84375], "title":"Rum Runner Isle", radius: 2},
     {"loc":[350.492188, 656.982422], "title":"The Crooked Masts", radius: 14},
     
 ]
@@ -85,21 +73,24 @@ for(i in islands) {
 }
 
 
-var options = {interval: 26,
+var options = {interval: 5.85,
     showOriginLabel: false,
     redraw: 'move',
     zoomIntervals: [
-     {start: 2, end: 6, interval: 26}
+     {start: 3, end: 6, interval: 5.85}
  ]};
 
-L.simpleGraticule(options).addTo(map);
+L.simpleGraticule(options).addTo(map); 
 
 
-
+/* L.simpleGraticule({
+    interval: .76,
+    redraw: "move"
+}).addTo(map) */
 
 
 map.on('zoomend', function() {
-    console.log("haHA!!!");
+    //console.log("haHA!!!");
     adjustAlphaNum();
 });
 
@@ -108,9 +99,22 @@ map.on('move', function() {
 });
 
 function adjustAlphaNum() {
-    console.log(map.getZoom(), map.getCenter());
-    console.log(map.getBounds());
+    //console.log(map.getZoom(), map.getCenter());
+    //console.log(map.getBounds());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

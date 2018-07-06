@@ -952,6 +952,17 @@ body {
 body {
   background: #ccc; }
 
+.leaflet-grid-label {
+  width: 100%; }
+  .leaflet-grid-label .gridlabel-vert {
+    margin-left: 8px; }
+  .leaflet-grid-label .gridlabel-vert, .leaflet-grid-label .gridlabel-horiz {
+    color: #000;
+    font-weight: 700;
+    left: 2px;
+    position: relative;
+    text-align: center; }
+
 .home #mapid {
   height: calc(100vh - 20px); }
 
@@ -968,13 +979,16 @@ body {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    display: grid;
-    grid-template-columns: 20px auto;
-    grid-template-rows: 20px auto;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px; }
-    .home section article .corner {
-      background-color: #000; }
+    /*display: grid;
+            grid-template-columns: 20px auto;
+            grid-template-rows: 20px auto;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+
+
+            .corner {
+                background-color: #000;
+            } */ }
 
 .my-div-icon {
   width: 40px;
