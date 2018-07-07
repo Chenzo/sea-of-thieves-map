@@ -8,7 +8,7 @@ var map = L.map("mapid", {
     preferCanvas: false
 }).setView([70, 70], 4);
 
-var bounds = new L.LatLngBounds(map.unproject([0, 9676], 6), map.unproject([10462, 0], 6));
+var bounds = new L.LatLngBounds(map.unproject([0, 10462], 6), map.unproject([10462, 0], 6));
 
 map.fitBounds(bounds);
 

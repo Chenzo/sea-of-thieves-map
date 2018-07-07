@@ -207,7 +207,6 @@ letters[140] = "Y";
 letters[146] = "Z";
 function getLetter(val) {
     
-
     if (letters[val]) {
         return letters[val];
     }
@@ -240,13 +239,13 @@ numbers[-117] = "20";
 numbers[-123] = "21";
 numbers[-129] = "22";
 numbers[-135] = "23";
-numbers[-2345] = "24";
-numbers[-2345] = "25";
-numbers[-234234] = "26";
+numbers[-141] = "24";
+numbers[-147] = "25";
+numbers[-153] = "26";
 function getNumber(val) {
 
     if (numbers[val]) {
         return numbers[val];
     }
-    return ""; //val;
+    return val;
 }
