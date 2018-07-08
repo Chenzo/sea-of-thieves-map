@@ -247,5 +247,5 @@ function getNumber(val) {
     if (numbers[val]) {
         return numbers[val];
     }
-    return val;
+    return ""; //val;
 }

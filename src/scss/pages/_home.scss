@@ -1,5 +1,7 @@
 .home {
-    #mapid { height: calc(100vh - 20px); }
+    #mapid { 
+        height: 100vh; 
+    }
 
     section {
         display: flex;
@@ -7,8 +9,18 @@
         color: #ccc;
 
         aside {
-            width: 200px;
+            width: 140px;
             border-right: 1px solid #000;
+            text-align: center;
+            position: relative;
+
+            .icons {
+                position: absolute;
+                bottom: 10px;
+                .github {
+                    width: 25px;
+                }
+            }
         }
         article {
             flex: 1;
@@ -26,9 +38,11 @@
 
 
 .customclass {
+    fill-opacity: 0.2;
+    stroke-opacity: 0.7;
     &:hover {
         //opacity: 0.5;
-        fill-opacity: 0.2;
+        fill-opacity: 0.7;
         stroke-opacity: 0.7;
     }
     z-index: 60;

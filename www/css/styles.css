@@ -964,7 +964,7 @@ body {
     text-align: center; }
 
 .home #mapid {
-  height: calc(100vh - 20px); }
+  height: 100vh; }
 
 .home section {
   display: -webkit-box;
@@ -973,8 +973,15 @@ body {
   background-color: #222;
   color: #ccc; }
   .home section aside {
-    width: 200px;
-    border-right: 1px solid #000; }
+    width: 140px;
+    border-right: 1px solid #000;
+    text-align: center;
+    position: relative; }
+    .home section aside .icons {
+      position: absolute;
+      bottom: 10px; }
+      .home section aside .icons .github {
+        width: 25px; }
   .home section article {
     -webkit-box-flex: 1;
         -ms-flex: 1;
@@ -986,9 +993,11 @@ body {
   background-color: blue; }
 
 .customclass {
+  fill-opacity: 0.2;
+  stroke-opacity: 0.7;
   z-index: 60; }
   .customclass:hover {
-    fill-opacity: 0.2;
+    fill-opacity: 0.7;
     stroke-opacity: 0.7; }
 
 .alphanum_grid {
