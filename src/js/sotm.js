@@ -1,20 +1,20 @@
 
 
 var map = L.map("mapid", {
-    maxZoom: 6,
+    maxZoom: 7,
     minZoom: 2,
     crs: L.CRS.Simple,
     attributionControl: false,
     preferCanvas: false
 }).setView([70, 70], 4);
 
-var bounds = new L.LatLngBounds(map.unproject([0, 10462], 6), map.unproject([10462, 0], 6));
+var bounds = new L.LatLngBounds(map.unproject([0, 20924], 7), map.unproject([20924, 0], 7));
 
 map.fitBounds(bounds);
 
-layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
+layer = L.tileLayer("images/tiles2/{z}/{x}/{y}.png", {
     minZoom: 2,
-    maxZoom: 6,
+    maxZoom: 7,
     bounds: bounds,
     noWrap: !0,
     tms: !1
