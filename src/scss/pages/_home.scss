@@ -38,8 +38,8 @@
 
 
 .customclass {
-    fill-opacity: 0.2;
-    stroke-opacity: 0.7;
+    //fill-opacity: 0.2;
+    //stroke-opacity: 0.7;
     &:hover {
         //opacity: 0.5;
         fill-opacity: 0.7;
@@ -53,5 +53,20 @@
     z-index: 30;
 }
 
+
+
+.island-finder {
+    p {
+        font-size: 10px;
+        margin-bottom: 5px;
+    }
+
+    button {
+        color: #111;
+        background: #ccc;
+        padding: 5px 8px;
+        border-radius: 5px;
+    }
+}
 
 
