@@ -1,5 +1,10 @@
 .leaflet-grid-label {
     width: 100%;
+
+    &.big {
+        font-size: 1.8em;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    }
     .gridlabel-vert {
         margin-left: 8px;
         //-webkit-transform: rotate(90deg);
@@ -7,7 +12,7 @@
     }
 
     .gridlabel-vert, .gridlabel-horiz {
-        color: #000;
+        color: #222;
         font-weight: 700;
         //padding-left:-50%
         left: 2px;

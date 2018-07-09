@@ -20,7 +20,9 @@ var layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
     noWrap: !0,
     tms: !1
 }).addTo(map);
-map.setMaxBounds(bounds);
+
+
+map.setMaxBounds(bounds, {padding: [200,200]});
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
@@ -47,7 +49,6 @@ var controlSearch = new L.Control.Search({
 map.addControl( controlSearch );
 
 
-
 for(var i in islands) {
     var title = islands[i].title;
     var circle = L.circle(islands[i].loc, {
@@ -62,37 +63,32 @@ for(var i in islands) {
         title: title
         //draggable: true
     }).bindPopup(title);
-
     markersLayer.addLayer(circle);
 }
 
-
+//Graticule
 var options = {interval: 5.85,
     showOriginLabel: false,
     redraw: 'move',
     zoomIntervals: [
      {start: 3, end: 6, interval: 5.85}
  ]};
-
 L.simpleGraticule(options).addTo(map); 
 
 
-/* L.simpleGraticule({
-    interval: .76,
-    redraw: "move"
-}).addTo(map) */
-
-
 map.on('zoomend', function() {
-    //console.log("haHA!!!");
     adjustAlphaNum();
 });
 
 map.on('move', function() {
-    adjustAlphaNum();
+    //adjustAlphaNum();
 });
 
 function adjustAlphaNum() {
+    var currentZoom = map.getZoom()
+    if (currentZoom >= 4) {
+        $(".leaflet-grid-label").addClass("big");
+    }
     //console.log(map.getZoom(), map.getCenter());
     //console.log(map.getBounds());
 }

@@ -22,6 +22,7 @@ $title = "Unofficial Sea Of Thieves Map";
         
         <?php include "includes/gtm.php"; ?>
 
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <link rel="stylesheet" href="css/vendor/leaflet.css" />
         <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
@@ -43,9 +44,8 @@ $title = "Unofficial Sea Of Thieves Map";
                 </div>
 
                 <div class="icons">
-                    <!-- <object class="github" data="images/github.svg" type="image/svg+xml">
-                    <img src="yourfallback.jpg" />
-                    </object> -->
+                    <a href="https://github.com/Chenzo/sea-of-thieves-map" target="_blank"><img src="images/github-round.png" /></a>
+                    <a href="https://twitter.com/1Chenzo" target="_blank"><img src="images/twitter-round.png" /></a>
                 </div>
             </aside>
 

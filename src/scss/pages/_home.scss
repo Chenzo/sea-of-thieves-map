@@ -17,8 +17,20 @@
             .icons {
                 position: absolute;
                 bottom: 10px;
-                .github {
-                    width: 25px;
+                width: 100%;
+                text-align: center;
+                a {
+                    display: inline;
+                    padding: 0 3px;
+                    img {
+                        width: 20px;
+                        opacity: 0.5;
+                    }
+                    &:hover {
+                        img {
+                            opacity: 1;
+                        }
+                    }
                 }
             }
         }
