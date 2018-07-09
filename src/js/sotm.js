@@ -12,7 +12,7 @@ var bounds = new L.LatLngBounds(map.unproject([0, 20924], 7), map.unproject([209
 
 map.fitBounds(bounds);
 
-layer = L.tileLayer("images/tiles2/{z}/{x}/{y}.png", {
+layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
@@ -71,6 +71,47 @@ var islands = [
     {"loc":[-31.59375, 141.65625], "title":"Black Water Enclave", radius: 2},
     {"loc":[-38.125, 90.5625], "title":"Kraken's Watchtower", radius: 2},
     {"loc":[-51.208862, 103.17157], "title":"Dagger Tooth Outpost", radius: 4},
+    {"loc":[-49.613525, 122.312012], "title":"The Sunken Grove", radius: 3},
+    {"loc":[-53.00293, 142.175415], "title":"Galleon's Grave Outpost", radius: 3},
+    {"loc":[-62.65918, 114.48791], "title":"Isle of Last Words", radius: 2},
+    {"loc":[-65.15625, 127.15625], "title":"Skull Keep", radius: 2},
+    {"loc":[-69.125, 140.09375], "title":"Tri-Rock Isle", radius: 2},
+    {"loc":[-77.875, 132.375], "title":"Shiver Retreat", radius: 2},
+    {"loc":[-76.14502, 149.006836], "title":"Liar's Backbone", radius: 2},
+    {"loc":[-90.52002, 127.038086], "title":"Shark Tooth Key", radius: 2},
+    {"loc":[-88.67627, 142.475586], "title":"Kranken's Fall", radius: 4},
+    {"loc":[-71.851074, 100.23291], "title":"Shipwreck Bay", radius: 4},
+    {"loc":[-55.99707, 28.127686], "title":"Rapier Cay", radius: 2},
+    {"loc":[-63.62207, 19.908936], "title":"Crescent Isle", radius: 3},
+    {"loc":[-72.65625, 29.5], "title":"Golden Sand Outpost", radius: 4},
+    {"loc":[-79.662964, 14.701294], "title":"Sea Dog's Rest", radius: 2},
+    {"loc":[-79.412262, 57.996521], "title":"Twin Groves", radius: 2},
+    {"loc":[-89, 45.9375], "title":"Wanderers Refuge", radius: 4},
+    {"loc":[-89.544189, 28.243774], "title":"Lagoon of Whispers", radius: 2},
+    {"loc":[-94.631592, 14.016357], "title":"Mermaid's Hideaway", radius: 3},
+    {"loc":[-102.756592, 34.328857], "title":"Sailor's Knot Stronghold", radius: 3},
+    {"loc":[-101.039307, 69.45874], "title":"Fools Lagoon", radius: 2},
+    {"loc":[-98.539307, 80.95874], "title":"Castaway Isle", radius: 2},
+    {"loc":[-101.820557, 94.89624], "title":"Old Boot Fort", radius: 2},
+    {"loc":[-115.021362, 49.43103], "title":"Plunder Valley", radius: 4},
+    {"loc":[-113.333862, 67.2747], "title":"Chicken Isle", radius: 2},
+    {"loc":[-112.496826, 82.470093], "title":"Snake Isle", radius: 3},
+    {"loc":[-114.133301, 103.807495], "title":"Crooks's Hollow", radius: 2},
+    {"loc":[-112.352051, 119.151245], "title":"Barnacle Cay", radius: 2},
+    {"loc":[-123.622437, 131.406738], "title":"Ancient Spire Outpost", radius: 2},
+    {"loc":[-121.170898, 31.903809], "title":"Discovery Ridge", radius: 4},
+    {"loc":[-134.920898, 42.466309], "title":"Old Salts Atoll", radius: 2},
+    {"loc":[-126.573975, 62.819702], "title":"Lost Gold Fort", radius: 2},
+    {"loc":[-142.713379, 57.555176], "title":"Shark Bait Cove", radius: 4},
+    {"loc":[-145.838379, 71.555176], "title":"Lookout Point", radius: 2},
+    {"loc":[-150.088379, 82.367676], "title":"Booty Isle", radius: 2},
+    {"loc":[-132.392822, 80.059204], "title":"Plunder Outpost", radius: 3},
+    {"loc":[-124.549072, 92.434204], "title":"Paradise Spring", radius: 2},
+    {"loc":[-130.830322, 101.809204], "title":"Cutlass Cay", radius: 2},
+    {"loc":[-127.950684, 114.55481], "title":"The Crow's Nest Fortress", radius: 2},
+    {"loc":[-141.200684, 110.21106], "title":"Mutineer Rock", radius: 2},
+    {"loc":[-141.24353, 125.804077], "title":"Devil's Ridge", radius: 3},
+    {"loc":[-145.062866, 96.548401], "title":"Thieves' Haven", radius: 4}
 
 ]
 
