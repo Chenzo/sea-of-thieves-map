@@ -12,7 +12,9 @@
         <link rel="manifest" href="images/favicon/site.webmanifest">
         <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
         <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
+        
+        <?php include "includes/gtm.php"; ?>
+
 
         <link rel="stylesheet" href="css/vendor/leaflet.css" />
         <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
