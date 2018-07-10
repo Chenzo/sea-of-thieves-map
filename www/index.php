@@ -7,19 +7,47 @@ $title = "Unofficial Sea Of Thieves Map";
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="manifest" href="manifest.json">
+
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="SoT Map">
+        <meta name="apple-mobile-web-app-title" content="SoT Map">
+        <meta name="theme-color" content="#222222">
+        <meta name="msapplication-navbutton-color" content="#222222">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="msapplication-starturl" content="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+
+        <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#222222">
+
+        <script>
+        if ("serviceWorker" in navigator) { 
+            window.addEventListener("load", function() {   
+                navigator.serviceWorker.register("/js/sw.js").then(
+                function(registration) { 
+                    // Registration was successful
+                    console.log("ServiceWorker registration successful with scope: ", registration.scope); }, 
+                function(err) { 
+                    // registration failed :( 
+                    console.log("ServiceWorker registration failed: ", err); 
+                }); 
+            });
+        }
+        </script>
+        
         <meta charset="utf-8">
         <title><?= $title; ?></title>
         <meta name="robots" content="INDEX,FOLLOW,NOODP" />
         <link rel="canonical" href="https://seaofthievesmap.chenzorama.com" />
         <meta name="description" content="<?= $descr; ?>" />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="images/favicon/site.webmanifest">
-        <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#da532c">
-        
+
         <?php include "includes/gtm.php"; ?>
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">

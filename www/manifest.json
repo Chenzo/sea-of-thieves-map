@@ -1,0 +1,15 @@
+{
+  "name": "Sea Of Thieves Map",
+  "short_name": "SoT Map",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#222222",
+  "icons": [
+    {
+      "src": "sot.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

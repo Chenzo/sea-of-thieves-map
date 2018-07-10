@@ -967,7 +967,8 @@ body {
     text-align: center; }
 
 .home #mapid {
-  height: 100vh; }
+  height: 100vh;
+  background-color: #000; }
 
 .home section {
   display: -webkit-box;

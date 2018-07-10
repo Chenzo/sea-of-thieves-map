@@ -24,8 +24,31 @@ var layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
 
 map.setMaxBounds(bounds, {padding: [200,200]});
 
+
+
+
+var userMarkersLayer = new L.LayerGroup();
+map.addLayer(userMarkersLayer);
+
+
+
+
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
+
+
+    var xmarksspot = L.icon({
+        iconUrl: '/images/xmarksthespot.png',
+        shadowUrl: '/images/xmarksthespot.png',
+    
+        iconSize:     [40, 45], // size of the icon
+        shadowSize:   [0, 0], // size of the shadow
+        iconAnchor:   [20, 24], // point of the icon which will correspond to marker's location
+        shadowAnchor: [0, 0],  // the same for the shadow
+        popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+    });
+    //var marker = L.marker(e.latlng).addTo(map);
+    L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
 }
 
 map.on('click', onMapClick);
@@ -33,11 +56,8 @@ map.on('click', onMapClick);
 
 
 
-
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
-
-
 var controlSearch = new L.Control.Search({
     position:'topright',		
     layer: markersLayer,
@@ -45,8 +65,11 @@ var controlSearch = new L.Control.Search({
     zoom: 4,
     marker: false
 });
-
 map.addControl( controlSearch );
+
+
+
+
 
 
 for(var i in islands) {
@@ -81,7 +104,7 @@ map.on('zoomend', function() {
 });
 
 map.on('move', function() {
-    //adjustAlphaNum();
+    adjustAlphaNum();
 });
 
 function adjustAlphaNum() {
