@@ -1,5 +1,11 @@
 import * as island_data from './modules/island_data.js';
+import * as pwa from './modules/pwa.js';
+
+
 var islands = island_data.islands;
+var isOnline = pwa.isOnline;
+
+console.log("-- detect isOnline: " + isOnline);
 
 var map = L.map("mapid", {
     maxZoom: 7,
@@ -47,8 +53,8 @@ function onMapClick(e) {
         shadowAnchor: [0, 0],  // the same for the shadow
         popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
     });
-    //var marker = L.marker(e.latlng).addTo(map);
-    L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
+    
+    //L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
 }
 
 map.on('click', onMapClick);
@@ -107,6 +113,10 @@ map.on('move', function() {
     adjustAlphaNum();
 });
 
+map.on('moveend', function() {
+    adjustAlphaNum();
+});
+
 function adjustAlphaNum() {
     var currentZoom = map.getZoom()
     if (currentZoom >= 4) {
@@ -117,11 +127,26 @@ function adjustAlphaNum() {
 }
 
 
-
+function tweakHeight() {
+    console.log("hieght fix");
+    var wH = $(window).height();
+    $(".sotm_wrapper").css({"height" : wH + "px"});
+    $("#mapid").css({"height" : wH + "px"});
+}
 
 var currentSearchIsland = -1;
 
 $(function() {
+
+    //This is a fix for the menubar dropping down?
+    tweakHeight();
+    $(window).resize(function() {
+        tweakHeight();
+    });
+    $(window).on("load", function (e) {
+        tweakHeight();
+    });
+
     $(".js-searchforisland").click(function() {
         
         if ($(this).data("dir") == "left") {
@@ -141,9 +166,6 @@ $(function() {
         
     });
 });
-
-
-
 
 
 

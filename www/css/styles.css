@@ -977,10 +977,15 @@ body {
   background-color: #222;
   color: #ccc; }
   .home section aside {
-    width: 140px;
+    width: 60px;
     border-right: 1px solid #000;
     text-align: center;
     position: relative; }
+    @media (min-width: 992px) {
+      .home section aside {
+        width: 140px; } }
+    .home section aside .sotm_logo {
+      width: 90%; }
     .home section aside .icons {
       position: absolute;
       bottom: 10px;
@@ -988,7 +993,10 @@ body {
       text-align: center; }
       .home section aside .icons a {
         display: inline;
-        padding: 0 3px; }
+        padding: 0; }
+        @media (min-width: 992px) {
+          .home section aside .icons a {
+            padding: 0 3px; } }
         .home section aside .icons a img {
           width: 20px;
           opacity: 0.5; }
@@ -1013,6 +1021,12 @@ body {
 .alphanum_grid {
   z-index: 30; }
 
+.buttonGroup {
+  border-bottom: 1px solid #111;
+  border-top: 1px solid #111;
+  padding: 8px 0;
+  margin: 8px 0; }
+
 .island-finder p {
   font-size: 10px;
   margin-bottom: 5px; }
@@ -1021,7 +1035,25 @@ body {
   color: #111;
   background: #ccc;
   padding: 5px 8px;
-  border-radius: 5px; }
+  border-radius: 5px;
+  margin: 8px; }
+
+.installBut {
+  padding: 8px;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  display: none; }
+  .installBut.showme {
+    display: block; }
+  .installBut img {
+    width: 30px; }
+  .installBut span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    text-transform: uppercase; }
 
 /* go ahead use this file. No one will care... it's all good */
 /* this is for specificity fixes... */

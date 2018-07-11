@@ -12,7 +12,6 @@ $title = "Unofficial Sea Of Thieves Map";
         <meta name="robots" content="INDEX,FOLLOW,NOODP" />
         <link rel="canonical" href="https://seaofthievesmap.chenzorama.com" />
         <meta name="description" content="<?= $descr; ?>" />
-        <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="manifest.json">
@@ -32,25 +31,7 @@ $title = "Unofficial Sea Of Thieves Map";
         <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
 
         <link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#5bbad5">
-        <meta name="msapplication-TileColor" content="#222222">
-
-        <script>
-        if ("serviceWorker" in navigator) { 
-            window.addEventListener("load", function() {   
-                navigator.serviceWorker.register("/js/sw.js").then(
-                function(registration) { 
-                    // Registration was successful
-                    console.log("ServiceWorker registration successful with scope: ", registration.scope); }, 
-                function(err) { 
-                    // registration failed :( 
-                    console.log("ServiceWorker registration failed: ", err); 
-                }); 
-            });
-        }
-
-        
-        </script>
-        
+        <meta name="msapplication-TileColor" content="#222222">        
         
 
 
@@ -65,16 +46,21 @@ $title = "Unofficial Sea Of Thieves Map";
     </head>
     <body class="home">
 
-        <section>
+        <section class="sotm_wrapper">
 
             <aside class="sidebar">
-                <img src="images/icon-w.png" />
+                <img src="images/icon-w.png" class="sotm_logo" />
 
 
-                <div class="island-finder">
+                <div class="island-finder buttonGroup">
                     <p>ISLAND FINDER</p>
                     <button type="button" data-dir="left" class="js-searchforisland">&#x21E0</button>
                     <button type="button" data-dir="right" class="js-searchforisland">&#x21E2</button>
+                </div>
+
+                <div class="installBut buttonGroup" id="installBut">
+                    <img src="/images/downloadicon.png" id="install-button" />
+                    <span>install</span>
                 </div>
 
                 <div class="icons">
@@ -94,6 +80,49 @@ $title = "Unofficial Sea Of Thieves Map";
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
         <script src="js/sotm.js"></script>
+
         
+    <script>
+
+
+let deferredPrompt;
+var btnInstall = document.querySelector('#install-button');
+
+window.addEventListener('beforeinstallprompt', (event) => {
+
+    console.log("beforeinstallprompt - showme");
+    // Prevent Chrome <= 67 from automatically showing the prompt
+    event.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = event;
+    // Update the install UI to notify the user app can be installed
+    document.querySelector('#installBut').classList.add("showme");
+});
+
+btnInstall.addEventListener('click', () => {
+
+    document.querySelector('#installBut').classList.remove("showme");
+    // Show the modal add to home screen dialog
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choice) => {
+      if (choice.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      // Clear the saved prompt since it can't be used again
+      deferredPrompt = null;
+    });
+  });
+
+  window.addEventListener('appinstalled', (evt) => {
+    console.log('a2hs', 'installed');
+  });
+
+
+</script>
+
+
     </body>
 </html>

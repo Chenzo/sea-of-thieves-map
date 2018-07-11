@@ -10,10 +10,18 @@
         color: #ccc;
 
         aside {
-            width: 140px;
+            width: 60px;
+            @include breakpoint(md) {
+                width: 140px;
+            }
+            
             border-right: 1px solid #000;
             text-align: center;
             position: relative;
+
+            .sotm_logo {
+                width: 90%;
+            }
 
             .icons {
                 position: absolute;
@@ -22,7 +30,10 @@
                 text-align: center;
                 a {
                     display: inline;
-                    padding: 0 3px;
+                    padding: 0;
+                    @include breakpoint(md) {
+                        padding: 0 3px;
+                    }
                     img {
                         width: 20px;
                         opacity: 0.5;
@@ -67,6 +78,14 @@
 }
 
 
+.buttonGroup {
+    border-bottom: 1px solid #111;
+    border-top: 1px solid #111;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+
+
 
 .island-finder {
     p {
@@ -79,7 +98,29 @@
         background: #ccc;
         padding: 5px 8px;
         border-radius: 5px;
+        margin: 8px;
     }
 }
 
+.installBut {
+    padding: 8px;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: none;
 
+    &.showme {
+        display: block;
+    }
+
+    img {
+        width: 30px;
+    }
+    span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+}
