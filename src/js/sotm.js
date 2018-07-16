@@ -1,8 +1,11 @@
-import * as island_data from './modules/island_data.js';
 import * as pwa from './modules/pwa.js';
+import * as island_data from './modules/island_data.js';
+import * as throne_data from './modules/throne_data.js';
+
 
 
 var islands = island_data.islands;
+var thrones = throne_data.thrones;
 var isOnline = pwa.isOnline;
 
 console.log("-- detect isOnline: " + isOnline);
@@ -76,8 +79,6 @@ map.addControl( controlSearch );
 
 
 
-
-
 for(var i in islands) {
     var title = islands[i].title;
     var circle = L.circle(islands[i].loc, {
@@ -94,6 +95,54 @@ for(var i in islands) {
     }).bindPopup(title);
     markersLayer.addLayer(circle);
 }
+
+
+
+//add thrones
+var thronesLayer = new L.LayerGroup();
+map.addLayer(thronesLayer);
+
+
+for(var t in thrones) {
+    var loc = thrones[t].loc;
+
+    var throne_icon = L.icon({
+        iconUrl: '/images/markers/throne_marker.png',
+        shadowUrl: '/images/markers/throne_marker.png',
+    
+        iconSize:     [30, 30], // size of the icon
+        shadowSize:   [0, 0], // size of the shadow
+        iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
+        shadowAnchor: [0, 0],  // the same for the shadow
+        popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var marker = L.marker(loc, {
+        /* draggable: true,   */   
+        icon: throne_icon,
+        title: 'Skelton Throne'  
+        /* opacity: 0.5 */
+    } 
+    ).addTo(thronesLayer)
+    .bindPopup("<b>Skelton Throne</b><br>located kinda here...");
+
+}
+
+
+
+/*
+var overlayMaps = {
+    "Thrones": thronesLayer ,
+    "Sport": sport,
+    "Sights": sights 
+    };
+    
+L.control.layers(overlayMaps).addTo(map); */
+
+
+
+
+
 
 //Graticule
 var options = {interval: 5.85,
