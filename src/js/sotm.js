@@ -45,8 +45,6 @@ map.addLayer(userMarkersLayer);
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
 
-        console.log("BUTTON: " + e.button);
-
     var xmarksspot = L.icon({
         iconUrl: '/images/xmarksthespot.png',
         shadowUrl: '/images/xmarksthespot.png',
@@ -125,7 +123,7 @@ for(var t in thrones) {
         /* opacity: 0.5 */
     } 
     ).addTo(thronesLayer)
-    .bindPopup("<b>Skelton Throne</b><br>located kinda here...");
+    .bindPopup(thrones[t].desc);
 
 }
 
@@ -251,7 +249,6 @@ function adjustAlphaNum() {
 
 
 function tweakHeight() {
-    console.log("hieght fix");
     var wH = $(window).height();
     $(".sotm_wrapper").css({"height" : wH + "px"});
     $("#mapid").css({"height" : wH + "px"});
