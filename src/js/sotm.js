@@ -45,6 +45,7 @@ map.addLayer(userMarkersLayer);
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
 
+        console.log("BUTTON: " + e.button);
 
     var xmarksspot = L.icon({
         iconUrl: '/images/xmarksthespot.png',
@@ -144,6 +145,64 @@ L.control.layers(overlayMaps).addTo(map); */
 
 
 
+
+
+
+
+
+function findNearestMarker(coords) {
+    var minDist = 1000,
+      nearest_text = '*None*',
+      markerDist;
+
+
+    for(var i in islands) {
+        var title = islands[i].title;
+        var loc = islands[i].loc;
+        markerDist = map.distance(loc, coords);
+      if (markerDist < minDist) {
+        minDist = markerDist;
+        nearest_text = title;
+      }
+    }
+  
+    //window.console('The nearest marker is: ' + nearest_text);
+  }
+
+var popup = L.popup();
+
+map.on('contextmenu', function(e) {
+    window.console.log("find nearest");
+    findNearestMarker(e.latlng);
+
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at " + e.latlng.toString())
+        .openOn(mymap);
+    // create popup contents
+    /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
+    
+    // specify popup options 
+    var customOptions =
+    {
+    'maxWidth': '500',
+    'className' : 'custom'
+    }
+
+    var marker = L.marker(e.latlng, {
+        title: 'oen menu here'  
+    } 
+    ).bindPopup(customPopup,customOptions).addTo(map).popup(); */
+
+});
+
+
+
+
+
+
+
+
 //Graticule
 var options = {interval: 5.85,
     showOriginLabel: false,
@@ -174,6 +233,21 @@ function adjustAlphaNum() {
     //console.log(map.getZoom(), map.getCenter());
     //console.log(map.getBounds());
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function tweakHeight() {
