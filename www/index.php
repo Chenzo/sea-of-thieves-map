@@ -62,6 +62,20 @@ $title = "Unofficial Sea Of Thieves Map";
                     <button type="button" data-dir="right" class="js-searchforisland">&#x21E2</button>
                 </div>
 
+                <div class="buttonGroup">
+                    <p>SHOW:</p>
+                    <fieldset>
+                        <input type="checkbox" id="thrones" class="js-toggleThrones" name="markers"
+                value="thrones" />
+                        <label for="thrones">Thrones</label>
+                    </fieldset>
+                    <fieldset>
+                        <input type="checkbox" id="outposts" class="js-toggleOutposts" name="markers"
+                value="outposts" />
+                        <label for="thrones">Outposts</label>
+                    </fieldset>
+                </div>
+
                 <div class="installBut buttonGroup" id="installBut">
                     <img src="/images/downloadicon.png" id="install-button" />
                     <span>install</span>

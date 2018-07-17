@@ -88,8 +88,8 @@ for(var i in islands) {
         fillColor: '#fff',
         fillOpacity: 0,
         radius: islands[i].radius,
-        className: 'customclass',
-        title: title
+        className: 'islandClass',
+        title: title,
         //draggable: true
     }).bindPopup(title);
     markersLayer.addLayer(circle);
@@ -99,8 +99,6 @@ for(var i in islands) {
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
-map.addLayer(thronesLayer);
-
 
 for(var t in thrones) {
     var loc = thrones[t].loc;
@@ -124,7 +122,17 @@ for(var t in thrones) {
     } 
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
+}
 
+var thronesOn = false;
+var toggleThrones = function() {
+    if (thronesOn) {
+        thronesOn = false;
+        map.removeLayer(thronesLayer);
+    } else {
+        thronesOn = true;
+        map.addLayer(thronesLayer);
+    }
 }
 
 
@@ -139,7 +147,9 @@ var overlayMaps = {
 L.control.layers(overlayMaps).addTo(map); */
 
 
-
+var toggleOutposts = function() {
+    console.log("highlight outposts");
+}
 
 
 
@@ -284,6 +294,15 @@ $(function() {
         map.setView(LatLong, 6);
         //map.panTo(LatLong, 6);
         
+    });
+
+
+    $(".js-toggleThrones").click(function() {
+        toggleThrones();
+    });
+
+    $(".js-toggleOutposts").click(function() {
+        toggleOutposts();
     });
 });
 

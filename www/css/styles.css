@@ -1012,13 +1012,15 @@ body {
   height: 40px;
   background-color: blue; }
 
-.customclass {
+.islandClass {
   /* &:hover {
         //opacity: 0.5;
         fill-opacity: 0.7;
         stroke-opacity: 0.7;
     } */
   z-index: 60; }
+  .islandClass.outpost {
+    fill: #ff0000; }
 
 .alphanum_grid {
   z-index: 30; }

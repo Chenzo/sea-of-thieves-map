@@ -61,7 +61,7 @@
 }
 
 
-.customclass {
+.islandClass {
     //fill-opacity: 0.2;
     //stroke-opacity: 0.7;
     /* &:hover {
@@ -70,6 +70,11 @@
         stroke-opacity: 0.7;
     } */
     z-index: 60;
+
+
+    &.outpost {
+        fill: #ff0000;
+    }
 }
 
 
