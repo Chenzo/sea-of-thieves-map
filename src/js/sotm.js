@@ -46,17 +46,17 @@ function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
 
     var xmarksspot = L.icon({
-        iconUrl: '/images/xmarksthespot.png',
-        shadowUrl: '/images/xmarksthespot.png',
+        iconUrl: '/images/markers/xmarkthespot_marker.png',
+        shadowUrl: '/images/markers/xmarkthespot_marker.png',
     
-        iconSize:     [40, 45], // size of the icon
+        iconSize:     [30, 30], // size of the icon
         shadowSize:   [0, 0], // size of the shadow
-        iconAnchor:   [20, 24], // point of the icon which will correspond to marker's location
+        iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
         shadowAnchor: [0, 0],  // the same for the shadow
-        popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     
-    //L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
+    L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
 }
 
 map.on('click', onMapClick);
@@ -234,14 +234,6 @@ var toggleMarkers = function(theType) {
 }
 
 
-/*
-var overlayMaps = {
-    "Thrones": thronesLayer ,
-    "Sport": sport,
-    "Sights": sights 
-    };
-    
-L.control.layers(overlayMaps).addTo(map); */
 
 
 var toggleOutposts = function() {
