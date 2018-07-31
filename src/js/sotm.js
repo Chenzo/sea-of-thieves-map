@@ -67,11 +67,14 @@ map.on('click', onMapClick);
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
-var chickenLayer = new L.LayerGroup();
-map.addLayer(chickenLayer);
+var chickensLayer = new L.LayerGroup();
+//map.addLayer(chickensLayer);
 
-var snakeLayer = new L.LayerGroup();
-map.addLayer(snakeLayer);
+var snakesLayer = new L.LayerGroup();
+//map.addLayer(snakesLayer);
+
+var pigsLayer = new L.LayerGroup();
+//map.addLayer(pigsLayer);
 
 var controlSearch = new L.Control.Search({
     position:'topright',		
@@ -102,16 +105,6 @@ var chicken_marker = L.icon({
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
-var chicken_marker_close = L.icon({
-    iconUrl: '/images/markers/chicken_marker.png',
-    shadowUrl: '/images/markers/chicken_marker.png',
-
-    iconSize:     [30, 30], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [-60, 60], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-});
 
 var snake_marker = L.icon({
     iconUrl: '/images/markers/snake_marker.png',
@@ -123,6 +116,17 @@ var snake_marker = L.icon({
     shadowAnchor: [0, 0],  // the same for the shadow
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
+var pig_marker = L.icon({
+    iconUrl: '/images/markers/pig_marker.png',
+    shadowUrl: '/images/markers/pig_marker.png',
+
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [30, 0], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
 
 
 for(var i in islands) {
@@ -146,62 +150,39 @@ for(var i in islands) {
 
     if (islands[i].chickens) {
 
-        var chickenLoc = modifyLoc(islands[i].loc, cRad * .5, cRad * .9);
+        var chickenLoc = modifyLoc(islands[i].loc, cRad * 0.5, cRad * 0.6);
 
         var marker = L.marker(chickenLoc, { 
             icon: chicken_marker,
             title: 'chicken'  
         } 
-        ).addTo(chickenLayer);
+        ).addTo(chickensLayer);
         marker.setIcon(chicken_marker);
-        /* map.on('zoomend', function(){ 
-            if (map.getZoom() >= 4) {
-                
-                marker.setIcon(chicken_marker_close);
-            } else {
-                marker.setIcon(chicken_marker);
-            }
-        }); */
 
-        /* cRad += 0.3;
-        var circle = L.circle(islands[i].loc, {
-            //color: 'red',
-            strokeweight: 0.5,
-            opacity: 0.5,
-            color: '#ff0000',
-            fillColor: '#fff',
-            fillOpacity: 0,
-            radius: cRad,
-            className: 'chickMarker',
-            title: title,
-            //draggable: true
-        })
-        chickenLayer.addLayer(circle); */
     }
 
     if (islands[i].snakes) {
-        /* cRad += 0.3;
-        var circle = L.circle(islands[i].loc, {
-            //color: 'red',
-            strokeweight: 0.5,
-            opacity: 0.5,
-            color: '#00ff00',
-            fillColor: '#fff',
-            fillOpacity: 0,
-            radius: cRad,
-            className: 'snakeMarker',
-            title: title,
-            //draggable: true
-        })
-        snakeLayer.addLayer(circle);
- */
-        var snakeLoc = modifyLoc(islands[i].loc, cRad * .5, (cRad * 0.9) * -1);
+
+        var snakeLoc = modifyLoc(islands[i].loc, cRad * 0.5, (cRad * 0.6) * -1);
 
         var marker = L.marker(snakeLoc, { 
             icon: snake_marker,
             title: 'snake'  
         } 
-        ).addTo(snakeLayer);
+        ).addTo(snakesLayer);
+
+        
+    }
+
+    if (islands[i].pigs) {
+
+        var pigLoc = modifyLoc(islands[i].loc, (cRad * 0.5) * -1, (cRad * 0.6) * -1);
+
+        var marker = L.marker(pigLoc, { 
+            icon: pig_marker,
+            title: 'pigs'  
+        } 
+        ).addTo(pigsLayer);
 
         
     }
@@ -245,6 +226,12 @@ var toggleThrones = function() {
     }
 }
 
+
+var toggleMarkers = function(theType) {
+    console.log(theType);
+    //convert a string to an object/var name? bad pattern?
+    map.addLayer(pigsLayer);
+}
 
 
 /*
@@ -420,6 +407,10 @@ $(function() {
     $(".js-toggleOutposts").click(function() {
         toggleOutposts();
     });
+
+    $(".js-toggleMarkers").click(function() {
+        toggleMarkers($(this).attr("name"));
+    })
 });
 
 
