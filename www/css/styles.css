@@ -1018,9 +1018,13 @@ body {
         fill-opacity: 0.7;
         stroke-opacity: 0.7;
     } */
-  z-index: 60; }
+  z-index: 60;
+  stroke-width: 2; }
   .islandClass.outpost {
     fill: #ff0000; }
+
+.chickMarker, .snakeMarker, .pigMarker {
+  stroke-width: 2; }
 
 .alphanum_grid {
   z-index: 30; }

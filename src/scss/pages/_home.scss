@@ -70,11 +70,16 @@
         stroke-opacity: 0.7;
     } */
     z-index: 60;
+    stroke-width: 2;
 
 
     &.outpost {
         fill: #ff0000;
     }
+}
+
+.chickMarker, .snakeMarker, .pigMarker {
+    stroke-width: 2;
 }
 
 

@@ -66,6 +66,13 @@ map.on('click', onMapClick);
 
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
+
+var chickenLayer = new L.LayerGroup();
+map.addLayer(chickenLayer);
+
+var snakeLayer = new L.LayerGroup();
+map.addLayer(snakeLayer);
+
 var controlSearch = new L.Control.Search({
     position:'topright',		
     layer: markersLayer,
@@ -75,11 +82,54 @@ var controlSearch = new L.Control.Search({
 });
 map.addControl( controlSearch );
 
+/* customCircleMarker = L.CircleMarker.extend({
+    options: { 
+       someCustomProperty: 'Custom data!',
+       anotherCustomProperty: 'More data!'
+    }
+ }); */
 
+ //use circlemarker?
+
+var chicken_marker = L.icon({
+    iconUrl: '/images/markers/chicken_marker.png',
+    shadowUrl: '/images/markers/chicken_marker.png',
+
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [0, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+var chicken_marker_close = L.icon({
+    iconUrl: '/images/markers/chicken_marker.png',
+    shadowUrl: '/images/markers/chicken_marker.png',
+
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [-60, 60], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+var snake_marker = L.icon({
+    iconUrl: '/images/markers/snake_marker.png',
+    shadowUrl: '/images/markers/snake_marker.png',
+
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [30, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
 
 
 for(var i in islands) {
     var title = islands[i].title;
+    var cRad = islands[i].radius;
+
+
     var circle = L.circle(islands[i].loc, {
         //color: 'red',
         strokeweight: 1,
@@ -87,33 +137,93 @@ for(var i in islands) {
         color: '#fff',
         fillColor: '#fff',
         fillOpacity: 0,
-        radius: islands[i].radius,
+        radius: cRad,
         className: 'islandClass',
         title: title,
         //draggable: true
     }).bindPopup(title);
     markersLayer.addLayer(circle);
+
+    if (islands[i].chickens) {
+
+        var chickenLoc = modifyLoc(islands[i].loc, cRad * .5, cRad * .9);
+
+        var marker = L.marker(chickenLoc, { 
+            icon: chicken_marker,
+            title: 'chicken'  
+        } 
+        ).addTo(chickenLayer);
+        marker.setIcon(chicken_marker);
+        /* map.on('zoomend', function(){ 
+            if (map.getZoom() >= 4) {
+                
+                marker.setIcon(chicken_marker_close);
+            } else {
+                marker.setIcon(chicken_marker);
+            }
+        }); */
+
+        /* cRad += 0.3;
+        var circle = L.circle(islands[i].loc, {
+            //color: 'red',
+            strokeweight: 0.5,
+            opacity: 0.5,
+            color: '#ff0000',
+            fillColor: '#fff',
+            fillOpacity: 0,
+            radius: cRad,
+            className: 'chickMarker',
+            title: title,
+            //draggable: true
+        })
+        chickenLayer.addLayer(circle); */
+    }
+
+    if (islands[i].snakes) {
+        /* cRad += 0.3;
+        var circle = L.circle(islands[i].loc, {
+            //color: 'red',
+            strokeweight: 0.5,
+            opacity: 0.5,
+            color: '#00ff00',
+            fillColor: '#fff',
+            fillOpacity: 0,
+            radius: cRad,
+            className: 'snakeMarker',
+            title: title,
+            //draggable: true
+        })
+        snakeLayer.addLayer(circle);
+ */
+        var snakeLoc = modifyLoc(islands[i].loc, cRad * .5, (cRad * 0.9) * -1);
+
+        var marker = L.marker(snakeLoc, { 
+            icon: snake_marker,
+            title: 'snake'  
+        } 
+        ).addTo(snakeLayer);
+
+        
+    }
 }
 
 
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
+var throne_icon = L.icon({
+    iconUrl: '/images/markers/throne_marker.png',
+    shadowUrl: '/images/markers/throne_marker.png',
+
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+});
 
 for(var t in thrones) {
     var loc = thrones[t].loc;
-
-    var throne_icon = L.icon({
-        iconUrl: '/images/markers/throne_marker.png',
-        shadowUrl: '/images/markers/throne_marker.png',
-    
-        iconSize:     [30, 30], // size of the icon
-        shadowSize:   [0, 0], // size of the shadow
-        iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
-        shadowAnchor: [0, 0],  // the same for the shadow
-        popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
-    });
-
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: throne_icon,
@@ -240,6 +350,12 @@ function adjustAlphaNum() {
     }
     //console.log(map.getZoom(), map.getCenter());
     //console.log(map.getBounds());
+}
+
+
+function modifyLoc(locArray, newLat, newLong) {
+    var newLoc =[locArray[0]+ newLat, locArray[1]+ newLong];
+    return newLoc;
 }
 
 
