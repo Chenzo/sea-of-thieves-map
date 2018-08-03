@@ -3,7 +3,7 @@ import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 
 
-
+var layerArray = [];
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var isOnline = pwa.isOnline;
@@ -48,7 +48,7 @@ function onMapClick(e) {
     var xmarksspot = L.icon({
         iconUrl: '/images/markers/xmarkthespot_marker.png',
         shadowUrl: '/images/markers/xmarkthespot_marker.png',
-    
+        
         iconSize:     [30, 30], // size of the icon
         shadowSize:   [0, 0], // size of the shadow
         iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
@@ -56,7 +56,7 @@ function onMapClick(e) {
         popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
     
-    L.marker(e.latlng, {icon: xmarksspot}).addTo(map);
+    L.marker(e.latlng, {icon: xmarksspot, draggable: true}).addTo(map);
 }
 
 map.on('click', onMapClick);
@@ -69,12 +69,15 @@ map.addLayer(markersLayer);
 
 var chickensLayer = new L.LayerGroup();
 //map.addLayer(chickensLayer);
+layerArray.push(['chickens', chickensLayer]);
 
 var snakesLayer = new L.LayerGroup();
 //map.addLayer(snakesLayer);
+layerArray.push(['snakes', snakesLayer]);
 
 var pigsLayer = new L.LayerGroup();
 //map.addLayer(pigsLayer);
+layerArray.push(['pigs', pigsLayer]);
 
 var controlSearch = new L.Control.Search({
     position:'topright',		
@@ -145,7 +148,7 @@ for(var i in islands) {
         className: 'islandClass',
         title: title,
         //draggable: true
-    }).bindPopup(title);
+    })//.bindPopup(title);
     markersLayer.addLayer(circle);
 
     if (islands[i].chickens) {
@@ -192,6 +195,8 @@ for(var i in islands) {
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
+layerArray.push(['thrones', thronesLayer]);
+
 var throne_icon = L.icon({
     iconUrl: '/images/markers/throne_marker.png',
     shadowUrl: '/images/markers/throne_marker.png',
@@ -215,32 +220,24 @@ for(var t in thrones) {
     .bindPopup(thrones[t].desc);
 }
 
-var thronesOn = false;
-var toggleThrones = function() {
-    if (thronesOn) {
-        thronesOn = false;
-        map.removeLayer(thronesLayer);
+
+var toggleMarkers = function(theType, onoff) {
+    var theLayer = getLayer(theType);
+    if (onoff) {
+        map.addLayer(theLayer);
     } else {
-        thronesOn = true;
-        map.addLayer(thronesLayer);
+        map.removeLayer(theLayer);
+    }
+    
+}
+
+var getLayer = function(layerName) {
+    for (var p=0; p<layerArray.length; p++) {
+        if (layerArray[p][0] == layerName) {
+            return layerArray[p][1];
+        }
     }
 }
-
-
-var toggleMarkers = function(theType) {
-    console.log(theType);
-    //convert a string to an object/var name? bad pattern?
-    map.addLayer(pigsLayer);
-}
-
-
-
-
-var toggleOutposts = function() {
-    console.log("highlight outposts");
-}
-
-
 
 
 
@@ -269,22 +266,31 @@ function findNearestMarker(coords) {
 var popup = L.popup();
 
 map.on('contextmenu', function(e) {
-    window.console.log("find nearest");
-    findNearestMarker(e.latlng);
+    //window.console.log("find nearest");
+    //findNearestMarker(e.latlng);
+    var myLoc = e.latlng;
 
-    popup
-        .setLatLng(e.latlng)
-        .setContent("You clicked the map at " + e.latlng.toString())
-        .openOn(mymap);
-    // create popup contents
-    /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
-    
-    // specify popup options 
     var customOptions =
     {
     'maxWidth': '500',
     'className' : 'custom'
     }
+
+    popup
+        .setLatLng(e.latlng)
+        .setContent("You clicked the map at <span class='test js-doit'>" + e.latlng.toString() + "</span>")
+        //.setOptions(customOptions)
+        .openOn(map);
+
+
+
+    $(".js-doit").click(function() {
+        console.log("button" + myLoc);
+    });
+
+    // create popup contents
+    /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
+    
 
     var marker = L.marker(e.latlng, {
         title: 'oen menu here'  
@@ -392,16 +398,8 @@ $(function() {
     });
 
 
-    $(".js-toggleThrones").click(function() {
-        toggleThrones();
-    });
-
-    $(".js-toggleOutposts").click(function() {
-        toggleOutposts();
-    });
-
     $(".js-toggleMarkers").click(function() {
-        toggleMarkers($(this).attr("name"));
+        toggleMarkers($(this).attr("name"), $(this).is(":checked"));
     })
 });
 

@@ -65,12 +65,12 @@ $title = "Unofficial Sea Of Thieves Map";
                 <div class="buttonGroup">
                     <p>SHOW:</p>
                     <fieldset>
-                        <input type="checkbox" id="thrones" class="js-toggleThrones" name="thrones"
+                        <input type="checkbox" id="thrones" class="js-toggleMarkers" name="thrones"
                 value="thrones" />
                         <label for="thrones">Thrones</label>
                     </fieldset>
                     <fieldset>
-                        <input type="checkbox" id="outposts" class="js-toggleOutposts" name="outposts"
+                        <input type="checkbox" id="outposts" class="js-toggleMarkers" name="outposts"
                 value="outposts" />
                         <label for="thrones">Outposts</label>
                     </fieldset>
