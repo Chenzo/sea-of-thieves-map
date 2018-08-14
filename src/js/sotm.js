@@ -10,6 +10,11 @@ var isOnline = pwa.isOnline;
 
 console.log("-- detect isOnline: " + isOnline);
 
+var cdnpath = "";
+if (location.hostname != "localhost") {
+    cdnpath = "https://cdn.chenzorama.com/";
+}
+
 var map = L.map("mapid", {
     maxZoom: 7,
     minZoom: 2,
@@ -22,7 +27,8 @@ var bounds = new L.LatLngBounds(map.unproject([0, 20924], 7), map.unproject([209
 
 map.fitBounds(bounds);
 
-var layer = L.tileLayer("images/tiles/{z}/{x}/{y}.png", {
+
+var layer = L.tileLayer(cdnpath + "images/tiles/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
