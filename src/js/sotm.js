@@ -46,23 +46,20 @@ var userMarkersLayer = new L.LayerGroup();
 map.addLayer(userMarkersLayer);
 
 
-
+var xmarksspot = L.icon({
+    iconUrl: '/images/markers/xmarkthespot_marker.png',
+    shadowUrl: '/images/markers/xmarkthespot_marker.png',
+    
+    iconSize:     [30, 30], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
 
-    var xmarksspot = L.icon({
-        iconUrl: '/images/markers/xmarkthespot_marker.png',
-        shadowUrl: '/images/markers/xmarkthespot_marker.png',
-        
-        iconSize:     [30, 30], // size of the icon
-        shadowSize:   [0, 0], // size of the shadow
-        iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
-        shadowAnchor: [0, 0],  // the same for the shadow
-        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-    });
-    
-    L.marker(e.latlng, {icon: xmarksspot, draggable: true}).addTo(map);
 }
 
 map.on('click', onMapClick);
@@ -269,29 +266,36 @@ function findNearestMarker(coords) {
     //window.console('The nearest marker is: ' + nearest_text);
   }
 
-var popup = L.popup();
+
+var customOptions =
+{
+'maxWidth': '500',
+'minWidth': '120',
+'className' : 'context_popup'
+};
+
+
+var popup = L.popup(customOptions);
 
 map.on('contextmenu', function(e) {
-    //window.console.log("find nearest");
-    //findNearestMarker(e.latlng);
     var myLoc = e.latlng;
-
-    var customOptions =
-    {
-    'maxWidth': '500',
-    'className' : 'custom'
-    }
-
     popup
         .setLatLng(e.latlng)
-        .setContent("You clicked the map at <span class='test js-doit'>" + e.latlng.toString() + "</span>")
-        //.setOptions(customOptions)
+        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-closestOutpost'>Closest Pigs</li><li class='js-closestPigs'>Closest Pigs</li><li>Closest Snakes</li></ul>")
         .openOn(map);
 
 
 
-    $(".js-doit").click(function() {
-        console.log("button" + myLoc);
+    $(".js-addMarker").click(function() {
+        console.log("Lat, Long: " + myLoc);
+        L.marker(myLoc, {icon: xmarksspot, draggable: true}).addTo(map);
+        map.closePopup();
+    });
+
+    $(".js-closestOutpost").click(function() {
+        console.log("Lat, Long: " + myLoc);
+        window.console.log("find nearest");
+        //findNearestMarker(e.latlng);
     });
 
     // create popup contents

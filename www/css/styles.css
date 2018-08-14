@@ -1067,6 +1067,17 @@ body {
     font-size: 10px;
     text-transform: uppercase; }
 
+.context_popup {
+  /* .leaflet-popup-content {
+        width: 120px !important;
+    } */ }
+  .context_popup ul li {
+    padding: 6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8em; }
+
 /* go ahead use this file. No one will care... it's all good */
 /* this is for specificity fixes... */
 /* no styles go in here *./

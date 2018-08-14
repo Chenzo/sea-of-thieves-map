@@ -141,3 +141,21 @@
         text-transform: uppercase;
     }
 }
+
+
+
+
+.context_popup {
+    /* .leaflet-popup-content {
+        width: 120px !important;
+    } */
+    ul {
+        li {
+            padding: 6px;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-align: center;
+            font-size: 0.8em;
+        }
+    }
+}
