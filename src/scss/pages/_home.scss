@@ -94,12 +94,43 @@
     padding: 8px 0;
     margin: 8px 0;
 
-    fieldset {
-        width: 90%;
-        text-align: left;
-        margin: 3px 0 3px 10px;
+    fieldset.toggle {
+        width: 100%;
+        margin: 4px 0 4px 0;
 
+        input {
+            display: none;
+        }
+        
+        label {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-repeat: no-repeat;
+            background-size:cover;
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+            &[for="chickens"] {
+                background-image: url(/images/markers/chicken_marker.png);
+            }
+            &[for="snakes"] {
+                background-image: url(/images/markers/snake_marker.png);
+            }
+            &[for="pigs"] {
+                background-image: url(/images/markers/pig_marker.png);
+            }
+            &[for="thrones"] {
+                background-image: url(/images/markers/throne_marker.png);
+            }
+        }
+
+        input:checked + label {
+            -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(0%);
+        }
     }
+
+
 }
 
 

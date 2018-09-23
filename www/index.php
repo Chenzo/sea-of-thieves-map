@@ -63,31 +63,30 @@ $title = "Unofficial Sea Of Thieves Map";
                 </div>
 
                 <div class="buttonGroup">
-                    <p>SHOW:</p>
-                    <fieldset>
+                    <fieldset class="toggle thrones">
                         <input type="checkbox" id="thrones" class="js-toggleMarkers" name="thrones"
                 value="thrones" />
-                        <label for="thrones">Thrones</label>
+                        <label for="thrones" title="Show Thrones"></label>
                     </fieldset>
-                    <fieldset>
+                    <!-- <fieldset>
                         <input type="checkbox" id="outposts" class="js-toggleMarkers" name="outposts"
                 value="outposts" />
-                        <label for="thrones">Outposts</label>
-                    </fieldset>
-                    <fieldset>
+                        <label for="outposts">Outposts</label>
+                    </fieldset> -->
+                    <fieldset class="toggle pigs">
                         <input type="checkbox" id="pigs" class="js-toggleMarkers" name="pigs"
                 value="outposts" />
-                        <label for="thrones">Pigs</label>
+                        <label for="pigs" title="Show Pigs"></label>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="toggle snakes">
                         <input type="checkbox" id="snakes" class="js-toggleMarkers" name="snakes"
                 value="outposts" />
-                        <label for="thrones">snakes</label>
+                        <label for="snakes" title="Show Snakes"></label>
                     </fieldset>
-                    <fieldset>
+                    <fieldset class="toggle chickens">
                         <input type="checkbox" id="chickens" class="js-toggleMarkers" name="chickens"
                 value="outposts" />
-                        <label for="thrones">chickens</label>
+                        <label for="chickens" title="Show Chickens"></label>
                     </fieldset>
                 </div>
 
