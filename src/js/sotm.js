@@ -247,23 +247,25 @@ var getLayer = function(layerName) {
 
 
 
-function findNearestMarker(coords) {
+function findNearestMarker(coords, type) {
     var minDist = 1000,
       nearest_text = '*None*',
       markerDist;
+    console.log("!findNearestMarker " + type);
 
 
     for(var i in islands) {
         var title = islands[i].title;
         var loc = islands[i].loc;
         markerDist = map.distance(loc, coords);
-      if (markerDist < minDist) {
-        minDist = markerDist;
-        nearest_text = title;
-      }
+        if ((markerDist < minDist) && islands[i][type]) {
+            minDist = markerDist;
+            nearest_text = title;
+            console.log(typeof islands[i][type]);
+        }
     }
   
-    //window.console('The nearest marker is: ' + nearest_text);
+    window.console.log('The nearest marker is: ' + nearest_text);
   }
 
 
@@ -281,10 +283,8 @@ map.on('contextmenu', function(e) {
     var myLoc = e.latlng;
     popup
         .setLatLng(e.latlng)
-        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-closestOutpost'>Closest Pigs</li><li class='js-closestPigs'>Closest Pigs</li><li>Closest Snakes</li></ul>")
+        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-closest' data-type='chickens'>Closest Chickens</li><li class='js-closest' data-type='pigs'>Closest Pigs</li><li class='js-closest' data-type='snakes'>Closest Snakes</li></ul>")
         .openOn(map);
-
-
 
     $(".js-addMarker").click(function() {
         console.log("Lat, Long: " + myLoc);
@@ -292,10 +292,11 @@ map.on('contextmenu', function(e) {
         map.closePopup();
     });
 
-    $(".js-closestOutpost").click(function() {
+    $(".js-closest").click(function() {
         console.log("Lat, Long: " + myLoc);
-        window.console.log("find nearest");
-        //findNearestMarker(e.latlng);
+        var typ = $(this).data("type");
+        findNearestMarker(e.latlng, typ);
+        map.closePopup();
     });
 
     // create popup contents
