@@ -1049,13 +1049,13 @@ body {
       /* Safari 6.0 - 9.0 */
       filter: grayscale(100%); }
       .buttonGroup fieldset.toggle label[for="chickens"] {
-        background-image: url(/images/markers/chicken_marker.png); }
+        background-image: url(/images/toggle_chickens.png); }
       .buttonGroup fieldset.toggle label[for="snakes"] {
-        background-image: url(/images/markers/snake_marker.png); }
+        background-image: url(/images/toggle_snakes.png); }
       .buttonGroup fieldset.toggle label[for="pigs"] {
-        background-image: url(/images/markers/pig_marker.png); }
+        background-image: url(/images/toggle_pigs.png); }
       .buttonGroup fieldset.toggle label[for="thrones"] {
-        background-image: url(/images/markers/throne_marker.png); }
+        background-image: url(/images/toggle_thrones.png); }
     .buttonGroup fieldset.toggle input:checked + label {
       -webkit-filter: grayscale(0%);
       /* Safari 6.0 - 9.0 */
