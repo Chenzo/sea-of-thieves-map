@@ -1,0 +1,26 @@
+
+.islandClass {
+    //fill-opacity: 0.2;
+    //stroke-opacity: 0.7;
+    /* &:hover {
+        //opacity: 0.5;
+        fill-opacity: 0.7;
+        stroke-opacity: 0.7;
+    } */
+    z-index: 60;
+    stroke-width: 2;
+
+    &.show {
+        fill-opacity: 0.2;
+        stroke-opacity: 0.7;
+    }
+
+
+    &.outpost {
+        fill: #ff0000;
+    }
+}
+
+.chickMarker, .snakeMarker, .pigMarker {
+    stroke-width: 2;
+}

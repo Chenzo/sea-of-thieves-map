@@ -7,6 +7,7 @@ var layerArray = [];
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var isOnline = pwa.isOnline;
+var islandMarkers = [];
 
 console.log("-- detect isOnline: " + isOnline);
 
@@ -135,12 +136,22 @@ var pig_marker = L.icon({
 
 
 
+L.islandCircle = L.Circle.extend({
+    options: { 
+       name: 'islandName',
+       json: {}
+    }
+ })
+
+
+
+
 for(var i in islands) {
-    var title = islands[i].title;
+    var islandName = islands[i].title;
     var cRad = islands[i].radius;
 
 
-    var circle = L.circle(islands[i].loc, {
+    var circle = new L.islandCircle(islands[i].loc, {
         //color: 'red',
         strokeweight: 1,
         opacity: 0,
@@ -149,10 +160,29 @@ for(var i in islands) {
         fillOpacity: 0,
         radius: cRad,
         className: 'islandClass',
-        title: title,
-        //draggable: true
-    })//.bindPopup(title);
+        name: islandName,
+        json: islands[i]
+    })
+    
+
     markersLayer.addLayer(circle);
+    islandMarkers.push(circle);
+    circle.on({
+        mousedown: function(evt) {
+            console.log(evt.target);
+            console.log(evt.target.options.name);
+            console.log(evt.target.options.json);
+            map.dragging.disable();
+            map.on('mousemove', function(e) {
+                evt.target.setLatLng(e.latlng);
+            });
+        },
+        mouseup: function (e) {
+            map.removeEventListener();
+            map.dragging.enable();
+            console.log(e.latlng);
+        }
+    });
 
     if (islands[i].chickens) {
 
@@ -355,11 +385,17 @@ function modifyLoc(locArray, newLat, newLong) {
 }
 
 
-
-
-
-
-
+window.dev = {
+    toggleOn: function() {
+        console.log("dev");
+        $(".islandClass").addClass("show");
+        for(var i in islandMarkers) {
+            //islands[i].dragging.enable();
+        }
+        /* marker.dragging.enable();
+        markersLayer.addLayer(circle); */
+    }
+}
 
 
 
@@ -413,12 +449,6 @@ $(function() {
         toggleMarkers($(this).attr("name"), $(this).is(":checked"));
     })
 });
-
-
-
-
-
-
 
 
 

@@ -26,6 +26,23 @@ aside.primary {
 sizes: xs,sm,md,lg
 
 */
+.islandClass {
+  /* &:hover {
+        //opacity: 0.5;
+        fill-opacity: 0.7;
+        stroke-opacity: 0.7;
+    } */
+  z-index: 60;
+  stroke-width: 2; }
+  .islandClass.show {
+    fill-opacity: 0.2;
+    stroke-opacity: 0.7; }
+  .islandClass.outpost {
+    fill: #ff0000; }
+
+.chickMarker, .snakeMarker, .pigMarker {
+  stroke-width: 2; }
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
@@ -1015,20 +1032,6 @@ body {
   width: 40px;
   height: 40px;
   background-color: blue; }
-
-.islandClass {
-  /* &:hover {
-        //opacity: 0.5;
-        fill-opacity: 0.7;
-        stroke-opacity: 0.7;
-    } */
-  z-index: 60;
-  stroke-width: 2; }
-  .islandClass.outpost {
-    fill: #ff0000; }
-
-.chickMarker, .snakeMarker, .pigMarker {
-  stroke-width: 2; }
 
 .alphanum_grid {
   z-index: 30; }
