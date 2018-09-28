@@ -1,13 +1,15 @@
 import * as pwa from './modules/pwa.js';
 import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
+import * as tools from './modules/tools.js';
 
 
 var layerArray = [];
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var isOnline = pwa.isOnline;
-var islandMarkers = [];
+var isDev = false;
+var xMarkers = [];
 
 console.log("-- detect isOnline: " + isOnline);
 
@@ -51,16 +53,15 @@ var xmarksspot = L.icon({
     iconUrl: '/images/markers/xmarkthespot_marker.png',
     shadowUrl: '/images/markers/xmarkthespot_marker.png',
     
-    iconSize:     [30, 30], // size of the icon
+    iconSize:     [40, 52], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
+    iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
     shadowAnchor: [0, 0],  // the same for the shadow
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
-
 }
 
 map.on('click', onMapClick);
@@ -135,15 +136,13 @@ var pig_marker = L.icon({
 });
 
 
-
+//Probably don't need to do this anymore, since it'll take watever params at this point
 L.islandCircle = L.Circle.extend({
     options: { 
        name: 'islandName',
        json: {}
     }
  })
-
-
 
 
 for(var i in islands) {
@@ -167,20 +166,24 @@ for(var i in islands) {
     
 
     markersLayer.addLayer(circle);
-    islandMarkers.push(circle);
+
     circle.on({
         mousedown: function(evt) {
-            //console.log(evt.target.options.name);
-            map.dragging.disable();
-            map.on('mousemove', function(e) {
-                evt.target.setLatLng(e.latlng);
-            });
+            if (isDev) {
+                //console.log(evt.target.options.name);
+                map.dragging.disable();
+                map.on('mousemove', function(e) {
+                    evt.target.setLatLng(e.latlng);
+                });
+            }
         },
         mouseup: function (evt) {
-            map.removeEventListener('mousemove');
-            console.log(evt.target.options.title);
-            console.log("[" + evt.latlng.lat + ", " + evt.latlng.lng + "],");
-            map.dragging.enable(); //this doesn't seem to work
+            if (isDev) {
+                map.removeEventListener('mousemove');
+                console.log(evt.target.options.title);
+                console.log("[" + evt.latlng.lat + ", " + evt.latlng.lng + "],");
+                map.dragging.enable(); //this doesn't seem to work
+            }
         }
     });
 
@@ -318,8 +321,14 @@ map.on('contextmenu', function(e) {
 
     $(".js-addMarker").click(function() {
         console.log("Lat, Long: " + myLoc);
-        L.marker(myLoc, {icon: xmarksspot, draggable: true}).addTo(map);
+        var xMark = L.marker(myLoc, {icon: xmarksspot, draggable: true}).addTo(map);
+        xMark.on('dragend', function (e) {
+            console.log('marker dragend event');
+            setQstring();
+        });
         map.closePopup();
+        xMarkers.push(xMark);
+        setQstring();
     });
 
     $(".js-closest").click(function() {
@@ -389,16 +398,27 @@ window.dev = {
     toggleOn: function() {
         console.log("dev");
         $(".islandClass").addClass("show");
-        for(var i in islandMarkers) {
-            //islands[i].dragging.enable();
-        }
-        /* marker.dragging.enable();
-        markersLayer.addLayer(circle); */
+
     }
 }
+function setQstring() {
+    var qS = getXstring();
+    updateQueryStringParam("mkrs", qS);
+}
 
-
-
+function getXstring() {
+    var xm = "";
+    var one;
+    xMarkers.forEach(function(element) {
+        one = element.getLatLng().lat + "," + element.getLatLng().lng + ";";
+        console.log(one);
+        xm = xm + one; 
+        //var decodedData = window.atob(encodedData); // decode the string
+    });
+    
+    xm = window.btoa(xm); // encode a string
+    return (xm);
+}
 
 
 
