@@ -279,7 +279,7 @@ var islands = [{
     {
         "loc": [-98.539307, 80.95874],
         "title": "Castaway Isle",
-        radius: 2,
+        radius: 1,
         snakes: true
     },
     {
@@ -303,7 +303,7 @@ var islands = [{
         pigs: true
     },
     {
-        "loc": [-112.496826, 82.470093],
+        "loc": [-113.13248893641892, 82.49137646476655],
         "title": "Snake Island",
         radius: 3,
         pigs: true,

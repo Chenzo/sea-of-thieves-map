@@ -161,6 +161,7 @@ for(var i in islands) {
         radius: cRad,
         className: 'islandClass',
         name: islandName,
+        title: islandName,
         json: islands[i]
     })
     
@@ -169,18 +170,17 @@ for(var i in islands) {
     islandMarkers.push(circle);
     circle.on({
         mousedown: function(evt) {
-            console.log(evt.target);
-            console.log(evt.target.options.name);
-            console.log(evt.target.options.json);
+            //console.log(evt.target.options.name);
             map.dragging.disable();
             map.on('mousemove', function(e) {
                 evt.target.setLatLng(e.latlng);
             });
         },
-        mouseup: function (e) {
-            map.removeEventListener();
-            map.dragging.enable();
-            console.log(e.latlng);
+        mouseup: function (evt) {
+            map.removeEventListener('mousemove');
+            console.log(evt.target.options.title);
+            console.log("[" + evt.latlng.lat + ", " + evt.latlng.lng + "],");
+            map.dragging.enable(); //this doesn't seem to work
         }
     });
 
