@@ -2,3 +2,8 @@
 body {
     background: #ccc;
 }
+
+//Fix for lines between tiles.
+.leaflet-tile-container img {
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+}

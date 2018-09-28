@@ -952,6 +952,10 @@ body {
 body {
   background: #ccc; }
 
+.leaflet-tile-container img {
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 1px rgba(0, 0, 0, 0.05); }
+
 .leaflet-grid-label {
   width: 100%; }
   .leaflet-grid-label.big {

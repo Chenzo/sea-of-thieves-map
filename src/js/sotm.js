@@ -24,9 +24,9 @@ var map = L.map("mapid", {
 }).setView([70, 70], 4);
 
 var bounds = new L.LatLngBounds(map.unproject([0, 20924], 7), map.unproject([20924, 0], 7));
-
-map.fitBounds(bounds);
-
+map.setMaxBounds(bounds, {padding: [200,200]});
+//map.fitBounds(bounds);
+var hash = new L.Hash(map);
 
 var layer = L.tileLayer(cdnpath + "images/tiles/{z}/{x}/{y}.png", {
     minZoom: 2,
@@ -37,7 +37,7 @@ var layer = L.tileLayer(cdnpath + "images/tiles/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 
-map.setMaxBounds(bounds, {padding: [200,200]});
+
 
 
 
@@ -369,25 +369,25 @@ function modifyLoc(locArray, newLat, newLong) {
 
 
 
-
+/* 
 function tweakHeight() {
     var wH = $(window).height();
     $(".sotm_wrapper").css({"height" : wH + "px"});
     $("#mapid").css({"height" : wH + "px"});
 }
-
+ */
 var currentSearchIsland = -1;
 
 $(function() {
 
     //This is a fix for the menubar dropping down?
-    tweakHeight();
+    /* tweakHeight();
     $(window).resize(function() {
         tweakHeight();
     });
     $(window).on("load", function (e) {
         tweakHeight();
-    });
+    }); */
 
     $(".js-searchforisland").click(function() {
         
