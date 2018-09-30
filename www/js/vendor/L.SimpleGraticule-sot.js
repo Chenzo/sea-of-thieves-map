@@ -3,6 +3,11 @@
  *  Desc: A graticule for Leaflet maps in the L.CRS.Simple coordinate system.
  *  Auth: Andrew Blakey (ablakey@gmail.com)
  */
+
+
+
+TopCount = 1;
+
 L.SimpleGraticule = L.LayerGroup.extend({
     options: {
         interval: 20,
@@ -101,6 +106,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
         var labels = new Array(counts.x + counts.y);
 
         this.currentLetterCount = 1;
+        TopCount = 1;
         //for horizontal lines
         for (var i = 0; i <= counts.x; i++) {
             var x = mins.x + i * this.options.interval;
@@ -140,7 +146,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
         
         if (axis == 'gridlabel-horiz') {
             var niceLabel = getLetter(newVal);
-            val = val + 8.0;
+            val = val + 4;
             latLng = new L.LatLng(bounds.getNorth(), val);
         } else {
             niceLabel = getNumber(newVal);
@@ -179,38 +185,38 @@ L.simpleGraticule = function(options) {
 
 var letters = [];
 letters[0] = "A";
-letters[5] = "B";
-letters[11] = "C";
-letters[17] = "D";
-letters[23] = "E";
-letters[29] = "F";
-letters[35] = "G";
-letters[40] = "H";
-letters[46] = "I";
-letters[52] = "J";
-letters[58] = "K";
-letters[64] = "L";
-letters[70] = "M";
-letters[76] = "N";
-letters[81] = "O";
-letters[87] = "P";
-letters[93] = "Q";
-letters[99] = "R";
-letters[105] = "S";
-letters[111] = "T";
-letters[116] = "U";
-letters[117] = "U";
-letters[122] = "V";
-letters[128] = "W";
-letters[134] = "X";
-letters[140] = "Y";
-letters[146] = "Z";
+letters[8] = "B";
+letters[16] = "C";
+letters[24] = "D";
+letters[32] = "E";
+letters[41] = "F";
+letters[49] = "G";
+letters[57] = "H";
+letters[65] = "I";
+letters[73] = "J";
+letters[82] = "K";
+letters[90] = "L";
+letters[98] = "M";
+letters[106] = "N";
+letters[114] = "O";
+letters[123] = "P";
+letters[131] = "Q";
+letters[139] = "R";
+letters[147] = "S";
+letters[155] = "T";
+letters[164] = "U";
+letters[172] = "V";
+letters[180] = "W";
+letters[188] = "X";
+letters[196] = "Y";
+letters[205] = "Z";
 function getLetter(val) {
-    
     if (letters[val]) {
         return letters[val];
+    } else {
+
+        return "";
     }
-    return ""; //val
 }
 
 

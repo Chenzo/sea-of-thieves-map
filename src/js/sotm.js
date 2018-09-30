@@ -18,6 +18,31 @@ if (location.hostname != "localhost") {
     cdnpath = "https://cdn.chenzorama.com/";
 }
 
+
+
+
+/* 
+ * Workaround for 1px lines appearing in some browsers due to fractional transforms
+ * and resulting anti-aliasing.
+ * https://github.com/Leaflet/Leaflet/issues/3575
+ */
+(function(){
+    var originalInitTile = L.GridLayer.prototype._initTile
+    L.GridLayer.include({
+        _initTile: function (tile) {
+            originalInitTile.call(this, tile);
+
+            var tileSize = this.getTileSize();
+
+            tile.style.width = tileSize.x + 1 + 'px';
+            tile.style.height = tileSize.y + 1 + 'px';
+        }
+    });
+})()
+
+
+
+
 var map = L.map("mapid", {
     maxZoom: 7,
     minZoom: 2,
@@ -26,7 +51,7 @@ var map = L.map("mapid", {
     preferCanvas: false
 }).setView([70, 70], 4);
 
-var bounds = new L.LatLngBounds(map.unproject([0, 20924], 7), map.unproject([20924, 0], 7));
+var bounds = new L.LatLngBounds(map.unproject([0, 27604], 7), map.unproject([27604, 0], 7));
 map.setMaxBounds(bounds, {padding: [200,200]});
 //map.fitBounds(bounds);
 var hash = new L.Hash(map);
@@ -357,12 +382,12 @@ map.on('contextmenu', function(e) {
 
 
 //Graticule
-var options = {interval: 5.85,
+var options = {interval: 8.2,
     showOriginLabel: false,
-    redraw: 'move',
+    redraw: 'move'/* ,
     zoomIntervals: [
-     {start: 3, end: 6, interval: 5.85}
- ]};
+     {start: 3, end: 6, interval: 5.85} 
+ ]*/};
 L.simpleGraticule(options).addTo(map); 
 
 
@@ -468,6 +493,7 @@ $(function() {
     $(".js-toggleMarkers").click(function() {
         toggleMarkers($(this).attr("name"), $(this).is(":checked"));
     })
+    
 });
 
 
