@@ -51,7 +51,7 @@ var map = L.map("mapid", {
     preferCanvas: false
 }).setView([70, 70], 4);
 
-var bounds = new L.LatLngBounds(map.unproject([0, 27604], 7), map.unproject([27604, 0], 7));
+var bounds = new L.LatLngBounds(map.unproject([0, 25522], 7), map.unproject([27444, 0], 7));
 map.setMaxBounds(bounds, {padding: [200,200]});
 //map.fitBounds(bounds);
 var hash = new L.Hash(map);
@@ -383,6 +383,7 @@ map.on('contextmenu', function(e) {
 
 //Graticule
 var options = {interval: 8.2,
+    vinterval: 7.7,
     showOriginLabel: false,
     redraw: 'move'/* ,
     zoomIntervals: [

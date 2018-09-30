@@ -11,6 +11,7 @@ TopCount = 1;
 L.SimpleGraticule = L.LayerGroup.extend({
     options: {
         interval: 20,
+        vinterval: 20,
         showOriginLabel: true,
         redraw: 'move',
         hidden: false,
@@ -88,16 +89,18 @@ L.SimpleGraticule = L.LayerGroup.extend({
             x: Math.ceil((this._bounds.getEast() - this._bounds.getWest()) /
                 this.options.interval),
             y: Math.ceil((this._bounds.getNorth() - this._bounds.getSouth()) /
-                this.options.interval)
+                this.options.vinterval)
         };
     },
 
     getMins: function() {
         //rounds up to nearest multiple of x
         var s = this.options.interval;
+        var v = this.options.vinterval;
+        console.log(v);
         return {
             x: Math.floor(this._bounds.getWest() / s) * s,
-            y: Math.floor(this._bounds.getSouth() / s) * s
+            y: (Math.floor(this._bounds.getSouth() / v) * v)
         };
     },
 
@@ -106,7 +109,6 @@ L.SimpleGraticule = L.LayerGroup.extend({
         var labels = new Array(counts.x + counts.y);
 
         this.currentLetterCount = 1;
-        TopCount = 1;
         //for horizontal lines
         for (var i = 0; i <= counts.x; i++) {
             var x = mins.x + i * this.options.interval;
@@ -116,7 +118,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
 
         //for vertical lines
         for (var j = 0; j <= counts.y; j++) {
-            var y = mins.y + j * this.options.interval;
+            var y = mins.y + j * this.options.vinterval;
             lines[j + i] = this.buildYLine(y);
             labels[j + i] = this.buildLabel('gridlabel-vert', y);
         }
@@ -147,8 +149,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
         if (axis == 'gridlabel-horiz') {
             var niceLabel = getLetter(newVal);
             val = val + 4; //move to middle of square
-            console.log(bounds.getNorth());
-            var sX = (bounds.getNorth() > -7.8) ? -7.8 : bounds.getNorth(); //prevent letters from dragging off map - Vince
+            var sX = (bounds.getNorth() > 0) ? 0 : bounds.getNorth(); //prevent letters from dragging off map - Vince
             latLng = new L.LatLng(sX, val);
         } else {
             niceLabel = getNumber(newVal);
@@ -214,12 +215,13 @@ letters[188] = "X";
 letters[196] = "Y";
 letters[205] = "Z";
 function getLetter(val) {
-    if (letters[val]) {
+    /* if (letters[val]) {
         return letters[val];
     } else {
 
         return "";
-    }
+    } */
+    return val;
 }
 
 
