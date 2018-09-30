@@ -146,11 +146,14 @@ L.SimpleGraticule = L.LayerGroup.extend({
         
         if (axis == 'gridlabel-horiz') {
             var niceLabel = getLetter(newVal);
-            val = val + 4;
-            latLng = new L.LatLng(bounds.getNorth(), val);
+            val = val + 4; //move to middle of square
+            console.log(bounds.getNorth());
+            var sX = (bounds.getNorth() > -7.8) ? -7.8 : bounds.getNorth(); //prevent letters from dragging off map - Vince
+            latLng = new L.LatLng(sX, val);
         } else {
             niceLabel = getNumber(newVal);
-            latLng = new L.LatLng(val, bounds.getWest());
+            var sY = (bounds.getWest() < 0) ? 0 : bounds.getWest(); //prevent numbers from dragging off map - Vince
+            latLng = new L.LatLng(val, sY); 
         }
 
         return L.marker(latLng, {
@@ -250,8 +253,8 @@ numbers[-147] = "25";
 numbers[-153] = "26";
 function getNumber(val) {
 
-    if (numbers[val]) {
+    /* if (numbers[val]) {
         return numbers[val];
-    }
-    return ""; //val;
+    } */
+    return val;
 }
