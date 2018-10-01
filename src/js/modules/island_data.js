@@ -1,162 +1,162 @@
 var islands = [{
-        "loc": [-39.625, 60.1],
+        "loc": [-41.819753270587555, 62.927539082707604],
         "title": "Lone Cove",
-        radius: 4,
+        radius: 3,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-67.53125, 48.125],
+        "loc": [-69.94175507751075, 50.54955884969927],
         "title": "Cannon Cove",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-65.09375, 62.84375],
+        "loc": [-67.62877065330183, 65.30062001780092],
         "title": "Rum Runner Isle",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-78.422607, 118.649658],
+        "loc": [-80.94564356372827, 121.30273506665486],
         "title": "The Crooked Masts",
         radius: 3,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-25.71875, 15.59375],
+        "loc": [-29.006074941430732, 18.117840198163094],
         "title": "Sailor's Bounty",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-18.227905, 40.417725],
+        "loc": [-21.065393452707312, 42.86583042922642],
         "title": "Smuggler's Bay",
         radius: 4,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-20.850708, 54.960571],
+        "loc": [-22.940799321639105, 57.487891142156535],
         "title": "Salty Sands",
-        radius: 2,
+        radius: 1.5,
         chickens: true
     },
     {
-        "loc": [-25.875, 66.875],
+        "loc": [-28.629490743342114, 69.55120761078706],
         "title": "Picaroon Palms",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-24.90625, 85.8125],
+        "loc": [-28.19171579987219, 88.62081716840055],
         "title": "Scurvy Isley",
-        radius: 2
+        radius: 1.5
     },
     {
-        "loc": [-25.786011, 104.275391],
+        "loc": [-28.691820540241682, 107.0555642878491],
         "title": "Old Faithful Isle",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-20.0625, 118.4375],
+        "loc": [-22.8781029334463, 120.48941102991489],
         "title": "Black Sand Atoll",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-18.634888, 133.902466],
+        "loc": [-21.566440856402263, 136.5557290968507],
         "title": "Marauder's Arch",
-        radius: 4,
+        radius: 3,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-30.094604, 30.657227],
+        "loc": [-32.44278938865952, 32.80535275921895],
         "title": "Sandy Shallows",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-30.9375, 47.96875],
+        "loc": [-33.44299886939851, 50.23934822463562], 
         "title": "Boulder Cay",
-        radius: 2,
+        radius: 1.5,
         chickens: true
     },
     {
-        "loc": [-42.625, 21.96875],
+        "loc": [-45.00792099044309, 24.432035940703415],
         "title": "Keel Haul Fort",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-45.8125, 41.28125],
+        "loc": [-48.25860180284481, 43.931357643687285],
         "title": "Sanctuary Outpost",
-        radius: 4,
+        radius: 3,
         isOutpost: true
     },
     {
-        "loc": [-53.90625, 55],
+        "loc": [-56.135264556210544, 57.616119333511065],
         "title": "Lonely Isle",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-53.125, 69.25],
+        "loc": [-55.3851074456563, 71.67579309594387],
         "title": "Hidden Spring Keep",
-        radius: 3,
+        radius: 2,
         isFortress: true
     },
     {
-        "loc": [-38.733154, 112.010498],
+        "loc": [-41.13192595693288, 114.67807920810932],
         "title": "Blind Man's Lagoon",
-        radius: 2,
+        radius: 1.5,
         pigs: true
     },
     {
-        "loc": [-32.576904, 123.666748],
+        "loc": [-34.818103609768, 126.55069260749704],
         "title": "Shark Fin Camp",
-        radius: 2,
+        radius: 1.5,
         isFortress: true
     },
     {
-        "loc": [-39.858154, 134.197998],
+        "loc": [-42.195761396643945, 137.43053681968217],
         "title": "Plunderer's Plight",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-31.59375, 141.65625],
+        "loc": [-33.56895462527015, 144.36651233641732],
         "title": "Black Water Enclave",
-        radius: 2,
+        radius: 1.5,
         chickens: true
     },
     {
-        "loc": [-38.125, 90.5625],
+        "loc": [-40.819360494201945, 93.80847591354413],
         "title": "Kraken's Watchtower",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-51.208862, 103.17157],
+        "loc": [-54.197162299085946, 105.7433527036019],
         "title": "Dagger Tooth Outpost",
         radius: 4,
         isOutpost: true
     },
     {
-        "loc": [-49.613525, 122.312012],
+        "loc": [-52.32176952270034, 125.36404020139321],
         "title": "The Sunken Grove",
-        radius: 3,
+        radius: 2,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-53.00293, 142.175415],
+        "loc": [-55.76110247916651, 145.1163475274157],
         "title": "Galleon's Grave Outpost",
         radius: 3,
         isOutpost: true
@@ -169,248 +169,409 @@ var islands = [{
         snakes: true
     },
     {
-        "loc": [-65.15625, 127.15625],
+        "loc": [-67.69269774083621, 130.11909434410913],
         "title": "Skull Keep",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-69.125, 140.09375],
+        "loc": [-71.44348329360741, 142.9912651229149],
         "title": "Tri-Rock Isle",
         radius: 2,
         chickens: true
     },
     {
-        "loc": [-77.875, 132.375],
+        "loc": [-67.50237, 151.430381],
+        "title": "Three Paces East Seapost",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-19.313035, 27.037615],
+        "title": "The Spoils of Plenty Store",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-75.235017, 64.342312],
+        "title": "The North Star Seapost",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-114.96965, 94.435731],
+        "title": "Stephen's Spoils",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-128.328685, 48.139087],
+        "title": "The Finest Trading Post",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-29.844282, 120.967678],
+        "title": "The Wild Treasures Store",
+        radius: 1,
+        seapost: true
+    },
+    {
+        "loc": [-80.07029006498121, 135.55539947884748],
         "title": "Shiver Retreat",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-76.14502, 149.006836],
+        "loc": [-78.63248893641892, 152.05177368081218],
         "title": "Liar's Backbone",
         radius: 2,
         snakes: true
     },
     {
-        "loc": [-90.52002, 127.038086],
+        "loc": [-92.63542166676478, 130.11909434410913],
         "title": "Shark Tooth Key",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-88.67627, 142.475586],
+        "loc": [-92.19783001894149, 144.99082563224394],
         "title": "Kraken's Fall",
         radius: 4,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-71.851074, 100.23291],
+        "loc": [-74.94438667929433, 102.86928662127767],
         "title": "Shipwreck Bay",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-55.99707, 28.127686],
+        "loc": [-58.448248980419464, 30.371595953863505],
         "title": "Rapier Cay",
-        radius: 2,
+        radius: 1,
         chickens: true
     },
     {
-        "loc": [-63.62207, 19.908936],
+        "loc": [-66.31539345270731, 15.993498563600905],
         "title": "Crescent Isle",
         radius: 3,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-72.65625, 29.5],
+        "loc": [-75.94243588991247, 31.746234927654953],
         "title": "Golden Sand Outpost",
-        radius: 4,
+        radius: 3,
         isOutpost: true
     },
     {
-        "loc": [-79.662964, 14.701294],
+        "loc": [-81.88115349670785, 16.993169376947787],
         "title": "Sea Dog's Rest",
-        radius: 2,
+        radius: 1.5,
         pigs: true
     },
     {
-        "loc": [-79.412262, 57.996521],
+        "loc": [-81.6942164761939, 60.23384927983136],
         "title": "Twin Groves",
         radius: 2,
         chickens: true
     },
     {
-        "loc": [-89, 45.9375],
+        "loc": [-91.6963112835838, 48.48771722300551],
         "title": "Wanderer's Refuge",
         radius: 4,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-89.544189, 28.243774],
+        "loc": [-91.44625891339905, 30.743560286098365],
         "title": "Lagoon of Whispers",
         radius: 2,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-94.631592, 14.016357],
+        "loc": [-97.13434807797746, 16.305895692771806],
         "title": "Mermaid's Hideaway",
         radius: 3,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-102.756592, 34.328857],
+        "loc": [-105.13603701643558, 36.36971243938428],
         "title": "Sailor's Knot Stronghold",
-        radius: 3,
+        radius: 2,
         isFortress: true
     },
     {
-        "loc": [-101.039307, 69.45874],
+        "loc": [-103.69823588787327, 72.10794401653528],
         "title": "Fools Lagoon",
-        radius: 2,
+        radius: 1.5,
         pigs: true
     },
     {
-        "loc": [-98.539307, 80.95874],
+        "loc": [-100.84721297846644, 83.52747464057205],
         "title": "Castaway Isle",
         radius: 1,
         snakes: true
     },
     {
-        "loc": [-101.820557, 94.89624],
+        "loc": [-104.19511986188078, 97.48786124216625],
         "title": "Old Boot Fort",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-115.021362, 49.43103],
+        "loc": [-117.31967471531044, 51.7447330135501],
         "title": "Plunder Valley",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-113.333862, 67.2747],
+        "loc": [-115.8779065452535, 69.80542248695795],
         "title": "Chicken Isle",
         radius: 2,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-113.13248893641892, 82.49137646476655],
+        "loc": [-115.25277561979163, 85.05040239049788],
         "title": "Snake Island",
         radius: 3,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-114.133301, 103.807495],
+        "loc": [-116.75298510053062, 106.67686315627111],
         "title": "Crooks's Hollow",
-        radius: 2,
+        radius: 3,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-112.352051, 119.151245],
+        "loc": [-114.69061602599248, 122.1182928219427],
         "title": "Barnacle Cay",
         radius: 2,
         chickens: true
     },
     {
-        "loc": [-123.622437, 131.406738],
+        "loc": [-126.31805123958326, 134.36426028544201],
         "title": "Ancient Spire Outpost",
         radius: 2,
         isOutpost: true
     },
     {
-        "loc": [-121.170898, 31.903809],
+        "loc": [-124.56687291042644, 34.36631770202399],
         "title": "Discovery Ridge",
         radius: 4,
         chickens: true,
         snakes: true
     },
     {
-        "loc": [-134.920898, 42.466309],
+        "loc": [-137.44456997494095, 45.05029951966879],
         "title": "Old Salts Atoll",
         radius: 2,
         chickens: true
     },
     {
-        "loc": [-126.573975, 62.819702],
+        "loc": [-128.94278938865952, 65.35611291577732],
         "title": "Lost Gold Fort",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-142.713379, 57.555176],
+        "loc": [-144.821114895391, 60.10784114570619],
         "title": "Shark Bait Cove",
         radius: 4,
         chickens: true,
         pigs: true
     },
     {
-        "loc": [-145.838379, 71.555176],
+        "loc": [-148.3847146692707, 73.99154401784801],
         "title": "Lookout Point",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-150.088379, 82.367676],
+        "loc": [-152.51057877731904, 84.98792296466371],
         "title": "Booty Isle",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-132.392822, 80.059204],
+        "loc": [-134.88188667929433, 82.4887459312965],
         "title": "Plunder Outpost",
-        radius: 3,
+        radius: 2,
         isOutpost: true
     },
     {
-        "loc": [-124.549072, 92.434204],
+        "loc": [-126.75507990792053, 95.36808708028451],
         "title": "Paradise Spring",
         radius: 2,
         pigs: true
     },
     {
-        "loc": [-130.830322, 101.809204],
+        "loc": [-133.19392844017779, 104.67752152957733],
         "title": "Cutlass Cay",
-        radius: 2,
+        radius: 1.5,
         snakes: true
     },
     {
-        "loc": [-127.950684, 114.55481],
+        "loc": [-130.13078690541462, 117.3608449739159],
         "title": "The Crow's Nest Fortress",
         radius: 2,
         isFortress: true
     },
     {
-        "loc": [-141.200684, 110.21106],
+        "loc": [-143.50858871029862, 113.17472344302583],
         "title": "Mutineer Rock",
         radius: 2,
         chickens: true
     },
     {
-        "loc": [-141.24353, 125.804077],
+        "loc": [-143.75864108048336, 128.48218277239994],
         "title": "Devil's Ridge",
         radius: 3,
         pigs: true,
         snakes: true
     },
     {
-        "loc": [-145.062866, 96.548401],
+        "loc": [-147.8845051885317, 98.80445550116441],
         "title": "Thieves' Haven",
         radius: 4,
         chickens: true,
         pigs: true
-    }
+    },
 
+
+
+    {
+        "loc": [-78.938966, 191.556523],
+        "title": "Scorched Pass",
+        radius: 2,
+        forsaken: true
+    },
+    {
+        "loc": [-87.003155, 200.022485],
+        "title": "Brian's Bazaar",
+        radius: 1,
+        forsaken: true,
+        seapost: true
+    },
+    {
+        "loc": [-87.5329, 177.748416],
+        "title": "Fetcher's Rest",
+        radius: 4,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-96.568248, 198.610248],
+        "title": "Cursewater Shores",
+        radius: 2,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-104.69495, 169.682274],
+        "title": "Cinder Islet",
+        radius: 2,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-107.257986, 185.614528],
+        "title": "Flintlock Peninsula",
+        radius: 4,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-119.318876, 201.609261],
+        "title": "Ruby's Fall",
+        radius: 3,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-118.568719, 165.308714],
+        "title": "The Forsaken Brink",
+        radius: 1.5,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-127.003365, 178.80427],
+        "title": "Marrow's Peak Output",
+        radius: 3,
+        forsaken: true,
+        isOutpost: true,
+        seapost: false
+    },
+    {
+        "loc": [-136.81792, 198.36031],
+        "title": "Brimstone Rock",
+        radius: 1.5,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-137.943156, 212.605619],
+        "title": "Glowstone Cay",
+        radius: 1.5,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-144.69457, 179.491523],
+        "title": "Flame's End",
+        radius: 1.5,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-147.193195, 167.058118],
+        "title": "Roaring Traders",
+        radius: 1,
+        forsaken: true,
+        seapost: true
+    },
+    {
+        "loc": [-152.506808, 204.045938],
+        "title": "Magma's Tide",
+        radius: 2,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-157.382829, 187.676328],
+        "title": "The Devil's Thirst",
+        radius: 3,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-159.258222, 167.432994],
+        "title": "Burning Sands",
+        radius: 1.5,
+        forsaken: true,
+        seapost: false
+    },
+    {
+        "loc": [-172.636024, 175.305402],
+        "title": "Ashen Reaches",
+        radius: 3,
+        forsaken: true,
+        seapost: false
+    }
+    
+
+    
+    
 ];
 
 export {

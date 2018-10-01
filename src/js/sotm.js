@@ -195,7 +195,6 @@ for(var i in islands) {
     circle.on({
         mousedown: function(evt) {
             if (isDev) {
-                //console.log(evt.target.options.name);
                 map.dragging.disable();
                 map.on('mousemove', function(e) {
                     evt.target.setLatLng(e.latlng);
@@ -299,8 +298,6 @@ var getLayer = function(layerName) {
         }
     }
 }
-
-
 
 
 
@@ -424,7 +421,7 @@ window.dev = {
     toggleOn: function() {
         console.log("dev");
         $(".islandClass").addClass("show");
-
+        isDev = true;
     }
 }
 function setQstring() {
