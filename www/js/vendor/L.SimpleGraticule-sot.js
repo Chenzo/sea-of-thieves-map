@@ -97,7 +97,6 @@ L.SimpleGraticule = L.LayerGroup.extend({
         //rounds up to nearest multiple of x
         var s = this.options.interval;
         var v = this.options.vinterval;
-        console.log(v);
         return {
             x: Math.floor(this._bounds.getWest() / s) * s,
             y: (Math.floor(this._bounds.getSouth() / v) * v)
@@ -153,6 +152,7 @@ L.SimpleGraticule = L.LayerGroup.extend({
             latLng = new L.LatLng(sX, val);
         } else {
             niceLabel = getNumber(newVal);
+            val = val - 3.2; //move to middle of square
             var sY = (bounds.getWest() < 0) ? 0 : bounds.getWest(); //prevent numbers from dragging off map - Vince
             latLng = new L.LatLng(val, sY); 
         }
@@ -215,48 +215,54 @@ letters[188] = "X";
 letters[196] = "Y";
 letters[205] = "Z";
 function getLetter(val) {
-    /* if (letters[val]) {
+    if (letters[val]) {
         return letters[val];
+    } else if (letters[val-1] ) {
+        return letters[val-1];
+    } else if (letters[val+1]) {
+        return letters[val+1];
     } else {
-
         return "";
-    } */
-    return val;
+    } 
 }
 
 
 
 var numbers = [];
-numbers[-6] = "1";
-numbers[-12] = "2";
-numbers[-18] = "3";
+numbers[0] = "1";
+numbers[-8] = "2";
+numbers[-16] = "3";
 numbers[-24] = "4";
-numbers[-30] = "5";
-numbers[-36] = "6";
-numbers[-41] = "7";
-numbers[-47] = "8";
-numbers[-53] = "9";
-numbers[-59] = "10";
-numbers[-65] = "11";
-numbers[-71] = "12";
-numbers[-77] = "13";
-numbers[-82] = "14";
-numbers[-88] = "15";
-numbers[-94] = "16";
-numbers[-100] = "17";
-numbers[-106] = "18";
-numbers[-112] = "19";
-numbers[-117] = "20";
-numbers[-123] = "21";
-numbers[-129] = "22";
-numbers[-135] = "23";
-numbers[-141] = "24";
-numbers[-147] = "25";
-numbers[-153] = "26";
+numbers[-31] = "5";
+numbers[-39] = "6";
+numbers[-47] = "7";
+numbers[-54] = "8";
+numbers[-62] = "9";
+numbers[-70] = "10";
+numbers[-77] = "11";
+numbers[-85] = "12";
+numbers[-93] = "13";
+numbers[-101] = "14";
+numbers[-108] = "15";
+numbers[-116] = "16";
+numbers[-124] = "17";
+numbers[-131] = "18";
+numbers[-139] = "19";
+numbers[-147] = "20";
+numbers[-154] = "21";
+numbers[-162] = "22";
+numbers[-170] = "23";
+numbers[-178] = "24";
+numbers[-185] = "25";
+numbers[-193] = "26";
 function getNumber(val) {
-
-    /* if (numbers[val]) {
+    if (numbers[val]) {
         return numbers[val];
-    } */
-    return val;
+    } else if (numbers[val-1] ) {
+        return numbers[val-1];
+    } else if (numbers[val+1]) {
+        return numbers[val+1];
+    } else {
+        return "";
+    } 
 }
