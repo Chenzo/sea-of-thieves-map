@@ -27,7 +27,7 @@ if (location.hostname != "localhost") {
  * https://github.com/Leaflet/Leaflet/issues/3575
  */
 (function(){
-    var originalInitTile = L.GridLayer.prototype._initTile
+    var originalInitTile = L.GridLayer.prototype._initTile;
     L.GridLayer.include({
         _initTile: function (tile) {
             originalInitTile.call(this, tile);
@@ -368,7 +368,6 @@ map.on('contextmenu', function(e) {
         title: 'oen menu here'  
     } 
     ).bindPopup(customPopup,customOptions).addTo(map).popup(); */
-
 });
 
 
@@ -436,14 +435,20 @@ function getXstring() {
         one = element.getLatLng().lat + "," + element.getLatLng().lng + ";";
         console.log(one);
         xm = xm + one; 
-        //var decodedData = window.atob(encodedData); // decode the string
     });
     
-    xm = window.btoa(xm); // encode a string
+    xm = window.encodeURIComponent(window.btoa(xm)); // encode a string
+    console.log(xm);
     return (xm);
 }
 
-
+function readXstring() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var mkrs = window.decodeURIComponent(urlParams.get('mkrs'));
+    console.log(mkrs);
+    var decodedData =  window.atob(mkrs); // decode the string
+    console.log(decodedData);
+}
 
 
 
@@ -490,7 +495,9 @@ $(function() {
 
     $(".js-toggleMarkers").click(function() {
         toggleMarkers($(this).attr("name"), $(this).is(":checked"));
-    })
+    });
+
+    readXstring();
     
 });
 
