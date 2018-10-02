@@ -2,6 +2,7 @@ import * as pwa from './modules/pwa.js';
 import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as tools from './modules/tools.js';
+import { decode } from 'punycode';
 
 
 var layerArray = [];
@@ -10,6 +11,7 @@ var thrones = throne_data.thrones;
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
+var currentSearchIsland = -1;
 
 console.log("-- detect isOnline: " + isOnline);
 
@@ -17,7 +19,6 @@ var cdnpath = "";
 if (location.hostname != "localhost") {
     cdnpath = "https://cdn.chenzorama.com/";
 }
-
 
 
 
@@ -336,19 +337,19 @@ map.on('contextmenu', function(e) {
     var myLoc = e.latlng;
     popup
         .setLatLng(e.latlng)
-        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-closest' data-type='chickens'>Closest Chickens</li><li class='js-closest' data-type='pigs'>Closest Pigs</li><li class='js-closest' data-type='snakes'>Closest Snakes</li></ul>")
+        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-clearMarkers'>Clear Markers</li><li class='js-closest' data-type='chickens'>Closest Chickens</li><li class='js-closest' data-type='pigs'>Closest Pigs</li><li class='js-closest' data-type='snakes'>Closest Snakes</li></ul>")
         .openOn(map);
 
     $(".js-addMarker").click(function() {
-        console.log("Lat, Long: " + myLoc);
-        var xMark = L.marker(myLoc, {icon: xmarksspot, draggable: true}).addTo(map);
-        xMark.on('dragend', function (e) {
-            console.log('marker dragend event');
-            setQstring();
-        });
-        map.closePopup();
-        xMarkers.push(xMark);
+        addXmark(myLoc);
         setQstring();
+        map.closePopup();
+    });
+
+    $(".js-clearMarkers").click(function() {
+        clearXmarks();
+        setQstring();
+        map.closePopup();
     });
 
     $(".js-closest").click(function() {
@@ -370,7 +371,23 @@ map.on('contextmenu', function(e) {
 
 
 
+function addXmark(latLng) {
+    console.log(latLng);
+    var xMark = L.marker(latLng, {icon: xmarksspot, draggable: true}).addTo(map);
+    xMark.on('dragend', function (e) {
+        console.log('marker dragend event');
+        setQstring();
+    });
+    xMarkers.push(xMark);
+}
 
+function clearXmarks() {
+    xMarkers.forEach(function(mkr) {
+        map.removeLayer(mkr);
+    });
+    xMarkers = [];
+    
+}
 
 
 
@@ -431,12 +448,10 @@ function getXstring() {
     var one;
     xMarkers.forEach(function(element) {
         one = element.getLatLng().lat + "," + element.getLatLng().lng + ";";
-        console.log(one);
         xm = xm + one; 
     });
     
     xm = window.encodeURIComponent(window.btoa(xm)); // encode a string
-    console.log(xm);
     return (xm);
 }
 
@@ -444,30 +459,21 @@ function readXstring() {
     var urlParams = new URLSearchParams(window.location.search);
     var mkrs = window.decodeURIComponent(urlParams.get('mkrs'));
     var decodedData =  window.atob(mkrs); // decode the string
+
+    var marks = decodedData.split(";");
+    marks.forEach(function(entry) {
+        if (entry !== "") {
+            addXmark(entry.split(","));
+        }
+    });
 }
 
 
 
 
-/* 
-function tweakHeight() {
-    var wH = $(window).height();
-    $(".sotm_wrapper").css({"height" : wH + "px"});
-    $("#mapid").css({"height" : wH + "px"});
-}
- */
-var currentSearchIsland = -1;
 
 $(function() {
 
-    //This is a fix for the menubar dropping down?
-    /* tweakHeight();
-    $(window).resize(function() {
-        tweakHeight();
-    });
-    $(window).on("load", function (e) {
-        tweakHeight();
-    }); */
 
     $(".js-searchforisland").click(function() {
         
