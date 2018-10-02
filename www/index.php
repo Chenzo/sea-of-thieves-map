@@ -1,8 +1,5 @@
 <?php 
-
-$descr = "An open source dynamic map of the sea from the Rare's game Sea of Thieves. With island locator and markers for important locations like Skeleton Thrones and animal locations and whatnot.";
-$title = "Unofficial Sea Of Thieves Map";
-
+include "includes/globals.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,9 +40,9 @@ $title = "Unofficial Sea Of Thieves Map";
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/vendor/leaflet.css" />
-        <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
-        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/vendor/leaflet.css?v=<?= CACHE_BUSTER ?>"" />
+        <link rel="stylesheet" href="css/vendor/leaflet.search.css?v=<?= CACHE_BUSTER ?>"" />
+        <link rel="stylesheet" href="css/styles.css?v=<?= CACHE_BUSTER ?>"" />
 
     </head>
     <body class="home">
@@ -109,10 +106,10 @@ $title = "Unofficial Sea Of Thieves Map";
 
         <script src="js/vendor/leaflet.js"></script>
         <script src="js/vendor/leaflet-search.min.js"></script>
-        <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
-        <script src="js/vendor/leaflet-hash.js"></script>
+        <script src="js/vendor/L.SimpleGraticule-sot.js?v=<?= CACHE_BUSTER ?>"></script>
+        <script src="js/vendor/leaflet-hash.js?v=<?= CACHE_BUSTER ?>""></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="js/sotm.js"></script>
+        <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>""></script>
 
         
     <script>

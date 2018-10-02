@@ -41,8 +41,6 @@ if (location.hostname != "localhost") {
 })()
 
 
-
-
 var map = L.map("mapid", {
     maxZoom: 7,
     minZoom: 2,
@@ -56,7 +54,7 @@ map.setMaxBounds(bounds, {padding: [200,200]});
 //map.fitBounds(bounds);
 var hash = new L.Hash(map);
 
-var layer = L.tileLayer(cdnpath + "images/tiles/{z}/{x}/{y}.png", {
+var layer = L.tileLayer(cdnpath + "images/tiles_v2/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
@@ -445,9 +443,7 @@ function getXstring() {
 function readXstring() {
     var urlParams = new URLSearchParams(window.location.search);
     var mkrs = window.decodeURIComponent(urlParams.get('mkrs'));
-    console.log(mkrs);
     var decodedData =  window.atob(mkrs); // decode the string
-    console.log(decodedData);
 }
 
 
