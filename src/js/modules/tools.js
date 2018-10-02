@@ -32,3 +32,10 @@ window.updateQueryStringParam = function (key, value) {
     window.history.replaceState({}, "", baseUrl + params + hash);
 }
 
+
+window.websafe = function(string) {
+        var clean = string.match(/[a-zA-Z0-9]+/g);
+        var cleanString = clean.join('-');
+        var cleanString = cleanString.toLowerCase();  
+        return cleanString;
+}

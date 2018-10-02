@@ -27,18 +27,43 @@ sizes: xs,sm,md,lg
 
 */
 .islandClass {
+  fill-opacity: 0;
+  stroke-opacity: 0;
   /* &:hover {
         //opacity: 0.5;
         fill-opacity: 0.7;
         stroke-opacity: 0.7;
     } */
   z-index: 60;
-  stroke-width: 2; }
+  stroke-width: 2;
+  -webkit-transition-property: fill-opacity;
+  transition-property: fill-opacity;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  /*Safari bug where transform needs to be prefixed*/
+  -webkit-transition-property: stroke-opacity;
+  transition-property: stroke-opacity;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  /*Safari bug where transform needs to be prefixed*/ }
   .islandClass.show {
     fill-opacity: 0.2;
     stroke-opacity: 0.7; }
   .islandClass.outpost {
     fill: #ff0000; }
+  .islandClass.pigs {
+    stroke: #ff4d95;
+    fill: #ff4d95; }
+  .islandClass.snakes {
+    stroke: #008811;
+    fill: #008811; }
+  .islandClass.chickens {
+    stroke: #ff9924;
+    fill: #ff9924; }
 
 .chickMarker, .snakeMarker, .pigMarker {
   stroke-width: 2; }

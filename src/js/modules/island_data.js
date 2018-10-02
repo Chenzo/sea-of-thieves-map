@@ -506,7 +506,7 @@ var islands = [{
     },
     {
         "loc": [-127.003365, 178.80427],
-        "title": "Marrow's Peak Output",
+        "title": "Marrow's Peak Outpost",
         radius: 3,
         forsaken: true,
         isOutpost: true,

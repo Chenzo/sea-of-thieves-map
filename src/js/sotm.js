@@ -173,7 +173,7 @@ for(var i in islands) {
     var islandName = islands[i].title;
     var cRad = islands[i].radius;
 
-
+    var classes = "islandClass " + window.websafe(islandName);
     var circle = new L.islandCircle(islands[i].loc, {
         //color: 'red',
         strokeweight: 1,
@@ -182,21 +182,23 @@ for(var i in islands) {
         fillColor: '#fff',
         fillOpacity: 0,
         radius: cRad,
-        className: 'islandClass',
+        className: classes,
         name: islandName,
         title: islandName,
         json: islands[i]
     })
-    
 
     markersLayer.addLayer(circle);
+    islands[i].circle = circle;
 
     circle.on({
         mousedown: function(evt) {
             if (isDev) {
+                evt.target.classList.add('pig show');
                 map.dragging.disable();
                 map.on('mousemove', function(e) {
                     evt.target.setLatLng(e.latlng);
+
                 });
             }
         },
@@ -303,10 +305,9 @@ var getLayer = function(layerName) {
 
 function findNearestMarker(coords, type) {
     var minDist = 1000,
-      nearest_text = '*None*',
-      markerDist;
-    console.log("!findNearestMarker " + type);
-
+    nearest_text = '*None*',
+    markerDist,
+    islandData;
 
     for(var i in islands) {
         var title = islands[i].title;
@@ -315,11 +316,12 @@ function findNearestMarker(coords, type) {
         if ((markerDist < minDist) && islands[i][type]) {
             minDist = markerDist;
             nearest_text = title;
-            console.log(typeof islands[i][type]);
+            islandData = islands[i]
         }
     }
   
-    window.console.log('The nearest marker is: ' + nearest_text);
+    //window.console.log('The nearest marker is: ' + nearest_text);
+    return islandData;
   }
 
 
@@ -353,20 +355,21 @@ map.on('contextmenu', function(e) {
     });
 
     $(".js-closest").click(function() {
-        console.log("Lat, Long: " + myLoc);
+        //console.log("Lat, Long: " + myLoc);
         var typ = $(this).data("type");
-        findNearestMarker(e.latlng, typ);
+        var mkr = findNearestMarker(e.latlng, typ);
+        console.log("Found " + typ + " at " + mkr.title);
+        /* console.log("CLASS: " + window.websafe(mkr.title));
+        console.log(mkr.circle._path.classList); */
+        $(".islandClass").removeClass("show pigs chickens snakes")
+        mkr.circle._path.classList.add(typ, "show");
+        //$(mkr.circle._path.path).addClass('pig show');
         map.closePopup();
     });
 
     // create popup contents
     /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
-    
-
-    var marker = L.marker(e.latlng, {
-        title: 'oen menu here'  
-    } 
-    ).bindPopup(customPopup,customOptions).addTo(map).popup(); */
+    */
 });
 
 
@@ -458,14 +461,16 @@ function getXstring() {
 function readXstring() {
     var urlParams = new URLSearchParams(window.location.search);
     var mkrs = window.decodeURIComponent(urlParams.get('mkrs'));
-    var decodedData =  window.atob(mkrs); // decode the string
 
-    var marks = decodedData.split(";");
-    marks.forEach(function(entry) {
-        if (entry !== "") {
-            addXmark(entry.split(","));
-        }
-    });
+    if (urlParams.get('mkrs') !== null) {
+        var decodedData =  window.atob(mkrs); // decode the string
+        var marks = decodedData.split(";");
+        marks.forEach(function(entry) {
+            if (entry !== "") {
+                addXmark(entry.split(","));
+            }
+        });
+    }
 }
 
 
