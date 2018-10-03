@@ -12,7 +12,7 @@
         aside {
             width: 60px;
             @include breakpoint(md) {
-                width: 140px;
+                width: 120px;
             }
             
             border-right: 1px solid #000;
@@ -20,7 +20,7 @@
             position: relative;
 
             .sotm_logo {
-                width: 90%;
+                width: 70%;
             }
 
             .icons {
@@ -69,10 +69,14 @@
 
 
 .buttonGroup {
-    border-bottom: 1px solid #111;
+    
     border-top: 1px solid #111;
     padding: 8px 0;
     margin: 8px 0;
+
+    &:last-child {
+        border-bottom: 1px solid #111;
+    }
 
     fieldset.toggle {
         width: 100%;

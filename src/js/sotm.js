@@ -12,6 +12,7 @@ var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
 var currentSearchIsland = -1;
+var compMark;
 
 console.log("-- detect isOnline: " + isOnline);
 
@@ -80,6 +81,17 @@ var xmarksspot = L.icon({
     iconSize:     [40, 52], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
     iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+var compass_marker = L.icon({
+    iconUrl: '/images/markers/compass.png',
+    shadowUrl: '/images/markers/compass.png',
+    
+    iconSize:     [50, 48], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [25, 24], // point of the icon which will correspond to marker's location
     shadowAnchor: [0, 0],  // the same for the shadow
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
@@ -198,8 +210,10 @@ for(var i in islands) {
                 map.dragging.disable();
                 map.on('mousemove', function(e) {
                     evt.target.setLatLng(e.latlng);
-
                 });
+            } else {
+                evt.target._path.classList.remove("pig", "show");
+                clearComp();
             }
         },
         mouseup: function (evt) {
@@ -319,9 +333,10 @@ function findNearestMarker(coords, type) {
             islandData = islands[i]
         }
     }
-  
-    //window.console.log('The nearest marker is: ' + nearest_text);
-    return islandData;
+    
+    var brning = window.angle360(coords.lat,coords.lng,islandData.loc[0],islandData.loc[1]);
+    var txt = type + " can be located to the " + window.getCardinalFromDeg(brning) + " at " + nearest_text;
+    return [islandData, txt];
   }
 
 
@@ -350,20 +365,21 @@ map.on('contextmenu', function(e) {
 
     $(".js-clearMarkers").click(function() {
         clearXmarks();
+        clearComp();
         setQstring();
         map.closePopup();
     });
 
     $(".js-closest").click(function() {
-        //console.log("Lat, Long: " + myLoc);
         var typ = $(this).data("type");
-        var mkr = findNearestMarker(e.latlng, typ);
-        console.log("Found " + typ + " at " + mkr.title);
-        /* console.log("CLASS: " + window.websafe(mkr.title));
-        console.log(mkr.circle._path.classList); */
+        var nearest = findNearestMarker(e.latlng, typ);
+        var mkr = nearest[0];
+        //console.log("Found " + typ + " at " + mkr.title);
         $(".islandClass").removeClass("show pigs chickens snakes")
         mkr.circle._path.classList.add(typ, "show");
-        //$(mkr.circle._path.path).addClass('pig show');
+
+        addComp(myLoc);
+        console.log(nearest[1]);
         map.closePopup();
     });
 
@@ -372,10 +388,19 @@ map.on('contextmenu', function(e) {
     */
 });
 
+function addComp(latLng) {
+    clearComp();
+    compMark = L.marker(latLng, {icon: compass_marker, draggable: false}).addTo(map);
+    xMarkers.push(compMark);
+}
 
+function clearComp() {
+    if(compMark) {
+        map.removeLayer(compMark);
+    }
+}
 
 function addXmark(latLng) {
-    console.log(latLng);
     var xMark = L.marker(latLng, {icon: xmarksspot, draggable: true}).addTo(map);
     xMark.on('dragend', function (e) {
         console.log('marker dragend event');

@@ -38,15 +38,15 @@ sizes: xs,sm,md,lg
   stroke-width: 2;
   -webkit-transition-property: fill-opacity;
   transition-property: fill-opacity;
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   /*Safari bug where transform needs to be prefixed*/
   -webkit-transition-property: stroke-opacity;
   transition-property: stroke-opacity;
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
   -webkit-transition-timing-function: ease;
   transition-timing-function: ease;
   /*Safari bug where transform needs to be prefixed*/ }
@@ -1029,9 +1029,9 @@ body {
     position: relative; }
     @media (min-width: 992px) {
       .home section aside {
-        width: 140px; } }
+        width: 120px; } }
     .home section aside .sotm_logo {
-      width: 90%; }
+      width: 70%; }
     .home section aside .icons {
       position: absolute;
       bottom: 10px;
@@ -1062,10 +1062,11 @@ body {
   z-index: 30; }
 
 .buttonGroup {
-  border-bottom: 1px solid #111;
   border-top: 1px solid #111;
   padding: 8px 0;
   margin: 8px 0; }
+  .buttonGroup:last-child {
+    border-bottom: 1px solid #111; }
   .buttonGroup fieldset.toggle {
     width: 100%;
     margin: 4px 0 4px 0; }

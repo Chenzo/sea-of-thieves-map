@@ -9,8 +9,8 @@
     } */
     z-index: 60;
     stroke-width: 2;
-    @include transition(fill-opacity, 500ms); 
-    @include transition(stroke-opacity, 500ms); 
+    @include transition(fill-opacity, 1s); 
+    @include transition(stroke-opacity, 1s); 
 
     &.show {
         fill-opacity: 0.2;
