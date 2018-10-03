@@ -1160,6 +1160,50 @@ body {
     text-align: center;
     font-size: 0.8em; }
 
+.documentation {
+  background-color: #cdc1a2; }
+  .documentation h1 {
+    font-size: 36px;
+    margin-bottom: 20px; }
+  .documentation h2 {
+    font-size: 28px;
+    margin-bottom: 15px; }
+  .documentation h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #267e81; }
+  .documentation a {
+    color: #776e38; }
+  .documentation p {
+    color: #393939;
+    z-index: 2;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-bottom: 1rem; }
+  .documentation ul {
+    list-style-type: disc;
+    margin: 0 1.5em;
+    padding-left: 1.5em; }
+    .documentation ul li {
+      display: list-item;
+      margin: .2em 0; }
+  .documentation header {
+    height: 100px;
+    background-color: #267e81; }
+    .documentation header img {
+      margin-top: 20px;
+      height: 60px; }
+
+.docs {
+  padding: 50px 0; }
+  .docs .featurelist {
+    margin-bottom: 18px; }
+
+.site_margins {
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%; }
+
 /* go ahead use this file. No one will care... it's all good */
 /* this is for specificity fixes... */
 /* no styles go in here *./

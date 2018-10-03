@@ -50,7 +50,7 @@ include "includes/globals.php";
         <section class="sotm_wrapper">
 
             <aside class="sidebar">
-                <img src="images/icon-w.png" class="sotm_logo" />
+                <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
 
 
                 <div class="island-finder buttonGroup">
