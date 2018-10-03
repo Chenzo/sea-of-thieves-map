@@ -396,6 +396,7 @@ map.on('contextmenu', function(e) {
         showPopup(words);
         map.closePopup();
     });
+    
 
     // create popup contents
     /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
@@ -550,6 +551,10 @@ $(function() {
 
     $(".js-toggleMarkers").click(function() {
         toggleMarkers($(this).attr("name"), $(this).is(":checked"));
+    });
+
+    $(".js-fullscreen").click(function() {
+        window.toggleFullScreen();
     });
 
     readXstring();

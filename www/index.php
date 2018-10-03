@@ -87,6 +87,11 @@ include "includes/globals.php";
                     </fieldset>
                 </div>
 
+                <div class="buttonGroup subcontrols">
+                    <button class="js-fullscreen"><img src="images/fullscreen_icon.png" /></button>
+                    <button class="js-share"><img src="images/share_link_icon.png" /></button>
+                </div>
+
                 <div class="installBut buttonGroup" id="installBut">
                     <img src="/images/downloadicon.png" id="install-button" />
                     <span>install</span>

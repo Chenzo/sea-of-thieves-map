@@ -1132,6 +1132,13 @@ body {
   border-radius: 5px;
   margin: 8px; }
 
+.subcontrols button img {
+  width: 20px;
+  opacity: 0.5; }
+
+.subcontrols button:hover img {
+  opacity: 1; }
+
 .installBut {
   padding: 8px;
   position: absolute;
