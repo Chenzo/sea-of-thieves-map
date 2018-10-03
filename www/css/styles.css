@@ -992,7 +992,7 @@ body {
   color: #111; }
 
 body {
-  background: #ccc; }
+  background: #061212; }
 
 .leaflet-tile-container img {
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
@@ -1006,7 +1006,7 @@ body {
   .leaflet-grid-label .gridlabel-vert {
     margin-left: 8px; }
   .leaflet-grid-label .gridlabel-vert, .leaflet-grid-label .gridlabel-horiz {
-    color: #222;
+    color: #061212;
     font-weight: 700;
     left: 2px;
     position: relative;
@@ -1020,11 +1020,11 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #222;
-  color: #ccc; }
+  background-color: #061212;
+  color: #b5eec8; }
   .home section aside {
     width: 60px;
-    border-right: 1px solid #000;
+    border-right: 1px solid #13252c;
     text-align: center;
     position: relative; }
     @media (min-width: 992px) {
@@ -1056,14 +1056,29 @@ body {
       position: absolute;
       bottom: 10px;
       display: block;
-      background-color: #000;
-      color: #ccc;
+      background-color: #267e81;
+      color: #b5eec8;
       z-index: 4000;
       left: 50%;
       -webkit-transform: translateX(-50%);
       transform: translateX(-50%);
       padding: 20px 40px;
-      border: white 2px solid; }
+      border: #b5eec8 2px solid;
+      -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+              box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      opacity: 0; }
+      .home section article .floating_dialog.show {
+        -webkit-transition-property: opacity;
+        transition-property: opacity;
+        -webkit-transition-duration: 600ms;
+        transition-duration: 600ms;
+        -webkit-transition-timing-function: ease;
+        transition-timing-function: ease;
+        /*Safari bug where transform needs to be prefixed*/
+        opacity: 1; }
+      .home section article .floating_dialog .type, .home section article .floating_dialog .direction, .home section article .floating_dialog .title {
+        font-weight: 700;
+        color: white; }
 
 .my-div-icon {
   width: 40px;
@@ -1074,11 +1089,11 @@ body {
   z-index: 30; }
 
 .buttonGroup {
-  border-top: 1px solid #111;
+  border-top: 1px solid #13252c;
   padding: 8px 0;
   margin: 8px 0; }
   .buttonGroup:last-child {
-    border-bottom: 1px solid #111; }
+    border-bottom: 1px solid #13252c; }
   .buttonGroup fieldset.toggle {
     width: 100%;
     margin: 4px 0 4px 0; }
@@ -1111,8 +1126,8 @@ body {
   margin-bottom: 5px; }
 
 .island-finder button {
-  color: #111;
-  background: #ccc;
+  color: #b5eec8;
+  background: #267e81;
   padding: 5px 8px;
   border-radius: 5px;
   margin: 8px; }

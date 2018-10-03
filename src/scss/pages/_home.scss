@@ -6,8 +6,8 @@
 
     section {
         display: flex;
-        background-color: #222;
-        color: #ccc;
+        background-color: $dark;
+        color: $blue_4;
 
         aside {
             width: 60px;
@@ -15,7 +15,7 @@
                 width: 120px;
             }
             
-            border-right: 1px solid #000;
+            border-right: 1px solid $blue_1;
             text-align: center;
             position: relative;
 
@@ -53,14 +53,26 @@
                 position: absolute;
                 bottom: 10px;
                 display: block;
-                background-color: #000;
-                color: #ccc;
+                background-color: $blue_2;
+                color: $blue_4;
                 z-index: 4000;
                 left: 50%;
                 -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
                 padding: 20px 40px;
-                border: white 2px solid;
+                border: $blue_4 2px solid;
+                box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+                opacity: 0;
+
+                &.show {
+                    @include transition(opacity, 600ms); 
+                    opacity: 1;
+                }
+
+                .type, .direction, .title {
+                    font-weight: 700;
+                    color: $white_1;
+                }
             }
         }
     }
@@ -84,12 +96,12 @@
 
 .buttonGroup {
     
-    border-top: 1px solid #111;
+    border-top: 1px solid $blue_1;
     padding: 8px 0;
     margin: 8px 0;
 
     &:last-child {
-        border-bottom: 1px solid #111;
+        border-bottom: 1px solid $blue_1;
     }
 
     fieldset.toggle {
@@ -140,8 +152,8 @@
     }
 
     button {
-        color: #111;
-        background: #ccc;
+        color: $blue_4;
+        background: $blue_2;
         padding: 5px 8px;
         border-radius: 5px;
         margin: 8px;

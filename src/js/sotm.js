@@ -96,6 +96,17 @@ var compass_marker = L.icon({
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 
+var boatMarker = L.icon({
+    iconUrl: '/images/markers/boat_marker.png',
+    shadowUrl: '/images/markers/boat_marker.png',
+    
+    iconSize:     [50, 59], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [25, 29], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
 }
@@ -214,6 +225,7 @@ for(var i in islands) {
             } else {
                 evt.target._path.classList.remove("pig", "show");
                 clearComp();
+                hidePopup();
             }
         },
         mouseup: function (evt) {
@@ -319,9 +331,8 @@ var getLayer = function(layerName) {
 
 function findNearestMarker(coords, type) {
     var minDist = 1000,
-    nearest_text = '*None*',
     markerDist,
-    islandData;
+    closest = {}
 
     for(var i in islands) {
         var title = islands[i].title;
@@ -329,14 +340,13 @@ function findNearestMarker(coords, type) {
         markerDist = map.distance(loc, coords);
         if ((markerDist < minDist) && islands[i][type]) {
             minDist = markerDist;
-            nearest_text = title;
-            islandData = islands[i]
+            closest.title = title;
+            closest.islandData = islands[i]
         }
     }
     
-    var brning = window.angle360(coords.lat,coords.lng,islandData.loc[0],islandData.loc[1]);
-    var txt = type + " can be located to the " + window.getCardinalFromDeg(brning) + " at " + nearest_text;
-    return [islandData, txt];
+    closest.bearing = window.angle360(coords.lat,coords.lng,closest.islandData.loc[0],closest.islandData.loc[1]);
+    return closest;
   }
 
 
@@ -366,20 +376,24 @@ map.on('contextmenu', function(e) {
     $(".js-clearMarkers").click(function() {
         clearXmarks();
         clearComp();
+        hidePopup()
         setQstring();
         map.closePopup();
     });
 
     $(".js-closest").click(function() {
-        var typ = $(this).data("type");
-        var nearest = findNearestMarker(e.latlng, typ);
-        var mkr = nearest[0];
-        //console.log("Found " + typ + " at " + mkr.title);
-        $(".islandClass").removeClass("show pigs chickens snakes")
-        mkr.circle._path.classList.add(typ, "show");
+        var type = $(this).data("type");
+        var found = findNearestMarker(e.latlng, type);
+        var mkr = found.islandData;
 
-        addComp(myLoc);
-        console.log(nearest[1]);
+        $(".islandClass").removeClass("show pigs chickens snakes");
+        mkr.circle._path.classList.add(type, "show");
+
+        var CapType = type.charAt(0).toUpperCase() + type.slice(1);
+        var words = "<span class='type'>" + CapType + "</span> can be found to the <span class='direction'>" + window.getCardinalFromDeg(found.bearing) + "</span> at <span class='title'>" + found.title + "</span>";
+
+        addComp(myLoc, found.bearing); //add compass at click point
+        showPopup(words);
         map.closePopup();
     });
 
@@ -388,9 +402,13 @@ map.on('contextmenu', function(e) {
     */
 });
 
-function addComp(latLng) {
+function addComp(latLng, degs) {
     clearComp();
-    compMark = L.marker(latLng, {icon: compass_marker, draggable: false}).addTo(map);
+    compMark = L.marker(latLng, {icon: boatMarker, draggable: false}).addTo(map);
+    console.log(compMark._icon.style);
+    var newStyle = compMark._icon.style.transform + " rotate(" + degs + "deg)";
+    console.log(newStyle);
+    compMark._icon.style.transform = newStyle;
     xMarkers.push(compMark);
 }
 
@@ -414,10 +432,15 @@ function clearXmarks() {
         map.removeLayer(mkr);
     });
     xMarkers = [];
-    
 }
 
+function showPopup(words) {
+    $('.floating_dialog').html(words).addClass("show");
+}
 
+function hidePopup() {
+    $('.floating_dialog').removeClass("show");
+}
 
 
 //Graticule
