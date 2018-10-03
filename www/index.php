@@ -99,6 +99,7 @@ include "includes/globals.php";
             </aside>
 
             <article>
+                <div class="floating_dialog">Put Something</div>
                 <div id="mapid"></div>
             </article>
 

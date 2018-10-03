@@ -1052,6 +1052,18 @@ body {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1; }
+    .home section article .floating_dialog {
+      position: absolute;
+      bottom: 10px;
+      display: block;
+      background-color: #000;
+      color: #ccc;
+      z-index: 4000;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      padding: 20px 40px;
+      border: white 2px solid; }
 
 .my-div-icon {
   width: 40px;
