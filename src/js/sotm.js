@@ -524,14 +524,33 @@ function readXstring() {
 
 
 
+function getNextIsland(direction) {
+    if (direction == "left") {
+        currentSearchIsland--;
+        if (currentSearchIsland < 0) {
+            currentSearchIsland = islands.length - 1;
+        }
+    } else {
+        currentSearchIsland++;
+        if (currentSearchIsland >= islands.length) {
+            currentSearchIsland = 0;
+        }
+    }
 
+    if (islands[currentSearchIsland].isFortress || islands[currentSearchIsland].isOutpost || islands[currentSearchIsland].isSeapost) {
+        return (getNextIsland(direction))
+    }
+    return (islands[currentSearchIsland]);
+}
 
 $(function() {
 
 
     $(".js-searchforisland").click(function() {
         
-        if ($(this).data("dir") == "left") {
+        var theIsland = getNextIsland($(this).data("dir"));
+
+        /* if ($(this).data("dir") == "left") {
             currentSearchIsland--;
             if (currentSearchIsland < 0) {
                 currentSearchIsland = islands.length - 1;
@@ -542,9 +561,12 @@ $(function() {
                 currentSearchIsland = 0;
             }
         }
-        var LatLong = islands[currentSearchIsland].loc;
-        map.setView(LatLong, 6);
-        //map.panTo(LatLong, 6);
+        var LatLong = islands[currentSearchIsland].loc; */
+
+
+        var LatLong = theIsland.loc;
+        //map.setView(LatLong, 7);
+        map.panTo(LatLong, 7);
         
     });
 

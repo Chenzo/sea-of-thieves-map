@@ -182,39 +182,39 @@ var islands = [{
     },
     {
         "loc": [-67.50237, 151.430381],
-        "title": "Three Paces East Seapost",
+        "title": "Three Paces East isSeapost",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-19.313035, 27.037615],
         "title": "The Spoils of Plenty Store",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-75.235017, 64.342312],
-        "title": "The North Star Seapost",
+        "title": "The North Star isSeapost",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-114.96965, 94.435731],
         "title": "Stephen's Spoils",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-128.328685, 48.139087],
         "title": "The Finest Trading Post",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-29.844282, 120.967678],
         "title": "The Wild Treasures Store",
         radius: 1,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-80.07029006498121, 135.55539947884748],
@@ -460,49 +460,49 @@ var islands = [{
         "title": "Brian's Bazaar",
         radius: 1,
         forsaken: true,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-87.5329, 177.748416],
         "title": "Fetcher's Rest",
         radius: 4,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-96.568248, 198.610248],
         "title": "Cursewater Shores",
         radius: 2,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-104.69495, 169.682274],
         "title": "Cinder Islet",
         radius: 2,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-107.257986, 185.614528],
         "title": "Flintlock Peninsula",
         radius: 4,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-119.318876, 201.609261],
         "title": "Ruby's Fall",
         radius: 3,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-118.568719, 165.308714],
         "title": "The Forsaken Brink",
         radius: 1.5,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-127.003365, 178.80427],
@@ -510,63 +510,63 @@ var islands = [{
         radius: 3,
         forsaken: true,
         isOutpost: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-136.81792, 198.36031],
         "title": "Brimstone Rock",
         radius: 1.5,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-137.943156, 212.605619],
         "title": "Glowstone Cay",
         radius: 1.5,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-144.69457, 179.491523],
         "title": "Flame's End",
         radius: 1.5,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-147.193195, 167.058118],
         "title": "Roaring Traders",
         radius: 1,
         forsaken: true,
-        seapost: true
+        isSeapost: true
     },
     {
         "loc": [-152.506808, 204.045938],
         "title": "Magma's Tide",
         radius: 2,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-157.382829, 187.676328],
         "title": "The Devil's Thirst",
         radius: 3,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-159.258222, 167.432994],
         "title": "Burning Sands",
         radius: 1.5,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     },
     {
         "loc": [-172.636024, 175.305402],
         "title": "Ashen Reaches",
         radius: 3,
         forsaken: true,
-        seapost: false
+        isSeapost: false
     }
     
 
