@@ -1188,7 +1188,8 @@ body {
     margin: 30px 0 10px;
     color: #267e81; }
   .documentation a {
-    color: #776e38; }
+    color: #776e38;
+    text-decoration: underline; }
   .documentation p {
     color: #393939;
     z-index: 2;
