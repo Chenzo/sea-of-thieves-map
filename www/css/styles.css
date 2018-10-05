@@ -1132,12 +1132,17 @@ body {
   border-radius: 5px;
   margin: 8px; }
 
-.subcontrols button img {
-  width: 20px;
-  opacity: 0.5; }
+.subcontrols a, .subcontrols button {
+  display: block;
+  margin: 10px auto; }
+  .subcontrols a img, .subcontrols button img {
+    width: 28px;
+    opacity: 0.5; }
+  .subcontrols a:hover img, .subcontrols button:hover img {
+    opacity: 1; }
 
-.subcontrols button:hover img {
-  opacity: 1; }
+.subcontrols a img {
+  width: 30px; }
 
 .installBut {
   padding: 8px;
@@ -1169,6 +1174,9 @@ body {
 
 .documentation {
   background-color: #cdc1a2; }
+  .documentation img.docimg {
+    border: #aa9e50 1px solid;
+    margin: 20px; }
   .documentation h1 {
     font-size: 36px;
     margin-bottom: 20px; }
@@ -1177,7 +1185,7 @@ body {
     margin-bottom: 15px; }
   .documentation h3 {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin: 30px 0 10px;
     color: #267e81; }
   .documentation a {
     color: #776e38; }
@@ -1186,7 +1194,8 @@ body {
     z-index: 2;
     font-size: 16px;
     line-height: 1.5em;
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    padding: 0 10px; }
   .documentation ul {
     list-style-type: disc;
     margin: 0 1.5em;

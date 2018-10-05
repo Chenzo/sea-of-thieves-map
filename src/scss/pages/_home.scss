@@ -162,15 +162,23 @@
 }
 
 .subcontrols {
-    button {
+    a, button {
+        display: block;
+        margin: 10px auto;
         img {
-            width: 20px;
+            width: 28px;
             opacity: 0.5;
         }
         &:hover {
             img {
                 opacity: 1;
             }
+        }
+    }
+
+    a {
+        img {
+            width: 30px;
         }
     }
 }

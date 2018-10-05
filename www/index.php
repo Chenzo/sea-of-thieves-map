@@ -90,6 +90,7 @@ include "includes/globals.php";
                 <div class="buttonGroup subcontrols">
                     <button class="js-fullscreen"><img src="images/fullscreen_icon.png" /></button>
                     <button class="js-share"><img src="images/share_link_icon.png" /></button>
+                    <a href="/about" target="_blank"><img src="images/info_icon.png" /></a>
                 </div>
 
                 <div class="installBut buttonGroup" id="installBut">

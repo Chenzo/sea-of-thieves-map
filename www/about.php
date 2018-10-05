@@ -73,21 +73,26 @@ include "includes/globals.php";
                     </ul>
 
                 <h3>Sharable Custom Location Markers</h3>
+                <img src="https://cdn.chenzorama.com/images/sot/custom_markers.gif" alt="custom markers" class="docimg"/>
                 <p>To add a marker, right click the map (mobile users `long press`) to get the context menu.
                     Select Add Marker. This will drop a X Marks the Spot marker. You can drag this to fine tune it's position.
                     This will also add a query variable to the URL. Then to share, copy/paste the URL into your social/communication app of choice. </p>
 
                 <h3>Sharable Map Location</h3> 
                 <p>As you move the map about, the URL is adjusted to reflect your current zoom level and location. Copy/paste the the URL into your social/communication app of choice to share with your friends</p>
+                <p>Tip hit the share link button to auto copy the current link</p>
+                <img src="/images/docs/point_at_share.jpg" alt="point at share example" class="docimg"/>
                 <p>Right click and clear markers to remove</p>
 
                 <h3>Find Closest Animals</h3>
+                <img src="https://cdn.chenzorama.com/images/sot/closest_example.gif" alt="closest animal" class="docimg"/>
                 <p>To find an island with a specific animal, right click the map (mobile users `long press`) to bring up the context menu. Select 'Closest Animal'.
                 This will highlight the closest island with your selected animal and also drop a boat icon indicating the direction. (Also, a dialog will pop up with a text heading.)</p>
 
                 <p>click the highlighted island or right click and clear markers to remove</p>
 
-				<h3>Island Finder</h3>
+                <h3>Island Finder</h3>
+                <img src="https://cdn.chenzorama.com/images/sot/island_finder.gif" alt="custom markers" class="docimg"/>
 				<p>Click the arrow buttons on the sidebar to quickly jump through zoomed in views on islands to find which one has the treasure you're looking for</p>
 
 				<h3>Markers</h3>

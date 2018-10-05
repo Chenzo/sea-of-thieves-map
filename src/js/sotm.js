@@ -557,6 +557,15 @@ $(function() {
         window.toggleFullScreen();
     });
 
+    $(".js-share").click(function() {
+        var fullURL = window.location.hreh;
+        navigator.clipboard.writeText(fullURL).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
+    });
+
     readXstring();
     
 });
