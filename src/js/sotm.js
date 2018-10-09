@@ -48,12 +48,17 @@ var map = L.map("mapid", {
     minZoom: 2,
     crs: L.CRS.Simple,
     attributionControl: false,
-    preferCanvas: false
+    preferCanvas: false,
+    maxBoundsViscosity: 1
 }).setView([70, 70], 4);
 
-var bounds = new L.LatLngBounds(map.unproject([0, 25522], 7), map.unproject([27444, 0], 7));
-map.setMaxBounds(bounds, {padding: [200,200]});
-//map.fitBounds(bounds);
+var height = 25522;
+var width = 27444;
+var mapPadding = 1000;
+var bounds = new L.LatLngBounds(map.unproject([0, height], 7), map.unproject([width, 0], 7));
+map.setMaxBounds(bounds, {padding: [600,600]});
+
+//map.fitBounds(bounds, {padding: [600,600]})
 var hash = new L.Hash(map);
 
 var layer = L.tileLayer(cdnpath + "images/tiles_v2/{z}/{x}/{y}.png", {
@@ -550,24 +555,10 @@ $(function() {
         
         var theIsland = getNextIsland($(this).data("dir"));
 
-        /* if ($(this).data("dir") == "left") {
-            currentSearchIsland--;
-            if (currentSearchIsland < 0) {
-                currentSearchIsland = islands.length - 1;
-            }
-        } else {
-            currentSearchIsland++;
-            if (currentSearchIsland >= islands.length) {
-                currentSearchIsland = 0;
-            }
-        }
-        var LatLong = islands[currentSearchIsland].loc; */
-
-
         var LatLong = theIsland.loc;
-        //map.setView(LatLong, 7);
-        map.panTo(LatLong, 7);
-        
+        map.setView(LatLong, 7);
+        //map.panTo(LatLong, 7);
+        adjustAlphaNum();
     });
 
 
