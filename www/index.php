@@ -9,6 +9,7 @@ include "includes/globals.php";
         <meta name="robots" content="INDEX,FOLLOW,NOODP" />
         <link rel="canonical" href="https://seaofthievesmap.chenzorama.com" />
         <meta name="description" content="<?= $descr; ?>" />
+        <meta name="keywords" content="<?= $keywords; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="manifest.json">
@@ -101,6 +102,7 @@ include "includes/globals.php";
                 <div class="icons">
                     <a href="https://github.com/Chenzo/sea-of-thieves-map" target="_blank"><img src="images/github-round.png" /></a>
                     <a href="https://twitter.com/1Chenzo" target="_blank"><img src="images/twitter-round.png" /></a>
+                    <p>V1.11</p>
                 </div>
             </aside>
 

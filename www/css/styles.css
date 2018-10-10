@@ -26,6 +26,121 @@ aside.primary {
 sizes: xs,sm,md,lg
 
 */
+@font-face {
+  font-family: "toll-icons";
+  src: url("/fonts/toll-icons.eot");
+  src: url("/fonts/toll-icons.eot?#iefix") format("eot"), url("/fonts/toll-icons.woff2") format("woff2"), url("/fonts/toll-icons.woff") format("woff"), url("/fonts/toll-icons.ttf") format("truetype"), url("/fonts/toll-icons.svg#toll-icons") format("svg"); }
+
+.icon:before {
+  font-family: "toll-icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+  text-decoration: none;
+  text-transform: none; }
+
+.icon-arrow1_down:before {
+  content: "\E001"; }
+
+.icon-arrow1_left:before {
+  content: "\E002"; }
+
+.icon-arrow1_right:before {
+  content: "\E003"; }
+
+.icon-arrow1_up:before {
+  content: "\E004"; }
+
+.icon-arrow2_down:before {
+  content: "\E005"; }
+
+.icon-arrow2_left:before {
+  content: "\E006"; }
+
+.icon-arrow2_right:before {
+  content: "\E007"; }
+
+.icon-arrow2_up:before {
+  content: "\E008"; }
+
+.icon-arrow3_down:before {
+  content: "\E009"; }
+
+.icon-arrow3_left:before {
+  content: "\E00A"; }
+
+.icon-arrow3_right:before {
+  content: "\E00B"; }
+
+.icon-arrow3_up:before {
+  content: "\E00C"; }
+
+.icon-arrow4_down:before {
+  content: "\E00D"; }
+
+.icon-arrow4_left:before {
+  content: "\E00E"; }
+
+.icon-arrow4_right:before {
+  content: "\E00F"; }
+
+.icon-arrow4_up:before {
+  content: "\E010"; }
+
+.icon-arrow5_down:before {
+  content: "\E011"; }
+
+.icon-arrow5_left:before {
+  content: "\E012"; }
+
+.icon-arrow5_right:before {
+  content: "\E013"; }
+
+.icon-arrow5_up:before {
+  content: "\E014"; }
+
+.icon-close1:before {
+  content: "\E015"; }
+
+.icon-close2:before {
+  content: "\E016"; }
+
+.icon-facebook:before {
+  content: "\E017"; }
+
+.icon-instagram:before {
+  content: "\E018"; }
+
+.icon-magnify:before {
+  content: "\E019"; }
+
+.icon-map1:before {
+  content: "\E01A"; }
+
+.icon-map2:before {
+  content: "\E01B"; }
+
+.icon-map_pin:before {
+  content: "\E01C"; }
+
+.icon-mouse:before {
+  content: "\E01D"; }
+
+.icon-pinterest:before {
+  content: "\E01E"; }
+
+.icon-play_arrow1:before {
+  content: "\E01F"; }
+
+.icon-play_arrow2:before {
+  content: "\E020"; }
+
+.icon-twitter:before {
+  content: "\E021"; }
+
 .islandClass {
   fill-opacity: 0;
   stroke-opacity: 0;
@@ -53,8 +168,9 @@ sizes: xs,sm,md,lg
   .islandClass.show {
     fill-opacity: 0.2;
     stroke-opacity: 0.7; }
-  .islandClass.outpost {
-    fill: #ff0000; }
+  .islandClass.outpost, .islandClass.seapost {
+    fill: #aa9e50;
+    stroke: #aa9e50; }
   .islandClass.pigs {
     stroke: #ff4d95;
     fill: #ff4d95; }
@@ -1048,6 +1164,11 @@ body {
           opacity: 0.5; }
         .home section aside .icons a:hover img {
           opacity: 1; }
+      .home section aside .icons p {
+        font-size: 9px;
+        color: #888;
+        text-align: center;
+        font-weight: 700; }
   .home section article {
     -webkit-box-flex: 1;
         -ms-flex: 1;

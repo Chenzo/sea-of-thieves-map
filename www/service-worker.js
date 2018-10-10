@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'sotm-v1';
+var dataCacheName = 'sotm-v1.1';
 var cacheName = 'sotm';
 var filesToCache = [
   '/',

@@ -98,7 +98,7 @@ var islands = [{
         "loc": [-48.25860180284481, 43.931357643687285],
         "title": "Sanctuary Outpost",
         radius: 3,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-56.135264556210544, 57.616119333511065],
@@ -146,7 +146,7 @@ var islands = [{
         "loc": [-54.197162299085946, 105.7433527036019],
         "title": "Dagger Tooth Outpost",
         radius: 4,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-52.32176952270034, 125.36404020139321],
@@ -159,7 +159,7 @@ var islands = [{
         "loc": [-55.76110247916651, 145.1163475274157],
         "title": "Galleon's Grave Outpost",
         radius: 3,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-62.65918, 114.48791],
@@ -265,7 +265,7 @@ var islands = [{
         "loc": [-75.94243588991247, 31.746234927654953],
         "title": "Golden Sand Outpost",
         radius: 3,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-81.88115349670785, 16.993169376947787],
@@ -362,7 +362,7 @@ var islands = [{
         "loc": [-126.31805123958326, 134.36426028544201],
         "title": "Ancient Spire Outpost",
         radius: 2,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-124.56687291042644, 34.36631770202399],
@@ -406,7 +406,7 @@ var islands = [{
         "loc": [-134.88188667929433, 82.4887459312965],
         "title": "Plunder Outpost",
         radius: 2,
-        isOutpost: true
+        outpost: true
     },
     {
         "loc": [-126.75507990792053, 95.36808708028451],
@@ -509,7 +509,7 @@ var islands = [{
         "title": "Marrow's Peak Outpost",
         radius: 3,
         forsaken: true,
-        isOutpost: true,
+        outpost: true,
         isSeapost: false
     },
     {

@@ -18,8 +18,9 @@
     }
 
 
-    &.outpost {
-        fill: #ff0000;
+    &.outpost, &.seapost {
+        fill: $outpost;
+        stroke: $outpost;
     }
 
     &.pigs {

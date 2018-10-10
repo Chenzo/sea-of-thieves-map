@@ -2,7 +2,7 @@ import * as pwa from './modules/pwa.js';
 import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as tools from './modules/tools.js';
-import { decode } from 'punycode';
+//import { decode } from 'punycode';
 
 
 var layerArray = [];
@@ -369,7 +369,13 @@ map.on('contextmenu', function(e) {
     var myLoc = e.latlng;
     popup
         .setLatLng(e.latlng)
-        .setContent("<ul><li class='js-addMarker'>Add Marker</li><li class='js-clearMarkers'>Clear Markers</li><li class='js-closest' data-type='chickens'>Closest Chickens</li><li class='js-closest' data-type='pigs'>Closest Pigs</li><li class='js-closest' data-type='snakes'>Closest Snakes</li></ul>")
+        .setContent("<ul><li class='js-addMarker'>Add Marker</li>\
+        <li class='js-clearMarkers'>Clear Markers</li>\
+        <li class='js-closest' data-type='chickens'>Closest Chickens</li>\
+        <li class='js-closest' data-type='pigs'>Closest Pigs</li>\
+        <li class='js-closest' data-type='snakes'>Closest Snakes</li>\
+        <li class='js-closest' data-type='outpost'>Closest Outpost</li>\
+        </ul>")
         .openOn(map);
 
     $(".js-addMarker").click(function() {
@@ -391,7 +397,7 @@ map.on('contextmenu', function(e) {
         var found = findNearestMarker(e.latlng, type);
         var mkr = found.islandData;
 
-        $(".islandClass").removeClass("show pigs chickens snakes");
+        $(".islandClass").removeClass("show pigs chickens snakes outposts");
         mkr.circle._path.classList.add(type, "show");
 
         var CapType = type.charAt(0).toUpperCase() + type.slice(1);
@@ -542,7 +548,7 @@ function getNextIsland(direction) {
         }
     }
 
-    if (islands[currentSearchIsland].isFortress || islands[currentSearchIsland].isOutpost || islands[currentSearchIsland].isSeapost) {
+    if (islands[currentSearchIsland].isFortress || islands[currentSearchIsland].outpost || islands[currentSearchIsland].isSeapost) {
         return (getNextIsland(direction))
     }
     return (islands[currentSearchIsland]);
