@@ -51,6 +51,9 @@ include "includes/globals.php";
         <section class="sotm_wrapper">
 
             <aside class="sidebar">
+
+                <button class="left-panel-toggle js-toggle-panel icon icon-arrow-left"></button>
+
                 <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
 
 
@@ -102,7 +105,7 @@ include "includes/globals.php";
                 <div class="icons">
                     <a href="https://github.com/Chenzo/sea-of-thieves-map" target="_blank"><img src="images/github-round.png" /></a>
                     <a href="https://twitter.com/1Chenzo" target="_blank"><img src="images/twitter-round.png" /></a>
-                    <p>V1.11</p>
+                    <p><?= $version; ?></p>
                 </div>
             </aside>
 

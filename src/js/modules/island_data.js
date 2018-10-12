@@ -162,9 +162,9 @@ var islands = [{
         outpost: true
     },
     {
-        "loc": [-62.65918, 114.48791],
+        "loc": [-64.51072835956577, 117.43038960965997],
         "title": "Isle of Last Words",
-        radius: 2,
+        radius: 1,
         pigs: true,
         snakes: true
     },

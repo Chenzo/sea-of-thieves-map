@@ -19,6 +19,25 @@
             text-align: center;
             position: relative;
 
+            .maps-panel-trig {
+                display: block;
+                position: absolute;
+                top: 70px;
+                right: -28px;
+                height: 40px;
+                width: 30px;
+                line-height: 40px;
+                color: #000;
+                font-size: 12px;
+                text-align: center;
+                background-color: $white_1;
+                overflow: hidden;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+                z-index: 1;
+        
+        
+            }
+
             .sotm_logo {
                 width: 70%;
             }
