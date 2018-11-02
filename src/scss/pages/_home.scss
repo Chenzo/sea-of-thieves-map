@@ -158,6 +158,9 @@
             &[for="thrones"] {
                 background-image: url(/images/toggle_thrones.png);
             }
+            &[for="beacons"] {
+                background-image: url(/images/toggle_beacons.png);
+            }
         }
 
         input:checked + label {

@@ -1253,6 +1253,8 @@ body {
         background-image: url(/images/toggle_pigs.png); }
       .buttonGroup fieldset.toggle label[for="thrones"] {
         background-image: url(/images/toggle_thrones.png); }
+      .buttonGroup fieldset.toggle label[for="beacons"] {
+        background-image: url(/images/toggle_beacons.png); }
     .buttonGroup fieldset.toggle input:checked + label {
       -webkit-filter: grayscale(0%);
       /* Safari 6.0 - 9.0 */

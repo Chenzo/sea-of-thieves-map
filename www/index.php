@@ -64,11 +64,17 @@ include "includes/globals.php";
                 </div>
 
                 <div class="buttonGroup">
+                    <fieldset class="toggle beacons">
+                        <input type="checkbox" id="beacons" class="js-toggleMarkers" name="beacons"
+                value="beacons" />
+                        <label for="beacons" title="Show Beacons"></label>
+                    </fieldset>
                     <fieldset class="toggle thrones">
                         <input type="checkbox" id="thrones" class="js-toggleMarkers" name="thrones"
                 value="thrones" />
                         <label for="thrones" title="Show Thrones"></label>
                     </fieldset>
+                    
                     <!-- <fieldset>
                         <input type="checkbox" id="outposts" class="js-toggleMarkers" name="outposts"
                 value="outposts" />

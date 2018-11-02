@@ -1,6 +1,7 @@
 import * as pwa from './modules/pwa.js';
 import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
+import * as beacon_data from './modules/beacon_data.js';
 import * as tools from './modules/tools.js';
 //import { decode } from 'punycode';
 
@@ -8,6 +9,7 @@ import * as tools from './modules/tools.js';
 var layerArray = [];
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
+var beacons = beacon_data.beacons;
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
@@ -40,7 +42,7 @@ if (location.hostname != "localhost") {
             tile.style.height = tileSize.y + 1 + 'px';
         }
     });
-})()
+})();
 
 
 var map = L.map("mapid", {
@@ -54,7 +56,6 @@ var map = L.map("mapid", {
 
 var height = 25522;
 var width = 27444;
-var mapPadding = 1000;
 var bounds = new L.LatLngBounds(map.unproject([0, height], 7), map.unproject([width, 0], 7));
 map.setMaxBounds(bounds, {padding: [600,600]});
 
@@ -283,7 +284,32 @@ for(var i in islands) {
     }
 }
 
+//add beacons
+var beaconsLayer = new L.LayerGroup();
+layerArray.push(['beacons', beaconsLayer]);
 
+var beacon_icon = L.icon({
+    iconUrl: '/images/markers/beacon_marker.png',
+    shadowUrl: '/images/markers/beacon_marker.png',
+
+    iconSize:     [31, 40], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+});
+
+for(var t in beacons) {
+    var loc = beacons[t].loc;
+    var marker = L.marker(loc, {
+        /* draggable: true,   */   
+        icon: beacon_icon,
+        title: 'Beacon'  
+        /* opacity: 0.5 */
+    } 
+    ).addTo(beaconsLayer)
+    //.bindPopup(beacons[t].desc);
+}
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
@@ -315,6 +341,7 @@ for(var t in thrones) {
 
 var toggleMarkers = function(theType, onoff) {
     var theLayer = getLayer(theType);
+    console.log(theType);
     if (onoff) {
         map.addLayer(theLayer);
     } else {
