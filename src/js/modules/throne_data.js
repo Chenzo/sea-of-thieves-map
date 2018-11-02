@@ -2,43 +2,49 @@
 
 var thrones = [
     {
-        "loc": [-12.625, 28.4375], 
-        "title": "D2",
+        "loc": [-16.1005, 35.278949], 
+        "title": "D3",
         "isLarge": true,
         "desc": "Large (3rd out of the 4 offshore rocks counting from the east, at the back of the island, D2"
     },
     {
-        "loc" : [-20.726562, 132.023438], 
+        "loc" : [-22.745271, 135.124285], 
         "title" : "Marauder's Arch",
         "isLarge": true,
         "desc" : "South top"
     },
     {
-        "loc" : [-52.882812, 69.21875], 
+        "loc" : [-54.988041, 71.873989], 
         "title" : "Hidden Spring Keep",
         "isLarge": false,
         "desc" : " Very top, use the South West cannon"
     },
     {
-        "loc" : [-140.34375, 125.289063], 
+        "loc" : [-142.478323, 128.428828], 
         "title" : "Devil's Ridge",
         "isLarge": false,
         "desc" : " North side underneath the ridge"
     },
     {
-        "loc" : [-61, 84.875], 
-        "title" : "N10",
+        "loc" : [-64.763573, 86.934257], 
+        "title" : "K9",
         "isLarge": false,
         "desc" : "Underwater, uncharted island"
     },
     {
-        "loc" : [-71.132812, 100.97656], 
+        "loc" : [-73.23633, 103.936164], 
         "title" : "Shipwreck Bay",
         "isLarge": true,
         "desc" : "Northern small island"
     },
     {
-        "loc" : [-95.96875, 14.945313], 
+        "loc" : [-70.532986, 51.038615], 
+        "title" : "Cannon Cove",
+        "isLarge": true,
+        "desc" : "Northern small island"
+    },
+    {
+        "loc" : [-98.065754, 17.249381], 
         "title" : "Mermaid's Hideaway",
         "isLarge": false,
         "desc" : "Across from the Southern peak"
@@ -50,13 +56,13 @@ var thrones = [
         "desc" : "South top"
     },
     {
-        "loc" : [-145.875, 98.648438], 
+        "loc" : [-148.01744, 101.459982], 
         "title" : "Thieves Haven",
         "isLarge": false,
         "desc" : "East rock in the water"
     },
     {
-        "loc" : [-133.460937, 80.585938], 
+        "loc" : [-135.604944, 83.10854], 
         "title" : "Plunder Outpost",
         "isLarge": true,
         "desc" : "South top"
