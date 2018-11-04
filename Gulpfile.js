@@ -52,7 +52,7 @@ var browserSync = require('browser-sync').create();
 var iconfontCSS = require('gulp-iconfont-CSS'),
     iconfont = require('gulp-iconfont'),
     imagemin= require('gulp-imagemin');
-var fontName = 'toll-icons';
+var fontName = 'sot-icons';
 
 
 

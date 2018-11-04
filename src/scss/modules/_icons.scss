@@ -1,15 +1,15 @@
 @font-face {
-	font-family: "toll-icons";
-	src: url('/fonts/toll-icons.eot');
-	src: url('/fonts/toll-icons.eot?#iefix') format('eot'),
-		url('/fonts/toll-icons.woff2') format('woff2'),
-		url('/fonts/toll-icons.woff') format('woff'),
-		url('/fonts/toll-icons.ttf') format('truetype'),
-		url('/fonts/toll-icons.svg#toll-icons') format('svg');
+	font-family: "sot-icons";
+	src: url('/fonts/sot-icons.eot');
+	src: url('/fonts/sot-icons.eot?#iefix') format('eot'),
+		url('/fonts/sot-icons.woff2') format('woff2'),
+		url('/fonts/sot-icons.woff') format('woff'),
+		url('/fonts/sot-icons.ttf') format('truetype'),
+		url('/fonts/sot-icons.svg#sot-icons') format('svg');
 }
 
 .icon:before {
-	font-family: "toll-icons";
+	font-family: "sot-icons";
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	font-style: normal;
