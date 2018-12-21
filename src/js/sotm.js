@@ -139,14 +139,8 @@ var pigsLayer = new L.LayerGroup();
 //map.addLayer(pigsLayer);
 layerArray.push(['pigs', pigsLayer]);
 
-var controlSearch = new L.Control.Search({
-    position:'topright',		
-    layer: markersLayer,
-    initial: false,
-    zoom: 4,
-    marker: false
-});
-map.addControl( controlSearch );
+
+
 
 /* customCircleMarker = L.CircleMarker.extend({
     options: { 
@@ -335,13 +329,14 @@ for(var t in cargoruns) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: cargorun_icon,
-        title: 'Cargo Run'  
+        title: 'Cargo Run',
+        name: cargoruns[t].title
         /* opacity: 0.5 */
     } 
     ).addTo(cargorunsLayer)
-    //.bindPopup(beacons[t].desc);
+    .bindPopup(cargoruns[t].title);
 }
-
+map.addLayer(cargorunsLayer);
 
 
 //add thrones
@@ -370,6 +365,28 @@ for(var t in thrones) {
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
 }
+
+
+
+
+
+var searchLayers = L.layerGroup([
+    cargorunsLayer,
+    markersLayer
+    
+]);
+
+var controlSearch = new L.Control.Search({
+    position:'topright',		
+    layer: searchLayers,
+    propertyName: 'name',
+    initial: false,
+    zoom: 4,
+    marker: false
+});
+map.addControl( controlSearch );
+
+
 
 
 var toggleMarkers = function(theType, onoff) {

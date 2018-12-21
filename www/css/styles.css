@@ -1099,6 +1099,14 @@ th {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 
+.leaflet-control-search .search-tooltip {
+  right: 0;
+  left: auto;
+  max-height: 145px; }
+
+.leaflet-control-search .search-tip {
+  padding: 8px; }
+
 body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
