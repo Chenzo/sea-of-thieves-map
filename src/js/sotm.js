@@ -2,6 +2,7 @@ import * as pwa from './modules/pwa.js';
 import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as beacon_data from './modules/beacon_data.js';
+import * as cargorun_data from './modules/crates_data.js';
 import * as tools from './modules/tools.js';
 //import { decode } from 'punycode';
 
@@ -10,6 +11,7 @@ var layerArray = [];
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
+var cargoruns = cargorun_data.cargoruns;
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
@@ -310,6 +312,37 @@ for(var t in beacons) {
     ).addTo(beaconsLayer)
     //.bindPopup(beacons[t].desc);
 }
+
+
+//add cargorun
+var cargorunsLayer = new L.LayerGroup();
+layerArray.push(['cargoruns', cargorunsLayer]);
+
+var cargorun_icon = L.icon({
+    iconUrl: '/images/markers/crate_marker.png',
+    shadowUrl: '/images/markers/crate_marker.png',
+
+    iconSize:     [31, 40], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+});
+
+
+for(var t in cargoruns) {
+    var loc = cargoruns[t].loc;
+    var marker = L.marker(loc, {
+        /* draggable: true,   */   
+        icon: cargorun_icon,
+        title: 'Cargo Run'  
+        /* opacity: 0.5 */
+    } 
+    ).addTo(cargorunsLayer)
+    //.bindPopup(beacons[t].desc);
+}
+
+
 
 //add thrones
 var thronesLayer = new L.LayerGroup();

@@ -161,6 +161,9 @@
             &[for="beacons"] {
                 background-image: url(/images/toggle_beacons.png);
             }
+            &[for="cargoruns"] {
+                background-image: url(/images/toggle_crates.png);
+            }
         }
 
         input:checked + label {

@@ -74,6 +74,11 @@ include "includes/globals.php";
                 value="thrones" />
                         <label for="thrones" title="Show Thrones"></label>
                     </fieldset>
+                    <fieldset class="toggle cargoruns">
+                        <input type="checkbox" id="cargoruns" class="js-toggleMarkers" name="cargoruns"
+                value="cargoruns" />
+                        <label for="cargoruns" title="Show Cargo Run"></label>
+                    </fieldset>
                     
                     <!-- <fieldset>
                         <input type="checkbox" id="outposts" class="js-toggleMarkers" name="outposts"
