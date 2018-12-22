@@ -1102,10 +1102,23 @@ th {
 .leaflet-control-search .search-tooltip {
   right: 0;
   left: auto;
-  max-height: 145px; }
+  max-height: 145px;
+  overflow: visible; }
 
 .leaflet-control-search .search-tip {
   padding: 8px; }
+  .leaflet-control-search .search-tip.cargo {
+    position: relative; }
+    .leaflet-control-search .search-tip.cargo:before {
+      position: absolute;
+      content: '';
+      width: 26px;
+      height: 26px;
+      background-image: url(/images/toggle_crates.png);
+      background-size: cover;
+      display: block;
+      left: -19px;
+      top: 5px; }
 
 body {
   text-rendering: optimizeLegibility;

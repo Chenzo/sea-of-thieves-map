@@ -4,10 +4,28 @@
         right: 0;
         left: auto;
         max-height: 145px;
+        overflow: visible;
     }
 
     .search-tip {
         padding: 8px;
+
+        &.cargo {
+            //background: #ff0;
+            position: relative;
+            
+            &:before {
+                position: absolute;
+                content: '';
+                width: 26px;
+                height: 26px;
+                background-image: url(/images/toggle_crates.png);
+                background-size: cover;
+                display: block;
+                left: -19px;
+                top: 5px;
+            }
+        }
     }
 }
 

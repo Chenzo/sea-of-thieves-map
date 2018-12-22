@@ -9,9 +9,15 @@ import * as tools from './modules/tools.js';
 
 var layerArray = [];
 var islands = island_data.islands;
+islands.forEach(function(im) {
+    im['searchData'] = "island|" + im.title;
+});
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
 var cargoruns = cargorun_data.cargoruns;
+cargoruns.forEach(function(im) {
+    im['searchData'] = "cargorun|" + im.title;
+});
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
@@ -325,7 +331,7 @@ var cargorun_icon = L.icon({
     shadowSize:   [0, 0], // size of the shadow
     iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
     shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+    popupAnchor:  [0, -45] // point from which the popup should open relative to the iconAnchor
 });
 
 var cargo_run_markers = [];
@@ -343,7 +349,7 @@ for(var t in cargoruns) {
 
     cargo_run_markers[t] = marker;
 }
-map.addLayer(cargorunsLayer);
+//map.addLayer(cargorunsLayer);
 
 
 
@@ -396,45 +402,60 @@ function localData(text, callResponse)
     };
 }
 
+function customTip(text,val) {
+    var className = getMarkerData(val);
+    //console.log("check type: " + className);
+    return '<a href="#" class="' + className + '">'+text+'</a>';
+}
+
 var controlSearch = new L.Control.Search({
     position:'topright',		
-  //layer: searchLayers,
-    sourceData: localData,
-    propertyName: 'title',
+    layer: searchLayers,
+    //sourceData: localData,
+    propertyName: 'name', //title
     initial: false,
     zoom: 6,
-    marker: {
+    /* marker: {
         icon: cargorun_icon,
         animate: false,
         circle: false
-    },
-    
-    hideMarkerOnCollapse: true
+    }, */
+    marker: false,
+    buildTip: customTip
 });
 map.addControl( controlSearch );
 
+
+var SearchedMarker;
 controlSearch.on('search:locationfound', function(event) {
-
-    island_markers.forEach(function(im) {
-        if (JSON.stringify(im.getLatLng()) == JSON.stringify(event.latlng)) {
-            console.log("Island Found");
-        }
-        //console.log(JSON.stringify(im.getLatLng()) + " | " + JSON.stringify(event.latlng));
-    });
-
-    cargo_run_markers.forEach(function(cr) {
-        if (JSON.stringify(cr.getLatLng()) == JSON.stringify(event.latlng)) {
-            console.log("Cargo Run Destination Found");
-        }
-        //console.log(JSON.stringify(cr.getLatLng()) + " | " + JSON.stringify(event.latlng));
-    });
-
+    //console.log(event);
+    SearchedMarker =  event.layer;
+    SearchedMarker.setOpacity(1);
+    SearchedMarker.openPopup();
 });
 
 controlSearch.on('search:collapsed', function(event) {
-    //event.layer.openPopup();
-    console.log("closed... hide thing?");
+    SearchedMarker.setOpacity(0);
+    SearchedMarker.closePopup();
 });
+
+
+
+function getMarkerData(loc) {
+    var mData = "island";
+
+    cargo_run_markers.forEach(function(cr) {
+         if (cr.getLatLng().lat == loc.lat && cr.getLatLng().lng == loc.lng) {
+            console.log("Cargo Run Destination Found");
+            mData = "cargo"; 
+        }
+        
+    }); 
+
+    return mData;
+
+}
+
 
 
 var toggleMarkers = function(theType, onoff) {
