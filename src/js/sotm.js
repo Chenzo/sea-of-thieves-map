@@ -128,15 +128,15 @@ var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
 var chickensLayer = new L.LayerGroup();
-//map.addLayer(chickensLayer);
+map.addLayer(chickensLayer);
 layerArray.push(['chickens', chickensLayer]);
 
 var snakesLayer = new L.LayerGroup();
-//map.addLayer(snakesLayer);
+map.addLayer(snakesLayer);
 layerArray.push(['snakes', snakesLayer]);
 
 var pigsLayer = new L.LayerGroup();
-//map.addLayer(pigsLayer);
+map.addLayer(pigsLayer);
 layerArray.push(['pigs', pigsLayer]);
 
 
@@ -193,7 +193,7 @@ L.islandCircle = L.Circle.extend({
     }
  })
 
-
+var island_markers = [];
 for(var i in islands) {
     var islandName = islands[i].title;
     var cRad = islands[i].radius;
@@ -214,6 +214,7 @@ for(var i in islands) {
     })
 
     markersLayer.addLayer(circle);
+    island_markers[i] = circle;
     islands[i].circle = circle;
 
     circle.on({
@@ -246,7 +247,8 @@ for(var i in islands) {
 
         var marker = L.marker(chickenLoc, { 
             icon: chicken_marker,
-            title: 'chicken'  
+            title: 'chicken',
+            opacity: 0
         } 
         ).addTo(chickensLayer);
         marker.setIcon(chicken_marker);
@@ -259,7 +261,8 @@ for(var i in islands) {
 
         var marker = L.marker(snakeLoc, { 
             icon: snake_marker,
-            title: 'snake'  
+            title: 'snake' ,
+            opacity: 0 
         } 
         ).addTo(snakesLayer);
 
@@ -272,7 +275,8 @@ for(var i in islands) {
 
         var marker = L.marker(pigLoc, { 
             icon: pig_marker,
-            title: 'pigs'  
+            title: 'pigs'  ,
+            opacity: 0
         } 
         ).addTo(pigsLayer);
 
@@ -283,6 +287,7 @@ for(var i in islands) {
 //add beacons
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
+map.addLayer(beaconsLayer);
 
 var beacon_icon = L.icon({
     iconUrl: '/images/markers/beacon_marker.png',
@@ -300,8 +305,8 @@ for(var t in beacons) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: beacon_icon,
-        title: 'Beacon'  
-        /* opacity: 0.5 */
+        title: 'Beacon',
+        opacity: 0
     } 
     ).addTo(beaconsLayer)
     //.bindPopup(beacons[t].desc);
@@ -323,25 +328,29 @@ var cargorun_icon = L.icon({
     popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
 });
 
-
+var cargo_run_markers = [];
 for(var t in cargoruns) {
     var loc = cargoruns[t].loc;
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: cargorun_icon,
         title: 'Cargo Run',
-        name: cargoruns[t].title
-        /* opacity: 0.5 */
+        name: cargoruns[t].title,
+        opacity: 0
     } 
     ).addTo(cargorunsLayer)
     .bindPopup(cargoruns[t].title);
+
+    cargo_run_markers[t] = marker;
 }
 map.addLayer(cargorunsLayer);
+
 
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
+map.addLayer(thronesLayer);
 
 var throne_icon = L.icon({
     iconUrl: '/images/markers/throne_marker.png',
@@ -359,8 +368,8 @@ for(var t in thrones) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: throne_icon,
-        title: 'Skelton Throne'  
-        /* opacity: 0.5 */
+        title: 'Skelton Throne',
+        opacity: 0
     } 
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
@@ -372,32 +381,75 @@ for(var t in thrones) {
 
 var searchLayers = L.layerGroup([
     cargorunsLayer,
-    markersLayer
-    
+    markersLayer 
 ]);
+
+
+function localData(text, callResponse)
+{
+    //here can use custom criteria or merge data from multiple layers
+    callResponse(islands.concat(cargoruns));
+    return {	//called to stop previous requests on map move
+        abort: function() {
+            console.log('aborted request:'+ text);
+        }
+    };
+}
 
 var controlSearch = new L.Control.Search({
     position:'topright',		
-    layer: searchLayers,
-    propertyName: 'name',
+  //layer: searchLayers,
+    sourceData: localData,
+    propertyName: 'title',
     initial: false,
-    zoom: 4,
-    marker: false
+    zoom: 6,
+    marker: {
+        icon: cargorun_icon,
+        animate: false,
+        circle: false
+    },
+    
+    hideMarkerOnCollapse: true
 });
 map.addControl( controlSearch );
 
+controlSearch.on('search:locationfound', function(event) {
 
+    island_markers.forEach(function(im) {
+        if (JSON.stringify(im.getLatLng()) == JSON.stringify(event.latlng)) {
+            console.log("Island Found");
+        }
+        //console.log(JSON.stringify(im.getLatLng()) + " | " + JSON.stringify(event.latlng));
+    });
+
+    cargo_run_markers.forEach(function(cr) {
+        if (JSON.stringify(cr.getLatLng()) == JSON.stringify(event.latlng)) {
+            console.log("Cargo Run Destination Found");
+        }
+        //console.log(JSON.stringify(cr.getLatLng()) + " | " + JSON.stringify(event.latlng));
+    });
+
+});
+
+controlSearch.on('search:collapsed', function(event) {
+    //event.layer.openPopup();
+    console.log("closed... hide thing?");
+});
 
 
 var toggleMarkers = function(theType, onoff) {
     var theLayer = getLayer(theType);
-    console.log(theType);
-    if (onoff) {
-        map.addLayer(theLayer);
-    } else {
-        map.removeLayer(theLayer);
-    }
-    
+    //console.log(theType);
+
+    theLayer.eachLayer(function (layer) {
+        console.log(layer);
+        if (onoff) {
+            layer.setOpacity(1);
+        } else {
+            layer.setOpacity(0);
+        }
+    });
+
 }
 
 var getLayer = function(layerName) {
