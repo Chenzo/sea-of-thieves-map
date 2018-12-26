@@ -428,15 +428,19 @@ map.addControl( controlSearch );
 
 var SearchedMarker;
 controlSearch.on('search:locationfound', function(event) {
-    //console.log(event);
+    console.log(event);
     SearchedMarker =  event.layer;
-    SearchedMarker.setOpacity(1);
-    SearchedMarker.openPopup();
+    if (typeof SearchedMarker.setOpacity !== "undefined") {
+        SearchedMarker.setOpacity(1);
+        SearchedMarker.openPopup();
+    }
 });
 
 controlSearch.on('search:collapsed', function(event) {
-    SearchedMarker.setOpacity(0);
-    SearchedMarker.closePopup();
+    if (typeof SearchedMarker.setOpacity !== "undefined") {
+        SearchedMarker.setOpacity(0);
+        SearchedMarker.closePopup();
+    }
 });
 
 

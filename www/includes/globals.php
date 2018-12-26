@@ -5,6 +5,6 @@ $title = "Unofficial Interactive Sea Of Thieves Map";
 $keywords = "Sea of Thieves, Map, Interactive Map, Islands, Chickens, Snakes, Pigs, Outposts, Pirates";
 $version = "v1.12";
 
-define('CACHE_BUSTER', '1545517709426');            // Automatically updates
+define('CACHE_BUSTER', '1545520036634');            // Automatically updates
 
 ?>
