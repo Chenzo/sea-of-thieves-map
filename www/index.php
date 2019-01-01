@@ -133,8 +133,8 @@ include "includes/globals.php";
 
         <script src="js/vendor/leaflet.js"></script>
         <script src="js/vendor/leaflet-search.min.js"></script>
-        <script src="js/vendor/L.SimpleGraticule-sot.js?v=<?= CACHE_BUSTER ?>"></script>
-        <script src="js/vendor/leaflet-hash.js?v=<?= CACHE_BUSTER ?>""></script>
+        <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
+        <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
         <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>""></script>
 

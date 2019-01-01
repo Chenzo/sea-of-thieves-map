@@ -3,11 +3,8 @@ import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
-//import * as mapFileList from './modules/mapfile_list.js';
 import * as tools from './modules/tools.js';
-//import { decode } from 'punycode';
 
-console.log("here");
 
 var layerArray = [];
 var islands = island_data.islands;
@@ -316,7 +313,7 @@ for(var t in beacons) {
         title: 'Beacon',
         opacity: 0
     } 
-    ).addTo(beaconsLayer)
+    ).addTo(beaconsLayer);
     //.bindPopup(beacons[t].desc);
 }
 
@@ -477,7 +474,7 @@ var toggleMarkers = function(theType, onoff) {
         }
     });
 
-}
+};
 
 var getLayer = function(layerName) {
     for (var p=0; p<layerArray.length; p++) {
@@ -485,7 +482,7 @@ var getLayer = function(layerName) {
             return layerArray[p][1];
         }
     }
-}
+};
 
 
 
@@ -493,7 +490,7 @@ var getLayer = function(layerName) {
 function findNearestMarker(coords, type) {
     var minDist = 1000,
     markerDist,
-    closest = {}
+    closest = {};
 
     for(var i in islands) {
         var title = islands[i].title;
@@ -502,13 +499,13 @@ function findNearestMarker(coords, type) {
         if ((markerDist < minDist) && islands[i][type]) {
             minDist = markerDist;
             closest.title = title;
-            closest.islandData = islands[i]
+            closest.islandData = islands[i];
         }
     }
     
     closest.bearing = window.angle360(coords.lat,coords.lng,closest.islandData.loc[0],closest.islandData.loc[1]);
     return closest;
-  }
+};
 
 
 var customOptions =
@@ -543,7 +540,7 @@ map.on('contextmenu', function(e) {
     $(".js-clearMarkers").click(function() {
         clearXmarks();
         clearComp();
-        hidePopup()
+        hidePopup();
         setQstring();
         map.closePopup();
     });

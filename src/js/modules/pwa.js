@@ -1,5 +1,3 @@
-//import { mapFileList } from "./mapfile_list";
-
 /* PWA Stuff */
 
 var isOnline = false;
