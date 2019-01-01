@@ -41,9 +41,9 @@ include "includes/globals.php";
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/vendor/leaflet.css?v=<?= CACHE_BUSTER ?>"" />
-        <link rel="stylesheet" href="css/vendor/leaflet.search.css?v=<?= CACHE_BUSTER ?>"" />
-        <link rel="stylesheet" href="css/styles.css?v=<?= CACHE_BUSTER ?>"" />
+        <link rel="stylesheet" href="css/vendor/leaflet.css" />
+        <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
+        <link rel="stylesheet" href="css/styles.css" /> <!-- ?v=<?= CACHE_BUSTER ?> -->
 
     </head>
     <body class="home">
@@ -136,7 +136,7 @@ include "includes/globals.php";
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>""></script>
+        <script src="js/sotm.js"></script> <!-- ?v=<?= CACHE_BUSTER ?> -->
 
         
     <script>

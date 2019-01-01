@@ -33,7 +33,8 @@ var gulp = require('gulp'),
     replace = require('gulp-replace'),
     spritesmith = require('gulp.spritesmith'),
     babel = require('gulp-babel'),
-    run = require('gulp-run-command').default;
+    run = require('gulp-run-command').default,
+    rename = require("gulp-rename");
 
 //For Webpack/JS: 
 var webpack = require('webpack'),
@@ -54,7 +55,7 @@ var iconfontCSS = require('gulp-iconfont-CSS'),
     imagemin= require('gulp-imagemin');
 var fontName = 'sot-icons';
 
-
+var timeInMs = 12345;
 
 
 
@@ -74,6 +75,9 @@ gulp.task('styles', function() {
         .pipe(sass({outputStyle: 'uncompressed'}).on('error', sass.logError))
         .pipe(postcss([autoprefixer({browsers: ['last 2 version']})]))
         .pipe(sourcemaps.write('/maps'))
+        /* .pipe(rename(function (path) {
+            path.basename += "." + timeInMs;
+        })) */
         .pipe(gulp.dest('./www/css/'))
         .pipe(browserSync.stream());        
 });
@@ -83,7 +87,7 @@ gulp.task('styles', function() {
 
 //Task - finds and updates chacheBusterNumber PHP variable in global with current time.
 gulp.task('updateCacheBuster', function(){
-    var timeInMs = Date.now();
+    timeInMs = Date.now();
     console.log("refreshing cacheBuster with timeStamp: " + timeInMs);
     gulp.src(['./www/includes/globals.php'])
         .pipe(replace(/define\(\'CACHE_BUSTER\',\s*\'\d*\'/g, "define('CACHE_BUSTER', '"+timeInMs+"'"))
@@ -98,6 +102,11 @@ gulp.task('javascripting', function() {
     gulp.src('./src/js/*.js')
       .pipe(named()) //swaps in individual files
       .pipe(webpackStream(webpackConfig), webpack).on('error', console.error.bind(console))
+      /* .pipe(rename(function (path) {
+        //path.dirname += "/ciao";
+        path.basename += "." + timeInMs;
+        //path.extname = ".md";
+      })) */
       .pipe(gulp.dest('./www/js'));
   });
 
@@ -186,12 +195,12 @@ Default Watch Task
 runs the sass and javascript commands on change in the SRC folder
 
 */
-gulp.task('default', ['styles', 'javascripting'] ,function() {
+gulp.task('default', ['updateCacheBuster', 'styles', 'javascripting'] ,function() {
 	browserSync.init({
 	    proxy: 'http://localhost:8088'
 	});
-	gulp.watch('./src/js/**/*.js',['js', 'updateCacheBuster']);
-    gulp.watch('./src/scss/**/*.scss',['styles', 'updateCacheBuster']);
+	gulp.watch('./src/js/**/*.js',['updateCacheBuster', 'js']);
+    gulp.watch('./src/scss/**/*.scss',['updateCacheBuster', 'styles']);
     //gulp.watch("./www/*.php").on('change', browserSync.reload);
     gulp.watch("./www/*.html").on('change', browserSync.reload);
     //gulp.watch("./www/**/*.php").on('change', browserSync.reload);
