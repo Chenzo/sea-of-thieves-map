@@ -102,6 +102,10 @@ include "includes/globals.php";
                     </fieldset>
                 </div>
 
+                <div class="installer">
+                    <button type="button" class="js-installfiles">install</button>
+                </div>
+
                 <div class="buttonGroup subcontrols">
                     <button class="js-fullscreen"><img src="images/fullscreen_icon.png" /></button>
                     <button class="js-share"><img src="images/share_link_icon.png" /></button>

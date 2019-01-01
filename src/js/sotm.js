@@ -3,9 +3,11 @@ import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
+//import * as mapFileList from './modules/mapfile_list.js';
 import * as tools from './modules/tools.js';
 //import { decode } from 'punycode';
 
+console.log("here");
 
 var layerArray = [];
 var islands = island_data.islands;
@@ -70,7 +72,7 @@ map.setMaxBounds(bounds, {padding: [600,600]});
 //map.fitBounds(bounds, {padding: [600,600]})
 var hash = new L.Hash(map);
 
-var layer = L.tileLayer(cdnpath + "images/tiles/v2.1/{z}/{x}/{y}.png", {
+var layer = L.tileLayer(cdnpath + "images/tiles/v2.2/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
@@ -738,6 +740,12 @@ $(function() {
             console.error('Async: Could not copy text: ', err);
         });
     });
+
+
+    $(".js-installfiles").click(function() {
+        console.log("click install");
+        pwa.installer();
+    })
 
     readXstring();
     

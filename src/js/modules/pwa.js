@@ -1,3 +1,5 @@
+//import { mapFileList } from "./mapfile_list";
+
 /* PWA Stuff */
 
 var isOnline = false;
@@ -74,4 +76,62 @@ btnInstall.addEventListener('click', () => {
   });
 
 
-export {isOnline};
+var fileCount = 0;
+var currentCount = 0;
+
+var installer = function() {
+    console.log("installer called");
+
+    var request = new XMLHttpRequest();
+    request.open('GET', 'data/mapfile_list.json?cb=5', true);
+
+    request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+        var data = JSON.parse(request.responseText);
+        var mapFileList = data.mapFileList;
+        fileCount = mapFileList.length;
+        console.log(mapFileList.length);
+        cacheTheFiles(mapFileList, 200);
+    } else {
+        // We reached our target server, but it returned an error
+        console.log("ERROR");
+    }
+    };
+
+    request.onerror = function() {
+    // There was a connection error of some sort
+        console.log("ERROR");
+    };
+
+    request.send();
+};
+
+
+var cacheTheFiles = function(fileArray, numberOfFiles) {
+    var dataCacheName = 'sotm-v1.3';
+    console.log("Caching: " + currentCount);
+    caches.open(dataCacheName)
+    .then(cache => {
+      return cache.addAll(fileArray.slice(currentCount, currentCount+numberOfFiles));
+    }).catch(function(err) {
+      console.log("ERROR!?!!!");
+      console.log(err);
+    }).then(function() {
+        console.log("DONE CACHING", currentCount,numberOfFiles, fileCount);
+        if (currentCount + numberOfFiles > fileCount) {
+            numberOfFiles = fileCount - currentCount;
+            currentCount = fileCount;
+        } else {
+            currentCount+= numberOfFiles;
+        }
+        if (currentCount <= fileCount) {
+            cacheTheFiles(fileArray, numberOfFiles);
+        } else {
+            console.log("REALLY REALLY done caching");
+        }
+    }); 
+};
+
+
+
+export {isOnline, installer};
