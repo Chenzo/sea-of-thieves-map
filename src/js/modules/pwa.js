@@ -1,6 +1,8 @@
 /* PWA Stuff */
 
+var dataCacheName = 'sotm-v1.5';
 var isOnline = false;
+var filesToCacheCount = 200;
 
 //console.log("--- hello???");
 window.addEventListener('load', function() {
@@ -89,7 +91,7 @@ var installer = function() {
         var mapFileList = data.mapFileList;
         fileCount = mapFileList.length;
         console.log(mapFileList.length);
-        cacheTheFiles(mapFileList, 200);
+        cacheTheFiles(mapFileList, filesToCacheCount);
     } else {
         // We reached our target server, but it returned an error
         console.log("ERROR");
@@ -106,8 +108,7 @@ var installer = function() {
 
 
 var cacheTheFiles = function(fileArray, numberOfFiles) {
-    var dataCacheName = 'sotm-v1.3';
-    console.log("Caching: " + currentCount);
+    
     caches.open(dataCacheName)
     .then(cache => {
       return cache.addAll(fileArray.slice(currentCount, currentCount+numberOfFiles));
@@ -115,19 +116,25 @@ var cacheTheFiles = function(fileArray, numberOfFiles) {
       console.log("ERROR!?!!!");
       console.log(err);
     }).then(function() {
-        console.log("DONE CACHING", currentCount,numberOfFiles, fileCount);
-        if (currentCount + numberOfFiles > fileCount) {
-            numberOfFiles = fileCount - currentCount;
-            currentCount = fileCount;
-        } else {
-            currentCount+= numberOfFiles;
-        }
-        if (currentCount <= fileCount) {
-            cacheTheFiles(fileArray, numberOfFiles);
-        } else {
+        console.log("DONE CACHING: ", currentCount,numberOfFiles, fileCount);
+        var installPercent = 0;
+        if (currentCount == fileCount) {
             console.log("REALLY REALLY done caching");
+            installPercent = 100;
+        } else { 
+            if (currentCount + numberOfFiles > fileCount) {
+                numberOfFiles = fileCount - currentCount;
+                currentCount = fileCount;
+            } else {
+                currentCount+= numberOfFiles;
+            }
+            installPercent = (currentCount/fileCount) * 100;
+            cacheTheFiles(fileArray, numberOfFiles);
         }
-    }); 
+        console.log(installPercent);
+    }).catch(function(err) {
+
+    });
 };
 
 

@@ -1,15 +1,12 @@
-<?php 
-include "includes/globals.php";
-?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $title; ?></title>
+        <title>Unofficial Interactive Sea Of Thieves Map</title>
         <meta name="robots" content="INDEX,FOLLOW,NOODP" />
         <link rel="canonical" href="https://seaofthievesmap.chenzorama.com" />
-        <meta name="description" content="<?= $descr; ?>" />
-        <meta name="keywords" content="<?= $keywords; ?>" />
+        <meta name="description" content="An open source interactive map of the sea from the Rare's game Sea of Thieves. Right click to find closest animals, custom sharable markers, mobile friendly / progressive web app and more" />
+        <meta name="keywords" content="Sea of Thieves, Map, Interactive Map, Islands, Chickens, Snakes, Pigs, Outposts, Pirates, Beacons, Thrones, Seaposts" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="manifest.json">
@@ -55,14 +52,35 @@ include "includes/globals.php";
         <!-- iPad Mini, Air (1536px x 2048px) --> 
         <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/images/favicon/apple-launch-1536x2048.jpg">
 
+                
 
-        <?php include "includes/gtm.php"; ?>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59003274-3"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', 'UA-59003274-3');
+</script>
+
+
+
+<meta property="og:title" content="Unofficial Interactive Sea Of Thieves Map"/>
+<meta property="og:image" content="https://seaofthievesmap.chenzorama.com/images/sotm_logo.png"/>
+<meta property="og:site_name" content="Unofficial Interactive Sea Of Thieves Map"/>
+<meta property="og:description" content="An open source interactive map of the sea from the Rare's game Sea of Thieves. Right click to find closest animals, custom sharable markers, mobile friendly / progressive web app and more"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@tollbrothersinc" />
+<meta name="twitter:creator" content="@tollbrothersinc" />
+<meta name="twitter:description" content="An open source interactive map of the sea from the Rare's game Sea of Thieves. Right click to find closest animals, custom sharable markers, mobile friendly / progressive web app and more"/>
+<meta name="twitter:title" content="Unofficial Interactive Sea Of Thieves Map"/>
+<meta name="twitter:image" content="https://seaofthievesmap.chenzorama.com/images/sotm_logo.png"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <link rel="stylesheet" href="css/vendor/leaflet.css" />
         <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
-        <link rel="stylesheet" href="css/styles.css?v=<?= CACHE_BUSTER ?>" /> <!-- ?v=<?= CACHE_BUSTER ?> -->
+        <link rel="stylesheet" href="css/styles.css?v=1546363224432" /> <!-- ?v=1546363224432 -->
 
     </head>
     <body class="home">
@@ -139,7 +157,7 @@ include "includes/globals.php";
                 <div class="icons">
                     <a href="https://github.com/Chenzo/sea-of-thieves-map" target="_blank"><img src="images/github-round.png" /></a>
                     <a href="https://twitter.com/1Chenzo" target="_blank"><img src="images/twitter-round.png" /></a>
-                    <p><?= $version; ?></p>
+                    <p>v1.16</p>
                 </div>
             </aside>
 
@@ -155,7 +173,7 @@ include "includes/globals.php";
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>"></script> <!-- ?v=<?= CACHE_BUSTER ?> -->
+        <script src="js/sotm.js?v=1546363224432"></script> <!-- ?v=1546363224432 -->
 
         
     <script>

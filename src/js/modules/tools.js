@@ -27,7 +27,7 @@ window.updateQueryStringParam = function (key, value) {
     // no parameter was set so we don't need the question mark
     params = params == '?' ? '' : params;
 
-    hash = window.location.hash;
+    var hash = window.location.hash;
 
     window.history.replaceState({}, "", baseUrl + params + hash);
 }
@@ -38,7 +38,7 @@ window.websafe = function(string) {
         var cleanString = clean.join('-');
         var cleanString = cleanString.toLowerCase();  
         return cleanString;
-}
+};
 
 
 window.angle = function(cx, cy, ex, ey) {
@@ -47,12 +47,13 @@ window.angle = function(cx, cy, ex, ey) {
     var theta = Math.atan2(dy, dx); // range (-PI, PI]
     theta *= 180 / Math.PI; // rads to degs, range (-180, 180]
     return theta;
-}
+};
+
 window.angle360 = function(cx, cy, ex, ey) {
     var theta = angle(cx, cy, ex, ey); // range (-180, 180]
     if (theta < 0) theta = 360 + theta; // range [0, 360)
     return theta;
-}
+};
 
 
 window.getCardinalFromDeg = function(deg) {

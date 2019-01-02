@@ -1,10 +1,10 @@
 
 
-var dataCacheName = 'sotm-v1.3';
+var dataCacheName = 'sotm-v1.5';
 
 
 self.addEventListener('install', event => {
-  console.log('Attempting to install service worker and cache static assets - 4');
+  console.log('Attempting to install service worker and cache static assets - 5');
   event.waitUntil(
     caches.open(dataCacheName)
     .then(cache => {
@@ -29,11 +29,11 @@ self.addEventListener('fetch', event => {
     caches.match(event.request)
     .then(response => {
       if (response) {
-        //console.log('Found ', event.request.url, ' in cache');
+        console.log('Found ', event.request.url, ' in cache');
         //addOutput('Found ', event.request.url, ' in cache');
         return response;
       }
-      //console.log('Network request for ', event.request.url);
+      console.log('--> Network request for ', event.request.url);
       return fetch(event.request);
 
       // TODO 4 - Add fetched files to the cache
@@ -69,8 +69,9 @@ self.addEventListener('activate', event => {
 
 
 var filesToCache = [
-'/index.php',
-'/css/styles.css',
+'/index.html',
+'/manifest.json',
+'/css/styles.css?v=1546371874966',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -106,18 +107,15 @@ var filesToCache = [
 '/images/toggle_chickens.png',
 '/images/toggle_thrones.png',
 '/images/sotm_logo-512.png',
-'/js/sotm.js',
+'/js/sotm.js?v=1546371874966',
 '/js/vendor/jquery-3.3.1.min.js',
 '/js/vendor/leaflet.js',
 '/js/vendor/leaflet-hash.js',
 '/js/vendor/leaflet-search.min.js',
 '/js/vendor/L.SimpleGraticule-sot.js',
-'/includes/gtm.php',
-'/includes/globals.php',
 '/fonts/sot-icons.ttf',
 '/fonts/sot-icons.eot',
 '/fonts/sot-icons.svg',
 '/fonts/sot-icons.woff',
-'/fonts/sot-icons.woff2',
-'/about.php'
+'/fonts/sot-icons.woff2'
 ];
