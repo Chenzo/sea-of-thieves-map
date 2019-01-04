@@ -91,7 +91,11 @@ gulp.task('updateCacheBuster', function(){
     console.log("refreshing cacheBuster with timeStamp: " + timeInMs);
     gulp.src(['./www/includes/globals.php'])
         .pipe(replace(/define\(\'CACHE_BUSTER\',\s*\'\d*\'/g, "define('CACHE_BUSTER', '"+timeInMs+"'"))
-        .pipe(gulp.dest('./www/includes/'))
+        .pipe(gulp.dest('./www/includes/'));
+    
+    gulp.src(['./service-worker.js'])
+        .pipe(replace(/?v=/\d+/g", "?v="+timeInMs+"));
+        .pipe(gulp.dest('./'));
 });
 
 

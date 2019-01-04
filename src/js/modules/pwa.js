@@ -1,8 +1,8 @@
 /* PWA Stuff */
 
-var dataCacheName = 'sotm-v1.6';
+var dataCacheName = 'sotm-v1.7';
 var isOnline = false;
-var filesToCacheCount = 200;
+var filesToCacheCount = 100;
 
 //console.log("--- hello???");
 window.addEventListener('load', function() {

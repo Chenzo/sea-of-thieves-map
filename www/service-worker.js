@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'sotm-v1.6';
+var dataCacheName = 'sotm-v1.7';
 
 
 self.addEventListener('install', event => {
@@ -29,11 +29,11 @@ self.addEventListener('fetch', event => {
     caches.match(event.request)
     .then(response => {
       if (response) {
-        console.log('Found ', event.request.url, ' in cache');
+        //console.log('Found ', event.request.url, ' in cache');
         //addOutput('Found ', event.request.url, ' in cache');
         return response;
       }
-      console.log('--> Network request for ', event.request.url);
+      //console.log('--> Network request for ', event.request.url);
       return fetch(event.request);
 
       // TODO 4 - Add fetched files to the cache
@@ -41,6 +41,7 @@ self.addEventListener('fetch', event => {
     }).catch(error => {
 
       // TODO 6 - Respond with custom offline page
+      console.log("offline, no file found...");
 
     })
   );
@@ -71,7 +72,7 @@ self.addEventListener('activate', event => {
 var filesToCache = [
 '/index.html',
 '/manifest.json',
-'/css/styles.css?v=1546371874966',
+'/css/styles.css?v=123456781244',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -107,7 +108,7 @@ var filesToCache = [
 '/images/toggle_chickens.png',
 '/images/toggle_thrones.png',
 '/images/sotm_logo-512.png',
-'/js/sotm.js?v=1546371874966',
+'/js/sotm.js?v=123456781244',
 '/js/vendor/jquery-3.3.1.min.js',
 '/js/vendor/leaflet.js',
 '/js/vendor/leaflet-hash.js',
