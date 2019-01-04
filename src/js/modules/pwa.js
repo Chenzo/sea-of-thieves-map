@@ -1,6 +1,6 @@
 /* PWA Stuff */
 
-var dataCacheName = 'sotm-v1.5';
+var dataCacheName = 'sotm-v1.6';
 var isOnline = false;
 var filesToCacheCount = 200;
 

@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'sotm-v1.5';
+var dataCacheName = 'sotm-v1.6';
 
 
 self.addEventListener('install', event => {
@@ -117,5 +117,14 @@ var filesToCache = [
 '/fonts/sot-icons.eot',
 '/fonts/sot-icons.svg',
 '/fonts/sot-icons.woff',
-'/fonts/sot-icons.woff2'
+'/fonts/sot-icons.woff2',
+'/images/favicon/apple-launch-1242x2688.jpg',
+'/images/favicon/apple-launch-828x1792.jpg',
+'/images/favicon/apple-launch-1125x2436.jpg',
+'/images/favicon/apple-launch-1242x2208.jpg',
+'/images/favicon/apple-launch-750x1334.jpg',
+'/images/favicon/apple-launch-2048x2732.jpg',
+'/images/favicon/apple-launch-1668x2388.jpg',
+'/images/favicon/apple-launch-1668x2224.jpg',
+'/images/favicon/apple-launch-1536x2048.jpg'
 ];
