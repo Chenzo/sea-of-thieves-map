@@ -2,7 +2,8 @@ module.exports = {
     "env": {
         "browser": true,
         "es6": true,
-        "jquery": true
+        "jquery": true,
+        "node": true
     },
     "globals": {
         "L": false,
@@ -23,6 +24,7 @@ module.exports = {
             "error",
             "always"
         ],
-        "no-console": 0
+        "no-console": 0,
+        "no-useless-escape": 0
     }
 };

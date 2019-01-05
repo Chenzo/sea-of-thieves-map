@@ -7,3 +7,29 @@ body {
 .leaflet-tile-container img {
     box-shadow: 0 0 1px rgba(0, 0, 0, 0.05);
 }
+
+
+.app-only {
+    display:none;
+}
+/* @media all and (display-mode: fullscreen) {
+    .app-only {
+        display: inline;
+    }
+} */
+@media all and (display-mode: standalone) {
+    .app-only {
+        display: inline;
+    }
+}
+
+
+.web-only {
+    display: block;
+}
+@media all and (display-mode: standalone) {
+    .web-only {
+        display: none;
+    }
+}
+

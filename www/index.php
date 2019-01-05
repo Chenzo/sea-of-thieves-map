@@ -121,14 +121,15 @@ include "includes/globals.php";
                     </fieldset>
                 </div>
 
-                <div class="installer">
+                <div class="installer app-only">
                     <button type="button" class="js-installfiles">install</button>
                 </div>
 
                 <div class="buttonGroup subcontrols">
-                    <button class="js-fullscreen"><img src="images/fullscreen_icon.png" /></button>
+                    <button class="js-fullscreen web-only"><img src="images/fullscreen_icon.png" /></button>
                     <button class="js-share"><img src="images/share_link_icon.png" /></button>
                     <a href="/about" target="_blank"><img src="images/info_icon.png" /></a>
+                    <button class="js-settings"><img src="images/share_link_icon.png" /></button>
                 </div>
 
                 <div class="installBut buttonGroup" id="installBut">

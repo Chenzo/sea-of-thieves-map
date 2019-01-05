@@ -16,7 +16,8 @@ self.addEventListener('install', function(e) {
       })).then(function() {
         console.log('All resources have been fetched and cached.');
       }).catch(function(err) {
-        console.log("error 1");
+        console.log("Error During Install");
+        console.log(err);
       });
     })
   );

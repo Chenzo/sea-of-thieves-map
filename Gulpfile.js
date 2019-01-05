@@ -1,8 +1,5 @@
 /*
 
-Gulpfile - last updated: 06.07.2018 - Eric
-
-
 Launch Docker:
     $ gulp docker
 
@@ -28,13 +25,13 @@ Generate SVG Font:
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
-    pump = require('pump'),
+    //pump = require('pump'),
 	wait = require('gulp-wait'),
     replace = require('gulp-replace'),
     spritesmith = require('gulp.spritesmith'),
-    babel = require('gulp-babel'),
-    run = require('gulp-run-command').default,
-    rename = require("gulp-rename");
+    //babel = require('gulp-babel'),
+    run = require('gulp-run-command').default;
+    //rename = require("gulp-rename");
 
 //For Webpack/JS: 
 var webpack = require('webpack'),
@@ -205,7 +202,7 @@ runs the sass and javascript commands on change in the SRC folder
 */
 gulp.task('default', ['updateCacheBuster', 'styles', 'javascripting'] ,function() {
 	browserSync.init({
-	    proxy: 'http://localhost:8088'
+        proxy: 'http://localhost:8088'
 	});
 	gulp.watch('./src/js/**/*.js',['updateCacheBuster', 'js']);
     gulp.watch('./src/scss/**/*.scss',['updateCacheBuster', 'styles']);

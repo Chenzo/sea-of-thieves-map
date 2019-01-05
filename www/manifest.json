@@ -2,10 +2,10 @@
   "name": "Sea Of Thieves Map",
   "short_name": "SoT Map",
   "lang": "en-US",
-  "start_url": "/index.html",
+  "start_url": "/index.php",
   "display": "standalone",
-  "theme_color": "#222222",
-  "background_color": "#000000",
+  "theme_color": "#267e81",
+  "background_color": "#267e81",
   "icons": [
     {
       "src": "/images/sotm_logo-192.png",

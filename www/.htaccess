@@ -47,6 +47,14 @@ RewriteRule ^([^/]+)$ $1.php?param1=$2 [B,QSA,L]
 RewriteRule ^(.*)/$ $1 [R=301,L]
 
 
+<filesMatch "\.(html|htm|js|css|php|json)$">
+FileETag None
+Header unset ETag
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</filesMatch>
+
 
 
 #Gzip
