@@ -126,10 +126,13 @@ include "includes/globals.php";
                 </div>
 
                 <div class="buttonGroup subcontrols">
-                    <button class="js-fullscreen web-only"><img src="images/fullscreen_icon.png" /></button>
+                    <button class="js-fullscreen web-only">
+                        <img src="images/fullscreen_icon.png" class="open_fs" />
+                        <img src="images/close_fullscreen_icon.png" class="close_fs" />
+                    </button>
                     <button class="js-share"><img src="images/share_link_icon.png" /></button>
                     <a href="/about" target="_blank"><img src="images/info_icon.png" /></a>
-                    <button class="js-settings"><img src="images/share_link_icon.png" /></button>
+                    <button class="js-settings gear"><img src="images/gear_icon.png" /></button>
                 </div>
 
                 <div class="installBut buttonGroup" id="installBut">

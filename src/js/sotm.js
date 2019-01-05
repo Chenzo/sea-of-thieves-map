@@ -730,9 +730,11 @@ $(function() {
     });
 
     $(".js-share").click(function() {
-        var fullURL = window.location.hreh;
+        var fullURL = window.location.href;
         navigator.clipboard.writeText(fullURL).then(function() {
             console.log('Async: Copying to clipboard was successful!');
+            showPopup("Current Map Location URL Copied To Clipboard!");
+            setTimeout(hidePopup, 4000);
         }, function(err) {
             console.error('Async: Could not copy text: ', err);
         });
@@ -742,7 +744,11 @@ $(function() {
     $(".js-installfiles").click(function() {
         console.log("click install");
         pwa.installer();
-    })
+    });
+
+    $(".js-settings").click(function() {
+        console.log("click settings");
+    });
 
     readXstring();
     

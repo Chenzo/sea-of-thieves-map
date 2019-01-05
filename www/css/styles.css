@@ -1138,11 +1138,6 @@ body {
 .app-only {
   display: none; }
 
-/* @media all and (display-mode: fullscreen) {
-    .app-only {
-        display: inline;
-    }
-} */
 @media all and (display-mode: standalone) {
   .app-only {
     display: inline; } }
@@ -1153,6 +1148,18 @@ body {
 @media all and (display-mode: standalone) {
   .web-only {
     display: none; } }
+
+.open_fs {
+  display: inline; }
+
+.close_fs {
+  display: none; }
+
+@media all and (display-mode: fullscreen) {
+  .open_fs {
+    display: none; }
+  .close_fs {
+    display: inline; } }
 
 .leaflet-grid-label {
   width: 100%; }
@@ -1206,7 +1213,7 @@ body {
       width: 70%; }
     .home section aside .icons {
       position: absolute;
-      bottom: 10px;
+      bottom: 30px;
       width: 100%;
       text-align: center; }
       .home section aside .icons a {
@@ -1323,6 +1330,9 @@ body {
     opacity: 1; }
 
 .subcontrols a img {
+  width: 30px; }
+
+.subcontrols .gear img {
   width: 30px; }
 
 .installBut {

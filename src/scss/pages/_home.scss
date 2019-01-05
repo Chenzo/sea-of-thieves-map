@@ -44,7 +44,7 @@
 
             .icons {
                 position: absolute;
-                bottom: 10px;
+                bottom: 30px;
                 width: 100%;
                 text-align: center;
 
@@ -208,6 +208,12 @@
     }
 
     a {
+        img {
+            width: 30px;
+        }
+    }
+
+    .gear {
         img {
             width: 30px;
         }

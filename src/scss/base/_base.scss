@@ -12,11 +12,7 @@ body {
 .app-only {
     display:none;
 }
-/* @media all and (display-mode: fullscreen) {
-    .app-only {
-        display: inline;
-    }
-} */
+
 @media all and (display-mode: standalone) {
     .app-only {
         display: inline;
@@ -33,3 +29,22 @@ body {
     }
 }
 
+
+
+.open_fs {
+    display: inline;
+}
+
+.close_fs {
+    display: none;
+}
+
+@media all and (display-mode: fullscreen) {
+    .open_fs {
+        display: none;
+    }
+
+    .close_fs {
+        display: inline;
+    }
+} 
