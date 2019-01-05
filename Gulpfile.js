@@ -93,9 +93,13 @@ gulp.task('updateCacheBuster', function(){
         .pipe(replace(/define\(\'CACHE_BUSTER\',\s*\'\d*\'/g, "define('CACHE_BUSTER', '"+timeInMs+"'"))
         .pipe(gulp.dest('./www/includes/'));
     
-    gulp.src(['./service-worker.js'])
-        .pipe(replace(/?v=/\d+/g", "?v="+timeInMs+"));
-        .pipe(gulp.dest('./'));
+    gulp.src(['./www/service-worker.js'])
+        .pipe(replace(/\?v=\d+/g, "?v="+timeInMs))
+        .pipe(gulp.dest('./www/'));
+
+    gulp.src(['./www/data/mapfile_list.json'])
+        .pipe(replace(/\?v=\d+/g, "?v="+timeInMs))
+        .pipe(gulp.dest('./www/data/'));
 });
 
 

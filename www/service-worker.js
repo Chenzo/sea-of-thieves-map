@@ -70,9 +70,9 @@ self.addEventListener('activate', event => {
 
 
 var filesToCache = [
-'/index.html',
+'/index.php',
 '/manifest.json',
-'/css/styles.css?v=123456781244',
+'/css/styles.css?v=1546642751712',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -108,7 +108,7 @@ var filesToCache = [
 '/images/toggle_chickens.png',
 '/images/toggle_thrones.png',
 '/images/sotm_logo-512.png',
-'/js/sotm.js?v=123456781244',
+'/js/sotm.js?v=1546642751712',
 '/js/vendor/jquery-3.3.1.min.js',
 '/js/vendor/leaflet.js',
 '/js/vendor/leaflet-hash.js',
