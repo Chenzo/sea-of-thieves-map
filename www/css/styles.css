@@ -1253,7 +1253,7 @@ aside.sidebar {
         filter: grayscale(0%); }
   aside.sidebar .island-finder .mapfinder_image {
     display: block;
-    margin: 0 auto; }
+    margin: 0 auto 8px; }
   aside.sidebar .island-finder p {
     font-size: 10px;
     margin-bottom: 5px; }
@@ -1334,7 +1334,14 @@ aside.sidebar {
       border: #b5eec8 2px solid;
       -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
               box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-      opacity: 0; }
+      opacity: 0;
+      -webkit-transition-property: opacity;
+      transition-property: opacity;
+      -webkit-transition-duration: 200ms;
+      transition-duration: 200ms;
+      -webkit-transition-timing-function: ease;
+      transition-timing-function: ease;
+      /*Safari bug where transform needs to be prefixed*/ }
       .home section.sotm_wrapper article .floating_dialog.show {
         -webkit-transition-property: opacity;
         transition-property: opacity;

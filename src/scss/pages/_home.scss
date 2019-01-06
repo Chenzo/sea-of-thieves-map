@@ -26,6 +26,7 @@
                 border: $blue_4 2px solid;
                 box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
                 opacity: 0;
+                @include transition(opacity, 200ms); 
 
                 &.show {
                     @include transition(opacity, 600ms); 

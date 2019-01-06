@@ -707,6 +707,8 @@ function getNextIsland(direction) {
     return (islands[currentSearchIsland]);
 }
 
+
+var popUpInt = 0;
 $(function() {
 
 
@@ -718,6 +720,10 @@ $(function() {
         map.setView(LatLong, 7);
         //map.panTo(LatLong, 7);
         adjustAlphaNum();
+
+        showPopup("Island " + (currentSearchIsland + 1) + " of " + islands.length);
+        clearTimeout(popUpInt);
+        popUpInt = setTimeout(hidePopup, 3000);
     });
 
 
