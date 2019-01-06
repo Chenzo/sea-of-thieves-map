@@ -151,15 +151,21 @@ include "includes/globals.php";
                 
                 </aside>
 
+
+            </article>
+
+
+            <footer >
+
+                <article class="site_margins">
 				<h3>Having trouble, find a bug?</h3>
                 <p>To quickly contact me, hit me up on twitter: <a href="https://twitter.com/1Chenzo" target="_blank">https://twitter.com/1Chenzo</a></p>
                 <p>Or if you're so inclined, open a ticket here: <a href="https://github.com/Chenzo/sea-of-thieves-map/issues" target="_blank">https://github.com/Chenzo/sea-of-thieves-map/issues</a></p>
 
                 Thanks! Fair seas!
 
-            </article>
-
-
+                </article>
+            </footer>
             
         </section>
     </body>

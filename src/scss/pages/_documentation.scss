@@ -177,6 +177,17 @@
         }
     }
 
+
+    footer {
+        margin-top: 20px;
+        padding: 20px 0;
+        background-color: $blue_1;
+        color: $white_1;
+        p {
+            color: $white_1;
+        }
+    }
+
 }
 
 .docs {

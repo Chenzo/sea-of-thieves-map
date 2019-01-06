@@ -1493,6 +1493,13 @@ aside.sidebar {
     .documentation header a {
       color: white;
       text-decoration: none; }
+  .documentation footer {
+    margin-top: 20px;
+    padding: 20px 0;
+    background-color: #13252c;
+    color: white; }
+    .documentation footer p {
+      color: white; }
 
 .docs {
   padding: 50px 0; }
