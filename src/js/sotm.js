@@ -748,6 +748,12 @@ $(function() {
 
     $(".js-settings").click(function() {
         console.log("click settings");
+        $(".settings").addClass("open");
+    });
+
+    $(".js-close-settings").click(function() {
+        console.log("click settings");
+        $(".settings").removeClass("open");
     });
 
     readXstring();

@@ -1,3 +1,76 @@
+.settings {
+    &.open {
+        display: flex;
+    }
+}
+
+
+.full_overlay {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+    background-color: rgba(19, 37, 44, 0.9);
+    color: $blue_4;
+
+    display: none;
+    justify-content: center;
+    //align-items: center;
+    text-align: center;
+    font-size: 1.2em;
+
+
+    button.close {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        color: $white_1;
+        font-size: 1.0em;
+        border: 1px solid $white_1;
+        padding: 10px 10px 6px 10px;
+        border-radius: 8px;
+        background-color: rgba(255,255,255, 0.2);
+    }
+
+    h4 {
+        font-size: 2em;
+        margin: 10vh 0 20px;
+        color: $white_1;
+        letter-spacing: 0.1em;
+    }
+
+
+    .installer {
+        margin: 20px 0;
+        button {
+            background:$gold_1;
+            color: $gold_4;
+            padding: 10px 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+        }
+
+        .percent {
+            color: $gold_4;
+            margin: 20px;
+            font-weight: 700;
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+
 .documentation {
 
     img.docimg {

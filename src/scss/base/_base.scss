@@ -10,12 +10,12 @@ body {
 
 
 .app-only {
-    display:none;
+    display:none !important;
 }
 
 @media all and (display-mode: standalone) {
     .app-only {
-        display: inline;
+        display: inline !important;
     }
 }
 

@@ -77,9 +77,10 @@ include "includes/globals.php";
 
 
                 <div class="island-finder buttonGroup">
-                    <p>ISLAND FINDER</p>
-                    <button type="button" data-dir="left" class="js-searchforisland">&#x21E0</button>
-                    <button type="button" data-dir="right" class="js-searchforisland">&#x21E2</button>
+                    <!-- <p>ISLAND FINDER</p> -->
+                    <img src="images/map_finder_icon.png" class="mapfinder_image" />
+                    <button type="button" data-dir="left" class="js-searchforisland"><span class="icon icon-arrow1_left"></span></button>
+                    <button type="button" data-dir="right" class="js-searchforisland"><span class="icon icon-arrow1_right"></span></button>
                 </div>
 
                 <div class="buttonGroup">
@@ -121,9 +122,7 @@ include "includes/globals.php";
                     </fieldset>
                 </div>
 
-                <div class="installer app-only">
-                    <button type="button" class="js-installfiles">install</button>
-                </div>
+                
 
                 <div class="buttonGroup subcontrols">
                     <button class="js-fullscreen web-only">
@@ -132,7 +131,7 @@ include "includes/globals.php";
                     </button>
                     <button class="js-share"><img src="images/share_link_icon.png" /></button>
                     <a href="/about" target="_blank"><img src="images/info_icon.png" /></a>
-                    <button class="js-settings gear"><img src="images/gear_icon.png" /></button>
+                    <button class="js-settings gear app-only"><img src="images/gear_icon.png" /></button>
                 </div>
 
                 <div class="installBut buttonGroup" id="installBut">
@@ -153,6 +152,12 @@ include "includes/globals.php";
             </article>
 
         </section>
+
+
+
+        <?php include "includes/settings.php"; ?>
+
+        
 
         <script src="js/vendor/leaflet.js"></script>
         <script src="js/vendor/leaflet-search.min.js"></script>

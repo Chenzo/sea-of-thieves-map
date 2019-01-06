@@ -1136,11 +1136,11 @@ body {
           box-shadow: 0 0 1px rgba(0, 0, 0, 0.05); }
 
 .app-only {
-  display: none; }
+  display: none !important; }
 
 @media all and (display-mode: standalone) {
   .app-only {
-    display: inline; } }
+    display: inline !important; } }
 
 .web-only {
   display: block; }
@@ -1161,6 +1161,137 @@ body {
   .close_fs {
     display: inline; } }
 
+aside.sidebar {
+  background: #13252c;
+  /* Old browsers */
+  /* FF3.6-15 */
+  /* Chrome10-25,Safari5.1-6 */
+  background: -webkit-gradient(linear, left top, left bottom, from(#13252c), to(#061212));
+  background: linear-gradient(to bottom, #13252c 0%, #061212 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  width: 60px;
+  border-right: 1px solid #13252c;
+  text-align: center;
+  position: relative; }
+  @media (min-width: 992px) {
+    aside.sidebar {
+      width: 120px; } }
+  aside.sidebar .maps-panel-trig {
+    display: block;
+    position: absolute;
+    top: 70px;
+    right: -28px;
+    height: 40px;
+    width: 30px;
+    line-height: 40px;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    background-color: white;
+    overflow: hidden;
+    -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 1; }
+  aside.sidebar .sotm_logo {
+    width: 70%; }
+  aside.sidebar .icons {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center; }
+    aside.sidebar .icons a {
+      display: inline;
+      padding: 0; }
+      @media (min-width: 992px) {
+        aside.sidebar .icons a {
+          padding: 0 3px; } }
+      aside.sidebar .icons a img {
+        width: 20px;
+        opacity: 0.5; }
+      aside.sidebar .icons a:hover img {
+        opacity: 1; }
+    aside.sidebar .icons p {
+      font-size: 9px;
+      color: #888;
+      text-align: center;
+      font-weight: 700; }
+  aside.sidebar .buttonGroup {
+    border-top: 1px solid #267e81;
+    padding: 8px 0;
+    margin: 8px 0; }
+    aside.sidebar .buttonGroup:last-child {
+      border-bottom: 1px solid #267e81; }
+    aside.sidebar .buttonGroup fieldset.toggle {
+      width: 100%;
+      margin: 4px 0 4px 0; }
+      aside.sidebar .buttonGroup fieldset.toggle input {
+        display: none; }
+      aside.sidebar .buttonGroup fieldset.toggle label {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-filter: grayscale(100%);
+        /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="chickens"] {
+          background-image: url(/images/toggle_chickens.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="snakes"] {
+          background-image: url(/images/toggle_snakes.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="pigs"] {
+          background-image: url(/images/toggle_pigs.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="thrones"] {
+          background-image: url(/images/toggle_thrones.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="beacons"] {
+          background-image: url(/images/toggle_beacons.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="cargoruns"] {
+          background-image: url(/images/toggle_crates.png); }
+      aside.sidebar .buttonGroup fieldset.toggle input:checked + label {
+        -webkit-filter: grayscale(0%);
+        /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%); }
+  aside.sidebar .island-finder .mapfinder_image {
+    display: block;
+    margin: 0 auto; }
+  aside.sidebar .island-finder p {
+    font-size: 10px;
+    margin-bottom: 5px; }
+  aside.sidebar .island-finder button {
+    color: #b5eec8;
+    background: #267e81;
+    padding: 8px 8px 6px;
+    border-radius: 5px;
+    margin: 8px; }
+  aside.sidebar .subcontrols a, aside.sidebar .subcontrols button {
+    display: block;
+    margin: 10px auto; }
+    aside.sidebar .subcontrols a img, aside.sidebar .subcontrols button img {
+      width: 28px;
+      opacity: 0.5; }
+    aside.sidebar .subcontrols a:hover img, aside.sidebar .subcontrols button:hover img {
+      opacity: 1; }
+  aside.sidebar .subcontrols a img {
+    width: 30px; }
+  aside.sidebar .subcontrols .gear img {
+    width: 30px; }
+  aside.sidebar .installBut {
+    padding: 8px;
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    display: none; }
+    aside.sidebar .installBut.showme {
+      display: block; }
+    aside.sidebar .installBut img {
+      width: 30px; }
+    aside.sidebar .installBut span {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 10px;
+      text-transform: uppercase; }
+
 .leaflet-grid-label {
   width: 100%; }
   .leaflet-grid-label.big {
@@ -1179,64 +1310,17 @@ body {
   height: 100vh;
   background-color: #000; }
 
-.home section {
+.home section.sotm_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   background-color: #061212;
   color: #b5eec8; }
-  .home section aside {
-    width: 60px;
-    border-right: 1px solid #13252c;
-    text-align: center;
-    position: relative; }
-    @media (min-width: 992px) {
-      .home section aside {
-        width: 120px; } }
-    .home section aside .maps-panel-trig {
-      display: block;
-      position: absolute;
-      top: 70px;
-      right: -28px;
-      height: 40px;
-      width: 30px;
-      line-height: 40px;
-      color: #000;
-      font-size: 12px;
-      text-align: center;
-      background-color: white;
-      overflow: hidden;
-      -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-              box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-      z-index: 1; }
-    .home section aside .sotm_logo {
-      width: 70%; }
-    .home section aside .icons {
-      position: absolute;
-      bottom: 30px;
-      width: 100%;
-      text-align: center; }
-      .home section aside .icons a {
-        display: inline;
-        padding: 0; }
-        @media (min-width: 992px) {
-          .home section aside .icons a {
-            padding: 0 3px; } }
-        .home section aside .icons a img {
-          width: 20px;
-          opacity: 0.5; }
-        .home section aside .icons a:hover img {
-          opacity: 1; }
-      .home section aside .icons p {
-        font-size: 9px;
-        color: #888;
-        text-align: center;
-        font-weight: 700; }
-  .home section article {
+  .home section.sotm_wrapper article {
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1; }
-    .home section article .floating_dialog {
+    .home section.sotm_wrapper article .floating_dialog {
       position: absolute;
       bottom: 10px;
       display: block;
@@ -1251,7 +1335,7 @@ body {
       -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
               box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
       opacity: 0; }
-      .home section article .floating_dialog.show {
+      .home section.sotm_wrapper article .floating_dialog.show {
         -webkit-transition-property: opacity;
         transition-property: opacity;
         -webkit-transition-duration: 600ms;
@@ -1260,7 +1344,7 @@ body {
         transition-timing-function: ease;
         /*Safari bug where transform needs to be prefixed*/
         opacity: 1; }
-      .home section article .floating_dialog .type, .home section article .floating_dialog .direction, .home section article .floating_dialog .title {
+      .home section.sotm_wrapper article .floating_dialog .type, .home section.sotm_wrapper article .floating_dialog .direction, .home section.sotm_wrapper article .floating_dialog .title {
         font-weight: 700;
         color: white; }
 
@@ -1272,86 +1356,6 @@ body {
 .alphanum_grid {
   z-index: 30; }
 
-.buttonGroup {
-  border-top: 1px solid #13252c;
-  padding: 8px 0;
-  margin: 8px 0; }
-  .buttonGroup:last-child {
-    border-bottom: 1px solid #13252c; }
-  .buttonGroup fieldset.toggle {
-    width: 100%;
-    margin: 4px 0 4px 0; }
-    .buttonGroup fieldset.toggle input {
-      display: none; }
-    .buttonGroup fieldset.toggle label {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      background-repeat: no-repeat;
-      background-size: cover;
-      -webkit-filter: grayscale(100%);
-      /* Safari 6.0 - 9.0 */
-      filter: grayscale(100%); }
-      .buttonGroup fieldset.toggle label[for="chickens"] {
-        background-image: url(/images/toggle_chickens.png); }
-      .buttonGroup fieldset.toggle label[for="snakes"] {
-        background-image: url(/images/toggle_snakes.png); }
-      .buttonGroup fieldset.toggle label[for="pigs"] {
-        background-image: url(/images/toggle_pigs.png); }
-      .buttonGroup fieldset.toggle label[for="thrones"] {
-        background-image: url(/images/toggle_thrones.png); }
-      .buttonGroup fieldset.toggle label[for="beacons"] {
-        background-image: url(/images/toggle_beacons.png); }
-      .buttonGroup fieldset.toggle label[for="cargoruns"] {
-        background-image: url(/images/toggle_crates.png); }
-    .buttonGroup fieldset.toggle input:checked + label {
-      -webkit-filter: grayscale(0%);
-      /* Safari 6.0 - 9.0 */
-      filter: grayscale(0%); }
-
-.island-finder p {
-  font-size: 10px;
-  margin-bottom: 5px; }
-
-.island-finder button {
-  color: #b5eec8;
-  background: #267e81;
-  padding: 5px 8px;
-  border-radius: 5px;
-  margin: 8px; }
-
-.subcontrols a, .subcontrols button {
-  display: block;
-  margin: 10px auto; }
-  .subcontrols a img, .subcontrols button img {
-    width: 28px;
-    opacity: 0.5; }
-  .subcontrols a:hover img, .subcontrols button:hover img {
-    opacity: 1; }
-
-.subcontrols a img {
-  width: 30px; }
-
-.subcontrols .gear img {
-  width: 30px; }
-
-.installBut {
-  padding: 8px;
-  position: absolute;
-  bottom: 50px;
-  width: 100%;
-  display: none; }
-  .installBut.showme {
-    display: block; }
-  .installBut img {
-    width: 30px; }
-  .installBut span {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-size: 10px;
-    text-transform: uppercase; }
-
 .context_popup {
   /* .leaflet-popup-content {
         width: 120px !important;
@@ -1362,6 +1366,56 @@ body {
     cursor: pointer;
     text-align: center;
     font-size: 0.8em; }
+
+.settings.open {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.full_overlay {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  background-color: rgba(19, 37, 44, 0.9);
+  color: #b5eec8;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 1.2em; }
+  .full_overlay button.close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: white;
+    font-size: 1.0em;
+    border: 1px solid white;
+    padding: 10px 10px 6px 10px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2); }
+  .full_overlay h4 {
+    font-size: 2em;
+    margin: 10vh 0 20px;
+    color: white;
+    letter-spacing: 0.1em; }
+  .full_overlay .installer {
+    margin: 20px 0; }
+    .full_overlay .installer button {
+      background: #776e38;
+      color: #d8cb73;
+      padding: 10px 20px;
+      border: 1px solid black;
+      border-radius: 10px;
+      font-size: 0.8em;
+      text-transform: uppercase; }
+    .full_overlay .installer .percent {
+      color: #d8cb73;
+      margin: 20px;
+      font-weight: 700; }
 
 .documentation {
   background-color: #cdc1a2; }

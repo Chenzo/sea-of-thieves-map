@@ -1,0 +1,205 @@
+
+aside.sidebar {
+
+    background: $blue_1; /* Old browsers */
+    background: -moz-linear-gradient(top, $blue_1 0%, $dark 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $blue_1 0%,$dark 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $blue_1 0%,$dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+    width: 60px;
+    @include breakpoint(md) {
+        width: 120px;
+    }
+    
+    border-right: 1px solid $blue_1;
+    text-align: center;
+    position: relative;
+
+    .maps-panel-trig {
+        display: block;
+        position: absolute;
+        top: 70px;
+        right: -28px;
+        height: 40px;
+        width: 30px;
+        line-height: 40px;
+        color: #000;
+        font-size: 12px;
+        text-align: center;
+        background-color: $white_1;
+        overflow: hidden;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, .4);
+        z-index: 1;
+
+
+    }
+
+    .sotm_logo {
+        width: 70%;
+    }
+
+    .icons {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        text-align: center;
+
+        a {
+            display: inline;
+            padding: 0;
+            @include breakpoint(md) {
+                padding: 0 3px;
+            }
+            img {
+                width: 20px;
+                opacity: 0.5;
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+        p {
+            font-size: 9px;
+            color: #888;
+            text-align: center;
+            font-weight: 700;
+        }
+    }
+
+
+    .buttonGroup {
+        
+        border-top: 1px solid $blue_2;
+        padding: 8px 0;
+        margin: 8px 0;
+
+        &:last-child {
+            border-bottom: 1px solid $blue_2;
+        }
+
+        fieldset.toggle {
+            width: 100%;
+            margin: 4px 0 4px 0;
+
+            input {
+                display: none;
+            }
+            
+            label {
+                display: inline-block;
+                width: 30px;
+                height: 30px;
+                background-repeat: no-repeat;
+                background-size:cover;
+                -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(100%);
+                &[for="chickens"] {
+                    background-image: url(/images/toggle_chickens.png);
+                }
+                &[for="snakes"] {
+                    background-image: url(/images/toggle_snakes.png);
+                }
+                &[for="pigs"] {
+                    background-image: url(/images/toggle_pigs.png);
+                }
+                &[for="thrones"] {
+                    background-image: url(/images/toggle_thrones.png);
+                }
+                &[for="beacons"] {
+                    background-image: url(/images/toggle_beacons.png);
+                }
+                &[for="cargoruns"] {
+                    background-image: url(/images/toggle_crates.png);
+                }
+            }
+
+            input:checked + label {
+                -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+                filter: grayscale(0%);
+            }
+        }
+
+
+    }
+
+
+
+
+
+
+    .island-finder {
+
+        .mapfinder_image {
+            display: block;
+            margin: 0 auto;
+        }
+
+        p {
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        button {
+            color: $blue_4;
+            background: $blue_2;
+            padding: 8px 8px 6px;
+            border-radius: 5px;
+            margin: 8px;
+        }
+    }
+
+    .subcontrols {
+        a, button {
+            display: block;
+            margin: 10px auto;
+            img {
+                width: 28px;
+                opacity: 0.5;
+            }
+            &:hover {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+
+        a {
+            img {
+                width: 30px;
+            }
+        }
+
+        .gear {
+            img {
+                width: 30px;
+            }
+        }
+    }
+
+    .installBut {
+        padding: 8px;
+        position: absolute;
+        bottom: 50px;
+        width: 100%;
+        display: none;
+
+        &.showme {
+            display: block;
+        }
+
+        img {
+            width: 30px;
+        }
+        span {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+    }
+
+
+}

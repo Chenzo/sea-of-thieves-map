@@ -1,6 +1,6 @@
 /* PWA Stuff */
 
-var dataCacheName = 'sotm-v1.7';
+var dataCacheName = 'sotm-v1.8';
 var isOnline = false;
 var filesToCacheCount = 100;
 
@@ -42,6 +42,7 @@ if (navigator.onLine) {
 
 let deferredPrompt;
 var btnInstall = document.querySelector('#install-button');
+var words;
 
 window.addEventListener('beforeinstallprompt', (event) => {
 
@@ -120,6 +121,7 @@ var cacheTheFiles = function(fileArray, numberOfFiles) {
         var installPercent = 0;
         if (currentCount == fileCount) {
             console.log("REALLY REALLY done caching");
+            words = "Install Complete: "
             installPercent = 100;
         } else { 
             if (currentCount + numberOfFiles > fileCount) {
@@ -130,10 +132,13 @@ var cacheTheFiles = function(fileArray, numberOfFiles) {
             }
             installPercent = (currentCount/fileCount) * 100;
             cacheTheFiles(fileArray, numberOfFiles);
+            words = "Installing: ";
         }
         console.log(installPercent);
+        $(".js-percent").html(words + Math.ceil(installPercent) + "%");
     }).catch(function(err) {
-
+        console.log("Error Type 4");
+        console.log(err);
     });
 };
 

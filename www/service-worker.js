@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'sotm-v1.7';
+var dataCacheName = 'sotm-v1.8';
 
 
 self.addEventListener('install', event => {
@@ -72,7 +72,7 @@ self.addEventListener('activate', event => {
 var filesToCache = [
 '/index.php',
 '/manifest.json',
-'/css/styles.css?v=1546721443265',
+'/css/styles.css?v=1546801809181',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -97,6 +97,7 @@ var filesToCache = [
 '/images/fullscreen_icon.png',
 '/images/close_fullscreen_icon.png',
 '/images/gear_icon.png',
+'/images/map_finder_icon.png',
 '/images/docs/point_at_share.jpg',
 '/images/toggle_crates.png',
 '/images/info_icon.png',
@@ -110,7 +111,7 @@ var filesToCache = [
 '/images/toggle_chickens.png',
 '/images/toggle_thrones.png',
 '/images/sotm_logo-512.png',
-'/js/sotm.js?v=1546721443265',
+'/js/sotm.js?v=1546801809181',
 '/js/vendor/jquery-3.3.1.min.js',
 '/js/vendor/leaflet.js',
 '/js/vendor/leaflet-hash.js',
