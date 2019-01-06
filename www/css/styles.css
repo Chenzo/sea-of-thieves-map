@@ -1426,6 +1426,14 @@ aside.sidebar {
 
 .documentation {
   background-color: #cdc1a2; }
+  .documentation .float_toc {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    right: 20px;
+    display: none; }
+  .documentation aside {
+    padding: 0 0 0 20px; }
   .documentation img.docimg {
     border: #aa9e50 1px solid;
     margin: 20px; }
@@ -1449,6 +1457,8 @@ aside.sidebar {
     line-height: 1.5em;
     margin-bottom: 1rem;
     padding: 0 10px; }
+  .documentation iframe {
+    margin: 0 10px; }
   .documentation ul {
     list-style-type: disc;
     margin: 0 1.5em;
@@ -1456,12 +1466,33 @@ aside.sidebar {
     .documentation ul li {
       display: list-item;
       margin: .2em 0; }
+  .documentation aside.controls {
+    margin-bottom: 15px; }
+    .documentation aside.controls ul.markerbuttons {
+      list-style-type: none; }
+      .documentation aside.controls ul.markerbuttons img {
+        width: 50px;
+        vertical-align: middle;
+        margin: 0 20px 0 0; }
+      .documentation aside.controls ul.markerbuttons li {
+        margin-bottom: 10px; }
+    .documentation aside.controls p.astrix {
+      font-size: 0.8em;
+      margin: 0; }
+      .documentation aside.controls p.astrix span {
+        font-style: italic; }
   .documentation header {
     height: 100px;
     background-color: #267e81; }
     .documentation header img {
-      margin-top: 20px;
-      height: 60px; }
+      margin: 20px 10px 0 0;
+      height: 60px;
+      vertical-align: bottom; }
+    .documentation header h1 {
+      display: inline; }
+    .documentation header a {
+      color: white;
+      text-decoration: none; }
 
 .docs {
   padding: 50px 0; }

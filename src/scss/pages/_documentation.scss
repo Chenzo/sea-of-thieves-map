@@ -73,6 +73,17 @@
 
 .documentation {
 
+    .float_toc {
+        position: sticky;
+        top: 0px;
+        right: 20px;
+        display: none;
+    }
+
+    aside {
+        padding: 0 0 0 20px;
+    }
+
     img.docimg {
         border: $gold_3 1px solid;
         margin: 20px;
@@ -110,6 +121,10 @@
         padding: 0 10px;
     }
 
+    iframe {
+        margin: 0 10px;
+    }
+
     ul {
         list-style-type: disc;
         margin: 0 1.5em;
@@ -120,13 +135,45 @@
         }
     }
 
+    aside.controls {
+        ul.markerbuttons {
+            list-style-type: none;
+            img {
+                width: 50px;
+                vertical-align: middle;
+                margin: 0 20px 0 0;
+            }
+            li {
+                margin-bottom: 10px;
+            }
+        }
+        p.astrix {
+            font-size: 0.8em;
+            margin: 0;
+            span {
+                font-style: italic;
+            }
+        }
+
+         margin-bottom: 15px;
+    }
+
 
     header {
         height: 100px;
         background-color: $blue_2;
         img {
-            margin-top: 20px;
+            margin: 20px 10px 0 0;
             height: 60px;
+            vertical-align: bottom;
+        }
+        h1 {
+            display: inline;
+        }
+
+        a {
+            color: $white_1;
+            text-decoration: none;
         }
     }
 

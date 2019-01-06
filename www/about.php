@@ -45,16 +45,17 @@ include "includes/globals.php";
 
         <header>
             <div class="site_margins">
-                <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
+                <a href="/"><img src="images/icon-w.png" class="sotm_logo" />
+                <h1>Unofficial Sea of Thieves Map</h1>
+                </a>
             </div>
+            
         </header>
 
         <section class="docs">
-            <article class="site_margins">
-                <h1>Sea of Thieves Map Documentation</h1>
 
-                <h2>Features</h2>
-                    <ul class="featurelist">
+        <div class="float_toc">
+                <ul class="featurelist">
                         <li>Sharable Custom Location Markers</li>
                         <li>Sharable Map Location</li>
                         <li>Find closest animals</li>
@@ -71,7 +72,48 @@ include "includes/globals.php";
                         <li>Progressive Web App</li>
                         <li>Open Source</li>
                     </ul>
+            </div>
 
+            <article class="site_margins">
+                
+
+            <h2>Controls</h2>
+                <aside class="controls">
+                
+                <h3>Markers</h3>
+				<p>click on the buttons on the sidebar to toggle the visibility of the markers on the map</p>
+                <ul class="markerbuttons">
+                    <li><img src="images/toggle_beacons.png" /> Beacons</li>
+                    <li><img src="images/toggle_thrones.png" /> Skeleton Thrones</li>
+                    <li><img src="images/toggle_crates.png" /> Cargo Run Desitinations *</li>
+                    <li><img src="images/toggle_pigs.png" /> Pigs</li>
+                    <li><img src="images/toggle_snakes.png" /> Snakes</li>
+                    <li><img src="images/toggle_chickens.png" /> Chickens</li>
+                </ul>
+                <p class="astrix"><sub>*</sub>Output cargo run destinations are not included on the map. <span>ProTip: if your cargo run destination is an outpost, the first letter of the name of the person you need to deliver it to is the name of the shop they're in.</span></p>
+                <p class="astrix">Animal locations are not 100% gauranteed. It's possible for them to not spawn. If you need to, you can reset the island you are at by your whole crew drowning (dying) and being dead at the same time. When you respawn on your ship, it's possible for the animals to reset.</p>
+                
+
+                <h3>Island Finder</h3>
+                <p>Click the arrow buttons on the sidebar to quickly jump through zoomed in views on islands to find which one has the treasure you're looking for</p>
+                <img src="https://cdn.chenzorama.com/images/sot/island_finder.gif" alt="custom markers" class="docimg"/>
+				
+
+                <h3>App Controls</h3>
+                    <ul class="markerbuttons">
+                        <li><img src="images/fullscreen_icon.png" /> Enter Full Screen (web only)</li>
+                        <li><img src="images/share_link_icon.png" /> Copy Current Location to Clipboard (share current location)</li>
+                        <li><img src="images/info_icon.png" /> This Page</li>
+                        <li><img src="images/gear_icon.png" /> Install Map Files to device (app only.) Click for More Details.</li>
+                    </ul>
+
+                </aside>
+
+                
+
+                <h2>Features</h2>
+                    
+                <aside class="features">
                 <h3>Sharable Custom Location Markers</h3>
                 <img src="https://cdn.chenzorama.com/images/sot/custom_markers.gif" alt="custom markers" class="docimg"/>
                 <p>To add a marker, right click the map (mobile users `long press`) to get the context menu.
@@ -91,23 +133,23 @@ include "includes/globals.php";
 
                 <p>click the highlighted island or right click and clear markers to remove</p>
 
-                <h3>Island Finder</h3>
-                <img src="https://cdn.chenzorama.com/images/sot/island_finder.gif" alt="custom markers" class="docimg"/>
-				<p>Click the arrow buttons on the sidebar to quickly jump through zoomed in views on islands to find which one has the treasure you're looking for</p>
 
-				<h3>Markers</h3>
-				<p>click on the animal or throne markers on the sidebar to toggle the visibility of the markers on the map</p>
+				
 
 				<h3>Responsive and Mobile Ready</h3>
 				<p>This has been designed with mobile in mind so you can run this on your phone or tablet for easy use while out on the seas</p>
 
 				<h3>Progressive Web App</h3>
 				<p>Save to your homescreen on your mobile device for easier and offline access.</p>
-				<p>Note: This is still slightly wonky. I'm working on fixing that...</p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/fKyggX8MCQ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p>To save all files and have the app work offline, click the gear icon, then press the install button. Wait for the install to finish. This will require approx 120 MB of space to store the map files. </p> 
+
 
 				<h3>Open Source</h3>
 				<p>All the code is here: <a href="https://github.com/Chenzo/sea-of-thieves-map" target="_blank">https://github.com/Chenzo/sea-of-thieves-map</a> and all the map tiles are here: <a href="https://github.com/Chenzo/sea-of-thieves-map-map" target="_blank">https://github.com/Chenzo/sea-of-thieves-map-map</a>.</p>
-				<p>Have at it</p>
+                <p>Have at it</p>
+                
+                </aside>
 
 				<h3>Having trouble, find a bug?</h3>
                 <p>To quickly contact me, hit me up on twitter: <a href="https://twitter.com/1Chenzo" target="_blank">https://twitter.com/1Chenzo</a></p>
@@ -116,6 +158,9 @@ include "includes/globals.php";
                 Thanks! Fair seas!
 
             </article>
+
+
+            
         </section>
     </body>
 </html>
