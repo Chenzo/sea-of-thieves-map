@@ -7,4 +7,6 @@ $version = "v1.22";
 
 define('CACHE_BUSTER', '1546809540432');            // Automatically updates
 
+$static = isset($_GET['static']) ? $_GET['static'] : false;
+
 ?>
