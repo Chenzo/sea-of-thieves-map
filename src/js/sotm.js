@@ -26,7 +26,7 @@ var compMark;
 console.log("-- detect isOnline: " + isOnline);
 
 var cdnpath = "";
-if (location.hostname != "localhost") {
+if (location.hostname != "localhost" && location.hostname !="") {
     cdnpath = "https://cdn.chenzorama.com/";
 }
 
