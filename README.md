@@ -13,6 +13,7 @@ If you notice anything missing or wrong or have suggestions, message me on [Twit
 
 Repository for the map tiles can be found here [Sea Of Thieves Map Map](https://github.com/Chenzo/sea-of-thieves-map-map) 
 
+Repository for the Cordova App can be found here [Sea Of Thieves Map App] (https://github.com/Chenzo/sea-of-thieves-map-app)
 
 
 Some Commands
