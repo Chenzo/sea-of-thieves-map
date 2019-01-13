@@ -1,11 +1,11 @@
 @font-face {
 	font-family: "sot-icons";
-	src: url('/fonts/sot-icons.eot');
-	src: url('/fonts/sot-icons.eot?#iefix') format('eot'),
-		url('/fonts/sot-icons.woff2') format('woff2'),
-		url('/fonts/sot-icons.woff') format('woff'),
-		url('/fonts/sot-icons.ttf') format('truetype'),
-		url('/fonts/sot-icons.svg#sot-icons') format('svg');
+	src: url('../fonts/sot-icons.eot');
+	src: url('../fonts/sot-icons.eot?#iefix') format('eot'),
+		url('../fonts/sot-icons.woff2') format('woff2'),
+		url('../fonts/sot-icons.woff') format('woff'),
+		url('../fonts/sot-icons.ttf') format('truetype'),
+		url('../fonts/sot-icons.svg#sot-icons') format('svg');
 }
 
 .icon:before {

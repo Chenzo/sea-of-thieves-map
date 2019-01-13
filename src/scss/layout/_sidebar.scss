@@ -96,22 +96,22 @@ aside.sidebar {
                 -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
                 filter: grayscale(100%);
                 &[for="chickens"] {
-                    background-image: url(/images/toggle_chickens.png);
+                    background-image: url(../images/toggle_chickens.png);
                 }
                 &[for="snakes"] {
-                    background-image: url(/images/toggle_snakes.png);
+                    background-image: url(../images/toggle_snakes.png);
                 }
                 &[for="pigs"] {
-                    background-image: url(/images/toggle_pigs.png);
+                    background-image: url(../images/toggle_pigs.png);
                 }
                 &[for="thrones"] {
-                    background-image: url(/images/toggle_thrones.png);
+                    background-image: url(../images/toggle_thrones.png);
                 }
                 &[for="beacons"] {
-                    background-image: url(/images/toggle_beacons.png);
+                    background-image: url(../images/toggle_beacons.png);
                 }
                 &[for="cargoruns"] {
-                    background-image: url(/images/toggle_crates.png);
+                    background-image: url(../images/toggle_crates.png);
                 }
             }
 

@@ -28,8 +28,8 @@ sizes: xs,sm,md,lg
 */
 @font-face {
   font-family: "sot-icons";
-  src: url("/fonts/sot-icons.eot");
-  src: url("/fonts/sot-icons.eot?#iefix") format("eot"), url("/fonts/sot-icons.woff2") format("woff2"), url("/fonts/sot-icons.woff") format("woff"), url("/fonts/sot-icons.ttf") format("truetype"), url("/fonts/sot-icons.svg#sot-icons") format("svg"); }
+  src: url("../fonts/sot-icons.eot");
+  src: url("../fonts/sot-icons.eot?#iefix") format("eot"), url("../fonts/sot-icons.woff2") format("woff2"), url("../fonts/sot-icons.woff") format("woff"), url("../fonts/sot-icons.ttf") format("truetype"), url("../fonts/sot-icons.svg#sot-icons") format("svg"); }
 
 .icon:before {
   font-family: "sot-icons";
@@ -1236,17 +1236,17 @@ aside.sidebar {
         /* Safari 6.0 - 9.0 */
         filter: grayscale(100%); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="chickens"] {
-          background-image: url(/images/toggle_chickens.png); }
+          background-image: url(../images/toggle_chickens.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="snakes"] {
-          background-image: url(/images/toggle_snakes.png); }
+          background-image: url(../images/toggle_snakes.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="pigs"] {
-          background-image: url(/images/toggle_pigs.png); }
+          background-image: url(../images/toggle_pigs.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="thrones"] {
-          background-image: url(/images/toggle_thrones.png); }
+          background-image: url(../images/toggle_thrones.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="beacons"] {
-          background-image: url(/images/toggle_beacons.png); }
+          background-image: url(../images/toggle_beacons.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="cargoruns"] {
-          background-image: url(/images/toggle_crates.png); }
+          background-image: url(../images/toggle_crates.png); }
       aside.sidebar .buttonGroup fieldset.toggle input:checked + label {
         -webkit-filter: grayscale(0%);
         /* Safari 6.0 - 9.0 */

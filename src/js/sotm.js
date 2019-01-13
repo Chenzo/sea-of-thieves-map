@@ -88,8 +88,8 @@ map.addLayer(userMarkersLayer);
 
 
 var xmarksspot = L.icon({
-    iconUrl: '/images/markers/xmarkthespot_marker.png',
-    shadowUrl: '/images/markers/xmarkthespot_marker.png',
+    iconUrl: 'images/markers/xmarkthespot_marker.png',
+    shadowUrl: 'images/markers/xmarkthespot_marker.png',
     
     iconSize:     [40, 52], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -99,8 +99,8 @@ var xmarksspot = L.icon({
 });
 
 var compass_marker = L.icon({
-    iconUrl: '/images/markers/compass.png',
-    shadowUrl: '/images/markers/compass.png',
+    iconUrl: 'images/markers/compass.png',
+    shadowUrl: 'images/markers/compass.png',
     
     iconSize:     [50, 48], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -110,8 +110,8 @@ var compass_marker = L.icon({
 });
 
 var boatMarker = L.icon({
-    iconUrl: '/images/markers/boat_marker.png',
-    shadowUrl: '/images/markers/boat_marker.png',
+    iconUrl: 'images/markers/boat_marker.png',
+    shadowUrl: 'images/markers/boat_marker.png',
     
     iconSize:     [50, 59], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -157,8 +157,8 @@ layerArray.push(['pigs', pigsLayer]);
  //use circlemarker?
 
 var chicken_marker = L.icon({
-    iconUrl: '/images/markers/chicken_marker.png',
-    shadowUrl: '/images/markers/chicken_marker.png',
+    iconUrl: 'images/markers/chicken_marker.png',
+    shadowUrl: 'images/markers/chicken_marker.png',
 
     iconSize:     [30, 30], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -169,8 +169,8 @@ var chicken_marker = L.icon({
 
 
 var snake_marker = L.icon({
-    iconUrl: '/images/markers/snake_marker.png',
-    shadowUrl: '/images/markers/snake_marker.png',
+    iconUrl: 'images/markers/snake_marker.png',
+    shadowUrl: 'images/markers/snake_marker.png',
 
     iconSize:     [30, 30], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -179,8 +179,8 @@ var snake_marker = L.icon({
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
 var pig_marker = L.icon({
-    iconUrl: '/images/markers/pig_marker.png',
-    shadowUrl: '/images/markers/pig_marker.png',
+    iconUrl: 'images/markers/pig_marker.png',
+    shadowUrl: 'images/markers/pig_marker.png',
 
     iconSize:     [30, 30], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -295,8 +295,8 @@ layerArray.push(['beacons', beaconsLayer]);
 map.addLayer(beaconsLayer);
 
 var beacon_icon = L.icon({
-    iconUrl: '/images/markers/beacon_marker.png',
-    shadowUrl: '/images/markers/beacon_marker.png',
+    iconUrl: 'images/markers/beacon_marker.png',
+    shadowUrl: 'images/markers/beacon_marker.png',
 
     iconSize:     [31, 40], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -323,8 +323,8 @@ var cargorunsLayer = new L.LayerGroup();
 layerArray.push(['cargoruns', cargorunsLayer]);
 
 var cargorun_icon = L.icon({
-    iconUrl: '/images/markers/crate_marker.png',
-    shadowUrl: '/images/markers/crate_marker.png',
+    iconUrl: 'images/markers/crate_marker.png',
+    shadowUrl: 'images/markers/crate_marker.png',
 
     iconSize:     [31, 40], // size of the icon
     shadowSize:   [0, 0], // size of the shadow
@@ -358,8 +358,8 @@ layerArray.push(['thrones', thronesLayer]);
 map.addLayer(thronesLayer);
 
 var throne_icon = L.icon({
-    iconUrl: '/images/markers/throne_marker.png',
-    shadowUrl: '/images/markers/throne_marker.png',
+    iconUrl: 'images/markers/throne_marker.png',
+    shadowUrl: 'images/markers/throne_marker.png',
 
     iconSize:     [30, 30], // size of the icon
     shadowSize:   [0, 0], // size of the shadow

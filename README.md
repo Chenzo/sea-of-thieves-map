@@ -15,6 +15,10 @@ Repository for the map tiles can be found here [Sea Of Thieves Map Map](https://
 
 
 
+Some Commands
+--------------------------------------
+http://localhost:8088/?static=true <- this will generate the HTML for cordova
+
 
 
 

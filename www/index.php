@@ -43,7 +43,6 @@ if ($static == "true") {
 
 
                 <div class="island-finder buttonGroup">
-                    <!-- <p>ISLAND FINDER</p> -->
                     <img src="images/map_finder_icon.png" class="mapfinder_image" />
                     <button type="button" data-dir="left" class="js-searchforisland"><span class="icon icon-arrow1_left"></span></button>
                     <button type="button" data-dir="right" class="js-searchforisland"><span class="icon icon-arrow1_right"></span></button>
@@ -101,7 +100,7 @@ if ($static == "true") {
                 </div>
 
                 <div class="installBut buttonGroup" id="installBut">
-                    <img src="/images/downloadicon.png" id="install-button" />
+                    <img src="images/downloadicon.png" id="install-button" />
                     <span>install</span>
                 </div>
 
@@ -130,23 +129,23 @@ if ($static == "true") {
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
-        <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>"></script> <!-- ?v=<?= CACHE_BUSTER ?> -->
+        <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>"></script> 
 
-        
-    <script>
-
-
-</script>
-
+        <?php if ($isApp) { ?>
+            <script type="text/javascript" src="cordova.js"></script>
+            <script type="text/javascript" src="js/index.js"></script>
+        <?php } ?>
 
     </body>
 </html>
 
 
 <?php 
-   $theHTML = ob_get_contents(); 
+    if ($static == "true") {
+        $theHTML = ob_get_contents(); 
 
-   //do whatever you need to do to the html, save it to a seperate file, email it, etc
-   file_put_contents("index.html",$theHTML);
-   ob_flush();
+        //do whatever you need to do to the html, save it to a seperate file, email it, etc
+        file_put_contents("index.html",$theHTML);
+        ob_flush();
+    }
 ?>
