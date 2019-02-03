@@ -187,7 +187,7 @@ var islands = [{
         isSeapost: true
     },
     {
-        "loc": [-19.313035, 27.037615],
+        "loc": [-59.281311, 16.456299],
         "title": "The Spoils of Plenty Store",
         radius: 1,
         isSeapost: true
