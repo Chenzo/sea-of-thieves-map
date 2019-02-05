@@ -7,6 +7,8 @@ import * as tools from './modules/tools.js';
 
 
 var layerArray = [];
+var lang = window.location.pathname.substr(1);
+console.log("language: " + lang);
 var islands = island_data.islands;
 islands.forEach(function(im) {
     im['searchData'] = "island|" + im.title;
