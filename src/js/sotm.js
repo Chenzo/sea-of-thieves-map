@@ -132,6 +132,9 @@ map.on('click', onMapClick);
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
+var islandsLayer = new L.LayerGroup();
+map.addLayer(islandsLayer);
+
 var chickensLayer = new L.LayerGroup();
 map.addLayer(chickensLayer);
 layerArray.push(['chickens', chickensLayer]);
@@ -217,6 +220,75 @@ for(var i in islands) {
         title: islandName,
         json: islands[i]
     })
+	
+	var islandMarkerCenteringHelperCenteringHelper = new L.Marker(islands[i].islandNameMarkerLoc, {
+	}).addTo(map);
+	
+	var oriAnchorX = ((islands[i].hasOwnProperty('markerAnchorX'))?islands[i].markerAnchorX:50);
+	var islandMarker = new L.Marker(islands[i].islandNameMarkerLoc, {
+		icon: new L.DivIcon({
+			className: 'title-location',
+			iconAnchor:   [oriAnchorX, 20],
+			html: '<span class="my-div-span" data-anchor-x="'+oriAnchorX+'">'+islands[i].title+'</span>'
+		})
+	}).addTo(islandsLayer);
+	islandMarker.bindPopup('<div class="lf-popup">'+
+							'<img src="/images/screenshots/small/'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'" />'+
+							'<span class="popup-title-island">'+islands[i].title+'</span>'+
+							'<span class="popup-type-island">'+islands[i].type+'</span>'+
+							'<span class="popup-img-island hiddenDiv">'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'</span>'+
+							'<span class="popup-hasChickens-island hiddenDiv">'+((islands[i].hasOwnProperty('chickens'))?"O":"N")+'</span>'+
+							'<span class="popup-hasPigs-island hiddenDiv">'+((islands[i].hasOwnProperty('pigs'))?"O":"N")+'</span>'+
+							'<span class="popup-hasSnakes-island hiddenDiv">'+((islands[i].hasOwnProperty('snakes'))?"O":"N")+'</span>'+
+						'</div>', {minWidth: 322});
+						
+	islandMarker.on('mouseover', function (e) {
+		this.openPopup();
+	});
+	islandMarker.on('mouseout', function (e) {
+		this.closePopup();
+	});
+	islandMarker.on('click', function (e) {
+		/*center and zoom on island*/
+		map.setView(this.getLatLng(), 6);
+		
+		/*show modal medium*/
+		var modal = document.getElementById('islandModal');
+		var img = document.getElementById('islandModalImg');
+		var titre = document.getElementById('islandModalTitre');
+		var type = document.getElementById('islandModalType');
+		var span = document.getElementsByClassName("closeModal")[0];
+		
+		modal.style.display = "block";
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		img.src = "/images/screenshots/medium/" + document.getElementsByClassName("popup-img-island")[0].innerHTML;
+		titre.innerHTML = document.getElementsByClassName("popup-title-island")[0].innerHTML;
+		type.innerHTML = document.getElementsByClassName("popup-type-island")[0].innerHTML;
+		
+		$('#islandModalAnimals').html("");
+		if(document.getElementsByClassName("popup-hasChickens-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/chicken-icon-small.png" /></div>');
+		}
+		if(document.getElementsByClassName("popup-hasPigs-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/pig-icon-white.png" height="20" /></div>');
+		}
+		if(document.getElementsByClassName("popup-hasSnakes-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/snake-icon-white-small.png" /></div>');
+		}
+		
+		this.closePopup();
+	});
 
     markersLayer.addLayer(circle);
     island_markers[i] = circle;
@@ -288,6 +360,47 @@ for(var i in islands) {
         
     }
 }
+
+
+var lastZoomApplied = null;
+map.on('zoomend', function() {
+    if (map.getZoom() <4){
+        map.removeLayer(islandsLayer);
+    }
+    else {
+		map.addLayer(islandsLayer);
+	}
+	var tooltip = $('.title-location');
+	switch (map.getZoom()) {
+		case 5:
+            tooltip.css('font-size', 28);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0.18);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        case 6:
+            tooltip.css('font-size', 33);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0.41);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        case 7:
+            tooltip.css('font-size', 63);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(1.73);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        default:
+            tooltip.css('font-size', 23);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0);
+			}
+			lastZoomApplied = 4;
+    }
+});
 
 //add beacons
 var beaconsLayer = new L.LayerGroup();
@@ -707,6 +820,17 @@ function getNextIsland(direction) {
     return (islands[currentSearchIsland]);
 }
 
+function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
+	islandsLayer.getLayers().forEach(function(marker){
+		var icon = marker.options.icon
+		var iconAnchor = icon.options.iconAnchor;
+		
+		var oriAnchorX = $(icon.options.html).data("anchor-x");
+		var anchorX = oriAnchorX + (oriAnchorX * anchorXmodifier);
+		icon.options.iconAnchor = [anchorX, iconAnchor[1]];
+		marker.setIcon(icon);
+	});
+}
 
 var popUpInt = 0;
 $(function() {
