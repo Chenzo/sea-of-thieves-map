@@ -80,7 +80,7 @@ include "includes/globals.php";
 						
 					</div>
 				</div>
-				<img id="islandModalImg" src="" />
+				<img id="islandModalImg" class="islandModalImg" src="" />
 			</div>
 
 		</div>

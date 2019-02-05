@@ -30,8 +30,6 @@ if (location.hostname != "localhost") {
     cdnpath = "https://cdn.chenzorama.com/";
 }
 
-
-
 /* 
  * Workaround for 1px lines appearing in some browsers due to fractional transforms
  * and resulting anti-aliasing.
@@ -136,15 +134,15 @@ var islandsLayer = new L.LayerGroup();
 map.addLayer(islandsLayer);
 
 var chickensLayer = new L.LayerGroup();
-map.addLayer(chickensLayer);
+//map.addLayer(chickensLayer);
 layerArray.push(['chickens', chickensLayer]);
 
 var snakesLayer = new L.LayerGroup();
-map.addLayer(snakesLayer);
+//map.addLayer(snakesLayer);
 layerArray.push(['snakes', snakesLayer]);
 
 var pigsLayer = new L.LayerGroup();
-map.addLayer(pigsLayer);
+//map.addLayer(pigsLayer);
 layerArray.push(['pigs', pigsLayer]);
 
 
@@ -324,8 +322,8 @@ for(var i in islands) {
 
         var marker = L.marker(chickenLoc, { 
             icon: chicken_marker,
-            title: 'chicken',
-            opacity: 0
+            title: 'chicken'
+            //opacity: 0
         } 
         ).addTo(chickensLayer);
         marker.setIcon(chicken_marker);
@@ -338,8 +336,8 @@ for(var i in islands) {
 
         var marker = L.marker(snakeLoc, { 
             icon: snake_marker,
-            title: 'snake' ,
-            opacity: 0 
+            title: 'snake' 
+            //opacity: 0 
         } 
         ).addTo(snakesLayer);
 
@@ -352,8 +350,8 @@ for(var i in islands) {
 
         var marker = L.marker(pigLoc, { 
             icon: pig_marker,
-            title: 'pigs'  ,
-            opacity: 0
+            title: 'pigs'  
+            //opacity: 0
         } 
         ).addTo(pigsLayer);
 
@@ -405,7 +403,7 @@ map.on('zoomend', function() {
 //add beacons
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
-map.addLayer(beaconsLayer);
+//map.addLayer(beaconsLayer);
 
 var beacon_icon = L.icon({
     iconUrl: '/images/markers/beacon_marker.png',
@@ -423,8 +421,8 @@ for(var t in beacons) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: beacon_icon,
-        title: 'Beacon',
-        opacity: 0
+        title: 'Beacon'
+        //opacity: 0
     } 
     ).addTo(beaconsLayer);
     //.bindPopup(beacons[t].desc);
@@ -453,8 +451,8 @@ for(var t in cargoruns) {
         /* draggable: true,   */   
         icon: cargorun_icon,
         title: 'Cargo Run',
-        name: cargoruns[t].title,
-        opacity: 0
+        name: cargoruns[t].title
+        //opacity: 0
     } 
     ).addTo(cargorunsLayer)
     .bindPopup(cargoruns[t].title);
@@ -468,7 +466,7 @@ for(var t in cargoruns) {
 //add thrones
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
-map.addLayer(thronesLayer);
+//map.addLayer(thronesLayer);
 
 var throne_icon = L.icon({
     iconUrl: '/images/markers/throne_marker.png',
@@ -486,8 +484,8 @@ for(var t in thrones) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: throne_icon,
-        title: 'Skelton Throne',
-        opacity: 0
+        title: 'Skelton Throne'
+        //opacity: 0
     } 
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
@@ -587,6 +585,18 @@ var toggleMarkers = function(theType, onoff) {
         }
     });
 
+};
+
+var toggleLayer = function(theType, onoff) {
+    var theLayer = getLayer(theType);
+    //console.log(theType);
+
+	if (onoff) {
+		map.addLayer(theLayer);
+    }
+    else {
+		map.removeLayer(theLayer);
+	}
 };
 
 var getLayer = function(layerName) {
@@ -852,7 +862,8 @@ $(function() {
 
 
     $(".js-toggleMarkers").click(function() {
-        toggleMarkers($(this).attr("name"), $(this).is(":checked"));
+        toggleLayer($(this).attr("name"), $(this).is(":checked"));
+		
     });
 
     $(".js-fullscreen").click(function() {

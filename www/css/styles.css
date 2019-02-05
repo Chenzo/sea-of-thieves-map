@@ -1405,10 +1405,19 @@ aside.sidebar {
   /* Could be more or less, depending on screen size */
   height: 720px;
   border-radius: 10px;
-  position: relative; }
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
-.modal-content img {
-  border-radius: 10px; }
+.modal-content img.islandModalImg {
+  border-radius: 10px;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  left: 0;
+  top: 0;
+  position: absolute; }
 
 .modal-header {
   width: 100%;
@@ -1418,7 +1427,8 @@ aside.sidebar {
   right: 0;
   top: 0;
   border-radius: 10px 10px 0px 0px;
-  height: 64px; }
+  height: 64px;
+  z-index: 1; }
 
 /* The Close Button */
 .close {
@@ -1454,7 +1464,7 @@ aside.sidebar {
 .leaflet-popup-content-wrapper {
   background: #0b1e28;
   color: #fff;
-  border: 1px solid #56a6ce;
+  border: 1px solid #e3e3e3;
   -webkit-box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
           box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4); }
 
