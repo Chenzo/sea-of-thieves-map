@@ -17,7 +17,7 @@ Repository for the map tiles can be found here [Sea Of Thieves Map Map](https://
 
 Contributors
 --------------------------------------
-* Chenzo
+* [Chenzo] (https://github.com/Chenzo)
 * BigPino67
 * Lirnak30
 * DanmaxQc
