@@ -17,10 +17,10 @@ Repository for the map tiles can be found here [Sea Of Thieves Map Map](https://
 
 Contributors
 --------------------------------------
-*Chenzo
-*BigPino67
-*Lirnak30
-*DanmaxQc
+* Chenzo
+* BigPino67
+* Lirnak30
+* DanmaxQc
 
 
 
