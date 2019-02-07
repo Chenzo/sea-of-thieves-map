@@ -76,3 +76,149 @@
         }
     }
 }
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99999999; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 1280px; /* Could be more or less, depending on screen size */
+  height: 720px;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.modal-content img.islandModalImg{
+	border-radius: 10px;
+	padding: 0;
+	box-sizing: border-box;
+	width: 100%;
+	left:0;
+	top:0;
+	position: absolute;
+}
+
+.modal-header {
+	width: 100%;
+	position: absolute;
+    background: rgba(6,18,24,.4);
+    left: 0;
+    right: 0;
+    top: 0;
+	border-radius: 10px 10px 0px 0px;
+	height: 64px;
+	z-index: 1;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hiddenDiv{
+	display: none;
+}
+
+.title-location {
+    color: #eee;
+    text-shadow: 0 0 10px #000;
+    font-size: 23px;
+    white-space: nowrap;
+    font-family: 'Pirata One',serif;
+    width: auto;
+    height: auto;
+    outline: 0;
+    text-align: center;
+    
+    span {
+        display:block;
+        margin-left: -100%;
+        margin-top: -6%;
+    }
+}
+
+.title-location:hover{
+    color: #fff;
+}
+
+.leaflet-popup-content-wrapper {
+    background: #0b1e28;
+    color: #fff;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 3px 14px rgba(0,0,0,.4)
+}
+
+.popup-title-island, .modal-title-island{
+	display: block;
+	font-family: 'Pirata One',serif;
+	font-size: 20px;
+	text-align: center;
+}
+.popup-type-island, .modal-type-island{
+	display: block;
+	font-family: 'Pirata One',serif;
+	font-size: 16px;
+	text-align: center;
+}
+.modal-title-island, .modal-type-island{
+	color: white;
+}
+.modal-title-island{
+	font-size: 28px;
+}
+
+.modal-type-island{
+	font-size: 24px;
+}
+
+.ctxMenu{
+	color: grey;
+}
+
+.ctxMenu:hover{
+	color: white;
+}
+
+#islandModalAnimals {
+	color: #aaa;
+	float: left;
+	font-size: 28px;
+	margin-left: 10px;
+	margin-top: -52px;
+}
+
+.animal-box{
+	display: inline-block;
+    margin-left: 5px;
+    background-color: #000;
+    border: 1px solid #e3e3e3;
+    text-align: center;
+    padding: 0 3px;
+	width: 48px;
+}
