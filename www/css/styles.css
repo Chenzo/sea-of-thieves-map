@@ -1448,8 +1448,7 @@ aside.sidebar {
   display: none; }
 
 .title-location {
-  color: #eee;
-  text-shadow: 0 0 10px #000;
+  color: #000;
   font-size: 23px;
   white-space: nowrap;
   font-family: 'Pirata One',serif;

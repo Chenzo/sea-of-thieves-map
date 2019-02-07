@@ -222,7 +222,8 @@ for(var i in islands) {
             iconSize: null,
 			html: '<span class="my-div-span" data-anchor-x="0">'+islands[i].title+'</span>'
 		})
-	}).addTo(islandsLayer);
+    }).addTo(islandsLayer);
+    /*
 	islandMarker.bindPopup('<div class="lf-popup">'+
 							'<img src="/images/screenshots/small/'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'" />'+
 							'<span class="popup-title-island">'+islands[i].title+'</span>'+
@@ -240,10 +241,8 @@ for(var i in islands) {
 		this.closePopup();
 	});
 	islandMarker.on('click', function (e) {
-		/*center and zoom on island*/
 		map.setView(this.getLatLng(), 6);
 		
-		/*show modal medium*/
 		var modal = document.getElementById('islandModal');
 		var img = document.getElementById('islandModalImg');
 		var titre = document.getElementById('islandModalTitre');
@@ -279,7 +278,8 @@ for(var i in islands) {
 		}
 		
 		this.closePopup();
-	});
+    });
+    */
 
     markersLayer.addLayer(circle);
     island_markers[i] = circle;
