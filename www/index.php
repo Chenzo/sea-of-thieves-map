@@ -1,5 +1,7 @@
 <?php 
+
 include "includes/globals.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +58,7 @@ include "includes/globals.php";
         <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/images/favicon/apple-launch-1536x2048.jpg">
 
 
-        <?php include "includes/gtm.php"; ?>
+       
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
@@ -66,7 +68,32 @@ include "includes/globals.php";
 
     </head>
     <body class="home">
+		<?php 
 
+
+$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+ echo "URL : ".$url."<br>Lang : ".$_GET["lang"];
+print_r($GET);
+
+?>
+		<!-- The Modal -->
+		<div id="islandModal" class="modal">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<span class="close closeModal">&times;</span>
+					<span id="islandModalTitre" class="modal-title-island"></span>
+					<span id="islandModalType" class="modal-type-island"></span>
+					<div id="islandModalAnimals">
+						
+					</div>
+				</div>
+				<img id="islandModalImg" class="islandModalImg" src="" />
+			</div>
+
+		</div>
+		
         <section class="sotm_wrapper">
 
             <aside class="sidebar">

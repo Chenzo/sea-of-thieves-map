@@ -7,18 +7,22 @@ import * as tools from './modules/tools.js';
 
 
 var layerArray = [];
+
 var lang = window.location.pathname.substr(1);
 console.log("language: " + lang);
+
 var islands = island_data.islands;
-islands.forEach(function(im) {
-    im['searchData'] = "island|" + im.title;
-});
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
 var cargoruns = cargorun_data.cargoruns;
+
+islands.forEach(function(im) {
+    im['searchData'] = "island|" + im.title;
+});
 cargoruns.forEach(function(im) {
     im['searchData'] = "cargorun|" + im.title;
 });
+
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
@@ -31,8 +35,6 @@ var cdnpath = "";
 if (location.hostname != "localhost") {
     cdnpath = "https://cdn.chenzorama.com/";
 }
-
-
 
 /* 
  * Workaround for 1px lines appearing in some browsers due to fractional transforms
@@ -80,15 +82,6 @@ var layer = L.tileLayer(cdnpath + "images/tiles/v2.4/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 
-
-
-
-
-
-var userMarkersLayer = new L.LayerGroup();
-map.addLayer(userMarkersLayer);
-
-
 var xmarksspot = L.icon({
     iconUrl: '/images/markers/xmarkthespot_marker.png',
     shadowUrl: '/images/markers/xmarkthespot_marker.png',
@@ -134,16 +127,17 @@ map.on('click', onMapClick);
 var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
+var islandsLayer = new L.LayerGroup();
+layerArray.push(['islands', chickensLayer]);
+map.addLayer(islandsLayer);
+
 var chickensLayer = new L.LayerGroup();
-map.addLayer(chickensLayer);
 layerArray.push(['chickens', chickensLayer]);
 
 var snakesLayer = new L.LayerGroup();
-map.addLayer(snakesLayer);
 layerArray.push(['snakes', snakesLayer]);
 
 var pigsLayer = new L.LayerGroup();
-map.addLayer(pigsLayer);
 layerArray.push(['pigs', pigsLayer]);
 
 
@@ -219,6 +213,75 @@ for(var i in islands) {
         title: islandName,
         json: islands[i]
     })
+	
+	var islandMarkerCenteringHelperCenteringHelper = new L.Marker(islands[i].islandNameMarkerLoc, {
+	}).addTo(map);
+	
+	var oriAnchorX = ((islands[i].hasOwnProperty('markerAnchorX'))?islands[i].markerAnchorX:50);
+	var islandMarker = new L.Marker(islands[i].islandNameMarkerLoc, {
+		icon: new L.DivIcon({
+			className: 'title-location',
+			iconAnchor:   [oriAnchorX, 20],
+			html: '<span class="my-div-span" data-anchor-x="'+oriAnchorX+'">'+islands[i].title+'</span>'
+		})
+	}).addTo(islandsLayer);
+	islandMarker.bindPopup('<div class="lf-popup">'+
+							'<img src="/images/screenshots/small/'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'" />'+
+							'<span class="popup-title-island">'+islands[i].title+'</span>'+
+							'<span class="popup-type-island">'+islands[i].type+'</span>'+
+							'<span class="popup-img-island hiddenDiv">'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'</span>'+
+							'<span class="popup-hasChickens-island hiddenDiv">'+((islands[i].hasOwnProperty('chickens'))?"O":"N")+'</span>'+
+							'<span class="popup-hasPigs-island hiddenDiv">'+((islands[i].hasOwnProperty('pigs'))?"O":"N")+'</span>'+
+							'<span class="popup-hasSnakes-island hiddenDiv">'+((islands[i].hasOwnProperty('snakes'))?"O":"N")+'</span>'+
+						'</div>', {minWidth: 322});
+						
+	islandMarker.on('mouseover', function (e) {
+		this.openPopup();
+	});
+	islandMarker.on('mouseout', function (e) {
+		this.closePopup();
+	});
+	islandMarker.on('click', function (e) {
+		/*center and zoom on island*/
+		map.setView(this.getLatLng(), 6);
+		
+		/*show modal medium*/
+		var modal = document.getElementById('islandModal');
+		var img = document.getElementById('islandModalImg');
+		var titre = document.getElementById('islandModalTitre');
+		var type = document.getElementById('islandModalType');
+		var span = document.getElementsByClassName("closeModal")[0];
+		
+		modal.style.display = "block";
+		
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		  modal.style.display = "none";
+		}
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+		img.src = "/images/screenshots/medium/" + document.getElementsByClassName("popup-img-island")[0].innerHTML;
+		titre.innerHTML = document.getElementsByClassName("popup-title-island")[0].innerHTML;
+		type.innerHTML = document.getElementsByClassName("popup-type-island")[0].innerHTML;
+		
+		$('#islandModalAnimals').html("");
+		if(document.getElementsByClassName("popup-hasChickens-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/chicken-icon-small.png" /></div>');
+		}
+		if(document.getElementsByClassName("popup-hasPigs-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/pig-icon-white.png" height="20" /></div>');
+		}
+		if(document.getElementsByClassName("popup-hasSnakes-island")[0].innerHTML == "O"){
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/snake-icon-white-small.png" /></div>');
+		}
+		
+		this.closePopup();
+	});
 
     markersLayer.addLayer(circle);
     island_markers[i] = circle;
@@ -254,8 +317,8 @@ for(var i in islands) {
 
         var marker = L.marker(chickenLoc, { 
             icon: chicken_marker,
-            title: 'chicken',
-            opacity: 0
+            title: 'chicken'
+            //opacity: 0
         } 
         ).addTo(chickensLayer);
         marker.setIcon(chicken_marker);
@@ -268,8 +331,8 @@ for(var i in islands) {
 
         var marker = L.marker(snakeLoc, { 
             icon: snake_marker,
-            title: 'snake' ,
-            opacity: 0 
+            title: 'snake' 
+            //opacity: 0 
         } 
         ).addTo(snakesLayer);
 
@@ -282,8 +345,8 @@ for(var i in islands) {
 
         var marker = L.marker(pigLoc, { 
             icon: pig_marker,
-            title: 'pigs'  ,
-            opacity: 0
+            title: 'pigs'  
+            //opacity: 0
         } 
         ).addTo(pigsLayer);
 
@@ -291,10 +354,51 @@ for(var i in islands) {
     }
 }
 
+
+var lastZoomApplied = null;
+map.on('zoomend', function() {
+    if (map.getZoom() <4){
+        map.removeLayer(islandsLayer);
+    }
+    else {
+		map.addLayer(islandsLayer);
+	}
+	var tooltip = $('.title-location');
+	switch (map.getZoom()) {
+		case 5:
+            tooltip.css('font-size', 28);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0.18);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        case 6:
+            tooltip.css('font-size', 33);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0.41);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        case 7:
+            tooltip.css('font-size', 63);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(1.73);
+			}
+			lastZoomApplied = map.getZoom();
+            break;
+        default:
+            tooltip.css('font-size', 23);
+			if(lastZoomApplied != map.getZoom()){
+				adjustIslandsAnchorPointOnZoom(0);
+			}
+			lastZoomApplied = 4;
+    }
+});
+
 //add beacons
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
-map.addLayer(beaconsLayer);
+
 
 var beacon_icon = L.icon({
     iconUrl: '/images/markers/beacon_marker.png',
@@ -312,8 +416,8 @@ for(var t in beacons) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: beacon_icon,
-        title: 'Beacon',
-        opacity: 0
+        title: 'Beacon'
+        //opacity: 0
     } 
     ).addTo(beaconsLayer);
     //.bindPopup(beacons[t].desc);
@@ -342,22 +446,19 @@ for(var t in cargoruns) {
         /* draggable: true,   */   
         icon: cargorun_icon,
         title: 'Cargo Run',
-        name: cargoruns[t].title,
-        opacity: 0
+        name: cargoruns[t].title
+        //opacity: 0
     } 
     ).addTo(cargorunsLayer)
     .bindPopup(cargoruns[t].title);
 
     cargo_run_markers[t] = marker;
 }
-//map.addLayer(cargorunsLayer);
-
-
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
-map.addLayer(thronesLayer);
+
 
 var throne_icon = L.icon({
     iconUrl: '/images/markers/throne_marker.png',
@@ -375,8 +476,8 @@ for(var t in thrones) {
     var marker = L.marker(loc, {
         /* draggable: true,   */   
         icon: throne_icon,
-        title: 'Skelton Throne',
-        opacity: 0
+        title: 'Skelton Throne'
+        //opacity: 0
     } 
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
@@ -387,7 +488,7 @@ for(var t in thrones) {
 
 
 var searchLayers = L.layerGroup([
-    cargorunsLayer,
+    //cargorunsLayer,
     markersLayer 
 ]);
 
@@ -476,6 +577,18 @@ var toggleMarkers = function(theType, onoff) {
         }
     });
 
+};
+
+var toggleLayer = function(theType, onoff) {
+    var theLayer = getLayer(theType);
+    //console.log(theType);
+
+	if (onoff) {
+		map.addLayer(theLayer);
+    }
+    else {
+		map.removeLayer(theLayer);
+	}
 };
 
 var getLayer = function(layerName) {
@@ -709,6 +822,17 @@ function getNextIsland(direction) {
     return (islands[currentSearchIsland]);
 }
 
+function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
+	islandsLayer.getLayers().forEach(function(marker){
+		var icon = marker.options.icon
+		var iconAnchor = icon.options.iconAnchor;
+		
+		var oriAnchorX = $(icon.options.html).data("anchor-x");
+		var anchorX = oriAnchorX + (oriAnchorX * anchorXmodifier);
+		icon.options.iconAnchor = [anchorX, iconAnchor[1]];
+		marker.setIcon(icon);
+	});
+}
 
 var popUpInt = 0;
 $(function() {
@@ -730,7 +854,8 @@ $(function() {
 
 
     $(".js-toggleMarkers").click(function() {
-        toggleMarkers($(this).attr("name"), $(this).is(":checked"));
+        toggleLayer($(this).attr("name"), $(this).is(":checked"));
+		
     });
 
     $(".js-fullscreen").click(function() {

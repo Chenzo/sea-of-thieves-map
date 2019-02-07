@@ -29,6 +29,7 @@
     "webpack-stream": "^5.0.0"
   },
   "dependencies": {
+    "gulp-cli": "^2.0.1",
     "gulp-run-command": "^0.0.9",
     "npm": "^6.2.0"
   }
