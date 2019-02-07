@@ -7,18 +7,22 @@ import * as tools from './modules/tools.js';
 
 
 var layerArray = [];
+
 var lang = window.location.pathname.substr(1);
 console.log("language: " + lang);
+
 var islands = island_data.islands;
-islands.forEach(function(im) {
-    im['searchData'] = "island|" + im.title;
-});
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
 var cargoruns = cargorun_data.cargoruns;
+
+islands.forEach(function(im) {
+    im['searchData'] = "island|" + im.title;
+});
 cargoruns.forEach(function(im) {
     im['searchData'] = "cargorun|" + im.title;
 });
+
 var isOnline = pwa.isOnline;
 var isDev = false;
 var xMarkers = [];
@@ -78,15 +82,6 @@ var layer = L.tileLayer(cdnpath + "images/tiles/v2.4/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 
-
-
-
-
-
-var userMarkersLayer = new L.LayerGroup();
-map.addLayer(userMarkersLayer);
-
-
 var xmarksspot = L.icon({
     iconUrl: '/images/markers/xmarkthespot_marker.png',
     shadowUrl: '/images/markers/xmarkthespot_marker.png',
@@ -133,18 +128,16 @@ var markersLayer = new L.LayerGroup();
 map.addLayer(markersLayer);
 
 var islandsLayer = new L.LayerGroup();
+layerArray.push(['islands', chickensLayer]);
 map.addLayer(islandsLayer);
 
 var chickensLayer = new L.LayerGroup();
-//map.addLayer(chickensLayer);
 layerArray.push(['chickens', chickensLayer]);
 
 var snakesLayer = new L.LayerGroup();
-//map.addLayer(snakesLayer);
 layerArray.push(['snakes', snakesLayer]);
 
 var pigsLayer = new L.LayerGroup();
-//map.addLayer(pigsLayer);
 layerArray.push(['pigs', pigsLayer]);
 
 
@@ -405,7 +398,7 @@ map.on('zoomend', function() {
 //add beacons
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
-//map.addLayer(beaconsLayer);
+
 
 var beacon_icon = L.icon({
     iconUrl: '/images/markers/beacon_marker.png',
@@ -461,14 +454,11 @@ for(var t in cargoruns) {
 
     cargo_run_markers[t] = marker;
 }
-//map.addLayer(cargorunsLayer);
-
-
 
 //add thrones
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
-//map.addLayer(thronesLayer);
+
 
 var throne_icon = L.icon({
     iconUrl: '/images/markers/throne_marker.png',
@@ -498,7 +488,7 @@ for(var t in thrones) {
 
 
 var searchLayers = L.layerGroup([
-    cargorunsLayer,
+    //cargorunsLayer,
     markersLayer 
 ]);
 

@@ -26,25 +26,12 @@ RewriteRule ^(actions)($|/) - [L]
 #--------------------------------------
 #-- Add trailing PHP and Params
 #--------------------------------------
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/([^/]+)/([^/]+)/([^/]+)$ $1.php?param1=$2&param2=$3&param3=$4&param4=$5 [B,QSA,L]
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/([^/]+)/([^/]+)$ $1.php?param1=$2&param2=$3&param3=$4 [B,QSA,L]
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/([^/]+)$ $1.php?param1=$2&param2=$3 [B,QSA,L]
-
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-#check for the existance of a PHP file first or else the 404 won't work
-RewriteCond %{REQUEST_FILENAME}.php -f 
-RewriteRule ^([^/]+)$ $1.php?param1=$2 [B,QSA,L]
-
-RewriteRule ^(.*)/$ $1 [R=301,L]
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ /index.php [NC,L]
 
 
 <filesMatch "\.(html|htm|js|css|php|json)$">
