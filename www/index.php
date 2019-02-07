@@ -68,14 +68,7 @@ include "includes/globals.php";
 
     </head>
     <body class="home">
-		<?php 
 
-
-$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
- echo "URL : ".$url."<br>Lang : ".$_GET["lang"];
-print_r($GET);
-
-?>
 		<!-- The Modal -->
 		<div id="islandModal" class="modal">
 

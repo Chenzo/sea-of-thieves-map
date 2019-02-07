@@ -355,7 +355,7 @@ for(var i in islands) {
 
 var lastZoomApplied = null;
 map.on('zoomend', function() {
-    if (map.getZoom() <4){
+    if (map.getZoom() <3){
         map.removeLayer(islandsLayer);
     }
     else {
