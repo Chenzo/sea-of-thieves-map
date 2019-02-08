@@ -74,7 +74,7 @@ map.setMaxBounds(bounds, {padding: [600,600]});
 //map.fitBounds(bounds, {padding: [600,600]})
 var hash = new L.Hash(map);
 
-var layer = L.tileLayer(cdnpath + "images/tiles/v2.4/{z}/{x}/{y}.png", {
+var layer = L.tileLayer(cdnpath + "images/tiles/v2.5/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
@@ -213,17 +213,15 @@ for(var i in islands) {
         name: islandName,
         title: islandName,
         json: islands[i]
-    })
+    });
 	
-	var islandMarkerCenteringHelperCenteringHelper = new L.Marker(islands[i].islandNameMarkerLoc, {
-	}).addTo(map);
-	
-	var oriAnchorX = ((islands[i].hasOwnProperty('markerAnchorX'))?islands[i].markerAnchorX:50);
-	var islandMarker = new L.Marker(islands[i].islandNameMarkerLoc, {
+    var textLoc = modifyLoc(islands[i].loc, (cRad + (cRad * 0.1)), (0));
+	var islandMarker = new L.Marker(textLoc, {
 		icon: new L.DivIcon({
 			className: 'title-location',
-			iconAnchor:   [oriAnchorX, 20],
-			html: '<span class="my-div-span" data-anchor-x="'+oriAnchorX+'">'+islands[i].title+'</span>'
+            iconAnchor:   [0, 0],
+            iconSize: null,
+			html: '<span class="my-div-span" data-anchor-x="0">'+islands[i].title+'</span>'
 		})
 	}).addTo(islandsLayer);
 	islandMarker.bindPopup('<div class="lf-popup">'+
@@ -257,8 +255,8 @@ for(var i in islands) {
 		
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function() {
-		  modal.style.display = "none";
-		}
+            modal.style.display = "none";
+        }
 		
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
@@ -367,30 +365,30 @@ map.on('zoomend', function() {
 	var tooltip = $('.title-location');
 	switch (map.getZoom()) {
 		case 5:
-            tooltip.css('font-size', 28);
+            tooltip.css('font-size', 24);
 			if(lastZoomApplied != map.getZoom()){
-				adjustIslandsAnchorPointOnZoom(0.18);
+				//adjustIslandsAnchorPointOnZoom(0.18);
 			}
 			lastZoomApplied = map.getZoom();
             break;
         case 6:
             tooltip.css('font-size', 33);
 			if(lastZoomApplied != map.getZoom()){
-				adjustIslandsAnchorPointOnZoom(0.41);
+				//adjustIslandsAnchorPointOnZoom(0.41);
 			}
 			lastZoomApplied = map.getZoom();
             break;
         case 7:
             tooltip.css('font-size', 63);
 			if(lastZoomApplied != map.getZoom()){
-				adjustIslandsAnchorPointOnZoom(1.73);
+				//adjustIslandsAnchorPointOnZoom(1.73);
 			}
 			lastZoomApplied = map.getZoom();
             break;
         default:
-            tooltip.css('font-size', 23);
+            tooltip.css('font-size', 14);
 			if(lastZoomApplied != map.getZoom()){
-				adjustIslandsAnchorPointOnZoom(0);
+				//adjustIslandsAnchorPointOnZoom(0);
 			}
 			lastZoomApplied = 4;
     }

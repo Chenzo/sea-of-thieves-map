@@ -154,7 +154,13 @@
     width: auto;
     height: auto;
     outline: 0;
-	text-align: center;
+    text-align: center;
+    
+    span {
+        display:block;
+        margin-left: -100%;
+        margin-top: -6%;
+    }
 }
 
 .title-location:hover{

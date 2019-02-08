@@ -1457,6 +1457,10 @@ aside.sidebar {
   height: auto;
   outline: 0;
   text-align: center; }
+  .title-location span {
+    display: block;
+    margin-left: -100%;
+    margin-top: -6%; }
 
 .title-location:hover {
   color: #fff; }
