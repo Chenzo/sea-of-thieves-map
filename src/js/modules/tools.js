@@ -57,39 +57,39 @@ window.angle360 = function(cx, cy, ex, ey) {
 
 
 window.getCardinalFromDeg = function(deg) {
-    var words = "North";
+    var words = langDictionnary["COMPASS_NORTH"];
     if (deg >= 0 && 11.25 > deg) {
-        words = "North";
+        words = langDictionnary["COMPASS_NORTH"];
     } else if (deg >= 11.25 && 33.75 > deg) {
-        words = "North by North East";
+		words = langDictionnary["COMPASS_NORTH_BY_NORTH_EAST"];
     } else if (deg >= 33.75 && 56.25 > deg) {
-        words = "North East";
+		words = langDictionnary["COMPASS_NORTH_EAST"];
     } else if (deg >= 56.25 && 78.75 > deg) {
-        words = "East by North East";
+		words = langDictionnary["COMPASS_EAST_BY_NORTH_EAST"];
     } else if (deg >= 78.75 && 101.25 > deg) {
-        words = "East";
+		words = langDictionnary["COMPASS_EAST"];
     } else if (deg >= 101.25 && 123.75 > deg) {
-        words = "East by South East";
+		words = langDictionnary["COMPASS_EAST_BY_SOUTH_EAST"];
     } else if (deg >= 123.75 && 146.25 > deg) {
-        words = "South East";
+		words = langDictionnary["COMPASS_SOUTH_EAST"];
     } else if (deg >= 146.25 && 168.75 > deg) {
-        words = "South by South East";
+		words = langDictionnary["COMPASS_SOUTH_BY_SOUTH_EAST"];
     } else if (deg >= 168.75 && 191.25 > deg) {
-        words = "South";
+		words = langDictionnary["COMPASS_SOUTH"];
     } else if (deg >= 191.25 && 213.75 > deg) {
-        words = "South by South West";
+		words = langDictionnary["COMPASS_SOUTH_BY_SOUTH_WEST"];
     } else if (deg >= 213.75 && 236.25 > deg) {
-        words = "South West";
+		words = langDictionnary["COMPASS_SOUTH_WEST"];
     } else if (deg >= 236.25 && 258.75 > deg) {
-        words = "West by South West";
+		words = langDictionnary["COMPASS_WEST_BY_SOUTH_WEST"];
     } else if (deg >= 258.75 && 281.25 > deg) {
-        words = "West";
+		words = langDictionnary["COMPASS_WEST"];
     } else if (deg >= 281.25 && 303.75 > deg) {
-        words = "West by North West";
+		words = langDictionnary["COMPASS_WEST_BY_NORTH_WEST"];
     } else if (deg >= 303.75 && 326.25 > deg) {
-        words = "North West";
+		words = langDictionnary["COMPASS_NORTH_WEST"];
     } else if (deg >= 326.25 && 348.75 > deg) {
-        words = "North by North West";
+		words = langDictionnary["COMPASS_NORTH_BY_NORTH_WEST"];
     } 
 
     return words;

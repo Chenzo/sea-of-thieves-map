@@ -5,6 +5,7 @@ import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
 import * as tools from './modules/tools.js';
 
+const util = require('util');
 
 var layerArray = [];
 
@@ -513,6 +514,7 @@ function customTip(text,val) {
 var controlSearch = new L.Control.Search({
     position:'topright',		
     layer: searchLayers,
+	textPlaceholder : langDictionnary["LFL_SEARCH_PLACEMARK"],
     //sourceData: localData,
     propertyName: 'name', //title
     initial: false,
@@ -539,7 +541,7 @@ controlSearch.on('search:locationfound', function(event) {
 });
 
 controlSearch.on('search:collapsed', function(event) {
-    if (typeof SearchedMarker.setOpacity !== "undefined") {
+    if (typeof SearchedMarker != "undefined" && typeof SearchedMarker.setOpacity !== "undefined") {
         SearchedMarker.setOpacity(0);
         SearchedMarker.closePopup();
     }
@@ -637,12 +639,12 @@ map.on('contextmenu', function(e) {
     var myLoc = e.latlng;
     popup
         .setLatLng(e.latlng)
-        .setContent("<ul><li class='js-addMarker'>Add Marker</li>\
-        <li class='js-clearMarkers'>Clear Markers</li>\
-        <li class='js-closest' data-type='chickens'>Closest Chickens</li>\
-        <li class='js-closest' data-type='pigs'>Closest Pigs</li>\
-        <li class='js-closest' data-type='snakes'>Closest Snakes</li>\
-        <li class='js-closest' data-type='outpost'>Closest Outpost</li>\
+        .setContent("<ul><li class='js-addMarker'>"+langDictionnary["CTX_MENU_ADD_MARKER"]+"</li>\
+        <li class='js-clearMarkers'>"+langDictionnary["CTX_MENU_CLEAR_MARKERS"]+"</li>\
+        <li class='js-closest' data-type='chickens'>"+langDictionnary["CTX_MENU_CLOSEST_CHICKENS"]+"</li>\
+        <li class='js-closest' data-type='pigs'>"+langDictionnary["CTX_MENU_CLOSEST_PIGS"]+"</li>\
+        <li class='js-closest' data-type='snakes'>"+langDictionnary["CTX_MENU_CLOSEST_SNAKES"]+"</li>\
+        <li class='js-closest' data-type='outpost'>"+langDictionnary["CTX_MENU_CLOSEST_OUTPOST"]+"</li>\
         </ul>")
         .openOn(map);
 
@@ -668,8 +670,10 @@ map.on('contextmenu', function(e) {
         $(".islandClass").removeClass("show pigs chickens snakes outposts");
         mkr.circle._path.classList.add(type, "show");
 
-        var CapType = type.charAt(0).toUpperCase() + type.slice(1);
-        var words = "<span class='type'>" + CapType + "</span> can be found to the <span class='direction'>" + window.getCardinalFromDeg(found.bearing) + "</span> at <span class='title'>" + found.title + "</span>";
+        var CapType = type.toUpperCase();
+        var words = langDictionnary["POPUP_MSG_NEAREST_"+CapType]
+		words = util.format(words, window.getCardinalFromDeg(found.bearing), found.title)
+        //var words = "<span class='type'>" + CapType + "</span> can be found to the <span class='direction'>" + window.getCardinalFromDeg(found.bearing) + "</span> at <span class='title'>" + found.title + "</span>";
 
         addComp(myLoc, found.bearing); //add compass at click point
         showPopup(words);
