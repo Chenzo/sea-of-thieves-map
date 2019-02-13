@@ -5,6 +5,7 @@ import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
 import * as tools from './modules/tools.js';
 
+const util = require('util');
 
 var layerArray = [];
 
@@ -223,10 +224,35 @@ for(var i in islands) {
 			html: '<span class="my-div-span" data-anchor-x="0">'+islands[i].title+'</span>'
 		})
 	}).addTo(islandsLayer);
+	
+	var islandType = "";
+	if(islands[i].hasOwnProperty('outpost')){
+		islandType = "Outpost";
+	} else if(islands[i].hasOwnProperty('isSeapost')){
+		islandType = "Seapost";
+	} else if(islands[i].hasOwnProperty('isFortress')){
+		islandType = "Fortress";
+	} else if(islands[i].hasOwnProperty('isUncharted')){
+		islandType = "Uncharted";
+	} else{
+		islandType = "Treasure";
+	}
+	
+	var areaNameTag = "";
+	if(islands[i].hasOwnProperty('isInAreaShoresOfPlenty')){
+		areaNameTag = "Shores";
+	} else if(islands[i].hasOwnProperty('isInAreaWilds')){
+		areaNameTag = "Wilds";
+	} else if(islands[i].hasOwnProperty('isInAreaAncientIsles')){
+		areaNameTag = "Ancient";
+	} else if(islands[i].hasOwnProperty('isInAreaDevilsRoar')){
+		areaNameTag = "Devils";
+	}
+	
 	islandMarker.bindPopup('<div class="lf-popup">'+
 							'<img src="/images/screenshots/small/'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'" />'+
 							'<span class="popup-title-island">'+islands[i].title+'</span>'+
-							'<span class="popup-type-island">'+islands[i].type+'</span>'+
+							'<span class="popup-type-island">'+langDictionnary["POPUP_MSG_ISLAND_TYPE_"+islandType.toUpperCase()]+', '+langDictionnary["POPUP_MSG_ISLAND_AREA_"+areaNameTag.toUpperCase()]+'</span>'+
 							'<span class="popup-img-island hiddenDiv">'+((typeof islands[i].img != 'undefined')?islands[i].img :'bientot.jpg')+'</span>'+
 							'<span class="popup-hasChickens-island hiddenDiv">'+((islands[i].hasOwnProperty('chickens'))?"O":"N")+'</span>'+
 							'<span class="popup-hasPigs-island hiddenDiv">'+((islands[i].hasOwnProperty('pigs'))?"O":"N")+'</span>'+
@@ -269,13 +295,13 @@ for(var i in islands) {
 		
 		$('#islandModalAnimals').html("");
 		if(document.getElementsByClassName("popup-hasChickens-island")[0].innerHTML == "O"){
-			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/chicken-icon-small.png" /></div>');
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/chicken-icon-small.png" title="'+langDictionnary["POPUP_MSG_CHICKENS_FOUND_HERE"]+'" /></div>');
 		}
 		if(document.getElementsByClassName("popup-hasPigs-island")[0].innerHTML == "O"){
-			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/pig-icon-white.png" height="20" /></div>');
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/pig-icon-white.png" height="20" title="'+langDictionnary["POPUP_MSG_PIGS_FOUND_HERE"]+'" /></div>');
 		}
 		if(document.getElementsByClassName("popup-hasSnakes-island")[0].innerHTML == "O"){
-			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/snake-icon-white-small.png" /></div>');
+			$('#islandModalAnimals').append('<div class="animal-box"><img src="/images/animal-info-box/snake-icon-white-small.png" title="'+langDictionnary["POPUP_MSG_SNAKES_FOUND_HERE"]+'" /></div>');
 		}
 		
 		this.closePopup();
@@ -511,6 +537,7 @@ function customTip(text,val) {
 var controlSearch = new L.Control.Search({
     position:'topright',		
     layer: searchLayers,
+	textPlaceholder : langDictionnary["LFL_SEARCH_PLACEMARK"],
     //sourceData: localData,
     propertyName: 'name', //title
     initial: false,
@@ -537,7 +564,7 @@ controlSearch.on('search:locationfound', function(event) {
 });
 
 controlSearch.on('search:collapsed', function(event) {
-    if (typeof SearchedMarker.setOpacity !== "undefined") {
+    if (typeof SearchedMarker != "undefined" && typeof SearchedMarker.setOpacity !== "undefined") {
         SearchedMarker.setOpacity(0);
         SearchedMarker.closePopup();
     }
@@ -635,12 +662,12 @@ map.on('contextmenu', function(e) {
     var myLoc = e.latlng;
     popup
         .setLatLng(e.latlng)
-        .setContent("<ul><li class='js-addMarker'>Add Marker</li>\
-        <li class='js-clearMarkers'>Clear Markers</li>\
-        <li class='js-closest' data-type='chickens'>Closest Chickens</li>\
-        <li class='js-closest' data-type='pigs'>Closest Pigs</li>\
-        <li class='js-closest' data-type='snakes'>Closest Snakes</li>\
-        <li class='js-closest' data-type='outpost'>Closest Outpost</li>\
+        .setContent("<ul><li class='js-addMarker'>"+langDictionnary["CTX_MENU_ADD_MARKER"]+"</li>\
+        <li class='js-clearMarkers'>"+langDictionnary["CTX_MENU_CLEAR_MARKERS"]+"</li>\
+        <li class='js-closest' data-type='chickens'>"+langDictionnary["CTX_MENU_CLOSEST_CHICKENS"]+"</li>\
+        <li class='js-closest' data-type='pigs'>"+langDictionnary["CTX_MENU_CLOSEST_PIGS"]+"</li>\
+        <li class='js-closest' data-type='snakes'>"+langDictionnary["CTX_MENU_CLOSEST_SNAKES"]+"</li>\
+        <li class='js-closest' data-type='outpost'>"+langDictionnary["CTX_MENU_CLOSEST_OUTPOST"]+"</li>\
         </ul>")
         .openOn(map);
 
@@ -666,8 +693,9 @@ map.on('contextmenu', function(e) {
         $(".islandClass").removeClass("show pigs chickens snakes outposts");
         mkr.circle._path.classList.add(type, "show");
 
-        var CapType = type.charAt(0).toUpperCase() + type.slice(1);
-        var words = "<span class='type'>" + CapType + "</span> can be found to the <span class='direction'>" + window.getCardinalFromDeg(found.bearing) + "</span> at <span class='title'>" + found.title + "</span>";
+        var CapType = type.toUpperCase();
+        var words = langDictionnary["POPUP_MSG_NEAREST_"+CapType];
+		words = util.format(words, window.getCardinalFromDeg(found.bearing), found.title);
 
         addComp(myLoc, found.bearing); //add compass at click point
         showPopup(words);
@@ -844,8 +872,10 @@ $(function() {
         map.setView(LatLong, 7);
         //map.panTo(LatLong, 7);
         adjustAlphaNum();
-
-        showPopup("Island " + (currentSearchIsland + 1) + " of " + islands.length);
+		
+		var words = langDictionnary["POPUP_MSG_ISLAND_X_OF_N"];
+		words = util.format(words, currentSearchIsland + 1, islands.length);
+        showPopup(words);
         clearTimeout(popUpInt);
         popUpInt = setTimeout(hidePopup, 3000);
     });

@@ -1,17 +1,24 @@
 <?php 
 
+
 include "includes/globals.php";
+
+$lang = (isset($_GET["lang"]))?$_GET["lang"]:null;
+$langDictionnary = array();
+$locale = "";
+include "includes/language.dictionnary.php";
+
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <title><?= $title; ?></title>
+        <title><?= $langDictionnary["APP_TITLE"]; ?></title>
         <meta name="robots" content="INDEX,FOLLOW,NOODP" />
         <link rel="canonical" href="https://seaofthievesmap.chenzorama.com" />
-        <meta name="description" content="<?= $descr; ?>" />
-        <meta name="keywords" content="<?= $keywords; ?>" />
+        <meta name="description" content="<?= $langDictionnary["APP_DESC"]; ?>" />
+        <meta name="keywords" content="<?= $langDictionnary["APP_KEYWORDS"]; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <link rel="manifest" href="manifest.json">
@@ -68,14 +75,7 @@ include "includes/globals.php";
 
     </head>
     <body class="home">
-		<?php 
 
-
-$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
- echo "URL : ".$url."<br>Lang : ".$_GET["lang"];
-print_r($GET);
-
-?>
 		<!-- The Modal -->
 		<div id="islandModal" class="modal">
 
@@ -114,17 +114,17 @@ print_r($GET);
                     <fieldset class="toggle beacons">
                         <input type="checkbox" id="beacons" class="js-toggleMarkers" name="beacons"
                 value="beacons" />
-                        <label for="beacons" title="Show Beacons"></label>
+                        <label for="beacons" title="<?= $langDictionnary["LEFT_MENU_SHOW_BEACONS"] ?>"></label>
                     </fieldset>
                     <fieldset class="toggle thrones">
                         <input type="checkbox" id="thrones" class="js-toggleMarkers" name="thrones"
                 value="thrones" />
-                        <label for="thrones" title="Show Thrones"></label>
+                        <label for="thrones" title="<?= $langDictionnary["LEFT_MENU_SHOW_THRONES"] ?>"></label>
                     </fieldset>
                     <fieldset class="toggle cargoruns">
                         <input type="checkbox" id="cargoruns" class="js-toggleMarkers" name="cargoruns"
                 value="cargoruns" />
-                        <label for="cargoruns" title="Show Cargo Run"></label>
+                        <label for="cargoruns" title="<?= $langDictionnary["LEFT_MENU_SHOW_CARGOS"] ?>"></label>
                     </fieldset>
                     
                     <!-- <fieldset>
@@ -132,21 +132,22 @@ print_r($GET);
                 value="outposts" />
                         <label for="outposts">Outposts</label>
                     </fieldset> -->
+					<fieldset class="toggle chickens">
+                        <input type="checkbox" id="chickens" class="js-toggleMarkers" name="chickens"
+                value="outposts" />
+                        <label for="chickens" title="<?= $langDictionnary["LEFT_MENU_SHOW_CHICKENS"] ?>"></label>
+                    </fieldset>
                     <fieldset class="toggle pigs">
                         <input type="checkbox" id="pigs" class="js-toggleMarkers" name="pigs"
                 value="outposts" />
-                        <label for="pigs" title="Show Pigs"></label>
+                        <label for="pigs" title="<?= $langDictionnary["LEFT_MENU_SHOW_PIGS"] ?>"></label>
                     </fieldset>
                     <fieldset class="toggle snakes">
                         <input type="checkbox" id="snakes" class="js-toggleMarkers" name="snakes"
                 value="outposts" />
-                        <label for="snakes" title="Show Snakes"></label>
+                        <label for="snakes" title="<?= $langDictionnary["LEFT_MENU_SHOW_SNAKES"] ?>"></label>
                     </fieldset>
-                    <fieldset class="toggle chickens">
-                        <input type="checkbox" id="chickens" class="js-toggleMarkers" name="chickens"
-                value="outposts" />
-                        <label for="chickens" title="Show Chickens"></label>
-                    </fieldset>
+                    
                 </div>
 
                 
@@ -191,6 +192,10 @@ print_r($GET);
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
+		<script>
+			var langDictionnary = <?= json_encode($langDictionnary) ?>;
+			var locale = '<?= $locale ?>';
+		</script>
         <script src="js/sotm.js?v=<?= CACHE_BUSTER ?>"></script> <!-- ?v=<?= CACHE_BUSTER ?> -->
 
         
