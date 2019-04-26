@@ -73,7 +73,7 @@ map.setMaxBounds(bounds, {padding: [600,600]});
 //map.fitBounds(bounds, {padding: [600,600]})
 var hash = new L.Hash(map);
 
-var layer = L.tileLayer(cdnpath + "images/tiles/v2.5/{z}/{x}/{y}.png", {
+var layer = L.tileLayer(cdnpath + "images/tiles/v3/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
@@ -213,6 +213,8 @@ for(var i in islands) {
         title: islandName,
         json: islands[i]
     });
+
+    addPlaceToList(islandName, classes, i);
 	
     var textLoc = modifyLoc(islands[i].loc, (cRad + (cRad * 0.1)), (0));
 	var islandMarker = new L.Marker(textLoc, {
@@ -509,11 +511,13 @@ function customTip(text,val) {
 }
 
 var controlSearch = new L.Control.Search({
-    position:'topright',		
+    //position:'topright',	
+    container: 'findbox',
     layer: searchLayers,
     //sourceData: localData,
     propertyName: 'name', //title
     initial: false,
+    collapsed: false,
     zoom: 6,
     /* marker: {
         icon: cargorun_icon,
@@ -832,9 +836,89 @@ function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
 	});
 }
 
+
+
+function addPlaceToList(islandName, classes, idx) {
+    $(".list_of_islands").append("<li class='js-placelist " + classes + "' data-name='" + islandName + "' data-idx='" + idx + "'>" + islandName + "</li>");
+}
+
+
+
+
+
 var popUpInt = 0;
 $(function() {
 
+
+    $(".js-filter-search").on('input propertychange paste', function() {
+
+        //console.log($(this).val());
+        var searchFor = $(this).val().toLowerCase();
+        if (searchFor.length > 0) {
+            $(".list_of_places").addClass("searching");
+            var resultCount = 0;
+            $(".js-placelist").each(function(idx, thing) {
+                var fName = $(thing).data("name").toLowerCase();
+                //console.log(fName.indexOf(searchFor));
+                if (fName.indexOf(searchFor) > -1) {
+                    $(thing).addClass("found");
+                    $(thing).attr("tabindex", 0);
+                    if (resultCount == 0) {
+                        $(thing).addClass("highlight");
+                    }
+                    resultCount++;
+                } else {
+                    //hide it
+                    $(thing).removeClass("found highlight");
+                    $(thing).removeAttr("tabindex");
+                }
+            });
+        } else {
+            $(".list_of_places").removeClass("searching");
+        }
+    });
+    $(".js-filter-search").keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $(this).click();
+            $(".js-placelist.highlight").first().click();
+        } 
+    });
+
+
+
+    $(".js-placelist").on('click', function() {
+        var radius = 7;
+        if (parseInt(islands[$(this).data("idx")].radius) > 2) {
+            radius = 6;
+        }
+        var LatLong = islands[$(this).data("idx")].loc;
+        /* map.flyTo(LatLong, radius, {
+            animate: true,
+            duration: 2 // in seconds
+        }); */
+        map.setView(LatLong, radius);
+    });
+    $(".js-placelist").keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $(this).click();
+        } 
+    });
+    $(".js-placelist").keydown(function(e){
+        //console.log(e.which);   
+        if(e.which === 40) {
+            //console.log("direction")
+            $(this).nextAll(".found:first").focus();
+        } else if (e.which === 38) {
+            $(this).prevAll(".found:first").focus();
+        }
+    });
+    $(".js-placelist").on('focus', function() {
+        console.log("FOC'D");
+        $(".highlight").removeClass("highlight");
+        $(this).addClass("highlight");
+    });
+
+    
 
     $(".js-searchforisland").click(function() {
         

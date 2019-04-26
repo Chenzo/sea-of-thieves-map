@@ -141,6 +141,33 @@ sizes: xs,sm,md,lg
 .icon-twitter:before {
   content: "\E021"; }
 
+.searchbox_space {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  display: none; }
+  .searchbox_space input.search-input {
+    width: 95%;
+    height: auto;
+    padding: 10px;
+    color: black;
+    border-radius: 6px; }
+  .searchbox_space .leaflet-control-search {
+    position: relative; }
+    .searchbox_space .leaflet-control-search .search-tooltip {
+      right: auto;
+      left: 10px;
+      margin-top: 40px; }
+    .searchbox_space .leaflet-control-search .search-cancel {
+      right: 8px; }
+    .searchbox_space .leaflet-control-search .search-button {
+      position: absolute;
+      float: none;
+      right: 0px;
+      margin-top: 30px;
+      border: solid 1px black; }
+
 .islandClass {
   fill-opacity: 0;
   stroke-opacity: 0;
@@ -1175,7 +1202,39 @@ aside.sidebar {
   position: relative; }
   @media (min-width: 992px) {
     aside.sidebar {
-      width: 120px; } }
+      width: 120px; }
+      aside.sidebar.left {
+        width: 225px; } }
+  aside.sidebar.left {
+    text-align: left; }
+    aside.sidebar.left .filter-search-input {
+      background: white;
+      width: calc(100% - 20px);
+      color: black;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 6px; }
+    aside.sidebar.left .list_of_places {
+      height: 500px;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white; }
+      aside.sidebar.left .list_of_places li {
+        padding: 7px 10px;
+        cursor: pointer; }
+        aside.sidebar.left .list_of_places li:hover {
+          color: white; }
+      aside.sidebar.left .list_of_places.searching li {
+        display: none;
+        /* &:focus {
+                        color: red;
+                    } */ }
+        aside.sidebar.left .list_of_places.searching li.found {
+          display: block; }
+        aside.sidebar.left .list_of_places.searching li.highlight {
+          font-weight: 700;
+          background-color: rgba(255, 255, 255, 0.2); }
   aside.sidebar .maps-panel-trig {
     display: block;
     position: absolute;

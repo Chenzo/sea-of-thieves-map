@@ -89,7 +89,28 @@ include "includes/globals.php";
 		
         <section class="sotm_wrapper">
 
-            <aside class="sidebar">
+
+            <aside class="sidebar left">
+
+                <div id="findbox" class="searchbox_space"></div>
+
+                <input class="filter-search-input js-filter-search" placeholder= "filter" type="text" size="9" style="display: block;">
+                <div class="list_of_places">
+                    <ul class="list_of_islands">
+
+                    </ul>
+                </div>
+
+            </aside>
+
+            <article>
+                <div class="floating_dialog">~</div>
+                <div id="mapid"></div>
+            </article>
+
+
+
+            <aside class="sidebar right">
 
                 <button class="left-panel-toggle js-toggle-panel icon icon-arrow-left"></button>
 
@@ -166,10 +187,9 @@ include "includes/globals.php";
                 </div>
             </aside>
 
-            <article>
-                <div class="floating_dialog">~</div>
-                <div id="mapid"></div>
-            </article>
+
+
+
 
         </section>
 

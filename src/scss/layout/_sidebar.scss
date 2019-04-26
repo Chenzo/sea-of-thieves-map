@@ -7,13 +7,75 @@ aside.sidebar {
     background: linear-gradient(to bottom, $blue_1 0%,$dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
     width: 60px;
+
+
     @include breakpoint(md) {
         width: 120px;
+        &.left {
+            width: 225px;
+        }
     }
     
     border-right: 1px solid $blue_1;
     text-align: center;
     position: relative;
+
+
+
+    &.left {
+
+        .filter-search-input {
+            background: white;
+            width: calc(100% - 20px);
+            color: black;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 6px;
+        }
+
+        text-align: left;
+        .list_of_places {
+            //padding: 0 15px;
+            height: 500px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            border-top: 1px solid white;
+            border-bottom: 1px solid white;
+
+            li {
+                padding: 7px 10px;
+                cursor: pointer;
+
+                &:hover {
+                    color: white;
+                }
+                
+            }
+
+            &.searching {
+                li {
+                    display: none;
+                    
+                    &.found {
+                        display: block;
+                    }
+
+                    &.highlight {
+                        font-weight: 700;
+                        background-color: rgba(255,255,255,0.2);
+                    }
+
+                    /* &:focus {
+                        color: red;
+                    } */
+                }
+                
+            }
+        }
+    }
+
+
+
 
     .maps-panel-trig {
         display: block;

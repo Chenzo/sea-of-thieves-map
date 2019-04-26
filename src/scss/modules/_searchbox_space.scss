@@ -1,0 +1,40 @@
+
+
+.searchbox_space {
+    position:relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+
+    display: none;
+
+    input.search-input {
+        width: 95%;
+        height: auto;
+        padding: 10px;
+        color: black;
+        border-radius: 6px;
+    }
+
+    .leaflet-control-search {
+        position: relative;
+
+        .search-tooltip {
+            right: auto;
+            left: 10px;
+            margin-top: 40px;
+        }
+
+        .search-cancel {
+            right: 8px;
+        }
+
+        .search-button {
+            position: absolute;
+            float: none;
+            right:0px;
+            margin-top: 30px;
+            border: solid 1px black;
+        }
+    } 
+}
