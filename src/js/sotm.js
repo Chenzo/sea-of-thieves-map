@@ -917,6 +917,7 @@ $(function() {
 
     $(".js-placelist").on('click', function() {
         var radius, LatLong;
+        var classes = $(this).attr('class');
         if (classes.indexOf("islandClass") > -1) {
             radius = 7;
             if (parseInt(islands[$(this).data("idx")].radius) > 2) {
