@@ -94,7 +94,10 @@ include "includes/globals.php";
 
                 <div id="findbox" class="searchbox_space"></div>
 
-                <input class="filter-search-input js-filter-search" placeholder= "filter" type="text" size="9" style="display: block;">
+                <fieldset>
+                <input class="filter-search-input js-filter-search" placeholder= "filter" type="text" size="9">
+                <button class="search-cancel js-clear-search" tabindex="-1"><span>⊗</span></button>
+                </fieldset>
                 <div class="list_of_places">
                     <ul class="list_of_islands">
 

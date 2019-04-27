@@ -1210,10 +1210,13 @@ aside.sidebar {
     aside.sidebar.left .filter-search-input {
       background: white;
       width: calc(100% - 20px);
-      color: black;
+      color: #13252c;
       padding: 10px;
       margin: 10px;
-      border-radius: 6px; }
+      border-radius: 6px;
+      border: 2px solid #13252c; }
+      aside.sidebar.left .filter-search-input:focus {
+        border: 2px solid #b5eec8; }
     aside.sidebar.left .list_of_places {
       height: 500px;
       overflow-x: hidden;
@@ -1222,9 +1225,14 @@ aside.sidebar {
       border-bottom: 1px solid white; }
       aside.sidebar.left .list_of_places li {
         padding: 7px 10px;
-        cursor: pointer; }
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(0, 0, 0, 0); }
+        aside.sidebar.left .list_of_places li.beaconClass {
+          background-color: rgba(227, 0, 3, 0.2); }
         aside.sidebar.left .list_of_places li:hover {
-          color: white; }
+          color: white;
+          border: 1px solid #13252c; }
       aside.sidebar.left .list_of_places.searching li {
         display: none;
         /* &:focus {
@@ -1234,7 +1242,29 @@ aside.sidebar {
           display: block; }
         aside.sidebar.left .list_of_places.searching li.highlight {
           font-weight: 700;
-          background-color: rgba(255, 255, 255, 0.2); }
+          background-color: rgba(255, 255, 255, 0.5);
+          border-top: 1px solid #13252c;
+          border-bottom: 1px solid #13252c;
+          color: #13252c; }
+        aside.sidebar.left .list_of_places.searching li:hover {
+          color: white; }
+    aside.sidebar.left fieldset {
+      position: relative; }
+    aside.sidebar.left .search-cancel {
+      display: block;
+      width: 22px;
+      height: 22px;
+      position: absolute;
+      right: 10px;
+      top: 10px; }
+      aside.sidebar.left .search-cancel span {
+        display: none;
+        font-size: 26px;
+        line-height: 20px;
+        color: #267e81;
+        font-weight: bold; }
+      aside.sidebar.left .search-cancel.searching span {
+        display: block; }
   aside.sidebar .maps-panel-trig {
     display: block;
     position: absolute;

@@ -235,7 +235,7 @@ var islands = [{
         isSeapost: true
     },
     {
-        "loc": [-59.281311, 16.456299],
+        "loc": [-51.4375, 16.125],
         "title": "The Spoils of Plenty Store",
 		"type" : "poste en mer",
 		"img" : "theSpoilsOfPlentyStore.jpg",

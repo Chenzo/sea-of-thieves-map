@@ -27,10 +27,15 @@ aside.sidebar {
         .filter-search-input {
             background: white;
             width: calc(100% - 20px);
-            color: black;
+            color: $blue_1;
             padding: 10px;
             margin: 10px;
             border-radius: 6px;
+
+            border: 2px solid $blue_1;
+            &:focus {
+                border: 2px solid $blue_4;
+            }
         }
 
         text-align: left;
@@ -45,9 +50,16 @@ aside.sidebar {
             li {
                 padding: 7px 10px;
                 cursor: pointer;
+                background-color: rgba(255,255,255,0.2);
+                border: 1px solid rgba(0,0,0,0);
+
+                &.beaconClass {
+                    background-color: rgba($beacon, 0.2);
+                }
 
                 &:hover {
                     color: white;
+                    border: 1px solid $blue_1;
                 }
                 
             }
@@ -56,13 +68,21 @@ aside.sidebar {
                 li {
                     display: none;
                     
+                    
                     &.found {
                         display: block;
                     }
 
                     &.highlight {
                         font-weight: 700;
-                        background-color: rgba(255,255,255,0.2);
+                        background-color: rgba(255,255,255,0.5);
+                        border-top: 1px solid $blue_1;
+                        border-bottom: 1px solid $blue_1;
+                        color: $blue_1;
+                    }
+
+                    &:hover {
+                        color: white;
                     }
 
                     /* &:focus {
@@ -70,6 +90,34 @@ aside.sidebar {
                     } */
                 }
                 
+            }
+
+            
+        }
+
+        fieldset {
+            position: relative;
+        }
+
+        .search-cancel {
+            display: block;
+            width: 22px;
+            height: 22px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            span {
+                    display: none;
+                    font-size: 26px;
+                    line-height: 20px;
+                    color: $blue_2;
+                    font-weight: bold;
+            }
+
+            &.searching {
+                span {
+                    display: block;
+                }
             }
         }
     }
