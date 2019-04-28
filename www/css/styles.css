@@ -1232,6 +1232,8 @@ aside.sidebar {
           background-color: rgba(227, 0, 3, 0.2); }
         aside.sidebar.left .list_of_places li.throneClass {
           background-color: rgba(36, 102, 255, 0.2); }
+        aside.sidebar.left .list_of_places li.cargoClass {
+          background-color: rgba(96, 40, 17, 0.2); }
         aside.sidebar.left .list_of_places li:hover {
           color: white;
           border: 1px solid #13252c; }

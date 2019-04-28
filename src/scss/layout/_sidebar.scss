@@ -61,6 +61,10 @@ aside.sidebar {
                     background-color: rgba($throne, 0.2);
                 }
 
+                &.cargoClass {
+                    background-color: rgba($cargo, 0.2);
+                }
+
                 &:hover {
                     color: white;
                     border: 1px solid $blue_1;

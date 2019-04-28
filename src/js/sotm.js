@@ -3,6 +3,7 @@ import * as island_data from './modules/island_data.js';
 import * as throne_data from './modules/throne_data.js';
 import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
+import * as places_data from './modules/places_data.js';
 import * as tools from './modules/tools.js';
 
 
@@ -15,6 +16,7 @@ var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
 var cargoruns = cargorun_data.cargoruns;
+var places = places_data.beacons;
 
 function compare(a, b){
     const nameA = a.title.replace(/the /gi, '').toUpperCase();
@@ -469,6 +471,9 @@ for(var t in cargoruns) {
     .bindPopup(cargoruns[t].title);
 
     cargo_run_markers[t] = marker;
+
+    var classes = "cargoClass " + window.websafe(cargoruns[t].title);
+    addPlaceToList(cargoruns[t].title, classes, t);
 }
 
 //add thrones
@@ -476,28 +481,36 @@ var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
 
 
-var throne_icon = L.icon({
-    iconUrl: '/images/markers/throne_marker.png',
-    shadowUrl: '/images/markers/throne_marker.png',
+var throne_L_icon = L.icon({
+    iconUrl: '/images/markers/throne_marker_l.png',
+    shadowUrl: '/images/markers/throne_marker_l.png',
+    iconSize:     [31, 40],// size of the icon
+    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
+});
 
-    iconSize:     [30, 30], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
+var throne_S_icon = L.icon({
+    iconUrl: '/images/markers/throne_marker_s.png',
+    shadowUrl: '/images/markers/throne_marker_s.png',
+    iconSize:     [31, 40],// size of the icon
+    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
 });
 
 for(var t in thrones) {
     var loc = thrones[t].loc;
-    var title = thrones[t].title + " Skelton Throne";
-    var marker = L.marker(loc, {
-        /* draggable: true,   */   
-        icon: throne_icon,
+    var size = thrones[t].isLarge ? " Large" : " Small";
+    var title = thrones[t].title + size + " Skelton Throne";
+    var mkr = thrones[t].isLarge ? throne_L_icon : throne_S_icon;
+
+    var marker = L.marker(loc, {  
+        icon: mkr,
         title: title
-        //opacity: 0
     } 
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
+
+console.log(t+ " | " + title + " | " + thrones[t].desc);
 
     var classes = "throneClass " + window.websafe(title);
     addPlaceToList(title, classes, t);
@@ -859,7 +872,7 @@ function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
 
 
 function addPlaceToList(islandName, classes, idx) {
-    $(".list_of_islands").append("<li class='js-placelist " + classes + "' data-name='" + islandName + "' data-idx='" + idx + "'>" + islandName + "</li>");
+    $(".list_of_islands").append("<li class='js-placelist " + classes + "' data-name=\"" + islandName + "\" data-idx='" + idx + "'>" + islandName + "</li>");
 }
 
 
@@ -869,9 +882,11 @@ function applySearchFilter() {
         $(".list_of_places").addClass("searching");
         $(".search-cancel").addClass("searching");
         var resultCount = 0;
+        console.log(searchFor);
         $(".js-placelist").each(function(idx, thing) {
             var fName = $(thing).data("name").toLowerCase();
             //console.log(fName.indexOf(searchFor));
+            console.log($(thing).data("name"));
             if (fName.indexOf(searchFor) > -1) {
                 $(thing).addClass("found");
                 $(thing).attr("tabindex", 0);
@@ -930,6 +945,9 @@ $(function() {
         } else if (classes.indexOf("throneClass") > -1) {
             radius = 6;
             LatLong = thrones[$(this).data("idx")].loc;
+        } else if (classes.indexOf("cargoClass") > -1) {
+            radius = 6;
+            LatLong = cargoruns[$(this).data("idx")].loc;
         }
         /* map.flyTo(LatLong, radius, {
             animate: true,

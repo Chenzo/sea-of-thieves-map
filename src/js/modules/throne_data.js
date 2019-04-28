@@ -2,8 +2,8 @@
 
 var thrones = [
     {
-        "loc": [-16.1005, 35.278949], 
-        "title": "D3",
+        "loc": [-16.507874, 31.0448], 
+        "title": "North West of Smuggler's Bay",
         "isLarge": true,
         "desc": "Large (3rd out of the 4 offshore rocks counting from the east, at the back of the island, D2"
     },
@@ -48,12 +48,6 @@ var thrones = [
         "title" : "Mermaid's Hideaway",
         "isLarge": false,
         "desc" : "Across from the Southern peak"
-    },
-    {
-        "loc" : [-133.460937, 80.585938], 
-        "title" : "Plunder Outpost",
-        "isLarge": true,
-        "desc" : "South top"
     },
     {
         "loc" : [-148.01744, 101.459982], 
