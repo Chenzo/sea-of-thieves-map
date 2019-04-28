@@ -10,7 +10,7 @@ import * as tools from './modules/tools.js';
 var layerArray = [];
 
 var lang = window.location.pathname.substr(1);
-console.log("language: " + lang);
+//console.log("language: " + lang);
 
 var islands = island_data.islands;
 var thrones = throne_data.thrones;
@@ -28,7 +28,7 @@ function compare(a, b){
   }
 
 islands.sort(compare);
-//islands.sort(thrones);
+thrones.sort(compare);
 
 islands.forEach(function(im) {
     im['searchData'] = "island|" + im.title;
@@ -510,8 +510,6 @@ for(var t in thrones) {
     ).addTo(thronesLayer)
     .bindPopup(thrones[t].desc);
 
-console.log(t+ " | " + title + " | " + thrones[t].desc);
-
     var classes = "throneClass " + window.websafe(title);
     addPlaceToList(title, classes, t);
 }
@@ -712,9 +710,6 @@ map.on('contextmenu', function(e) {
     });
     
 
-    // create popup contents
-    /* var customPopup = "Mozilla Toronto Offices<br/><img src='http://joshuafrazier.info/images/maptime.gif' alt='maptime logo gif' width='350px'/>";
-    */
 });
 
 function addComp(latLng, degs) {
@@ -859,7 +854,7 @@ function getNextIsland(direction) {
 
 function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
 	islandsLayer.getLayers().forEach(function(marker){
-		var icon = marker.options.icon
+		var icon = marker.options.icon;
 		var iconAnchor = icon.options.iconAnchor;
 		
 		var oriAnchorX = $(icon.options.html).data("anchor-x");
@@ -911,6 +906,12 @@ var popUpInt = 0;
 $(function() {
 
 
+    $(".js-toggle-filter").on("click", function() {
+        $(this).toggleClass("on");
+        console.log("toggle: " + $(this).data('filter'))
+    })
+
+
     $(".js-filter-search").on('input propertychange paste', function() {
         applySearchFilter();        
     });
@@ -945,6 +946,7 @@ $(function() {
         } else if (classes.indexOf("throneClass") > -1) {
             radius = 6;
             LatLong = thrones[$(this).data("idx")].loc;
+            console.log("show throne icon");
         } else if (classes.indexOf("cargoClass") > -1) {
             radius = 6;
             LatLong = cargoruns[$(this).data("idx")].loc;

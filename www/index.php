@@ -103,6 +103,9 @@ include "includes/globals.php";
 
                     </ul>
                 </div>
+                <div class="filter_buttons">
+                    <button class="thrones js-toggle-filter" data-filter="thrones">T</button>
+                </div>
 
             </aside>
 
