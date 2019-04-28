@@ -9,7 +9,9 @@ import * as tools from './modules/tools.js';
 
 var layerArray = [];
 
-var lang = window.location.pathname.substr(1);
+
+// TODO: LOCALIZE
+//var lang = window.location.pathname.substr(1);
 //console.log("language: " + lang);
 
 var islands = island_data.islands;
@@ -518,11 +520,6 @@ for(var t in thrones) {
 
 
 
-var searchLayers = L.layerGroup([
-    //cargorunsLayer,
-    markersLayer 
-]);
-
 
 function localData(text, callResponse)
 {
@@ -540,43 +537,6 @@ function customTip(text,val) {
     //console.log("check type: " + className);
     return '<a href="#" class="' + className + '">'+text+'</a>';
 }
-
-var controlSearch = new L.Control.Search({
-    //position:'topright',	
-    container: 'findbox',
-    layer: searchLayers,
-    //sourceData: localData,
-    propertyName: 'name', //title
-    initial: false,
-    collapsed: false,
-    zoom: 6,
-    /* marker: {
-        icon: cargorun_icon,
-        animate: false,
-        circle: false
-    }, */
-    marker: false,
-    buildTip: customTip
-});
-map.addControl( controlSearch );
-
-
-var SearchedMarker;
-controlSearch.on('search:locationfound', function(event) {
-    console.log(event);
-    SearchedMarker =  event.layer;
-    if (typeof SearchedMarker.setOpacity !== "undefined") {
-        SearchedMarker.setOpacity(1);
-        SearchedMarker.openPopup();
-    }
-});
-
-controlSearch.on('search:collapsed', function(event) {
-    if (typeof SearchedMarker.setOpacity !== "undefined") {
-        SearchedMarker.setOpacity(0);
-        SearchedMarker.closePopup();
-    }
-});
 
 
 

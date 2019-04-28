@@ -10,7 +10,7 @@ aside.sidebar {
 
 
     @include breakpoint(md) {
-        width: 120px;
+        width: 60px;
         &.left {
             width: 225px;
         }
@@ -261,6 +261,9 @@ aside.sidebar {
 
 
     .island-finder {
+
+        //Turned Off for now
+        display: none;
 
         .mapfinder_image {
             display: block;

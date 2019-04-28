@@ -141,33 +141,6 @@ sizes: xs,sm,md,lg
 .icon-twitter:before {
   content: "\E021"; }
 
-.searchbox_space {
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 20px;
-  display: none; }
-  .searchbox_space input.search-input {
-    width: 95%;
-    height: auto;
-    padding: 10px;
-    color: black;
-    border-radius: 6px; }
-  .searchbox_space .leaflet-control-search {
-    position: relative; }
-    .searchbox_space .leaflet-control-search .search-tooltip {
-      right: auto;
-      left: 10px;
-      margin-top: 40px; }
-    .searchbox_space .leaflet-control-search .search-cancel {
-      right: 8px; }
-    .searchbox_space .leaflet-control-search .search-button {
-      position: absolute;
-      float: none;
-      right: 0px;
-      margin-top: 30px;
-      border: solid 1px black; }
-
 .islandClass {
   fill-opacity: 0;
   stroke-opacity: 0;
@@ -1202,7 +1175,7 @@ aside.sidebar {
   position: relative; }
   @media (min-width: 992px) {
     aside.sidebar {
-      width: 120px; }
+      width: 60px; }
       aside.sidebar.left {
         width: 225px; } }
   aside.sidebar.left {
@@ -1351,18 +1324,20 @@ aside.sidebar {
         -webkit-filter: grayscale(0%);
         /* Safari 6.0 - 9.0 */
         filter: grayscale(0%); }
-  aside.sidebar .island-finder .mapfinder_image {
-    display: block;
-    margin: 0 auto 8px; }
-  aside.sidebar .island-finder p {
-    font-size: 10px;
-    margin-bottom: 5px; }
-  aside.sidebar .island-finder button {
-    color: #b5eec8;
-    background: #267e81;
-    padding: 8px 8px 6px;
-    border-radius: 5px;
-    margin: 8px; }
+  aside.sidebar .island-finder {
+    display: none; }
+    aside.sidebar .island-finder .mapfinder_image {
+      display: block;
+      margin: 0 auto 8px; }
+    aside.sidebar .island-finder p {
+      font-size: 10px;
+      margin-bottom: 5px; }
+    aside.sidebar .island-finder button {
+      color: #b5eec8;
+      background: #267e81;
+      padding: 8px 8px 6px;
+      border-radius: 5px;
+      margin: 8px; }
   aside.sidebar .subcontrols a, aside.sidebar .subcontrols button {
     display: block;
     margin: 10px auto; }

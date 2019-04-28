@@ -3,6 +3,28 @@
 include "includes/globals.php";
 
 ?>
+<!-- ****************************************************** -->
+<!-- want all the code? It's all open source! -->
+<!-- go here: https://github.com/Chenzo/sea-of-thieves-map -->
+<!-- or @ me on twitter: https://twitter.com/1Chenzo -->
+<!--
+                       ______
+                    .-"      "-.
+                   /            \
+       _          |              |          _
+      ( \         |,  .-.  .-.  ,|         / )
+       > "=._     | )(__/  \__)( |     _.=" <
+      (_/"=._"=._ |/     /\     \| _.="_.="\_)
+             "=._ (_     ^^     _)"_.="
+                 "=\__|IIIIII|__/="
+                _.="| \IIIIII/ |"=._
+      _     _.="_.="\          /"=._"=._     _
+     ( \_.="_.="     `--------`     "=._"=._/ )
+      > _.="                            "=._ <
+     (_/                                    \_)
+-->
+<!-- YARRRRRRR!!!! -->
+<!-- ****************************************************** -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -63,7 +85,7 @@ include "includes/globals.php";
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <link rel="stylesheet" href="css/vendor/leaflet.css" />
-        <link rel="stylesheet" href="css/vendor/leaflet.search.css" />
+        <!-- <link rel="stylesheet" href="css/vendor/leaflet.search.css" /> -->
         <link rel="stylesheet" href="css/styles.css?v=<?= CACHE_BUSTER ?>" /> <!-- ?v=<?= CACHE_BUSTER ?> -->
 
     </head>
@@ -95,7 +117,7 @@ include "includes/globals.php";
                 <div id="findbox" class="searchbox_space"></div>
 
                 <fieldset>
-                <input class="filter-search-input js-filter-search" placeholder= "filter" type="text" size="9">
+                <input class="filter-search-input js-filter-search" placeholder= "Find..." type="text" size="9">
                 <button class="search-cancel js-clear-search" tabindex="-1"><span>⊗</span></button>
                 </fieldset>
                 <div class="list_of_places">
@@ -206,7 +228,7 @@ include "includes/globals.php";
         
 
         <script src="js/vendor/leaflet.js"></script>
-        <script src="js/vendor/leaflet-search.min.js"></script>
+        <!-- <script src="js/vendor/leaflet-search.min.js"></script> -->
         <script src="js/vendor/L.SimpleGraticule-sot.js"></script>
         <script src="js/vendor/leaflet-hash.js"></script>
         <script src="js/vendor/jquery-3.3.1.min.js"></script>
