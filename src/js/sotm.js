@@ -5,7 +5,7 @@ import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
 import * as places_data from './modules/places_data.js';
 import * as tools from './modules/tools.js';
-
+import * as mF from './modules/markers.js';
 
 var layerArray = [];
 
@@ -411,110 +411,56 @@ map.on('zoomend', function() {
     }
 });
 
-//add beacons
+
+
+
+/**
+ * * ADD BEACONS
+ */
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
 
-
-var beacon_icon = L.icon({
-    iconUrl: '/images/markers/beacon_marker.png',
-    shadowUrl: '/images/markers/beacon_marker.png',
-
-    iconSize:     [31, 40], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
-});
-
 for(var t in beacons) {
-    var loc = beacons[t].loc;
-    var title = beacons[t].title + " Beacon"
-    var marker = L.marker(loc, {
-        /* draggable: true,   */   
-        icon: beacon_icon,
-        title: title
-        //opacity: 0
-    } 
-    ).addTo(beaconsLayer);
-    //.bindPopup(beacons[t].desc);
+    var mkr = mF.getMarker(L, beacons[t], "beacon");
+    mkr.marker.addTo(beaconsLayer)
+    .bindPopup(mkr.desc);
 
-    var classes = "beaconClass " + window.websafe(title);
-    addPlaceToList(title, classes, t);
-}
+    addPlaceToList(mkr.title, "beaconClass " + window.websafe(mkr.title), t);
+};
 
 
-//add cargorun
+
+/**
+ * * ADD CARGO RUN
+ */
 var cargorunsLayer = new L.LayerGroup();
 layerArray.push(['cargoruns', cargorunsLayer]);
 
-var cargorun_icon = L.icon({
-    iconUrl: '/images/markers/crate_marker.png',
-    shadowUrl: '/images/markers/crate_marker.png',
-
-    iconSize:     [31, 40], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [0, -45] // point from which the popup should open relative to the iconAnchor
-});
-
-var cargo_run_markers = [];
 for(var t in cargoruns) {
-    var loc = cargoruns[t].loc;
-    var marker = L.marker(loc, {
-        /* draggable: true,   */   
-        icon: cargorun_icon,
-        title: 'Cargo Run',
-        name: cargoruns[t].title
-        //opacity: 0
-    } 
-    ).addTo(cargorunsLayer)
-    .bindPopup(cargoruns[t].title);
+    var mkr = mF.getMarker(L, cargoruns[t], "cargo");
+    mkr.marker.addTo(cargorunsLayer)
+    .bindPopup(mkr.title);
 
-    cargo_run_markers[t] = marker;
-
-    var classes = "cargoClass " + window.websafe(cargoruns[t].title);
-    addPlaceToList(cargoruns[t].title, classes, t);
+    addPlaceToList(mkr.title, "cargoClass " + window.websafe(mkr.title), t);
 }
 
-//add thrones
+
+/**
+ * * ADD THRONES
+ */
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
 
-
-var throne_L_icon = L.icon({
-    iconUrl: '/images/markers/throne_marker_l.png',
-    shadowUrl: '/images/markers/throne_marker_l.png',
-    iconSize:     [31, 40],// size of the icon
-    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
-});
-
-var throne_S_icon = L.icon({
-    iconUrl: '/images/markers/throne_marker_s.png',
-    shadowUrl: '/images/markers/throne_marker_s.png',
-    iconSize:     [31, 40],// size of the icon
-    iconAnchor:   [15, 40], // point of the icon which will correspond to marker's location
-    popupAnchor:  [0, -40] // point from which the popup should open relative to the iconAnchor
-});
-
 for(var t in thrones) {
-    var loc = thrones[t].loc;
-    var size = thrones[t].isLarge ? " Large" : " Small";
-    var title = thrones[t].title + size + " Skelton Throne";
-    var mkr = thrones[t].isLarge ? throne_L_icon : throne_S_icon;
+    var mkr = mF.getMarker(L, thrones[t], "throne");
+    mkr.marker.addTo(thronesLayer)
+    .bindPopup(mkr.desc);
 
-    var marker = L.marker(loc, {  
-        icon: mkr,
-        title: title
-    } 
-    ).addTo(thronesLayer)
-    .bindPopup(thrones[t].desc);
+    addPlaceToList(mkr.title, "throneClass " + window.websafe(mkr.title), t);
+};
 
-    var classes = "throneClass " + window.websafe(title);
-    addPlaceToList(title, classes, t);
-}
+
+
 
 
 
@@ -530,29 +476,6 @@ function localData(text, callResponse)
             console.log('aborted request:'+ text);
         }
     };
-}
-
-function customTip(text,val) {
-    var className = getMarkerData(val);
-    //console.log("check type: " + className);
-    return '<a href="#" class="' + className + '">'+text+'</a>';
-}
-
-
-
-function getMarkerData(loc) {
-    var mData = "island";
-
-    cargo_run_markers.forEach(function(cr) {
-         if (cr.getLatLng().lat == loc.lat && cr.getLatLng().lng == loc.lng) {
-            console.log("Cargo Run Destination Found");
-            mData = "cargo"; 
-        }
-        
-    }); 
-
-    return mData;
-
 }
 
 
