@@ -1,4 +1,8 @@
 
+var xMarkers = [];
+var compMark;
+
+
 var throne_L_icon = L.icon({
     iconUrl: '/images/markers/throne_marker_l.png',
     shadowUrl: '/images/markers/throne_marker_l.png',
@@ -39,6 +43,42 @@ var beacon_icon = L.icon({
     popupAnchor:  [-20, -45] // point from which the popup should open relative to the iconAnchor
 });
 
+var compass_marker = L.icon({
+    iconUrl: '/images/markers/compass.png',
+    shadowUrl: '/images/markers/compass.png',
+    
+    iconSize:     [50, 48], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [25, 24], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+
+
+var boatMarker = L.icon({
+    iconUrl: '/images/markers/boat_marker.png',
+    shadowUrl: '/images/markers/boat_marker.png',
+    
+    iconSize:     [50, 59], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [25, 29], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var xmarksspot = L.icon({
+    iconUrl: '/images/markers/xmarkthespot_marker.png',
+    shadowUrl: '/images/markers/xmarkthespot_marker.png',
+    
+    iconSize:     [40, 52], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
+
 
 
 
@@ -63,7 +103,7 @@ function makeMarker(L, markerData, markerLayer) {
 
 
 
-function getMarker(L, markerData, mType) {
+function getMarker(markerData, mType) {
     var loc = markerData.loc;
 
 
@@ -94,7 +134,66 @@ function getMarker(L, markerData, mType) {
     return r;
 }
 
+
+
+
+function addComp(latLng, degs, map) {
+    clearComp(map);
+    compMark = L.marker(latLng, {icon: boatMarker, draggable: false}).addTo(map);
+    //console.log(compMark._icon.style);
+    var newStyle = compMark._icon.style.transform + " rotate(" + degs + "deg)";
+    //console.log(newStyle);
+    compMark._icon.style.transform = newStyle;
+    xMarkers.push(compMark);
+}
+
+function clearComp(map) {
+    if(compMark) {
+        map.removeLayer(compMark);
+    }
+}
+
+function addXmark(latLng, map) {
+    var xMark = L.marker(latLng, {icon: xmarksspot, draggable: true}).addTo(map);
+    xMark.on('dragend', function (e) {
+        console.log('marker dragend event');
+        setQstring();
+    });
+    xMarkers.push(xMark);
+}
+
+function clearXmarks(map) {
+    xMarkers.forEach(function(mkr) {
+        map.removeLayer(mkr);
+    });
+    xMarkers = [];
+}
+
+function setQstring() {
+    var qS = getXstring();
+    updateQueryStringParam("mkrs", qS);
+}
+
+
+function getXstring() {
+    var xm = "";
+    var one;
+    xMarkers.forEach(function(element) {
+        one = element.getLatLng().lat + "," + element.getLatLng().lng + ";";
+        xm = xm + one; 
+    });
+    
+    xm = window.encodeURIComponent(window.btoa(xm)); // encode a string
+    return (xm);
+}
+
 export {
     makeMarker,
-    getMarker
+    getMarker,
+    xMarkers,
+    addXmark,
+    addComp,
+    clearXmarks,
+    clearComp,
+    setQstring
 };

@@ -117,3 +117,4 @@ window.toggleFullScreen = function() {
       }  
     }  
   }
+

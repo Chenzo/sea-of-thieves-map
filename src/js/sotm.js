@@ -32,18 +32,12 @@ function compare(a, b){
 islands.sort(compare);
 thrones.sort(compare);
 
-islands.forEach(function(im) {
-    im['searchData'] = "island|" + im.title;
-});
-cargoruns.forEach(function(im) {
-    im['searchData'] = "cargorun|" + im.title;
-});
 
 var isOnline = pwa.isOnline;
 var isDev = false;
-var xMarkers = [];
+
 var currentSearchIsland = -1;
-var compMark;
+
 
 console.log("-- detect isOnline: " + isOnline);
 
@@ -98,38 +92,7 @@ var layer = L.tileLayer(cdnpath + "images/tiles/v3/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 
-var xmarksspot = L.icon({
-    iconUrl: '/images/markers/xmarkthespot_marker.png',
-    shadowUrl: '/images/markers/xmarkthespot_marker.png',
-    
-    iconSize:     [40, 52], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-});
 
-var compass_marker = L.icon({
-    iconUrl: '/images/markers/compass.png',
-    shadowUrl: '/images/markers/compass.png',
-    
-    iconSize:     [50, 48], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [25, 24], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-});
-
-var boatMarker = L.icon({
-    iconUrl: '/images/markers/boat_marker.png',
-    shadowUrl: '/images/markers/boat_marker.png',
-    
-    iconSize:     [50, 59], // size of the icon
-    shadowSize:   [0, 0], // size of the shadow
-    iconAnchor:   [25, 29], // point of the icon which will correspond to marker's location
-    shadowAnchor: [0, 0],  // the same for the shadow
-    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
-});
 
 function onMapClick(e) {
     console.log("You clicked the map at " + e.latlng);
@@ -313,7 +276,7 @@ for(var i in islands) {
                 });
             } else {
                 evt.target._path.classList.remove("pig", "show");
-                clearComp();
+                mF.clearComp(map);
                 hidePopup();
             }
         },
@@ -421,7 +384,7 @@ var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
 
 for(var t in beacons) {
-    var mkr = mF.getMarker(L, beacons[t], "beacon");
+    var mkr = mF.getMarker(beacons[t], "beacon");
     mkr.marker.addTo(beaconsLayer)
     .bindPopup(mkr.desc);
 
@@ -437,7 +400,7 @@ var cargorunsLayer = new L.LayerGroup();
 layerArray.push(['cargoruns', cargorunsLayer]);
 
 for(var t in cargoruns) {
-    var mkr = mF.getMarker(L, cargoruns[t], "cargo");
+    var mkr = mF.getMarker(cargoruns[t], "cargo");
     mkr.marker.addTo(cargorunsLayer)
     .bindPopup(mkr.title);
 
@@ -452,7 +415,7 @@ var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
 
 for(var t in thrones) {
-    var mkr = mF.getMarker(L, thrones[t], "throne");
+    var mkr = mF.getMarker(thrones[t], "throne");
     mkr.marker.addTo(thronesLayer)
     .bindPopup(mkr.desc);
 
@@ -563,16 +526,16 @@ map.on('contextmenu', function(e) {
         .openOn(map);
 
     $(".js-addMarker").click(function() {
-        addXmark(myLoc);
-        setQstring();
+        mF.addXmark(myLoc, map);
+        mF.setQstring();
         map.closePopup();
     });
 
     $(".js-clearMarkers").click(function() {
-        clearXmarks();
-        clearComp();
+        mF.clearXmarks(map);
+        mF.clearComp(map);
         hidePopup();
-        setQstring();
+        mF.setQstring();
         map.closePopup();
     });
 
@@ -587,7 +550,7 @@ map.on('contextmenu', function(e) {
         var CapType = type.charAt(0).toUpperCase() + type.slice(1);
         var words = "<span class='type'>" + CapType + "</span> can be found to the <span class='direction'>" + window.getCardinalFromDeg(found.bearing) + "</span> at <span class='title'>" + found.title + "</span>";
 
-        addComp(myLoc, found.bearing); //add compass at click point
+        mF.addComp(myLoc, found.bearing, map); //add compass at click point
         showPopup(words);
         map.closePopup();
     });
@@ -595,37 +558,6 @@ map.on('contextmenu', function(e) {
 
 });
 
-function addComp(latLng, degs) {
-    clearComp();
-    compMark = L.marker(latLng, {icon: boatMarker, draggable: false}).addTo(map);
-    console.log(compMark._icon.style);
-    var newStyle = compMark._icon.style.transform + " rotate(" + degs + "deg)";
-    console.log(newStyle);
-    compMark._icon.style.transform = newStyle;
-    xMarkers.push(compMark);
-}
-
-function clearComp() {
-    if(compMark) {
-        map.removeLayer(compMark);
-    }
-}
-
-function addXmark(latLng) {
-    var xMark = L.marker(latLng, {icon: xmarksspot, draggable: true}).addTo(map);
-    xMark.on('dragend', function (e) {
-        console.log('marker dragend event');
-        setQstring();
-    });
-    xMarkers.push(xMark);
-}
-
-function clearXmarks() {
-    xMarkers.forEach(function(mkr) {
-        map.removeLayer(mkr);
-    });
-    xMarkers = [];
-}
 
 function showPopup(words) {
     $('.floating_dialog').html(words).addClass("show");
@@ -682,22 +614,8 @@ window.dev = {
         isDev = true;
     }
 }
-function setQstring() {
-    var qS = getXstring();
-    updateQueryStringParam("mkrs", qS);
-}
 
-function getXstring() {
-    var xm = "";
-    var one;
-    xMarkers.forEach(function(element) {
-        one = element.getLatLng().lat + "," + element.getLatLng().lng + ";";
-        xm = xm + one; 
-    });
-    
-    xm = window.encodeURIComponent(window.btoa(xm)); // encode a string
-    return (xm);
-}
+
 
 function readXstring() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -706,9 +624,10 @@ function readXstring() {
     if (urlParams.get('mkrs') !== null) {
         var decodedData =  window.atob(mkrs); // decode the string
         var marks = decodedData.split(";");
+        
         marks.forEach(function(entry) {
             if (entry !== "") {
-                addXmark(entry.split(","));
+                mF.addXmark(entry.split(","), map);
             }
         });
     }
