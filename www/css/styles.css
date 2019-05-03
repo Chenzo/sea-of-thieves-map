@@ -1099,6 +1099,11 @@ th {
   .col-lg-offset-12 {
     margin-left: 100%; } }
 
+.markerIcon {
+  display: none; }
+  .markerIcon.show {
+    display: block; }
+
 .leaflet-control-search .search-tooltip {
   right: 0;
   left: auto;

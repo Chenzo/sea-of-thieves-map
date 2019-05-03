@@ -382,6 +382,7 @@ map.on('zoomend', function() {
  */
 var beaconsLayer = new L.LayerGroup();
 layerArray.push(['beacons', beaconsLayer]);
+map.addLayer(beaconsLayer);
 
 for(var t in beacons) {
     var mkr = mF.getMarker(beacons[t], "beacon");
@@ -398,6 +399,7 @@ for(var t in beacons) {
  */
 var cargorunsLayer = new L.LayerGroup();
 layerArray.push(['cargoruns', cargorunsLayer]);
+map.addLayer(cargorunsLayer);
 
 for(var t in cargoruns) {
     var mkr = mF.getMarker(cargoruns[t], "cargo");
@@ -461,14 +463,31 @@ var toggleMarkers = function(theType, onoff) {
 
 var toggleLayer = function(theType, onoff) {
     var theLayer = getLayer(theType);
-    //console.log(theType);
+    console.log(theType);
+    
 
 	if (onoff) {
-		map.addLayer(theLayer);
+        if (theType == "thrones") {
+            $(".markerIcon.throne").addClass("show");
+        } else if (theType == "beacons") {
+            $(".markerIcon.beacon").addClass("show");
+        } else if (theType == "cargoruns") {
+            $(".markerIcon.cargo").addClass("show");
+        } else {
+            map.addLayer(theLayer);
+        }
     }
     else {
-		map.removeLayer(theLayer);
-	}
+        if (theType == "thrones") {
+            $(".markerIcon.throne").removeClass("show");
+        } else if (theType == "beacons") {
+            $(".markerIcon.beacon").removeClass("show");
+        } else if (theType == "cargoruns") {
+            $(".markerIcon.cargo").removeClass("show");
+        } else {
+            map.removeLayer(theLayer);
+        }
+	} 
 };
 
 var getLayer = function(layerName) {
@@ -735,7 +754,8 @@ $(function() {
     })
 
     $(".js-placelist").on('click', function() {
-        var radius, LatLong;
+        var radius, LatLong, wsName;
+        var toggleMarker = false;
         var classes = $(this).attr('class');
         if (classes.indexOf("islandClass") > -1) {
             radius = 7;
@@ -746,19 +766,28 @@ $(function() {
         } else if (classes.indexOf("beaconClass") > -1) {
             radius = 6;
             LatLong = beacons[$(this).data("idx")].loc;
+            toggleMarker = true;
         } else if (classes.indexOf("throneClass") > -1) {
             radius = 6;
             LatLong = thrones[$(this).data("idx")].loc;
-            console.log("show throne icon");
+            toggleMarker = true;
         } else if (classes.indexOf("cargoClass") > -1) {
             radius = 6;
             LatLong = cargoruns[$(this).data("idx")].loc;
+            toggleMarker = true;
         }
         /* map.flyTo(LatLong, radius, {
             animate: true,
             duration: 2 // in seconds
         }); */
+
+        if (toggleMarker) {
+            wsName = window.websafe($(this).data("name"));
+            $(".markerIcon."+wsName).addClass("show");
+        }
+
         map.setView(LatLong, radius);
+        console.log("Showing: " + $(this).data("name"));
     });
     $(".js-placelist").keypress(function(e){
         if(e.which == 13){//Enter key pressed
