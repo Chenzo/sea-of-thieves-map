@@ -413,6 +413,7 @@ for(var t in cargoruns) {
  */
 var thronesLayer = new L.LayerGroup();
 layerArray.push(['thrones', thronesLayer]);
+map.addLayer(thronesLayer);
 
 for(var t in thrones) {
     var mkr = mF.getMarker(thrones[t], "throne");

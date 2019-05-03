@@ -3,6 +3,56 @@ var xMarkers = [];
 var compMark;
 
 
+var markerIcons = {
+    "throne_L" : {
+        iconUrl: '/images/markers/throne_marker_l.png',
+        iconSize:     [31, 40],
+        iconAnchor:   [15, 40]
+    },
+
+    "throne_S" : {
+        iconUrl: '/images/markers/throne_marker_s.png',
+        iconSize:     [31, 40],
+        iconAnchor:   [15, 40]
+    },
+
+    "cargorun" : {
+        iconUrl: '/images/markers/crate_marker.png',
+        iconSize:     [31, 40], 
+        iconAnchor:   [15, 40], 
+    },
+
+    "beacon" : {
+        iconUrl: '/images/markers/beacon_marker.png', 
+        iconSize:     [31, 40], 
+        iconAnchor:   [15, 40],
+        popupAnchor:  [-20, -45] 
+    },
+
+    "compass" : {
+        iconUrl: '/images/markers/compass.png',   
+        iconSize:     [50, 48], 
+        iconAnchor:   [25, 24]
+    },
+
+    "boat" : {
+        iconUrl: '/images/markers/boat_marker.png',
+        iconSize:     [50, 59], 
+        shadowSize:   [0, 0], 
+        iconAnchor:   [25, 29]
+    },
+
+    "xmarksspot" : {
+        iconUrl: '/images/markers/xmarkthespot_marker.png',
+        iconSize:     [40, 52], 
+        iconAnchor:   [20, 52]
+    }
+
+};
+
+
+
+/*
 var throne_L_icon = L.icon({
     iconUrl: '/images/markers/throne_marker_l.png',
     shadowUrl: '/images/markers/throne_marker_l.png',
@@ -78,14 +128,33 @@ var xmarksspot = L.icon({
     shadowAnchor: [0, 0],  // the same for the shadow
     popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 });
+*/
+
+
+var boatMarker = L.icon({
+    iconUrl: '/images/markers/boat_marker.png',
+    iconSize:     [50, 59], // size of the icon
+    iconAnchor:   [25, 29]
+});
+
+
+var xmarksspot = L.icon({
+    iconUrl: '/images/markers/xmarkthespot_marker.png',
+    shadowUrl: '/images/markers/xmarkthespot_marker.png',
+    
+    iconSize:     [40, 52], // size of the icon
+    shadowSize:   [0, 0], // size of the shadow
+    iconAnchor:   [20, 52], // point of the icon which will correspond to marker's location
+    shadowAnchor: [0, 0],  // the same for the shadow
+    popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+});
 
 
 
 
 //NOT USED?
 function makeMarker(L, markerData, markerLayer) {
-    console.log("wait. what?");
-    console.log(markerData);
+
     var loc = markerData.loc;
     var size = markerData.isLarge ? " Large" : " Small";
     var title = markerData.title + size + " Skelton Throne";
@@ -105,26 +174,31 @@ function makeMarker(L, markerData, markerLayer) {
 
 function getMarker(markerData, mType) {
     var loc = markerData.loc;
-
+    var mkr, title;
 
     if (mType == "throne") {
         var size = markerData.isLarge ? " Large" : " Small";
-        var title = markerData.title + size + " Skelton Throne";
-        var mkr = markerData.isLarge ? throne_L_icon : throne_S_icon;
+        title = markerData.title + size + " Skelton Throne";
+        mkr = markerData.isLarge ? markerIcons["throne_L"] : markerIcons["throne_S"];
     } else if (mType =="cargo") {
-        var mkr = cargorun_icon;
+        mkr = markerIcons["cargorun"];
         title = markerData.title + " | Cargo Run";
     } else if (mType == "beacon") {
-        var mkr = beacon_icon;
+        mkr = markerIcons["beacon"];
         title = markerData.title + " Beacon";
     }
 
 
     var desc = markerData.desc;
-    var marker = L.marker(loc, {  
-        icon: mkr,
-        title: title,
-        name: markerData.title
+    var classes = "markerIcon " + mType + " " + window.websafe(title);
+
+    var marker = new L.Marker(loc, {
+		icon: new L.DivIcon({
+			className: classes,
+            iconAnchor: mkr.iconAnchor,
+            iconSize: null,
+            html: '<img src="' + mkr.iconUrl + '" alt="">'
+		})
     });
 
     var r = {"title" : title,
