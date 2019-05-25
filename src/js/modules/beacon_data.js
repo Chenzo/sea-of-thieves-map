@@ -37,7 +37,7 @@ var beacons = [
     },
     {
         "loc": [-119.517574, 201.600493], 
-        "title": "Crook's Hollow"
+        "title": "Ruby's Fall"
     },
     {
         "loc": [-143.071842, 128.265031], 

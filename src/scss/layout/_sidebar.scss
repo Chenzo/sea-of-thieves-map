@@ -24,24 +24,59 @@ aside.sidebar {
 
     &.left {
 
-        .filter-search-input {
-            background: white;
-            width: calc(100% - 20px);
-            color: $blue_1;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 6px;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        text-align: left;
 
-            border: 2px solid $blue_1;
-            &:focus {
-                border: 2px solid $blue_4;
+        fieldset {
+            position: relative;
+            .filter-search-input {
+                background: white;
+                width: calc(100% - 20px);
+                color: $blue_1;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 6px;
+    
+                border: 2px solid $blue_1;
+                &:focus {
+                    border: 2px solid $blue_4;
+                }
+            }
+
+
+            .search-cancel {
+                display: block;
+                width: 22px;
+                height: 22px;
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                span {
+                        display: none;
+                        font-size: 26px;
+                        line-height: 20px;
+                        color: $blue_2;
+                        font-weight: bold;
+                }
+    
+                &.searching {
+                    span {
+                        display: block;
+                    }
+                }
             }
         }
 
-        text-align: left;
+
+        
+
+
         .list_of_places {
             //padding: 0 15px;
-            height: 500px;
+            /* height: 500px; */
+            flex: 1;
             overflow-x: hidden;
             overflow-y: scroll;
             border-top: 1px solid white;
@@ -107,36 +142,13 @@ aside.sidebar {
             
         }
 
-        fieldset {
-            position: relative;
-        }
 
-        .search-cancel {
-            display: block;
-            width: 22px;
-            height: 22px;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            span {
-                    display: none;
-                    font-size: 26px;
-                    line-height: 20px;
-                    color: $blue_2;
-                    font-weight: bold;
-            }
-
-            &.searching {
-                span {
-                    display: block;
-                }
-            }
-        }
+        
 
 
         .filter_buttons {
             display: flex;
-            /* justify-content: center; */
+            height: 120px;
             padding: 10px;
             flex-direction: column;
 
@@ -146,17 +158,6 @@ aside.sidebar {
                     white-space: nowrap;
                 }
             }
-
-            /* button {
-                color: $blue_1;
-                background-color: gray;
-                padding: 10px;
-                margin: 0 5px;
-                &.on {
-                    text-decoration: line-through;
-                    background-color: white;
-                }
-            } */
         }
     }
 

@@ -7,7 +7,7 @@ $default_language = "fr";
 $version = "v2.01";
 
 
-define('CACHE_BUSTER', '1558817393473');            // Automatically updates
+define('CACHE_BUSTER', '1558824386612');            // Automatically updates
 
 
 ?>
