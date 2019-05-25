@@ -15,7 +15,7 @@ function addPlaceToList(type, name, classes, markerObj) {
 
 function buildPlaceList() {
     place_list.forEach(function(place, idx) {
-        $(".list_of_islands").append("<li class='js-placelist " + place.classes + "' data-name=\"" + place.name + "\" data-idx='" + idx + "'>" + place.name + "</li>");
+        $(".list_of_islands").append("<li class='js-placelist " + place.classes + "' data-name=\"" + place.name + "\" data-idx='" + idx + "' data-type=\"" + place.type + "\">" + place.name + "</li>");
     });
 }
 
@@ -45,17 +45,17 @@ function getMarkerOBJbyIDX(idx) {
 
 
 
+
 function applySearchFilter() {
     var searchFor = $(".js-filter-search").val().toLowerCase();
     if (searchFor.length > 0) {
         $(".list_of_places").addClass("searching");
         $(".search-cancel").addClass("searching");
         var resultCount = 0;
-        console.log(searchFor);
+        //console.log(searchFor);
         $(".js-placelist").each(function(idx, thing) {
             var fName = $(thing).data("name").toLowerCase();
-            //console.log(fName.indexOf(searchFor));
-            console.log($(thing).data("name"));
+            //console.log($(thing).data("name"));
             if (fName.indexOf(searchFor) > -1) {
                 $(thing).addClass("found");
                 $(thing).attr("tabindex", 0);
@@ -75,6 +75,29 @@ function applySearchFilter() {
     }
 }
 
+
+
+
+
+function toggleListFilter(type, onoff) {
+    console.log(type);
+    if (onoff) {
+        $(".js-placelist[data-type='" + type + "']").removeClass("filteredOut");
+    } else {
+        $(".js-placelist[data-type='" + type + "']").addClass("filteredOut");
+    }
+    
+}
+
+
+
+
+
 export {
-    place_list, addPlaceToList, buildPlaceList, applySearchFilter, getMarkerOBJbyIDX
+    place_list,
+    addPlaceToList,
+    buildPlaceList,
+    applySearchFilter,
+    getMarkerOBJbyIDX,
+    toggleListFilter
 };

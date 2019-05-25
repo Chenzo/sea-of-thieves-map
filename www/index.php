@@ -126,11 +126,11 @@ include "includes/globals.php";
                     </ul>
                 </div>
                 <div class="filter_buttons">
-                    <button class="outputs js-toggle-filter" data-filter="outposts">O</button>
-                    <button class="strongholds js-toggle-filter" data-filter="strongholds">S</button>
-                    <button class="thrones js-toggle-filter" data-filter="thrones">T</button>
-                    <button class="cargoruns js-toggle-filter" data-filter="cargoruns">C</button>
-                    <button class="beacons js-toggle-filter" data-filter="beacons">B</button>
+                    <button class="outputs js-toggle-filter" data-filter="outpost">O</button>
+                    <button class="strongholds js-toggle-filter" data-filter="stronghold">S</button>
+                    <button class="thrones js-toggle-filter" data-filter="throne">T</button>
+                    <button class="cargoruns js-toggle-filter" data-filter="cargorun">C</button>
+                    <button class="beacons js-toggle-filter" data-filter="beacon">B</button>
                 </div>
 
             </aside>

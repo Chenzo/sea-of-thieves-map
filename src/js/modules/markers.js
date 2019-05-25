@@ -7,26 +7,29 @@ var markerIcons = {
     "throne_L" : {
         iconUrl: '/images/markers/throne_marker_l.png',
         iconSize:     [31, 40],
-        iconAnchor:   [15, 40]
+        iconAnchor:   [15, 40],
+        popupAnchor:  [0, -40] 
     },
 
     "throne_S" : {
         iconUrl: '/images/markers/throne_marker_s.png',
         iconSize:     [31, 40],
-        iconAnchor:   [15, 40]
+        iconAnchor:   [15, 40],
+        popupAnchor:  [0, -40]
     },
 
     "cargorun" : {
         iconUrl: '/images/markers/crate_marker.png',
         iconSize:     [31, 40], 
         iconAnchor:   [15, 40], 
+        popupAnchor:  [0, -45] 
     },
 
     "beacon" : {
         iconUrl: '/images/markers/beacon_marker.png', 
         iconSize:     [31, 40], 
         iconAnchor:   [15, 40],
-        popupAnchor:  [-20, -45] 
+        popupAnchor:  [0, -45] 
     },
 
     "compass" : {
@@ -197,6 +200,7 @@ function getMarker(markerData, mType) {
 			className: classes,
             iconAnchor: mkr.iconAnchor,
             iconSize: null,
+            popupAnchor: mkr.popupAnchor,
             html: '<img src="' + mkr.iconUrl + '" alt="">'
 		})
     });

@@ -1215,12 +1215,14 @@ aside.sidebar {
         aside.sidebar.left .list_of_places li:hover {
           color: white;
           border: 1px solid #13252c; }
+        aside.sidebar.left .list_of_places li.filteredOut {
+          display: none; }
       aside.sidebar.left .list_of_places.searching li {
         display: none;
         /* &:focus {
                         color: red;
                     } */ }
-        aside.sidebar.left .list_of_places.searching li.found {
+        aside.sidebar.left .list_of_places.searching li.found:not(.filteredOut) {
           display: block; }
         aside.sidebar.left .list_of_places.searching li.highlight {
           font-weight: 700;

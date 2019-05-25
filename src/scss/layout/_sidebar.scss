@@ -69,6 +69,10 @@ aside.sidebar {
                     color: white;
                     border: 1px solid $blue_1;
                 }
+
+                &.filteredOut {
+                    display: none;
+                }
                 
             }
 
@@ -77,7 +81,7 @@ aside.sidebar {
                     display: none;
                     
                     
-                    &.found {
+                    &.found:not(.filteredOut) {
                         display: block;
                     }
 

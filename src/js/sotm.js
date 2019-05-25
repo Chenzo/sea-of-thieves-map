@@ -395,7 +395,7 @@ map.addLayer(beaconsLayer);
 for(var t in beacons) {
     var mkr = mF.getMarker(beacons[t], "beacon");
     mkr.marker.addTo(beaconsLayer)
-    .bindPopup(mkr.desc);
+    .bindPopup(mkr.title);
 
     pList.addPlaceToList("beacon", mkr.title, "beaconClass " + window.websafe(mkr.title), beacons[t]);
 };
@@ -701,7 +701,13 @@ $(function() {
 
     $(".js-toggle-filter").on("click", function() {
         $(this).toggleClass("on");
-        console.log("toggle: " + $(this).data('filter'))
+
+        if ($(this).hasClass("on")) {
+            pList.toggleListFilter($(this).data('filter'), false);
+        } else {
+            pList.toggleListFilter($(this).data('filter'), true);
+        }
+        
     });
 
     $(".js-filter-search").on('input propertychange paste', function() {
