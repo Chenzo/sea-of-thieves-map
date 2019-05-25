@@ -5,6 +5,7 @@ import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
 import * as places_data from './modules/places_data.js';
 import * as tools from './modules/tools.js';
+import * as alexa from './modules/data_output.js';
 import * as mF from './modules/markers.js';
 
 var layerArray = [];
@@ -18,7 +19,7 @@ var islands = island_data.islands;
 var thrones = throne_data.thrones;
 var beacons = beacon_data.beacons;
 var cargoruns = cargorun_data.cargoruns;
-var places = places_data.beacons;
+var places = places_data.places;
 
 function compare(a, b){
     const nameA = a.title.replace(/the /gi, '').toUpperCase();
@@ -172,6 +173,11 @@ L.islandCircle = L.Circle.extend({
        json: {}
     }
  })
+
+
+ /* ALEXA DATA */
+alexa.alexa_output(islands);
+/* ALEXA DATA */
 
 var island_markers = [];
 for(var i in islands) {
