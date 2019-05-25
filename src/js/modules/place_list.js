@@ -80,7 +80,6 @@ function applySearchFilter() {
 
 
 function toggleListFilter(type, onoff) {
-    console.log(type);
     if (onoff) {
         $(".js-placelist[data-type='" + type + "']").removeClass("filteredOut");
     } else {

@@ -699,13 +699,13 @@ $(function() {
 
     pList.buildPlaceList();
 
-    $(".js-toggle-filter").on("click", function() {
-        $(this).toggleClass("on");
+    $(".js-toggle-filter").on("change", function() {
+        var isChecked = $("input", this).prop('checked');
 
-        if ($(this).hasClass("on")) {
-            pList.toggleListFilter($(this).data('filter'), false);
-        } else {
+        if (isChecked) {
             pList.toggleListFilter($(this).data('filter'), true);
+        } else {
+            pList.toggleListFilter($(this).data('filter'), false);
         }
         
     });

@@ -1166,6 +1166,66 @@ body {
   .close_fs {
     display: inline; } }
 
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px; }
+  .switch div {
+    position: absolute;
+    left: 50px;
+    top: 2px; }
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0; }
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s; }
+
+input:checked + .slider {
+  background-color: #2196F3; }
+  input:checked + .slider .switch_label {
+    color: #2196F3; }
+
+input:focus + .slider {
+  -webkit-box-shadow: 0 0 1px #2196F3;
+          box-shadow: 0 0 1px #2196F3; }
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  transform: translateX(16px); }
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px; }
+
+.slider.round:before {
+  border-radius: 50%; }
+
 aside.sidebar {
   background: #13252c;
   /* Old browsers */
@@ -1253,18 +1313,26 @@ aside.sidebar {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      -webkit-box-pack: center;
-          -ms-flex-pack: center;
-              justify-content: center;
-      padding: 10px; }
-      aside.sidebar.left .filter_buttons button {
-        color: #13252c;
-        background-color: gray;
-        padding: 10px;
-        margin: 0 5px; }
-        aside.sidebar.left .filter_buttons button.on {
-          text-decoration: line-through;
-          background-color: white; }
+      /* justify-content: center; */
+      padding: 10px;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      /* button {
+                color: $blue_1;
+                background-color: gray;
+                padding: 10px;
+                margin: 0 5px;
+                &.on {
+                    text-decoration: line-through;
+                    background-color: white;
+                }
+            } */ }
+      aside.sidebar.left .filter_buttons label {
+        margin: 4px 0; }
+        aside.sidebar.left .filter_buttons label .switch_label {
+          white-space: nowrap; }
   aside.sidebar .maps-panel-trig {
     display: block;
     position: absolute;

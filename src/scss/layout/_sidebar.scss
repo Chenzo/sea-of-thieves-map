@@ -136,10 +136,18 @@ aside.sidebar {
 
         .filter_buttons {
             display: flex;
-            justify-content: center;
+            /* justify-content: center; */
             padding: 10px;
+            flex-direction: column;
 
-            button {
+            label {
+                margin: 4px 0;
+                .switch_label {
+                    white-space: nowrap;
+                }
+            }
+
+            /* button {
                 color: $blue_1;
                 background-color: gray;
                 padding: 10px;
@@ -148,7 +156,7 @@ aside.sidebar {
                     text-decoration: line-through;
                     background-color: white;
                 }
-            }
+            } */
         }
     }
 
