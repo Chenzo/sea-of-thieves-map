@@ -4,10 +4,10 @@ $descr = "An open source interactive map of the sea from the Rare's game Sea of 
 $title = "Unofficial Interactive Sea Of Thieves Map";
 $keywords = "Sea of Thieves, Map, Interactive Map, Islands, Chickens, Snakes, Pigs, Outposts, Pirates, Beacons, Thrones, Seaposts";
 $default_language = "fr";
-$version = "v1.22";
+$version = "v2.01";
 
 
-define('CACHE_BUSTER', '1558794221128');            // Automatically updates
+define('CACHE_BUSTER', '1558812379882');            // Automatically updates
 
 
 ?>

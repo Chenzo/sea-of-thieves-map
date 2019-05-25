@@ -8,6 +8,8 @@ import * as tools from './modules/tools.js';
 import * as alexa from './modules/data_output.js';
 import * as mF from './modules/markers.js';
 
+import * as pList from './modules/place_list.js';
+
 var layerArray = [];
 
 
@@ -199,7 +201,7 @@ for(var i in islands) {
         json: islands[i]
     });
 
-    addPlaceToList(islandName, classes, i);
+    pList.addPlaceToList("island", islandName, classes, islands[i]);
 	
     var textLoc = modifyLoc(islands[i].loc, (cRad + (cRad * 0.1)), (0));
 	var islandMarker = new L.Marker(textLoc, {
@@ -395,7 +397,7 @@ for(var t in beacons) {
     mkr.marker.addTo(beaconsLayer)
     .bindPopup(mkr.desc);
 
-    addPlaceToList(mkr.title, "beaconClass " + window.websafe(mkr.title), t);
+    pList.addPlaceToList("beacon", mkr.title, "beaconClass " + window.websafe(mkr.title), beacons[t]);
 };
 
 
@@ -412,9 +414,8 @@ for(var t in cargoruns) {
     mkr.marker.addTo(cargorunsLayer)
     .bindPopup(mkr.title);
 
-    addPlaceToList(mkr.title, "cargoClass " + window.websafe(mkr.title), t);
+    pList.addPlaceToList("cargorun", mkr.title, "cargoClass " + window.websafe(mkr.title), cargoruns[t]);
 }
-
 
 /**
  * * ADD THRONES
@@ -428,7 +429,7 @@ for(var t in thrones) {
     mkr.marker.addTo(thronesLayer)
     .bindPopup(mkr.desc);
 
-    addPlaceToList(mkr.title, "throneClass " + window.websafe(mkr.title), t);
+    pList.addPlaceToList("throne", mkr.title, "throneClass " + window.websafe(mkr.title), thrones[t]);
 };
 
 
@@ -693,56 +694,20 @@ function adjustIslandsAnchorPointOnZoom(anchorXmodifier){
 }
 
 
-
-function addPlaceToList(islandName, classes, idx) {
-    $(".list_of_islands").append("<li class='js-placelist " + classes + "' data-name=\"" + islandName + "\" data-idx='" + idx + "'>" + islandName + "</li>");
-}
-
-
-function applySearchFilter() {
-    var searchFor = $(".js-filter-search").val().toLowerCase();
-    if (searchFor.length > 0) {
-        $(".list_of_places").addClass("searching");
-        $(".search-cancel").addClass("searching");
-        var resultCount = 0;
-        console.log(searchFor);
-        $(".js-placelist").each(function(idx, thing) {
-            var fName = $(thing).data("name").toLowerCase();
-            //console.log(fName.indexOf(searchFor));
-            console.log($(thing).data("name"));
-            if (fName.indexOf(searchFor) > -1) {
-                $(thing).addClass("found");
-                $(thing).attr("tabindex", 0);
-                /* if (resultCount == 0) {
-                    $(thing).addClass("highlight");
-                } */
-                resultCount++;
-            } else {
-                //hide it
-                $(thing).removeClass("found highlight");
-                $(thing).removeAttr("tabindex");
-            }
-        });
-    } else {
-        $(".list_of_places").removeClass("searching");
-        $(".search-cancel").removeClass("searching");
-    }
-}
-
-
 var popUpInt = 0;
 $(function() {
 
+    pList.buildPlaceList();
 
     $(".js-toggle-filter").on("click", function() {
         $(this).toggleClass("on");
         console.log("toggle: " + $(this).data('filter'))
-    })
-
+    });
 
     $(".js-filter-search").on('input propertychange paste', function() {
-        applySearchFilter();        
+        pList.applySearchFilter();        
     });
+
     $(".js-filter-search").keypress(function(e){
         if(e.which == 13){//Enter key pressed
             $(this).click();
@@ -756,44 +721,24 @@ $(function() {
 
     $(".js-clear-search").on("click", function() {
         $(".js-filter-search").val("");
-        applySearchFilter();
+        pList.applySearchFilter();
     })
 
     $(".js-placelist").on('click', function() {
-        var radius, LatLong, wsName;
-        var toggleMarker = false;
-        var classes = $(this).attr('class');
-        if (classes.indexOf("islandClass") > -1) {
-            radius = 7;
-            if (parseInt(islands[$(this).data("idx")].radius) > 2) {
-                radius = 6;
-            }
-            LatLong = islands[$(this).data("idx")].loc;
-        } else if (classes.indexOf("beaconClass") > -1) {
-            radius = 6;
-            LatLong = beacons[$(this).data("idx")].loc;
-            toggleMarker = true;
-        } else if (classes.indexOf("throneClass") > -1) {
-            radius = 6;
-            LatLong = thrones[$(this).data("idx")].loc;
-            toggleMarker = true;
-        } else if (classes.indexOf("cargoClass") > -1) {
-            radius = 6;
-            LatLong = cargoruns[$(this).data("idx")].loc;
-            toggleMarker = true;
+
+        console.log("Showing: " + $(this).data("name"));
+
+        var mData = pList.getMarkerOBJbyIDX($(this).data("idx"));
+        if (mData.toggleMarker) {
+            var wsName = window.websafe(mData.name);
+            $(".markerIcon."+wsName).addClass("show");
         }
         /* map.flyTo(LatLong, radius, {
             animate: true,
             duration: 2 // in seconds
         }); */
+        map.setView(mData.LatLong, mData.radius);
 
-        if (toggleMarker) {
-            wsName = window.websafe($(this).data("name"));
-            $(".markerIcon."+wsName).addClass("show");
-        }
-
-        map.setView(LatLong, radius);
-        console.log("Showing: " + $(this).data("name"));
     });
     $(".js-placelist").keypress(function(e){
         if(e.which == 13){//Enter key pressed

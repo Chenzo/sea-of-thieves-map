@@ -131,10 +131,15 @@ aside.sidebar {
 
 
         .filter_buttons {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+
             button {
                 color: $blue_1;
                 background-color: gray;
                 padding: 10px;
+                margin: 0 5px;
                 &.on {
                     text-decoration: line-through;
                     background-color: white;

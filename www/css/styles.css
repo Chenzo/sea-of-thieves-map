@@ -1247,13 +1247,22 @@ aside.sidebar {
         font-weight: bold; }
       aside.sidebar.left .search-cancel.searching span {
         display: block; }
-    aside.sidebar.left .filter_buttons button {
-      color: #13252c;
-      background-color: gray;
+    aside.sidebar.left .filter_buttons {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       padding: 10px; }
-      aside.sidebar.left .filter_buttons button.on {
-        text-decoration: line-through;
-        background-color: white; }
+      aside.sidebar.left .filter_buttons button {
+        color: #13252c;
+        background-color: gray;
+        padding: 10px;
+        margin: 0 5px; }
+        aside.sidebar.left .filter_buttons button.on {
+          text-decoration: line-through;
+          background-color: white; }
   aside.sidebar .maps-panel-trig {
     display: block;
     position: absolute;
