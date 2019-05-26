@@ -125,22 +125,30 @@ include "includes/globals.php";
 
                     </ul>
                 </div>
-                <div class="filter_buttons">
-                    <label class="switch js-toggle-filter" data-filter="throne">
-                        <input type="checkbox" checked>
-                        <span class="slider round"><div class="switch_label">Thrones</div></span>
-                    </label> 
-                    <label class="switch cargoruns js-toggle-filter" data-filter="cargorun">
-                        <input type="checkbox" checked>
-                        <span class="slider round"><div class="switch_label">Cargo Runs</div></span>
-                    </label> 
-                    <label class="switch beacons js-toggle-filter" data-filter="beacon">
-                        <input type="checkbox" checked>
-                        <span class="slider round"><div class="switch_label">Beacons</div></span>
-                    </label> 
+
+                <div class="filter_space">
+
+                    <div class="filter_toggle">
+                        <button class="js-showfilters">FILTERS</button>
+                    </div>
+
+
+                    <div class="filter_buttons">
+                        <label class="switch js-toggle-filter" data-filter="throne">
+                            <input type="checkbox" checked>
+                            <span class="slider round"><div class="switch_label">Thrones</div></span>
+                        </label> 
+                        <label class="switch cargoruns js-toggle-filter" data-filter="cargorun">
+                            <input type="checkbox" checked>
+                            <span class="slider round"><div class="switch_label">Cargo Runs</div></span>
+                        </label> 
+                        <label class="switch beacons js-toggle-filter" data-filter="beacon">
+                            <input type="checkbox" checked>
+                            <span class="slider round"><div class="switch_label">Beacons</div></span>
+                        </label> 
+                    </div>
 
                 </div>
-
                 
 
             </aside>

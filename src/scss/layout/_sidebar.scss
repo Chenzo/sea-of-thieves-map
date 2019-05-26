@@ -144,21 +144,42 @@ aside.sidebar {
 
 
         
+        .filter_space {
+            height: 110px;
 
-
-        .filter_buttons {
-            display: flex;
-            height: 120px;
-            padding: 10px;
-            flex-direction: column;
-
-            label {
-                margin: 4px 0;
-                .switch_label {
-                    white-space: nowrap;
+            .filter_toggle {
+                text-align: center;
+                padding: 10px;
+                button {
+                    padding: 10px;
+                    width: 100%;
+                    background-color: $blue_2;
+                    color: white;
                 }
             }
+
+            .filter_buttons {
+                display: flex;
+                
+                padding: 0 10px;
+                flex-direction: column;
+    
+                label {
+                    margin: 4px 0;
+                    .switch_label {
+                        white-space: nowrap;
+                    }
+    
+                    &:first-child {
+                        margin: 10px 0 4px;
+                    }
+                }
+            }
+
+
         }
+
+        
     }
 
 
