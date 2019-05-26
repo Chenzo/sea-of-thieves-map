@@ -443,7 +443,10 @@ map.addLayer(talltalesLayer);
 for(var t in places) {
     var mkr = mF.getMarker(places[t], "talltale");
     mkr.marker.addTo(talltalesLayer)
-    .bindPopup(mkr.desc);
+    //.bindPopup(mkr.desc);
+    .bindPopup('<div class="lf-popup">'+
+							'<h3>' + mkr.title + '</h3><p>' + mkr.desc + '</p>' +
+						'</div>', {minWidth: 322});
 
     pList.addPlaceToList("talltale", mkr.title, "talltaleClass " + window.websafe(mkr.title), places[t]);
 }; 
@@ -760,6 +763,7 @@ $(function() {
         if (mData.toggleMarker) {
             var wsName = window.websafe(mData.name);
             $(".markerIcon."+wsName).addClass("show");
+            $(".markerIcon."+wsName).click();
         }
         /* map.flyTo(LatLong, radius, {
             animate: true,
