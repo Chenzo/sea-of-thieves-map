@@ -1252,7 +1252,8 @@ aside.sidebar {
         -ms-flex-direction: column;
             flex-direction: column;
     height: 100vh;
-    text-align: left; }
+    text-align: left;
+    overflow: hidden; }
     aside.sidebar.left fieldset {
       position: relative; }
       aside.sidebar.left fieldset .filter-search-input {
@@ -1298,6 +1299,8 @@ aside.sidebar {
           background-color: rgba(227, 0, 3, 0.2); }
         aside.sidebar.left .list_of_places li.throneClass {
           background-color: rgba(36, 102, 255, 0.2); }
+        aside.sidebar.left .list_of_places li.talltaleClass {
+          background-color: rgba(36, 102, 255, 0.2); }
         aside.sidebar.left .list_of_places li.cargoClass {
           background-color: rgba(96, 40, 17, 0.2); }
         aside.sidebar.left .list_of_places li:hover {
@@ -1321,10 +1324,10 @@ aside.sidebar {
         aside.sidebar.left .list_of_places.searching li:hover {
           color: white; }
     aside.sidebar.left .filter_space {
-      height: 110px; }
+      height: 50px; }
       aside.sidebar.left .filter_space .filter_toggle {
         text-align: center;
-        padding: 10px; }
+        padding: 5px 10px; }
         aside.sidebar.left .filter_space .filter_toggle button {
           padding: 10px;
           width: 100%;
@@ -1345,6 +1348,8 @@ aside.sidebar {
             white-space: nowrap; }
           aside.sidebar.left .filter_space .filter_buttons label:first-child {
             margin: 10px 0 4px; }
+      aside.sidebar.left .filter_space.open {
+        height: 150px; }
   aside.sidebar .maps-panel-trig {
     display: block;
     position: absolute;
@@ -1416,6 +1421,8 @@ aside.sidebar {
           background-image: url(/images/toggle_beacons.png); }
         aside.sidebar .buttonGroup fieldset.toggle label[for="cargoruns"] {
           background-image: url(/images/toggle_crates.png); }
+        aside.sidebar .buttonGroup fieldset.toggle label[for="talltales"] {
+          background-image: url(/images/toggle_talltales.png); }
       aside.sidebar .buttonGroup fieldset.toggle input:checked + label {
         -webkit-filter: grayscale(0%);
         /* Safari 6.0 - 9.0 */

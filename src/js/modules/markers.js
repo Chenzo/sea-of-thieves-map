@@ -32,6 +32,13 @@ var markerIcons = {
         popupAnchor:  [0, -45] 
     },
 
+    "talltale" : {
+        iconUrl: '/images/markers/tt_marker.png', 
+        iconSize:     [31, 40], 
+        iconAnchor:   [15, 40],
+        popupAnchor:  [0, -45] 
+    },
+
     "compass" : {
         iconUrl: '/images/markers/compass.png',   
         iconSize:     [50, 48], 
@@ -189,6 +196,9 @@ function getMarker(markerData, mType) {
     } else if (mType == "beacon") {
         mkr = markerIcons["beacon"];
         title = markerData.title + " Beacon";
+    } else if (mType == "talltale") {
+        mkr = markerIcons["talltale"];
+        title = markerData.title + " | TallTale";
     }
 
 

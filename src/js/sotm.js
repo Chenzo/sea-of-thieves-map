@@ -433,7 +433,20 @@ for(var t in thrones) {
 };
 
 
+/**
+ * * ADD TALL TALES
+ */
+var talltalesLayer = new L.LayerGroup();
+layerArray.push(['talltales', talltalesLayer]);
+map.addLayer(talltalesLayer);
 
+for(var t in places) {
+    var mkr = mF.getMarker(places[t], "talltale");
+    mkr.marker.addTo(talltalesLayer)
+    .bindPopup(mkr.desc);
+
+    pList.addPlaceToList("talltale", mkr.title, "talltaleClass " + window.websafe(mkr.title), places[t]);
+}; 
 
 
 
@@ -480,6 +493,8 @@ var toggleLayer = function(theType, onoff) {
             $(".markerIcon.beacon").addClass("show");
         } else if (theType == "cargoruns") {
             $(".markerIcon.cargo").addClass("show");
+        } else if (theType == "talltales") {
+            $(".markerIcon.talltale").addClass("show");
         } else {
             map.addLayer(theLayer);
         }
@@ -491,6 +506,8 @@ var toggleLayer = function(theType, onoff) {
             $(".markerIcon.beacon").removeClass("show");
         } else if (theType == "cargoruns") {
             $(".markerIcon.cargo").removeClass("show");
+        } else if (theType == "talltales") {
+            $(".markerIcon.talltale").removeClass("show");
         } else {
             map.removeLayer(theLayer);
         }
@@ -699,6 +716,11 @@ $(function() {
 
     pList.buildPlaceList();
 
+    $(".js-showfilters").on("click", function() {
+        $(".js-filter_space").toggleClass("open");
+    });
+
+
     $(".js-toggle-filter").on("change", function() {
         var isChecked = $("input", this).prop('checked');
 
@@ -787,8 +809,7 @@ $(function() {
 
 
     $(".js-toggleMarkers").click(function() {
-        toggleLayer($(this).attr("name"), $(this).is(":checked"));
-		
+        toggleLayer($(this).attr("name"), $(this).is(":checked"));	
     });
 
     $(".js-fullscreen").click(function() {

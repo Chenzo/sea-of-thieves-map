@@ -22,7 +22,8 @@ function buildPlaceList() {
 function getMarkerOBJbyIDX(idx) {
     
     var toggleMarker = false;
-    if (place_list[idx].type == "beacon" || place_list[idx].type == "throne" || place_list[idx].type == "cargorun") {
+    if (place_list[idx].type == "beacon" || place_list[idx].type == "throne" || place_list[idx].type == "cargorun" || place_list[idx].type == "talltale") {
+        console.log("should toggle")
         toggleMarker = true;
     }
 

@@ -28,6 +28,7 @@ aside.sidebar {
         flex-direction: column;
         height: 100vh;
         text-align: left;
+        overflow: hidden;
 
         fieldset {
             position: relative;
@@ -96,6 +97,10 @@ aside.sidebar {
                     background-color: rgba($throne, 0.2);
                 }
 
+                &.talltaleClass {
+                    background-color: rgba($throne, 0.2);
+                }
+
                 &.cargoClass {
                     background-color: rgba($cargo, 0.2);
                 }
@@ -145,11 +150,11 @@ aside.sidebar {
 
         
         .filter_space {
-            height: 110px;
+            height: 50px;
 
             .filter_toggle {
                 text-align: center;
-                padding: 10px;
+                padding: 5px 10px;
                 button {
                     padding: 10px;
                     width: 100%;
@@ -174,6 +179,10 @@ aside.sidebar {
                         margin: 10px 0 4px;
                     }
                 }
+            }
+
+            &.open {
+                height: 150px;
             }
 
 
@@ -282,6 +291,9 @@ aside.sidebar {
                 }
                 &[for="cargoruns"] {
                     background-image: url(/images/toggle_crates.png);
+                }
+                &[for="talltales"] {
+                    background-image: url(/images/toggle_talltales.png);
                 }
             }
 

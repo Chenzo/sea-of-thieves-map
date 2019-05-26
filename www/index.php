@@ -126,7 +126,7 @@ include "includes/globals.php";
                     </ul>
                 </div>
 
-                <div class="filter_space">
+                <div class="filter_space js-filter_space">
 
                     <div class="filter_toggle">
                         <button class="js-showfilters">FILTERS</button>
@@ -175,6 +175,11 @@ include "includes/globals.php";
                 </div>
 
                 <div class="buttonGroup">
+                    <fieldset class="toggle talltales">
+                        <input type="checkbox" id="talltales" class="js-toggleMarkers" name="talltales"
+                value="talltales" />
+                        <label for="talltales" title="Show Tall Tales"></label>
+                    </fieldset>
                     <fieldset class="toggle beacons">
                         <input type="checkbox" id="beacons" class="js-toggleMarkers" name="beacons"
                 value="beacons" />
