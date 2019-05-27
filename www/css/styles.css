@@ -1417,7 +1417,7 @@ aside.sidebar {
     width: 70%; }
   aside.sidebar .icons {
     position: absolute;
-    bottom: 30px;
+    bottom: 10px;
     width: 100%;
     text-align: center; }
     aside.sidebar .icons a {
@@ -1509,7 +1509,7 @@ aside.sidebar {
   aside.sidebar .installBut {
     padding: 8px;
     position: absolute;
-    bottom: 50px;
+    bottom: 40px;
     width: 100%;
     display: none; }
     aside.sidebar .installBut.showme {

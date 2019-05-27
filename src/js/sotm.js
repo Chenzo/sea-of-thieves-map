@@ -444,10 +444,9 @@ for(var t in places) {
     var mkr = mF.getMarker(places[t], "talltale");
 
     var popUpHTML = '<div class="lf-popup">'+
-    '<h3>' + mkr.title + '</h3><p>' + mkr.desc + '</p>';
+    '<h3 class="pop_title">' + mkr.title + '</h3><p>' + mkr.desc + '</p>';
     if (places[t].image) {
-        console.log("found image")
-        popUpHTML +='<img src="/images/screenshots/' + places[t].image + '" class="popup_screenshot"/>';
+        popUpHTML +='<img src="/images/screenshots/' + places[t].image + '" class="popup_screenshot js-show-large-screenshot"/>';
     }
     popUpHTML += '</div>';
 
@@ -875,6 +874,14 @@ $(function() {
         $(".js-ifoverlay").removeClass("open");
     });
 
+    $('body').on('click', '.js-show-large-screenshot', function () {
+        var myImage = $(this).attr("src");
+        var myTitle = $(this).parent().find(".pop_title").text();
+        var myWords = $(this).parent().find("p").text();
+        console.log(myTitle, myWords);
+        console.log("show " + myImage);
+
+    });
 
 
     

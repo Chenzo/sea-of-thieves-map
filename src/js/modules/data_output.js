@@ -79,11 +79,6 @@ function makeOneIslandImage(map, islands) {
 
 var picCount = 0;
 
-/* function makeOneIslandImage() {
-
-} */
-
-
 function startImageOut(map, islands) {
     picCount = 0;
     $(".leaflet-control-zoom").hide();
