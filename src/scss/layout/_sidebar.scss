@@ -313,26 +313,32 @@ aside.sidebar {
 
     .island-finder {
 
-        //Turned Off for now
-        display: none;
-
-        .mapfinder_image {
-            display: block;
-            margin: 0 auto 8px;
-        }
-
-        p {
-            font-size: 10px;
-            margin-bottom: 5px;
-        }
+        padding: 8px 0 0 0;
 
         button {
+            padding: 0;
+            margin: 0;
+
+            .mapfinder_image {
+                display: block;
+                margin: 0 auto;
+                width: 90%;
+            }
+
+        }
+
+        /* p {
+            font-size: 10px;
+            margin-bottom: 5px;
+        } */
+
+        /* button {
             color: $blue_4;
             background: $blue_2;
             padding: 8px 8px 6px;
             border-radius: 5px;
             margin: 8px;
-        }
+        } */
     }
 
     .subcontrols {

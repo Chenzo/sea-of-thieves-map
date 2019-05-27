@@ -1,0 +1,24 @@
+
+
+#island-finder-overlay {
+
+}
+
+.ifoverlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 1000; //LOL zindex one billion!!!
+
+    color: $white_1;
+
+    .island_list {
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+        height: 100vh;
+    }
+}

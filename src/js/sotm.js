@@ -848,11 +848,19 @@ $(function() {
     });
 
     readXstring();
+
+
+    $(".js-open-islandfinder").click(function() {
+        console.log("open island finder");
+    })
+
+
     
 });
 
+
+//expose externally:
 window.generateIslandImages = function() {
-    //console.log(islands);
     data_out.startImageOut(map, islands);
 }
 

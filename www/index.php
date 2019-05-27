@@ -166,14 +166,6 @@ include "includes/globals.php";
 
                 <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
 
-
-                <div class="island-finder buttonGroup">
-                    <!-- <p>ISLAND FINDER</p> -->
-                    <img src="images/map_finder_icon.png" class="mapfinder_image" />
-                    <button type="button" data-dir="left" class="js-searchforisland"><span class="icon icon-arrow1_left"></span></button>
-                    <button type="button" data-dir="right" class="js-searchforisland"><span class="icon icon-arrow1_right"></span></button>
-                </div>
-
                 <div class="buttonGroup">
                     <fieldset class="toggle talltales">
                         <input type="checkbox" id="talltales" class="js-toggleMarkers" name="talltales"
@@ -218,6 +210,14 @@ include "includes/globals.php";
                     </fieldset>
                 </div>
 
+                <div class="island-finder buttonGroup">
+                    <!-- <p>ISLAND FINDER</p> -->
+                    <button type="button" class="js-open-islandfinder" title="Island Finder">
+                        <img src="images/map_finder_icon.png" class="mapfinder_image" />
+                    </button>
+                    <!-- <button type="button" data-dir="left" class="js-searchforisland"><span class="icon icon-arrow1_left"></span></button>
+                    <button type="button" data-dir="right" class="js-searchforisland"><span class="icon icon-arrow1_right"></span></button> -->
+                </div>
                 
 
                 <div class="buttonGroup subcontrols">
@@ -272,6 +272,11 @@ include "includes/globals.php";
 <script id="aa_1">
 
 </script>
+
+
+<div id="island-finder-overlay" class="ifoverlay">
+    this should be full screen;
+</div>
 
 
     </body>

@@ -1104,6 +1104,21 @@ th {
   .markerIcon.show {
     display: block; }
 
+.ifoverlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  color: white; }
+  .ifoverlay .island_list {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    height: 100vh; }
+
 .leaflet-control-search .search-tooltip {
   right: 0;
   left: auto;
@@ -1428,19 +1443,25 @@ aside.sidebar {
         /* Safari 6.0 - 9.0 */
         filter: grayscale(0%); }
   aside.sidebar .island-finder {
-    display: none; }
-    aside.sidebar .island-finder .mapfinder_image {
-      display: block;
-      margin: 0 auto 8px; }
-    aside.sidebar .island-finder p {
-      font-size: 10px;
-      margin-bottom: 5px; }
+    padding: 8px 0 0 0;
+    /* p {
+            font-size: 10px;
+            margin-bottom: 5px;
+        } */
+    /* button {
+            color: $blue_4;
+            background: $blue_2;
+            padding: 8px 8px 6px;
+            border-radius: 5px;
+            margin: 8px;
+        } */ }
     aside.sidebar .island-finder button {
-      color: #b5eec8;
-      background: #267e81;
-      padding: 8px 8px 6px;
-      border-radius: 5px;
-      margin: 8px; }
+      padding: 0;
+      margin: 0; }
+      aside.sidebar .island-finder button .mapfinder_image {
+        display: block;
+        margin: 0 auto;
+        width: 90%; }
   aside.sidebar .subcontrols a, aside.sidebar .subcontrols button {
     display: block;
     margin: 10px auto; }
