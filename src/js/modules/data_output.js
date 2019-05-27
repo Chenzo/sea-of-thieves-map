@@ -52,29 +52,40 @@ function saveJPGs(map, islands) {
 }
 
 
-function goToIsland() {
-    if (picCount < picCount.length) {
+function makeOneIslandImage(map, islands) {
+    if (picCount < islands.length) {
         var title = islands[picCount].title;
         var loc = islands[picCount].loc;
         map.setView(loc, 7);
+        console.log("Generating " + title + " image");
         setTimeout(function() {
             html2canvas(document.querySelector("#mapid")).then(canvas => {
                 //document.body.appendChild(canvas)
                 var a = document.createElement('a');
                 a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
-                a.download = 'somefilename.jpg';
+                a.download = window.websafe(title) + '.jpg';
                 a.click();
+
+                picCount++;
+                makeOneIslandImage(map, islands);
             });
         }, 2000);
+    } else {
+        alert('finished making all islands');
     }
 }
 
 
 var picCount = 0;
 
+/* function makeOneIslandImage() {
+
+} */
+
+
 function startImageOut(map, islands) {
     picCount = 0;
-    goToIsland();
+    makeOneIslandImage(map, islands);
 }
 
 

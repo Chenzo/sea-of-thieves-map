@@ -178,7 +178,7 @@ L.islandCircle = L.Circle.extend({
 
 
  /* ALEXA DATA */
-data_out.alexa_output(islands);
+//data_out.alexa_output(islands);
 /* ALEXA DATA */
 
 var island_markers = [];

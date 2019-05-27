@@ -15,6 +15,14 @@ Repository for the map tiles can be found here [Sea Of Thieves Map Map](https://
 
 
 
+Data functions
+---------------------------------------
+`generateIslandImages()`  - (run from the console) will generate a jpg for each island and save them in the downloads folder - this is for the island finder functionality.
+
+`data_out.alexa_output(islands);` - (which is commented out in sotm.js) generates the 3 JSON strings needed for the Alexa addon
+
+
+
 Contributors
 --------------------------------------
 * [Chenzo](https://github.com/Chenzo)
