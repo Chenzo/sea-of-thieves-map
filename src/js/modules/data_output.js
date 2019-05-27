@@ -72,6 +72,7 @@ function makeOneIslandImage(map, islands) {
         }, 2000);
     } else {
         alert('finished making all islands');
+        $(".leaflet-control-zoom").show();
     }
 }
 
@@ -85,7 +86,9 @@ var picCount = 0;
 
 function startImageOut(map, islands) {
     picCount = 0;
+    $(".leaflet-control-zoom").hide();
     makeOneIslandImage(map, islands);
+
 }
 
 

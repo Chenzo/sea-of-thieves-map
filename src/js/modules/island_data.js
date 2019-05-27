@@ -581,9 +581,9 @@ var islands = [{
     },
     {
         "loc": [-87.5329, 177.748416],
-        "title": "Fetcher's Rest",
+        "title": "Fletcher's Rest",
 		"coords" : "V 12",
-        radius: 4,
+        radius: 5,
         forsaken: true,
         isSeapost: false
     },
