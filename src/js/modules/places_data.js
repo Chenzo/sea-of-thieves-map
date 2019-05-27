@@ -1,4 +1,4 @@
-
+//This is currently mostly just tall tales stuff
 
 var places = [
     /* {

@@ -5,7 +5,7 @@ import * as beacon_data from './modules/beacon_data.js';
 import * as cargorun_data from './modules/crates_data.js';
 import * as places_data from './modules/places_data.js';
 import * as tools from './modules/tools.js';
-import * as alexa from './modules/data_output.js';
+import * as data_out from './modules/data_output.js';
 import * as mF from './modules/markers.js';
 
 import * as pList from './modules/place_list.js';
@@ -178,7 +178,7 @@ L.islandCircle = L.Circle.extend({
 
 
  /* ALEXA DATA */
-alexa.alexa_output(islands);
+data_out.alexa_output(islands);
 /* ALEXA DATA */
 
 var island_markers = [];
@@ -851,5 +851,8 @@ $(function() {
     
 });
 
-
+window.generateIslandImages = function() {
+    //console.log(islands);
+    data_out.startImageOut(map, islands);
+}
 
