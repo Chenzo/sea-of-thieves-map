@@ -860,6 +860,7 @@ $(function() {
         $(".js-ifoverlay").addClass("open");
         $(".js-island-list").html(pList.getIslandFinderHTML(islands));
 
+        $(".js-overlay-words").html("<h2>Island Finder</h2><p>Scroll through these images of the islands of Sea Of Thieves and find the one that your treasure is marked on. Click to jump to island in the map</p>");
 
         $(".js-jumptoisland").click(function() {
             var myIdx = $(this).data('idx');
@@ -879,7 +880,7 @@ $(function() {
         var myTitle = $(this).parent().find(".pop_title").text();
         var myWords = $(this).parent().find("p").text();
         console.log(myTitle, myWords);
-        console.log("show " + myImage);
+        //console.log("show " + myImage);
 
     });
 

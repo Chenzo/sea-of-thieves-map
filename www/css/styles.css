@@ -1125,6 +1125,13 @@ th {
     right: 30px; }
     .ifoverlay .close:hover {
       color: #b5eec8; }
+  .ifoverlay .overlay_words h2 {
+    font-size: 2em;
+    margin: 10px 0;
+    text-align: center; }
+  .ifoverlay .overlay_words p {
+    max-width: 70%;
+    margin: 0 auto 10px; }
   .ifoverlay .island_list {
     margin: 0 auto;
     display: block;

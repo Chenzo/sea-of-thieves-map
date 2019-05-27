@@ -32,6 +32,19 @@
         }
     }
 
+    .overlay_words {
+        h2 {
+            font-size: 2em;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        p {
+            max-width: 70%;
+            margin: 0 auto 10px;
+        }
+    }
+
 
     .island_list {
         margin: 0 auto;
