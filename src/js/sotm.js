@@ -442,11 +442,18 @@ map.addLayer(talltalesLayer);
 
 for(var t in places) {
     var mkr = mF.getMarker(places[t], "talltale");
+
+    var popUpHTML = '<div class="lf-popup">'+
+    '<h3>' + mkr.title + '</h3><p>' + mkr.desc + '</p>';
+    if (places[t].image) {
+        console.log("found image")
+        popUpHTML +='<img src="/images/screenshots/' + places[t].image + '" class="popup_screenshot"/>';
+    }
+    popUpHTML += '</div>';
+
     mkr.marker.addTo(talltalesLayer)
     //.bindPopup(mkr.desc);
-    .bindPopup('<div class="lf-popup">'+
-							'<h3>' + mkr.title + '</h3><p>' + mkr.desc + '</p>' +
-						'</div>', {minWidth: 322});
+    .bindPopup(popUpHTML, {minWidth: 322});
 
     pList.addPlaceToList("talltale", mkr.title, "talltaleClass " + window.websafe(mkr.title), places[t]);
 }; 

@@ -19,3 +19,6 @@ html2canvas(document.querySelector("#mapid")).then(canvas => {
 });
 
 
+
+
+images for screenshots cropped to 1280 x 720

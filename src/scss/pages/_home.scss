@@ -171,7 +171,20 @@
     background: #0b1e28;
     color: #fff;
     border: 1px solid #e3e3e3;
-    box-shadow: 0 3px 14px rgba(0,0,0,.4)
+    box-shadow: 0 3px 14px rgba(0,0,0,.4);
+
+    h3 {
+        font-size: 1.3em;
+        font-weight: 500;
+    }
+
+    p {
+        margin: 6px 0;
+    }
+
+    .popup_screenshot {
+        width: 100%;
+    }
 }
 
 .popup-title-island, .modal-title-island{

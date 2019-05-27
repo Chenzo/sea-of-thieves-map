@@ -1526,8 +1526,13 @@ aside.sidebar {
 .leaflet-grid-label {
   width: 100%; }
   .leaflet-grid-label.big {
-    font-size: 1.8em;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4); }
+    font-size: 2.0em;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    color: black;
+    -webkit-text-fill-color: #b5eec8;
+    /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #061212; }
   .leaflet-grid-label .gridlabel-vert {
     margin-left: 8px; }
   .leaflet-grid-label .gridlabel-vert, .leaflet-grid-label .gridlabel-horiz {
@@ -1701,6 +1706,13 @@ aside.sidebar {
   border: 1px solid #e3e3e3;
   -webkit-box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4);
           box-shadow: 0 3px 14px rgba(0, 0, 0, 0.4); }
+  .leaflet-popup-content-wrapper h3 {
+    font-size: 1.3em;
+    font-weight: 500; }
+  .leaflet-popup-content-wrapper p {
+    margin: 6px 0; }
+  .leaflet-popup-content-wrapper .popup_screenshot {
+    width: 100%; }
 
 .popup-title-island, .modal-title-island {
   display: block;
