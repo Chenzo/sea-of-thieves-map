@@ -851,8 +851,23 @@ $(function() {
 
 
     $(".js-open-islandfinder").click(function() {
-        console.log("open island finder");
-    })
+        $(".js-ifoverlay").addClass("open");
+        $(".js-island-list").html(pList.getIslandFinderHTML(islands));
+
+
+        $(".js-jumptoisland").click(function() {
+            var myIdx = $(this).data('idx');
+            $(".js-ifoverlay").removeClass("open");
+            var LatLong = islands[myIdx].loc;
+            map.setView(LatLong, 7);
+            adjustAlphaNum();
+        });
+    });
+
+    $(".js-close-if-overlay").click(function() {
+        $(".js-ifoverlay").removeClass("open");
+    });
+
 
 
     

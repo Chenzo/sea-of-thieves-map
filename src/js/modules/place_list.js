@@ -91,6 +91,23 @@ function toggleListFilter(type, onoff) {
 
 
 
+function getIslandFinderHTML(islands) {
+    var returnedHTML = "";
+
+    for(var i in islands) {
+        var islandName = islands[i].title;
+        var coords = islands[i].coords;
+        var fileName = window.websafe(islandName);
+
+        var oneHTML = "<div class='one_island js-jumptoisland' data-idx='" + i + "'><h5>" + islandName + " - <span>" + coords + "</span></h5><img src='/images/island_images/" + fileName + ".jpg' /></div>";
+        returnedHTML += oneHTML;
+    }
+
+    return returnedHTML;
+}
+
+
+
 
 
 export {
@@ -99,5 +116,6 @@ export {
     buildPlaceList,
     applySearchFilter,
     getMarkerOBJbyIDX,
-    toggleListFilter
+    toggleListFilter,
+    getIslandFinderHTML
 };

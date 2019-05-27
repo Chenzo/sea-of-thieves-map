@@ -274,8 +274,12 @@ include "includes/globals.php";
 </script>
 
 
-<div id="island-finder-overlay" class="ifoverlay">
-    this should be full screen;
+<div id="island-finder-overlay" class="ifoverlay js-ifoverlay">
+    <span class="close closeModal js-close-if-overlay">&times;</span>
+
+    <div class="island_list js-island-list">
+
+    </div>
 </div>
 
 

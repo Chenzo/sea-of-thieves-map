@@ -10,15 +10,64 @@
     left: 0px;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.6);
     z-index: 1000; //LOL zindex one billion!!!
-
+    overflow: hidden;
     color: $white_1;
+    display: none;
+
+    &.open {
+        display: block;
+    }
+
+    .close {
+        font-size: 50px;
+        color: $white_1;
+        position: absolute;
+        top: 10px;
+        right: 30px;
+
+        &:hover {
+            color: $blue_4;
+        }
+    }
+
 
     .island_list {
         margin: 0 auto;
         display: block;
         width: 80%;
         height: 100vh;
+        overflow: scroll;
+
+        display: grid;
+		-ms-grid-columns: 1fr 1fr;
+		//-ms-grid-rows: 200px 200px;
+		grid-template-columns: 1fr 1fr;
+		//grid-template-rows: 200px 100px;
+		
+		grid-column-gap: 10px;
+		grid-row-gap: 20px; 
+
+        .one_island {
+            display: block;
+            background-color: $dark;
+            padding: 10px;
+            border: 1px solid $blue_2;
+
+            img {
+                width: 100%;
+            }
+
+            h5 {
+                text-align: center;
+                font-size: 20px;
+                color: $white_1;
+                margin-bottom: 10px;
+                span {
+                    color: $blue_4;
+                }
+            }
+        }
     }
 }
