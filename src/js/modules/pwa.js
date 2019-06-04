@@ -1,10 +1,12 @@
 /* PWA Stuff */
 
-var dataCacheName = 'sotm-v1.8';
+var dataCacheName = 'sotm-v2.1';
 var isOnline = false;
 var filesToCacheCount = 100;
 
-//console.log("--- hello???");
+
+console.log("pwa-scripts firing");
+
 window.addEventListener('load', function() {
     //console.log("window load");
     function updateOnlineStatus(event) {
@@ -28,7 +30,18 @@ window.addEventListener('load', function() {
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('/service-worker.js')
-        .then(function() { console.log('Service Worker Registered'); });
+        .then(function(reg) { 
+            console.log('Service Worker Registered with scope: ', reg.scope);
+
+            reg.addEventListener('updatefound', () => {
+                console.log("update detected");
+                if (confirm('There is an update to the application. Would you like to update?')) {
+                    console.log("trigger update");
+                } else {
+                    console.log("they don't want the update");
+                }
+            });
+         });
 }
 
 if (navigator.onLine) {

@@ -1,10 +1,10 @@
 
 
-var dataCacheName = 'sotm-v1.8';
+var dataCacheName = 'sotm-v2.7';
 
 
 self.addEventListener('install', event => {
-  console.log('Attempting to install service worker and cache static assets - 5');
+  console.log('Attempting to install service worker and cache static assets');
   event.waitUntil(
     caches.open(dataCacheName)
     .then(cache => {
@@ -72,7 +72,7 @@ self.addEventListener('activate', event => {
 var filesToCache = [
 '/index.php',
 '/manifest.json',
-'/css/styles.css?v=1558984976878',
+'/css/styles.css',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -111,7 +111,7 @@ var filesToCache = [
 '/images/toggle_chickens.png',
 '/images/toggle_thrones.png',
 '/images/sotm_logo-512.png',
-'/js/sotm.js?v=1558984976878',
+'/js/sotm.js',
 '/js/vendor/jquery-3.3.1.min.js',
 '/js/vendor/leaflet.js',
 '/js/vendor/leaflet-hash.js',
