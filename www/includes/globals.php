@@ -6,7 +6,7 @@ $keywords = "Sea of Thieves, Map, Interactive Map, Islands, Chickens, Snakes, Pi
 $version = "v2.3";
 
 
-define('CACHE_BUSTER', '1559680514412');            // Automatically updates
+define('CACHE_BUSTER', '1559698365918');            // Automatically updates
 
 
 ?>

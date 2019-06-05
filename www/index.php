@@ -80,7 +80,25 @@ include "includes/globals.php";
         <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/images/favicon/apple-launch-1536x2048.jpg">
 
 
-       
+        <script>
+
+            if ("serviceWorker" in navigator) {
+                if (navigator.serviceWorker.controller) {
+                    console.log("[PWA Builder] active service worker found, no need to register");
+                } else {
+                    // Register the service worker
+                    navigator.serviceWorker
+                    .register("service-worker.js", {
+                        scope: "./"
+                    })
+                    .then(function (reg) {
+                        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                    });
+                }
+            }
+
+        </script>
+
 
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
