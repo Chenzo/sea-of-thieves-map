@@ -14,6 +14,13 @@ var places = [
         talltale: 1
     }, 
     {
+        "loc": [-98.689331, 114.637573], 
+        "title": "Puzzle Room",
+        "desc": "Underwater, just off the west coast of an uncharted island at N13",
+        "image" : "magpies_wing.jpg",
+        talltale: 1
+    }, 
+    {
         "loc": [-99.158081, 115.043823], 
         "title": "Mercia's Lost Memories Journal 1",
         "desc": "On the beach of the west coast of an uncharted island at N13",
@@ -49,8 +56,45 @@ var places = [
         talltale: 1
     },
 
+
+
+    {
+        "loc": [-146.304687, 60.507813], 
+        "title": "Bounty Hunter's Journal 1",
+        "desc": "On the inside of the outermost ring of Shark Bait cove in a wrecked rowboat",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 2
+    },
+    {
+        "loc": [-123.828125, 36.515625], 
+        "title": "Bounty Hunter's Journal 2",
+        "desc": "On the north beach of Discovery Ridge, next to a half buried skeleton",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 2
+    },
+    {
+        "loc": [-92.09375, 145.625], 
+        "title": "Bounty Hunter's Journal 3",
+        "desc": "Right off the shore of the eastern bay of Kraken's Fall. By a pile of skulls",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 2
+    },
+    {
+        "loc": [-91.681335, 47.646057], 
+        "title": "Bounty Hunter's Journal 4",
+        "desc": "at the top of the main mountain on Wanderer's Refuge tucked into a fence on some stone.",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 2
+    },
+    {
+        "loc": [], 
+        "title": "Bounty Hunter's Journal 5",
+        "desc": "Right off the shore of the eastern bay of Kraken's Fall. By a pile of skulls",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 2
+    },
     
-    
+
 ];
 
 export {places};

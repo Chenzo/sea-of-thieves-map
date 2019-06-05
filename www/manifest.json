@@ -2,7 +2,7 @@
   "name": "Sea Of Thieves Map",
   "short_name": "SoT Map",
   "lang": "en-US",
-  "start_url": "/index.php",
+  "start_url": "https://seaofthievesmap.chenzorama.com/index.php",
   "display": "standalone",
   "theme_color": "#267e81",
   "background_color": "#267e81",
@@ -14,6 +14,78 @@
     {
         "src": "https://seaofthievesmap.chenzorama.com/images/sotm_logo-512.png",
         "sizes": "512x512"
+    }   ,
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-44.png",
+        "sizes": "44x44"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-48.png",
+        "sizes": "48x48"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-1240.png",
+        "sizes": "1240x600"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-300.png",
+        "sizes": "300x300"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-150.png",
+        "sizes": "150x150"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-88.png",
+        "sizes": "88x88"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-24.png",
+        "sizes": "24x24"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-50.png",
+        "sizes": "50x50"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-620.png",
+        "sizes": "620x300"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-144.png",
+        "sizes": "144x144"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-96.png",
+        "sizes": "96x96"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-72.png",
+        "sizes": "72x72"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-36.png",
+        "sizes": "36x36"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-1024.png",
+        "sizes": "1024x1024"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-180.png",
+        "sizes": "180x180"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-152.png",
+        "sizes": "152x152"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-120.png",
+        "sizes": "120x120"
+    },
+    {
+        "src": "https://seaofthievesmap.chenzorama.com/images/icons/sotm_icon-76.png",
+        "sizes": "76x76"
     }
-  
-]}
+]
+}

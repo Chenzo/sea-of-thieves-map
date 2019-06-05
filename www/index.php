@@ -84,7 +84,7 @@ include "includes/globals.php";
 
             if ("serviceWorker" in navigator) {
                 if (navigator.serviceWorker.controller) {
-                    console.log("[PWA Builder] active service worker found, no need to register");
+                    console.log("PWA - active service worker found");
                 } else {
                     // Register the service worker
                     navigator.serviceWorker
@@ -92,7 +92,7 @@ include "includes/globals.php";
                         scope: "./"
                     })
                     .then(function (reg) {
-                        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                        console.log("PWA - Service worker registered | scope: " + reg.scope);
                     });
                 }
             }
