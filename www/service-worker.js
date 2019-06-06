@@ -69,6 +69,12 @@ self.addEventListener('activate', event => {
 
 
 
+
+
+
+
+
+
 var filesToCache = [
 '/index.php',
 '/manifest.json',

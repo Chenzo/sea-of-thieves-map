@@ -36,13 +36,13 @@ islands.sort(compare);
 thrones.sort(compare);
 
 
-var isOnline = pwa.isOnline;
+//var isOnline = pwa.isOnline;
 var isDev = false;
 
 var currentSearchIsland = -1;
 
 
-console.log("-- detect isOnline: " + isOnline);
+//console.log("-- detect isOnline: " + isOnline);
 
 var cdnpath = "";
 if (location.hostname != "localhost") {
@@ -75,8 +75,11 @@ var map = L.map("mapid", {
     crs: L.CRS.Simple,
     attributionControl: false,
     preferCanvas: false,
-    maxBoundsViscosity: 1
+    maxBoundsViscosity: 1,
+    zoomControl: false
 }).setView([70, 70], 4);
+
+L.control.zoom({ position: 'bottomright' }).addTo(map);
 
 var height = 25522;
 var width = 27444;
@@ -439,10 +442,8 @@ for(var t in thrones) {
 var talltalesLayer = new L.LayerGroup();
 layerArray.push(['talltales', talltalesLayer]);
 map.addLayer(talltalesLayer);
-
 for(var t in places) {
     var mkr = mF.getMarker(places[t], "talltale");
-
     var popUpHTML = '<div class="lf-popup">'+
     '<h3 class="pop_title">' + mkr.title + '</h3><p>' + mkr.desc + '</p>';
     if (places[t].image) {
@@ -838,10 +839,10 @@ $(function() {
     });
 
 
-    $(".js-installfiles").click(function() {
+    /* $(".js-installfiles").click(function() {
         console.log("click install");
         pwa.installer();
-    });
+    }); */
 
     $(".js-settings").click(function() {
         console.log("click settings");

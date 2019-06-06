@@ -4,6 +4,8 @@ var dataCacheName = 'sotm-v2.1';
 var isOnline = false;
 var filesToCacheCount = 100;
 
+var isInWebAppiOS = (window.navigator.standalone == true);
+var isInWebAppChrome = (window.matchMedia('(display-mode: standalone)').matches);
 
 console.log("pwa-scripts firing");
 
@@ -27,7 +29,7 @@ window.addEventListener('load', function() {
 
 
 
-/* if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('/service-worker.js')
         .then(function(reg) { 
@@ -35,15 +37,19 @@ window.addEventListener('load', function() {
 
             reg.addEventListener('updatefound', () => {
                 console.log("update detected");
-                if (confirm('There is an update to the application. Would you like to update?')) {
-                    console.log("trigger update");
-                } else {
-                    console.log("they don't want the update");
+                console.log(isInWebAppiOS, isInWebAppChrome);
+                
+                if (isInWebAppiOS || isInWebAppChrome) {
+                    if (confirm('There is an update to the application. Would you like to update?')) {
+                        console.log("trigger update");
+                    } else {
+                        console.log("they don't want the update");
+                    }
                 }
             });
          });
 }
- */
+
 
  
 if (navigator.onLine) {
@@ -70,6 +76,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
     document.querySelector('#installBut').classList.add("showme");
 });
 
+console.log("waiting for beforeinstallprompt");
 btnInstall.addEventListener('click', () => {
 
     document.querySelector('#installBut').classList.remove("showme");

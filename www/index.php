@@ -82,7 +82,7 @@ include "includes/globals.php";
 
         <script>
 
-            if ("serviceWorker" in navigator) {
+            /* if ("serviceWorker" in navigator) {
                 if (navigator.serviceWorker.controller) {
                     console.log("PWA - active service worker found");
                 } else {
@@ -95,7 +95,7 @@ include "includes/globals.php";
                         console.log("PWA - Service worker registered | scope: " + reg.scope);
                     });
                 }
-            }
+            } */
 
         </script>
 

@@ -13,13 +13,13 @@ var places = [
         "image" : "magpies_wing.jpg",
         talltale: 1
     }, 
-    {
+    /* {
         "loc": [-98.689331, 114.637573], 
         "title": "Puzzle Room",
         "desc": "Underwater, just off the west coast of an uncharted island at N13",
         "image" : "magpies_wing.jpg",
         talltale: 1
-    }, 
+    },  */
     {
         "loc": [-99.158081, 115.043823], 
         "title": "Mercia's Lost Memories Journal 1",
@@ -86,13 +86,13 @@ var places = [
         "image" : "mercia_journal_5.jpg",
         talltale: 2
     },
-    {
+    /* {
         "loc": [], 
         "title": "Bounty Hunter's Journal 5",
         "desc": "Right off the shore of the eastern bay of Kraken's Fall. By a pile of skulls",
         "image" : "mercia_journal_5.jpg",
         talltale: 2
-    },
+    } */
     
 
 ];
