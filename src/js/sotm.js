@@ -886,6 +886,12 @@ $(function() {
     });
 
 
+
+    $('.js-open-searchbar').click(function() {
+        $(".sidebar.left").toggleClass("open");
+    });
+
+
     
 });
 
@@ -895,3 +901,6 @@ window.generateIslandImages = function() {
     data_out.startImageOut(map, islands);
 }
 
+window.rsize = function() {
+    map.invalidateSize();
+}

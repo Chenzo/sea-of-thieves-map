@@ -1,3 +1,5 @@
+$searchWidth: 225px;
+
 
 aside.sidebar {
 
@@ -6,15 +8,11 @@ aside.sidebar {
     background: -webkit-linear-gradient(top, $blue_1 0%,$dark 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, $blue_1 0%,$dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
-    width: 60px;
-
-
-    @include breakpoint(md) {
+    &.right {
         width: 60px;
-        &.left {
-            width: 225px;
-        }
     }
+
+    
     
     border-right: 1px solid $blue_1;
     text-align: center;
@@ -24,11 +22,47 @@ aside.sidebar {
 
     &.left {
 
-        display: flex;
-        flex-direction: column;
+        width: 0px;
+        @include transition(width, .4s); 
+
+        @include breakpoint(md) {
+            width: $searchWidth;   
+        } 
+
+        &.open {
+            width: $searchWidth;
+        }
+
+        .search_holder {
+            width: $searchWidth;
+            position: absolute;
+            right: 0px;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile_search_toggle {
+            position: absolute;
+            color: white;
+            background: black;
+            width: 30px;
+            height: 30px;
+            right: -30px;
+            @include breakpoint(md) {
+                display: none;   
+            } 
+        }
+
+
+
+        
         height: 100vh;
         text-align: left;
-        overflow: hidden;
+        //overflow: hidden;
+        position: relative;
+        z-index: 4000;
 
         fieldset {
             position: relative;

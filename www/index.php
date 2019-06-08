@@ -1,8 +1,4 @@
-<?php 
-
-include "includes/globals.php";
-
-?>
+<?php include "includes/globals.php";?>
 <!-- ****************************************************** -->
 <!-- want all the code? It's all open source! -->
 <!-- go here: https://github.com/Chenzo/sea-of-thieves-map -->
@@ -80,30 +76,9 @@ include "includes/globals.php";
         <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/images/favicon/apple-launch-1536x2048.jpg">
 
 
-        <script>
-
-            /* if ("serviceWorker" in navigator) {
-                if (navigator.serviceWorker.controller) {
-                    console.log("PWA - active service worker found");
-                } else {
-                    // Register the service worker
-                    navigator.serviceWorker
-                    .register("service-worker.js", {
-                        scope: "./"
-                    })
-                    .then(function (reg) {
-                        console.log("PWA - Service worker registered | scope: " + reg.scope);
-                    });
-                }
-            } */
-
-        </script>
-
-
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <link rel="stylesheet" href="css/vendor/leaflet.css" />
-        <!-- <link rel="stylesheet" href="css/vendor/leaflet.search.css" /> -->
         <link rel="stylesheet" href="css/styles.css?v=<?= CACHE_BUSTER ?>" /> <!-- ?v=<?= CACHE_BUSTER ?> -->
 
     </head>
@@ -131,44 +106,10 @@ include "includes/globals.php";
 
 
             <aside class="sidebar left">
-
-                <div id="findbox" class="searchbox_space"></div>
-
-                <fieldset>
-                <input class="filter-search-input js-filter-search" placeholder= "Find..." type="text" size="9">
-                <button class="search-cancel js-clear-search" tabindex="-1"><span>⊗</span></button>
-                </fieldset>
-                <div class="list_of_places">
-                    <ul class="list_of_islands">
-
-                    </ul>
+                <div class="search_holder">
+                    <?php include "includes/left_controls.php";?>
                 </div>
-
-                <div class="filter_space js-filter_space">
-
-                    <div class="filter_toggle">
-                        <button class="js-showfilters">FILTERS</button>
-                    </div>
-
-
-                    <div class="filter_buttons">
-                        <label class="switch js-toggle-filter" data-filter="throne">
-                            <input type="checkbox" checked>
-                            <span class="slider round"><div class="switch_label">Thrones</div></span>
-                        </label> 
-                        <label class="switch cargoruns js-toggle-filter" data-filter="cargorun">
-                            <input type="checkbox" checked>
-                            <span class="slider round"><div class="switch_label">Cargo Runs</div></span>
-                        </label> 
-                        <label class="switch beacons js-toggle-filter" data-filter="beacon">
-                            <input type="checkbox" checked>
-                            <span class="slider round"><div class="switch_label">Beacons</div></span>
-                        </label> 
-                    </div>
-
-                </div>
-                
-
+                <div class="mobile_search_toggle js-open-searchbar">SH</div>
             </aside>
 
             <article>

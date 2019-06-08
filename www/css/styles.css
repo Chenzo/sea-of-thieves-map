@@ -1288,26 +1288,52 @@ aside.sidebar {
   background: -webkit-gradient(linear, left top, left bottom, from(#13252c), to(#061212));
   background: linear-gradient(to bottom, #13252c 0%, #061212 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  width: 60px;
   border-right: 1px solid #13252c;
   text-align: center;
   position: relative; }
-  @media (min-width: 992px) {
-    aside.sidebar {
-      width: 60px; }
-      aside.sidebar.left {
-        width: 225px; } }
+  aside.sidebar.right {
+    width: 60px; }
   aside.sidebar.left {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    width: 0px;
+    -webkit-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+    /*Safari bug where transform needs to be prefixed*/
     height: 100vh;
     text-align: left;
-    overflow: hidden; }
+    position: relative;
+    z-index: 4000; }
+    @media (min-width: 992px) {
+      aside.sidebar.left {
+        width: 225px; } }
+    aside.sidebar.left.open {
+      width: 225px; }
+    aside.sidebar.left .search_holder {
+      width: 225px;
+      position: absolute;
+      right: 0px;
+      overflow: hidden;
+      height: 100vh;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+    aside.sidebar.left .mobile_search_toggle {
+      position: absolute;
+      color: white;
+      background: black;
+      width: 30px;
+      height: 30px;
+      right: -30px; }
+      @media (min-width: 992px) {
+        aside.sidebar.left .mobile_search_toggle {
+          display: none; } }
     aside.sidebar.left fieldset {
       position: relative; }
       aside.sidebar.left fieldset .filter-search-input {
