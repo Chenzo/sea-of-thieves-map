@@ -109,7 +109,10 @@
                 <div class="search_holder">
                     <?php include "includes/left_controls.php";?>
                 </div>
-                <div class="mobile_search_toggle js-open-searchbar">SH</div>
+                <div class="mobile_search_toggle js-open-searchbar">
+                    <img src="/images/magnifying-glass.png" class="mglass" />
+                    <img src="/images/collapse.png" class="collapse" />
+                </div>
             </aside>
 
             <article>
@@ -121,7 +124,7 @@
 
             <aside class="sidebar right">
 
-                <button class="left-panel-toggle js-toggle-panel icon icon-arrow-left"></button>
+                <button class="right-panel-toggle js-toggle-right-panel icon icon-arrow-left"></button>
 
                 <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
 

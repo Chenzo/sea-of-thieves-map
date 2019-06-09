@@ -891,6 +891,10 @@ $(function() {
         $(".sidebar.left").toggleClass("open");
     });
 
+    $('.js-toggle-right-panel').click(function() {
+        $(".sidebar.right").toggleClass("closed");
+    })
+
 
     
 });

@@ -3,14 +3,14 @@ $searchWidth: 225px;
 
 aside.sidebar {
 
-    background: $blue_1; /* Old browsers */
-    background: -moz-linear-gradient(top, $blue_1 0%, $dark 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, $blue_1 0%,$dark 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, $blue_1 0%,$dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //background: $blue_1; /* Old browsers */
+    //background: -moz-linear-gradient(top, $blue_1 0%, $dark 100%); /* FF3.6-15 */
+    //background: -webkit-linear-gradient(top, $blue_1 0%,$dark 100%); /* Chrome10-25,Safari5.1-6 */
+    //background: linear-gradient(to bottom, $blue_1 0%,$dark 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 
-    &.right {
-        width: 60px;
-    }
+    background: $sea_green_1;
+    background: linear-gradient(180deg, rgba($sea_green_1,1) 0%, rgba($sea_green_2,1) 100%);
+    
 
     
     
@@ -21,17 +21,17 @@ aside.sidebar {
 
 
     &.left {
+        filter: drop-shadow(2px 2px 4px $sea_green_2);
+        width: 1px;
+        //border-right: solid $gold_01 1px;
 
-        width: 0px;
         @include transition(width, .4s); 
 
         @include breakpoint(md) {
             width: $searchWidth;   
         } 
 
-        &.open {
-            width: $searchWidth;
-        }
+        
 
         .search_holder {
             width: $searchWidth;
@@ -46,16 +46,46 @@ aside.sidebar {
         .mobile_search_toggle {
             position: absolute;
             color: white;
-            background: black;
+            background: $sea_green_1;
             width: 30px;
-            height: 30px;
+            height: 44px;
             right: -30px;
+            top: 10px;
             @include breakpoint(md) {
                 display: none;   
             } 
+            /* border-right: solid $gold_01 1px;
+            border-top: solid $gold_01 1px;
+            border-bottom: solid $gold_01 1px; */
+            text-align: center;
+
+            img {
+                margin-top: 10px;
+                width: 85%;
+
+                &.collapse {
+                    display: none;
+                    width: 75%;
+                    margin-top: 12px;
+                }
+            }
+    
+
+            
         }
 
+        &.open {
+            width: $searchWidth;
 
+            .mobile_search_toggle {
+                .collapse {
+                    display: inline;
+                }
+                .mglass {
+                    display: none;
+                }
+            }
+        }
 
         
         height: 100vh;
@@ -424,6 +454,36 @@ aside.sidebar {
             font-size: 10px;
             text-transform: uppercase;
         }
+    }
+
+
+
+
+
+    &.right {
+        width: 60px;
+
+        .right-panel-toggle {
+            width: 30px;
+            height: 40px;
+            display: block;
+            position: absolute;
+            background: $sea_green_2;
+            z-index: 4000;
+            left: -30px;
+            top: 16px;
+            border-radius: 6px 0 0 6px;
+
+        }
+
+        &.closed {
+            width: 1px;
+
+            .right-panel-toggle {
+                left: -36px;
+            }
+        }
+
     }
 
 
