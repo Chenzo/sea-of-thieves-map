@@ -78,7 +78,7 @@ self.addEventListener('activate', event => {
 var filesToCache = [
 '/index.php',
 '/manifest.json',
-'/css/styles.css?v=1560889837705',
+'/css/styles.css?v=1560890263793',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
