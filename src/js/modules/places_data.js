@@ -62,28 +62,28 @@ var places = [
         "loc": [-146.304687, 60.507813], 
         "title": "Bounty Hunter's Journal 1",
         "desc": "On the inside of the outermost ring of Shark Bait cove in a wrecked rowboat",
-        "image" : "mercia_journal_5.jpg",
+        "image" : "bounty_hunter_journal_01.jpg",
         talltale: 2
     },
     {
         "loc": [-123.828125, 36.515625], 
         "title": "Bounty Hunter's Journal 2",
         "desc": "On the north beach of Discovery Ridge, next to a half buried skeleton",
-        "image" : "mercia_journal_5.jpg",
+        "image" : "bounty_hunter_journal_02.jpg",
         talltale: 2
     },
     {
         "loc": [-92.09375, 145.625], 
         "title": "Bounty Hunter's Journal 3",
         "desc": "Right off the shore of the eastern bay of Kraken's Fall. By a pile of skulls",
-        "image" : "mercia_journal_5.jpg",
+        "image" : "bounty_hunter_journal_03.jpg",
         talltale: 2
     },
     {
         "loc": [-91.681335, 47.646057], 
         "title": "Bounty Hunter's Journal 4",
         "desc": "at the top of the main mountain on Wanderer's Refuge tucked into a fence on some stone.",
-        "image" : "mercia_journal_5.jpg",
+        "image" : "bounty_hunter_journal_04.jpg",
         talltale: 2
     },
     /* {

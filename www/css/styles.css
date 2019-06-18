@@ -1575,21 +1575,27 @@ aside.sidebar {
       font-size: 10px;
       text-transform: uppercase; }
   aside.sidebar.right {
-    width: 60px; }
+    width: 60px;
+    -webkit-transition-property: width;
+    transition-property: width;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-timing-function: ease;
+    transition-timing-function: ease;
+    /*Safari bug where transform needs to be prefixed*/ }
     aside.sidebar.right .right-panel-toggle {
-      width: 30px;
-      height: 40px;
+      width: 22px;
+      height: 32px;
       display: block;
       position: absolute;
-      background: #0e1b20;
+      background: #0e2b28;
       z-index: 4000;
-      left: -30px;
-      top: 16px;
-      border-radius: 6px 0 0 6px; }
+      left: -22px;
+      top: calc(50% - 16px);
+      border-radius: 6px 0 0 6px;
+      padding: 3px 0 0 2px; }
     aside.sidebar.right.closed {
       width: 1px; }
-      aside.sidebar.right.closed .right-panel-toggle {
-        left: -36px; }
 
 .leaflet-grid-label {
   width: 100%; }

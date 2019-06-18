@@ -462,26 +462,24 @@ aside.sidebar {
 
     &.right {
         width: 60px;
+        @include transition(width, .4s);
 
         .right-panel-toggle {
-            width: 30px;
-            height: 40px;
+            width: 22px;
+            height: 32px;
             display: block;
             position: absolute;
-            background: $sea_green_2;
+            background: $sea_green_1;
             z-index: 4000;
-            left: -30px;
-            top: 16px;
+            left: -22px;
+            top: calc(50% - 16px);
             border-radius: 6px 0 0 6px;
-
+            padding: 3px 0 0 2px;
         }
 
         &.closed {
             width: 1px;
 
-            .right-panel-toggle {
-                left: -36px;
-            }
         }
 
     }
