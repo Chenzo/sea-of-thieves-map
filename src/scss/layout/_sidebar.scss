@@ -475,6 +475,10 @@ aside.sidebar {
             top: calc(50% - 16px);
             border-radius: 6px 0 0 6px;
             padding: 3px 0 0 2px;
+
+            @include breakpoint(md) {
+                display: none;   
+            } 
         }
 
         &.closed {

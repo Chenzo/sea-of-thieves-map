@@ -1594,6 +1594,9 @@ aside.sidebar {
       top: calc(50% - 16px);
       border-radius: 6px 0 0 6px;
       padding: 3px 0 0 2px; }
+      @media (min-width: 992px) {
+        aside.sidebar.right .right-panel-toggle {
+          display: none; } }
     aside.sidebar.right.closed {
       width: 1px; }
 
@@ -1767,9 +1770,13 @@ aside.sidebar {
   outline: 0;
   text-align: center; }
   .title-location span {
-    display: block;
-    margin-left: -100%;
-    margin-top: -6%; }
+    display: inline-block;
+    /* margin-left: -100%; */
+    margin-top: -6%;
+    position: relative;
+    left: -50%;
+    line-height: 1em;
+    max-width: 100vw; }
 
 .title-location:hover {
   color: #fff; }

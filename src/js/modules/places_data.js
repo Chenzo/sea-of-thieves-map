@@ -86,12 +86,20 @@ var places = [
         "image" : "bounty_hunter_journal_04.jpg",
         talltale: 2
     },
-    /* {
-        "loc": [], 
+    {
+        "loc": [-115.734375, 106.710938], 
         "title": "Bounty Hunter's Journal 5",
-        "desc": "Right off the shore of the eastern bay of Kraken's Fall. By a pile of skulls",
+        "desc": "In the smaller cave right off the doc on Crook's Hollow. Straight back next to a skeleton next to a wall",
         "image" : "mercia_journal_5.jpg",
         talltale: 2
+    }
+
+    /* {
+        "loc": [-146.304687, 60.507813], 
+        "title": "Briggsy Journal 1",
+        "desc": "",
+        "image" : "",
+        talltale: 3
     } */
     
 
