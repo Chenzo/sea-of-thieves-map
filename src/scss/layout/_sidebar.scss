@@ -45,10 +45,10 @@ aside.sidebar {
 
         .mobile_search_toggle {
             position: absolute;
-            color: white;
-            background: $sea_green_1;
-            width: 30px;
-            height: 44px;
+            //color: white;
+            //background: $sea_green_1;
+            width: 25px;
+            height: 25px;
             right: -30px;
             top: 10px;
             @include breakpoint(md) {
@@ -60,13 +60,13 @@ aside.sidebar {
             text-align: center;
 
             img {
-                margin-top: 10px;
+                margin-top: 5px;
                 width: 85%;
 
                 &.collapse {
                     display: none;
                     width: 75%;
-                    margin-top: 12px;
+                    margin-top: 5px;
                 }
             }
     
@@ -463,18 +463,26 @@ aside.sidebar {
     &.right {
         width: 60px;
         @include transition(width, .4s);
+        //filter: drop-shadow(2px 2px 4px $sea_green_2);
 
         .right-panel-toggle {
-            width: 22px;
-            height: 32px;
+            width: 25px;
+            height: 25px;
             display: block;
             position: absolute;
-            background: $sea_green_1;
+            //background: $sea_green_1;
             z-index: 4000;
-            left: -22px;
-            top: calc(50% - 16px);
-            border-radius: 6px 0 0 6px;
-            padding: 3px 0 0 2px;
+            left: -30px;
+            top: 15px;
+            color: white;
+            //border-radius: 6px 0 0 6px;
+            //padding: 3px 0 0 2px;
+            filter: drop-shadow(2px 2px 4px $sea_green_2);
+            font-size: 1.3em;
+
+            .icon-arrow4_left {
+                display: none;
+            }
 
             @include breakpoint(md) {
                 display: none;   
@@ -483,7 +491,14 @@ aside.sidebar {
 
         &.closed {
             width: 1px;
-
+            .right-panel-toggle{
+                .icon-arrow4_right {
+                    display:none;
+                }
+                .icon-arrow4_left {
+                    display: inline;
+                }
+            }
         }
 
     }

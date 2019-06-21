@@ -1327,10 +1327,8 @@ aside.sidebar {
               flex-direction: column; }
     aside.sidebar.left .mobile_search_toggle {
       position: absolute;
-      color: white;
-      background: #0e2b28;
-      width: 30px;
-      height: 44px;
+      width: 25px;
+      height: 25px;
       right: -30px;
       top: 10px;
       /* border-right: solid $gold_01 1px;
@@ -1341,12 +1339,12 @@ aside.sidebar {
         aside.sidebar.left .mobile_search_toggle {
           display: none; } }
       aside.sidebar.left .mobile_search_toggle img {
-        margin-top: 10px;
+        margin-top: 5px;
         width: 85%; }
         aside.sidebar.left .mobile_search_toggle img.collapse {
           display: none;
           width: 75%;
-          margin-top: 12px; }
+          margin-top: 5px; }
     aside.sidebar.left.open {
       width: 225px; }
       aside.sidebar.left.open .mobile_search_toggle .collapse {
@@ -1584,21 +1582,28 @@ aside.sidebar {
     transition-timing-function: ease;
     /*Safari bug where transform needs to be prefixed*/ }
     aside.sidebar.right .right-panel-toggle {
-      width: 22px;
-      height: 32px;
+      width: 25px;
+      height: 25px;
       display: block;
       position: absolute;
-      background: #0e2b28;
       z-index: 4000;
-      left: -22px;
-      top: calc(50% - 16px);
-      border-radius: 6px 0 0 6px;
-      padding: 3px 0 0 2px; }
+      left: -30px;
+      top: 15px;
+      color: white;
+      -webkit-filter: drop-shadow(2px 2px 4px #0e1b20);
+              filter: drop-shadow(2px 2px 4px #0e1b20);
+      font-size: 1.3em; }
+      aside.sidebar.right .right-panel-toggle .icon-arrow4_left {
+        display: none; }
       @media (min-width: 992px) {
         aside.sidebar.right .right-panel-toggle {
           display: none; } }
     aside.sidebar.right.closed {
       width: 1px; }
+      aside.sidebar.right.closed .right-panel-toggle .icon-arrow4_right {
+        display: none; }
+      aside.sidebar.right.closed .right-panel-toggle .icon-arrow4_left {
+        display: inline; }
 
 .leaflet-grid-label {
   width: 100%; }

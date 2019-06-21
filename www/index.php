@@ -124,7 +124,7 @@
 
             <aside class="sidebar right">
 
-                <button class="right-panel-toggle js-toggle-right-panel"><span class=" icon icon-arrow4_right"></span></button>
+                <button class="right-panel-toggle js-toggle-right-panel"><span class=" icon icon-arrow4_right"></span><span class=" icon icon-arrow4_left"></span></button>
 
                 <a href="/"><img src="images/icon-w.png" class="sotm_logo" /></a>
 

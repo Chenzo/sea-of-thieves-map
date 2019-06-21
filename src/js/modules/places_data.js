@@ -92,17 +92,25 @@ var places = [
         "desc": "In the smaller cave right off the doc on Crook's Hollow. Straight back next to a skeleton next to a wall",
         "image" : "mercia_journal_5.jpg",
         talltale: 2
-    }
+    },
 
-    /* {
-        "loc": [-146.304687, 60.507813], 
+    {
+        "loc": [-40.96286, 62.526276], 
         "title": "Briggsy Journal 1",
-        "desc": "",
-        "image" : "",
+        "desc": "Inside the North West cave on Lone Cove. In on the right by some glowing mushrooms.",
+        "image" : "mercia_journal_5.jpg",
         talltale: 3
-    } */
-    
+    },
 
+    {
+        "loc": [-95.986481, 15.967438], 
+        "title": "Briggsy Journal 2",
+        "desc": "in a broken barrel by a cooking fire on the North West shore of Mermaid's Hideaway",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 3
+    } 
+    
+    
 ];
 
 export {places};
