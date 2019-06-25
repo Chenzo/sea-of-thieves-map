@@ -101,14 +101,34 @@ var places = [
         "image" : "mercia_journal_5.jpg",
         talltale: 3
     },
-
     {
         "loc": [-95.986481, 15.967438], 
         "title": "Briggsy Journal 2",
         "desc": "in a broken barrel by a cooking fire on the North West shore of Mermaid's Hideaway",
         "image" : "mercia_journal_5.jpg",
         talltale: 3
-    } 
+    },
+    {
+        "loc": [-137.257812, 44.59375], 
+        "title": "Briggsy Journal 3",
+        "desc": "in a hole in the bow of the wrecked ship on Old Salt's Atoll",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 3
+    },
+    {
+        "loc": [-54.125, 105.515625], 
+        "title": "Briggsy Journal 4",
+        "desc": "in a bookshelf in the tavern on Dagger Tooth Outpost",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 3
+    },
+    {
+        "loc": [-55.703125, 145.148438], 
+        "title": "Briggsy Journal 5",
+        "desc": "at the very top of the galleon on Galleons Grave in the cage with a skeleton",
+        "image" : "mercia_journal_5.jpg",
+        talltale: 3
+    }  
     
     
 ];
