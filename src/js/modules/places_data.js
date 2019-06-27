@@ -90,7 +90,7 @@ var places = [
         "loc": [-115.734375, 106.710938], 
         "title": "Bounty Hunter's Journal 5",
         "desc": "In the smaller cave right off the doc on Crook's Hollow. Straight back next to a skeleton next to a wall",
-        "image" : "mercia_journal_5.jpg",
+        "image" : "bounty_hunter_journal_05.jpg",
         talltale: 2
     },
 
@@ -142,28 +142,28 @@ var places = [
         "loc": [-117.914062, 52.132813], 
         "title": "Stars of a Thief journals – Sudds’ Notes 2",
         "desc": "On Plunder Valley right by the beacon",
-        "image" : "stars_journal_01.jpg",
+        "image" : "stars_journal_02.jpg",
         talltale: 4
     },
     {
         "loc": [-115.226562, 85.5], 
         "title": "Stars of a Thief journals – Sudds’ Notes 3",
-        "desc": "North Eastern edge of the central island on Snake Island. Over a ledge.",
-        "image" : "stars_journal_01.jpg",
+        "desc": "North Eastern edge of the central island on Snake Island. By the star gazing equipment right over a ledge.",
+        "image" : "stars_journal_03-1.jpg",
         talltale: 4
     },
     {
         "loc": [-142.4375, 127.9375], 
         "title": "Stars of a Thief journals – Sudds’ Notes 4",
-        "desc": "At the tallest point on Devils Ridge. You'll need to climb up some rocks to get there.",
-        "image" : "stars_journal_01.jpg",
+        "desc": "At the tallest point on Devils Ridge. You'll need to climb up some rocks to get there. Under some rolled up parchment",
+        "image" : "stars_journal_04.jpg",
         talltale: 4
     },
     {
         "loc": [-67.453125, 15.375], 
         "title": "Stars of a Thief journals – Sudds’ Notes 5",
         "desc": "On a ridge overlooking the sea on Cresent Isle by some star gazing equipment",
-        "image" : "stars_journal_01.jpg",
+        "image" : "stars_journal_05.jpg",
         talltale: 4
     },
 
