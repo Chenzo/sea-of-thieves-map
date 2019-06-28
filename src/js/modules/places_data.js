@@ -13,6 +13,9 @@ var places = [
         "image" : "magpies_wing.jpg",
         talltale: 1
     }, 
+
+
+    
     /* {
         "loc": [-98.689331, 114.637573], 
         "title": "Puzzle Room",
@@ -203,9 +206,59 @@ var places = [
         "desc": "by a couple barrels on one of the eastern islets at Sailor's Bounty",
         "image" : "wilrose_journal_05.jpg",
         talltale: 5
-    }  
+    },
     
     
+
+
+
+    {
+        "loc": [-118.015625, 53.734375], 
+        "title": "Salty",
+        "desc": "Right on the beach by a shipwreck on the eastern side of Plunder Valley",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    }, 
+    
+    {
+        "loc": [-118.1875, 51.1875], 
+        "title": "Puzzle Room - Cave of Bones",
+        "desc": "Run up the path behind salty and enter the cave on your right (by a statue of an eagle.) Take your first left, then your first right.",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    }, 
+
+    {
+        "loc": [-118.007812, 50.90625], 
+        "title": "Art of the Trickster journals – Trapmaker’s Journal 1",
+        "desc": "Right in the puzzle room on a rock.",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    }, 
+    {
+        "loc": [-125.09375, 34.640625], 
+        "title": "Art of the Trickster journals – Trapmaker’s Journal 2",
+        "desc": "Near the top of the western most side of Discovery Ridge. Right on top of a barrel.",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    }, 
+
+    {
+        "loc": [-29.726562, 18.28125], 
+        "title": "Trapmaker's Workshop",
+        "desc": "In a cave in the middle of Sailor's Bounty",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    },
+
+    {
+        "loc": [-29.726562, 18.28125], 
+        "title": "Art of the Trickster journals – Trapmaker’s Journal 3, 4, 5",
+        "desc": "In the Trapmaker's Workshop: Between the tables near the entrance; below the bed; by the anvil.",
+        "image" : "magpies_wing.jpg",
+        talltale: 6
+    }
+
     
     
 ];
