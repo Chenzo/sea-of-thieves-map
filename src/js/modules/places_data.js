@@ -257,6 +257,82 @@ var places = [
         "desc": "In the Trapmaker's Workshop: Between the tables near the entrance; below the bed; by the anvil.",
         "image" : "magpies_wing.jpg",
         talltale: 6
+    },
+
+
+
+    {
+        "loc": [-30.77243, 107.558716], 
+        "title": "The Fate of the Morningstar journal 1 - A Ghost Watch",
+        "desc": "In a open cave east from the south shore on a rock",
+        "image" : "magpies_wing.jpg",
+        talltale: 7
+    },
+    {
+        "loc": [-29.569305, 104.605591], 
+        "title": "The Fate of the Morningstar journal 2 - The fright of my life",
+        "desc": "from the south beach, take the western path up the side of the mountain. It's in the eye of a Kraken's skull.",
+        "image" : "magpies_wing.jpg",
+        talltale: 7
+    },
+    {
+        "loc": [-27.796234, 107.095642], 
+        "title": "The Fate of the Morningstar journal 3 - Hunting By Bones",
+        "desc": "by a shrine of bones just up the path from journal 2 on the top western side of the island",
+        "image" : "magpies_wing.jpg",
+        talltale: 7
+    },
+    {
+        "loc": [-27.796234, 107.095642], 
+        "title": "The Fate of the Morningstar journal 4 - Still No Luck",
+        "desc": "At the highest point on Old Faithful, on the north side of the middle of the island by a skelton on top of a rock (up the path from Journal 4)",
+        "image" : "magpies_wing.jpg",
+        talltale: 7
+    },
+    {
+        "loc": [-27.796234, 107.095642], 
+        "title": "The Fate of the Morningstar journal 5 - Giving Up",
+        "desc": "On a wooden bridge above a path leading from the eastern shore",
+        "image" : "magpies_wing.jpg",
+        talltale: 7
+    },
+
+
+    {
+        "loc": [-22.710937, 135.062], 
+        "title": "Revenge of the Morningstar journal 1 - Too Little, Too Late",
+        "desc": "On Maurader's Arch, just below the highest peak, on a barrel by a cannon",
+        "image" : "magpies_wing.jpg",
+        talltale: 8
+    },
+    {
+        "loc": [-33.922791, 50.088196], 
+        "title": "Revenge of the Morningstar journal 2 - Assessing the Enemy",
+        "desc": "On the west side of boulder cay inside a crate on top of some barrels",
+        "image" : "magpies_wing.jpg",
+        talltale: 8
+    },
+    {
+        "loc": [-48.774353, 43.674133], 
+        "title": "Revenge of the Morningstar journal 3 - Accepting the Impossible",
+        "desc": "Inside the tavern on Sanctuary Outpost, tucked between some crates and the wall",
+        "image" : "magpies_wing.jpg",
+        talltale: 8
+    },
+    {
+        "loc": [-71.359375, 50.328125], 
+        "title": "Revenge of the Morningstar journal 4 - On Nature of Curses",
+        "desc": "On Cannon Cove behind some barrels on the southern side of the island",
+        "image" : "magpies_wing.jpg",
+        talltale: 8
+    }
+    ,
+    {
+        "loc": [-51.265625, 126.25], 
+        "title": "Revenge of the Morningstar journal 5 - an Endless Pursuit",
+        "desc": "on the northeast Islet of Sunken Grove on a rock by a lantern",
+        "image" : "magpies_wing.jpg",
+        talltale: 8
     }
 
     
