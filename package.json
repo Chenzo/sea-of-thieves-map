@@ -1,32 +1,25 @@
 {
   "name": "sea-of-thieves-map",
-  "version": "4.0.0",
+  "version": "4.2.0",
   "description": "A interactive map of the Sea Of Thieves",
   "main": "gulp",
   "repository": "",
   "author": "Chenzo",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^9.0.1",
-    "babel-core": "^6.26.0",
-    "browser-sync": "^2.24.6",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.0",
-    "gulp-postcss": "^7.0.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sass": "^4.0.1",
-    "gulp-sourcemaps": "^2.6.3",
-    "gulp-wait": "^0.0.2",
-    "pump": "^3.0.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
+    "autoprefixer": "^9.7.3",
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-run-command": "0.0.10",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "through2": "^3.0.1",
     "vinyl-named": "^1.1.0",
-    "webpack": "^4.16.3",
-    "webpack-stream": "^5.0.0"
+    "webpack": "^4.41.4",
+    "webpack-stream": "^5.2.1"
   },
-  "dependencies": {
-    "gulp-cli": "^2.0.1",
-    "gulp-run-command": "^0.0.9",
-    "npm": "^6.2.0"
-  }
+  "dependencies": {}
 }

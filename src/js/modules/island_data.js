@@ -399,10 +399,17 @@ var islands = [{
     },
     {
         "loc": [-104.19511986188078, 97.48786124216625],
-        "title": "Old Boot Fort",
+        "title": "Fort of The Damned",
 		"coords" : "L 14",
         radius: 2,
         isFortress: true
+    },
+    {
+        "loc": [-90.603882, 71.146729],
+        "title": "The Reaper's Hideout",
+		"coords" : "I 12",
+        radius: 3,
+        isFortress: false
     },
     {
         "loc": [-117.31967471531044, 51.7447330135501],

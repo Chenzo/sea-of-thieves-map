@@ -89,7 +89,7 @@ map.setMaxBounds(bounds, {padding: [600,600]});
 //map.fitBounds(bounds, {padding: [600,600]})
 var hash = new L.Hash(map);
 
-var layer = L.tileLayer(cdnpath + "images/tiles/v3/{z}/{x}/{y}.png", {
+var layer = L.tileLayer(cdnpath + "images/tiles/v3.6/{z}/{x}/{y}.png", {
     minZoom: 2,
     maxZoom: 7,
     bounds: bounds,
