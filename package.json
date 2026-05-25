@@ -6,6 +6,10 @@
   "repository": "",
   "author": "Chenzo",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
   "devDependencies": {
     "autoprefixer": "^9.7.3",
     "browser-sync": "^2.26.7",
