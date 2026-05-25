@@ -1,6 +1,6 @@
 
 
-var dataCacheName = 'sotm-v2.8';
+var dataCacheName = 'sotm-v2.7';
 
 
 self.addEventListener('install', event => {
@@ -76,9 +76,10 @@ self.addEventListener('activate', event => {
 
 
 var filesToCache = [
-'/index.php',
+'/',
+'/index.html',
 '/manifest.json',
-'/css/styles.css?v=1561666113962',
+'/css/styles.css',
 '/css/images/leaflet-search.jpg',
 '/css/images/loader.gif',
 '/css/images/search-icon-mobile.png',
@@ -123,11 +124,11 @@ var filesToCache = [
 '/js/vendor/leaflet-hash.js',
 '/js/vendor/leaflet-search.min.js',
 '/js/vendor/L.SimpleGraticule-sot.js',
-/* '/fonts/sot-icons.ttf',
+'/fonts/sot-icons.ttf',
 '/fonts/sot-icons.eot',
 '/fonts/sot-icons.svg',
 '/fonts/sot-icons.woff',
-'/fonts/sot-icons.woff2', */
+'/fonts/sot-icons.woff2',
 '/images/favicon/apple-launch-1242x2688.jpg',
 '/images/favicon/apple-launch-828x1792.jpg',
 '/images/favicon/apple-launch-1125x2436.jpg',

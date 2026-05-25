@@ -2,24 +2,19 @@
   "name": "sea-of-thieves-map",
   "version": "4.2.0",
   "description": "A interactive map of the Sea Of Thieves",
-  "main": "gulp",
+  "main": "server.js",
   "repository": "",
   "author": "Chenzo",
   "license": "MIT",
-  "devDependencies": {
-    "autoprefixer": "^9.7.3",
-    "browser-sync": "^2.26.7",
-    "gulp": "^4.0.2",
-    "gulp-cli": "^2.2.0",
-    "gulp-postcss": "^8.0.0",
-    "gulp-run-command": "0.0.10",
-    "gulp-sass": "^4.0.2",
-    "gulp-sourcemap": "^1.0.1",
-    "gulp-sourcemaps": "^2.6.5",
-    "through2": "^3.0.1",
-    "vinyl-named": "^1.1.0",
-    "webpack": "^4.41.4",
-    "webpack-stream": "^5.2.1"
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "node scripts/build.js css",
+    "build:js": "node scripts/build.js js"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "esbuild": "0.25.0",
+    "sass": "1.89.2"
+  }
 }
